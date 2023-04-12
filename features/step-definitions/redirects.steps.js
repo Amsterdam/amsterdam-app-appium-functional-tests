@@ -1,0 +1,17 @@
+import { ClassicRunner, Eyes, Target } from '@applitools/eyes-webdriverio';
+import { Then, When } from '@wdio/cucumber-framework';
+import HomeScreen from '../screenobjects/home.screen.js';
+
+When(/ik open de Direct regelen module/, async () => {
+    await HomeScreen.homeRedirectsModuleButton.click()
+    await expect(HomeScreen.headerTitle).toHaveText('Direct regelen')
+})
+
+Then(/ik zie het Direct regelen scherm/, async () => {
+    const runner = new ClassicRunner()
+    const eyes = new Eyes(runner)
+    await eyes.open(driver, "Amsterdam App", "De Direct regelen module raadplegen")
+    await eyes.check(Target.window().fully())
+    await eyes.close()
+    await eyes.abortIfNotClosed()
+})
