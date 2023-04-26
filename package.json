@@ -2,6 +2,8 @@
   "name": "my-new-project",
   "type": "module",
   "devDependencies": {
+    "@percy/appium-app": "^1.1.0",
+    "@percy/cli": "^1.24.0",
     "@wdio/allure-reporter": "^8.5.0",
     "@wdio/appium-service": "^8.3.11",
     "@wdio/cli": "^8.3.11",

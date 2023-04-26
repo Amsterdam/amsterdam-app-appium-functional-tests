@@ -2,3 +2,4 @@ node_modules/
 app/
 allure-report/
 allure-results/
+wdio.conf.browserstack.js

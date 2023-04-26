@@ -27,18 +27,26 @@ export const config = {
     // will be called from there.
     //
     specs: [
-        "./features/**/*.feature"
+        "./tests/features/**/*.feature"
     ],
     // Patterns to exclude.
     exclude: [
-        "./features/about.feature",
-        //"./features/construction-work.feature",
-        "./features/contact.feature",
-        "./features/open-waste-container.feature",
-        "./features/redirects.feature",
-        "./features/report-problem.feature",
-        "./features/waste-guide.feature",
-        "./features/launchapp.feature"
+        "./tests/features/functional/construction-work.feature",
+        "./tests/features/visual-eyes/about.feature",
+        //"./tests/features/visual-eyes/construction-work.feature",
+        "./tests/features/visual-eyes/contact.feature",
+        "./tests/features/visual-eyes/launchapp.feature",
+        "./tests/features/visual-eyes/open-waste-container.feature",
+        "./tests/features/visual-eyes/redirects.feature",
+        "./tests/features/visual-eyes/report-problem.feature",
+        "./tests/features/visual-eyes/waste-guide.feature",
+        //"./tests/features/visual-percy/about.feature",
+        //"./tests/features/visual-percy/construction-work.feature",
+        "./tests/features/visual-percy/contact.feature",
+        "./tests/features/visual-percy/open-waste-container.feature",
+        "./tests/features/visual-percy/redirects.feature",
+        "./tests/features/visual-percy/report-problem.feature",
+        "./tests/features/visual-percy/waste-guide.feature",
     ],
     //
     // ============
@@ -167,7 +175,7 @@ export const config = {
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         // <string[]> (file/dir) require files before executing features
-        require: ['./features/step-definitions/**/*.js'],
+        require: ['./tests/step-definitions/**/*.js'],
         // <boolean> show full backtrace for errors
         backtrace: false,
         // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
