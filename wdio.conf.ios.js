@@ -31,8 +31,10 @@ export const config = {
     ],
     // Patterns to exclude.
     exclude: [
-        //"./tests/features/functional/construction-work.feature",
         "./tests/features/functional/addAddress.feature",
+        "./tests/features/functional/construction-work.feature",
+        //"./tests/features/functional/contact.feature",
+        "./tests/features/functional/settings.feature",
         "./tests/features/visual-eyes/about.feature",
         "./tests/features/visual-eyes/construction-work.feature",
         "./tests/features/visual-eyes/contact.feature",

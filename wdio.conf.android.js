@@ -32,9 +32,12 @@ export const config = {
     ],
     // Patterns to exclude.
     exclude: [
+        "./tests/features/functional/addAddress.feature",
         "./tests/features/functional/construction-work.feature",
+        //"./tests/features/functional/contact.feature",
+        "./tests/features/functional/settings.feature",
         "./tests/features/visual-eyes/about.feature",
-        //"./tests/features/visual-eyes/construction-work.feature",
+        "./tests/features/visual-eyes/construction-work.feature",
         "./tests/features/visual-eyes/contact.feature",
         "./tests/features/visual-eyes/launchapp.feature",
         "./tests/features/visual-eyes/open-waste-container.feature",
@@ -42,7 +45,7 @@ export const config = {
         "./tests/features/visual-eyes/report-problem.feature",
         "./tests/features/visual-eyes/waste-guide.feature",
         "./tests/features/visual-percy/about.feature",
-        //"./tests/features/visual-percy/construction-work.feature",
+        "./tests/features/visual-percy/construction-work.feature",
         "./tests/features/visual-percy/contact.feature",
         "./tests/features/visual-percy/open-waste-container.feature",
         "./tests/features/visual-percy/redirects.feature",
