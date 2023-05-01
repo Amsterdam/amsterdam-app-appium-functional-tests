@@ -64,6 +64,6 @@ Then(/ik zie het contact scherm - percy/, async () => {
     await percyScreenshot('De contact module raadplegen')
 })
 
-Then(/^het juiste stadsloket wordt getoond - percy (.*)$/, async title => {
+Then(/^het juiste stadsloket wordt getoond - percy (.*)$/, async () => {
     await percyScreenshot('Op de contactpagina vind ik informatie over de stadsloketten die ik kan bezoeken', { fullPage: true, screenLengths: 8 })
 })
