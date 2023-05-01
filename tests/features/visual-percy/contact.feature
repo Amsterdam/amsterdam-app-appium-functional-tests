@@ -23,3 +23,4 @@ Feature: Contact module
             | Zuid       | President Kennedylaan 923 1079 MZ Amsterdam | Stadsloket Zuid       |
             | Zuidoost   | Anton de Komplein 150 1102 CW Amsterdam     | Stadsloket Zuidoost   |
             | Weesp      | Nieuwstraat 70a 1380 BD Weesp               | Stadsloket Weesp      |
+

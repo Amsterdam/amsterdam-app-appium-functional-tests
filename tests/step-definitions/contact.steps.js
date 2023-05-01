@@ -20,13 +20,20 @@ When(/ik open de contact module/, async () => {
 
 When(/ik klik op het stadsloket/, async () => {
     await gestures.checkProjectDisplayedWithScrollDown(contactScreen.ContactCurrentCityOfficeButton, 4)
-    driver.pause(2000)
     await contactScreen.ContactCurrentCityOfficeButton.click()
 })
 
-When(/^ik selecteer een stadsloket (.*)$/, async stadsloket => {
+When(/^ik selecteer stadsloket (.*)$/, async stadsloket => {
     await contactScreen.tapCityOfficeButton(stadsloket)
 })
+
+When(/ik selecteer stadsloket Weesp/, async () => {
+    await gestures.checkProjectDisplayedWithScrollDown(contactScreen.ContactCurrentCityOfficeButton, 4)
+    await contactScreen.ContactCurrentCityOfficeButton.click()
+    await contactScreen.tapCityOfficeButton('Weesp')
+})
+
+
 
 Then(/zie ik een lijst met stadsloketten/, async () => {
     await expect(contactScreen.cityOfficeCentrumButton).toBeDisplayed()
@@ -39,15 +46,25 @@ Then(/zie ik een lijst met stadsloketten/, async () => {
     await expect(contactScreen.cityOfficeWeespButton).toBeDisplayed()
 })
 
-Then(/^het juiste stadsloket wordt getoond (.*)$/, async title => {
+Then(/^het juiste stadsloket wordt getoond: (.*)$/, async title => {
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
-        driver.pause(2000)
+        await driver.pause(2000)
         const currentCityOfficeTitle = await contactScreen.ContactCurrentCityOfficeButton.getAttribute("label")
-        expect(currentCityOfficeTitle).toContain(title)
+        await expect(currentCityOfficeTitle).toContain(title)
     } else {
         //define Android
     }
+})
+
+Then(/de bekijk routeknop wordt getoond/, async () => {
+    await gestures.checkProjectDisplayedWithScrollDown(contactScreen.contactSeeRouteButton, 4)
+    await expect(contactScreen.contactSeeRouteButton).toBeDisplayed()
+})
+
+Then(/ik zie een maak een afspraakknop/, async () => {
+    await gestures.checkProjectDisplayedWithScrollDown(contactScreen.contactMakeAppointmentButton, 4)
+    await expect(contactScreen.contactMakeAppointmentButton).toBeDisplayed()
 })
 //Then - eyes
 Then(/ik zie het contact scherm - eyes/, async () => {
@@ -65,5 +82,8 @@ Then(/ik zie het contact scherm - percy/, async () => {
 })
 
 Then(/^het juiste stadsloket wordt getoond - percy (.*)$/, async () => {
+    if (await contactScreen.contactVisitingHoursTooltipButton.isDisplayed()) {
+        await contactScreen.contactVisitingHoursTooltipButton.click()
+    }
     await percyScreenshot('Op de contactpagina vind ik informatie over de stadsloketten die ik kan bezoeken', { fullPage: true, screenLengths: 8 })
 })

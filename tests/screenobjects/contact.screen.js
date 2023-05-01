@@ -84,14 +84,21 @@ class ContactScreen extends Screen {
     return createSelector("ContactButtonVisitingHoursDetails")
   }
 
-  get ContactButtonRoute() {
-    return createSelector("ContactButtonRoute")
+  get contactSeeRouteButton() {
+    return createSelector("ContactSeeRouteButton")
+  }
+
+  get contactMakeAppointmentButton() {
+    return createSelector("ContactMakeAppointmentButton")
   }
 
   get ContactButtonRouteLabel() {
     return createSelector("ContactButtonRouteLabel")
   }
 
+  get contactVisitingHoursTooltipButton() {
+    return createSelector("ContactVisitingHoursTooltipButton")
+  }
   get cityOfficeCentrumButton() {
     return createSelector('ContactCityOfficee9871a7716da02a4c20cfb06f9547005Button')
   }
