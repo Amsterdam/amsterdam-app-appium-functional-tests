@@ -18,12 +18,13 @@ When(/ik ga naar mijn profiel/, async () => {
 
 When(/ik zoek op 'Weesperstraat 113'/, async () => {
     await ProfileScreen.addressAddButton.click()
+    await expect(ProfileScreen.headerTitle).toHaveText('Adres')
     await ProfileScreen.addressStreetInputSearchField.addValue("Weesperstraat 113")
     //await gestures.hitEnter()
 })
 
 When(/ik selecteer het adres/, async () => {
-    await ProfileScreen.addressSearchResultWeesperstraat.click()
+    await (ProfileScreen.addressSearchResultWeesperstraat113).click()
 })
 
 //Then
@@ -33,8 +34,8 @@ Then(/ik zie mijn profiel met de mogelijkheid om een adres toe te voegen/, async
     await expect(ProfileScreen.addressAddButton).toBeDisplayed()
 })
 
-Then(/krijg ik de juiste zoekresultaten/, async () => {
-    await expect(ProfileScreen.addressSearchResultWeesperstraat).toBeDisplayed()
+Then(/krijg ik de juiste zoekresultaten in het 'Adres' scherm/, async () => {
+    await expect(ProfileScreen.addressSearchResultWeesperstraat113).toBeDisplayed()
 })
 
 Then(/het adres is toegevoegd aan Mijn profiel/, async () => {

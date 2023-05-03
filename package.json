@@ -16,8 +16,9 @@
     "axios": "^1.3.4"
   },
   "scripts": {
-    "wdio": "wdio run ./wdio.conf.android.js",
+    "wdio-android": "wdio run ./wdio.conf.android.js",
     "wdio-ios": "wdio run ./wdio.conf.ios.js",
+    "wdio-browserstack": "wdio run ./wdio.conf.browserstack.js",
     "allure-report": "allure generate --clean && allure open",
     "reset-uiautomator2": "appium driver run uiautomator2 reset",
     "allure help": "allure help",

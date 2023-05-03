@@ -1,12 +1,12 @@
-import { After, Before } from "@wdio/cucumber-framework";
+//import { After, Before } from "@wdio/cucumber-framework";
 
-Before(async function () {
-    await driver.launchApp();
-})
+// Before(async function () {
+//     await driver.launchApp();
+// })
 
-After(async () => {
-    await driver.deleteSession();
-})
+// After(async () => {
+//     await driver.deleteSession();
+// })
 
 // AfterAll (async () => {
 // driver.terminateApp()

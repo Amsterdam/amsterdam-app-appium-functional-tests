@@ -3,7 +3,7 @@ import Screen from './screen.js';
 /**
  * sub page containing specific selectors and methods for a specific page
  */
-class constructionWorkScreen extends Screen {
+class ConstructionWorkScreen extends Screen {
   /**
    * define selectors using getter methods
    */
@@ -84,4 +84,4 @@ class constructionWorkScreen extends Screen {
 }
 
 
-export default new constructionWorkScreen();
+export default new ConstructionWorkScreen();

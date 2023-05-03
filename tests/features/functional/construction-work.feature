@@ -10,7 +10,7 @@ Feature: Werkzaamheden module
     Scenario: Zoeken op 'Amsterdam'
         Given ik ben op het werkzaamheden scherm
         When ik zoek op 'Amsterdam'
-        Then krijg ik de juiste zoekresultaten
+        Then krijg ik de juiste zoekresultaten in het 'Zoek in werkzaamheden' scherm
 
     Scenario: Geen zoekresultaten
         Given ik ben op het werkzaamheden scherm

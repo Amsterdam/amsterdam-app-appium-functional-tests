@@ -22,11 +22,15 @@ class ProfileScreen extends Screen {
     }
 
     get addressSearchResultWeesperstraat113() {
-        return createSelector("AddressSearchResultWeesperstraatButton")
+        return createSelector("AddressSearchResultWeesperstraat 113Button")
     }
 
     get addressSearchResultWeesperstraat() {
         return createSelector("AddressSearchResultWeesperstraatButton")
+    }
+
+    async addressSelector(adres) {
+        return createSelector(`AddressSearchResult${adres}Button`)
     }
 }
 
