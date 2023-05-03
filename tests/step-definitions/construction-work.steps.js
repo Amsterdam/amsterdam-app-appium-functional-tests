@@ -1,4 +1,3 @@
-import percyScreenshot from '@percy/appium-app';
 import { Given, Then, When } from '@wdio/cucumber-framework';
 import gestures from '../Shared/helpers/gestures.js';
 import constructionWorkScreen from '../screenobjects/construction-work.screen.js';
@@ -103,10 +102,6 @@ Then(/ik zie een melding dat er geen zoekresulaten zijn/, async () => {
   await expect(constructionWorkScreen.ConstructionWorkListEmptyMessage).toBeDisplayed()
 })
 
-//Then - percy
-Then(/ik zie het Werkzaamheden scherm - percy/, async () => {
-  await percyScreenshot('Werkzaamheden')
-})
 
 //Then - eyes
 Then(/ik zie het Werkzaamheden scherm - eyes/, async () => {

@@ -76,10 +76,6 @@ Then(/ik zie het contact scherm - eyes/, async () => {
     await eyes.abortIfNotClosed()
 })
 
-//Then - percy
-Then(/ik zie het contact scherm - percy/, async () => {
-    await percyScreenshot('De contact module raadplegen')
-})
 
 Then(/^het juiste stadsloket wordt getoond - percy (.*)$/, async () => {
     if (await contactScreen.contactVisitingHoursTooltipButton.isDisplayed()) {

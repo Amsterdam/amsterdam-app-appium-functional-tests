@@ -38,22 +38,7 @@ When(/ik klik op toegankelijkheidsverklaring/, async () => {
     await expect(AboutScreen.headerTitle).toHaveText('Toegankelijkheidsverklaring')
 })
 
-//Then - percy
-Then(/ik zie het over deze app scherm - percy/, async () => {
-    await percyScreenshot('Over deze app');
-})
 
-Then(/ik zie het waarom deze app scherm met de correcte content - percy/, async () => {
-    await percyScreenshot('Waarom deze app?', { fullPage: true, screenLengths: 8 })
-})
-
-Then(/ik zie het about this app scherm met de correcte content - percy/, async () => {
-    await percyScreenshot('about this app', { fullPage: true, screenLengths: 8 })
-})
-
-Then(/ik zie het privacyverklaring scherm met de correcte content - percy/, async () => {
-    await percyScreenshot('Privacyverklaring', { fullPage: true, screenLengths: 8 });
-})
 
 Then(/ik zie het toegankelijkheidsverklaring scherm met de correcte content - percy/, async () => {
     await percyScreenshot('Toegankelijkheidsverklaring', { fullPage: true, screenLengths: 8 });

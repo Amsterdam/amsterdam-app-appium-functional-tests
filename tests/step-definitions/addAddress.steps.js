@@ -1,5 +1,4 @@
 import { Given, Then, When } from "@wdio/cucumber-framework";
-import gestures from '../Shared/helpers/gestures.js';
 import HomeScreen from "../screenobjects/home.screen.js";
 import ProfileScreen from "../screenobjects/profile.screen.js";
 
@@ -18,28 +17,27 @@ When(/ik ga naar mijn profiel/, async () => {
 })
 
 When(/ik zoek op 'Weesperstraat 113'/, async () => {
-    await ProfileScreen.userAddressAddButton.click()
-    await ProfileScreen.userAddressStreetInputSearchField.addValue("Weesperstraat 113")
-    await gestures.hitEnter()
-    await gestures.hitEnter()
+    await ProfileScreen.addressAddButton.click()
+    await ProfileScreen.addressStreetInputSearchField.addValue("Weesperstraat 113")
+    //await gestures.hitEnter()
 })
 
 When(/ik selecteer het adres/, async () => {
-
+    await ProfileScreen.addressSearchResultWeesperstraat.click()
 })
 
 //Then
 Then(/ik zie mijn profiel met de mogelijkheid om een adres toe te voegen/, async () => {
-    await expect(ProfileScreen.userAddressTitle).toBeDisplayed()
-    await expect(ProfileScreen.userAddressInstructionParagraph).toBeDisplayed()
-    await expect(ProfileScreen.userAddressAddButton).toBeDisplayed()
+    await expect(ProfileScreen.addressTitle).toBeDisplayed()
+    await expect(ProfileScreen.addressInstructionParagraph).toBeDisplayed()
+    await expect(ProfileScreen.addressAddButton).toBeDisplayed()
 })
 
 Then(/krijg ik de juiste zoekresultaten/, async () => {
-
+    await expect(ProfileScreen.addressSearchResultWeesperstraat).toBeDisplayed()
 })
 
 Then(/het adres is toegevoegd aan Mijn profiel/, async () => {
-
+    await expect(ProfileScreen.addressTitle).toBeDisplayed()
 })
 

@@ -5,20 +5,28 @@ import Screen from './screen.js';
  */
 class ProfileScreen extends Screen {
 
-    get userAddressTitle() {
-        return createSelector("UserAddressTitle");
+    get addressTitle() {
+        return createSelector("AddressTitle");
     }
 
-    get userAddressInstructionParagraph() {
-        return createSelector("UserAddressInstructionParagraph")
+    get addressInstructionParagraph() {
+        return createSelector("AddressInstructionParagraph")
     }
 
-    get userAddressAddButton() {
-        return createSelector("UserAddressAddButton")
+    get addressAddButton() {
+        return createSelector("AddressAddButton")
     }
 
-    get userAddressStreetInputSearchField() {
-        return createSelector("UserAddressStreetInputSearchField")
+    get addressStreetInputSearchField() {
+        return createSelector("AddressStreetInputSearchField")
+    }
+
+    get addressSearchResultWeesperstraat113() {
+        return createSelector("AddressSearchResultWeesperstraatButton")
+    }
+
+    get addressSearchResultWeesperstraat() {
+        return createSelector("AddressSearchResultWeesperstraatButton")
     }
 }
 
