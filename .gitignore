@@ -2,4 +2,11 @@ node_modules/
 app/
 allure-report/
 allure-results/
-wdio.conf.browserstack.js
+wdio.conf.android.js
+wdio.conf.browserstack-landscape-functional-eyes.js
+wdio.conf.browserstack-portrait-functional-eyes.js
+wdio.conf.ios.js
+wdio.conf.percy-landscape.js
+wdio.conf.percy-portrait.js
+wdio.conf.shared.js
+

@@ -72,8 +72,8 @@ class ContactScreen extends Screen {
     return createSelector("ContactCurrentCityOfficeButton")
   }
 
-  get ContactButtonCurrentCityOfficeTitle() {
-    return createSelector("ContactButtonCurrentCityOfficeTitle")
+  get ContactCurrentCityOfficeButtonTitle() {
+    return createSelector("ContactCurrentCityOfficeButtonTitle")
   }
 
   get ContactTextVisitingHours() {

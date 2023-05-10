@@ -1,3 +1,5 @@
+import { ClassicRunner, Eyes } from '@applitools/eyes-webdriverio';
+import percyScreenshot from '@percy/appium-app';
 import { Given, Then, When } from '@wdio/cucumber-framework';
 import gestures from '../Shared/helpers/gestures.js';
 import ConstructionWorkScreen from '../screenobjects/construction-work.screen.js';
@@ -5,7 +7,6 @@ import HomeScreen from '../screenobjects/home.screen.js';
 
 //Given
 Given(/ik ben op het werkzaamheden scherm/, async () => {
-  await driver.launchApp()
   await HomeScreen.getHomeScreen()
   await HomeScreen.homeConstructionWorkModuleButton.click()
   await expect(HomeScreen.headerTitle).toHaveText('Werkzaamheden')
@@ -88,10 +89,10 @@ Then(/de status 'volgend' verdwijnt/, async () => {
 })
 
 Then(/krijg ik de juiste zoekresultaten in het 'Zoek in werkzaamheden' scherm/, async () => {
+  await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkFoodCenterAmsterdamProjectCard, 4)
   await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkCardProjectAmsterdamSciencePark, 4)
   //await gestures.checkProjectDisplayedWithScrollDown(ConstructionWorkScreen.constructionWorkCardProjectDijksgrachtOost, 4)
   await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkAmsterdamZuidoostProjectCard, 4)
-  await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkFoodCenterAmsterdamProjectCard, 4)
   await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkCentrumgebiedAmsterdamNoordProjectCard, 4)
   await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.ConstructionWorkAmsterdamseBosProjectCard, 4)
   await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.ConstructionWorkDeEntreeProjectCard, 4)
@@ -113,7 +114,10 @@ Then(/ik zie het Werkzaamheden scherm - eyes/, async () => {
   await eyes.abortIfNotClosed()
 })
 
-
+//Then - percy
+Then(/ik zie het Werkzaamheden scherm - percy/, async () => {
+  await percyScreenshot('Werkzaamheden')
+})
 
 
 

@@ -4,7 +4,6 @@ import ProfileScreen from "../screenobjects/profile.screen.js";
 
 //Given
 Given(/ik ben op het mijn profiel scherm/, async () => {
-    await driver.launchApp()
     await HomeScreen.getHomeScreen()
     await HomeScreen.headerUserButton.click()
     await expect(HomeScreen.headerTitle).toHaveText('Mijn profiel')

@@ -1,11 +1,11 @@
 import { ClassicRunner, Eyes } from '@applitools/eyes-webdriverio';
+import percyScreenshot from '@percy/appium-app';
 import { Given, Then, When } from '@wdio/cucumber-framework';
 import HomeScreen from '../screenobjects/home.screen.js';
 import ProfileScreen from '../screenobjects/profile.screen.js';
 import WasteGuideScreen from '../screenobjects/waste-guide.screen.js';
 
 Given(/ik ben op het afvalwijzer Startscherm/, async () => {
-    await driver.launchApp()
     await HomeScreen.getHomeScreen()
     await HomeScreen.homeWasteGuideModuleButton.click()
     await expect(HomeScreen.headerTitle).toHaveText('Afvalwijzer')
@@ -51,17 +51,22 @@ When(/ik selecteer of ik wel of niet een contract (.*) heb/, async contract => {
 Then(/ik zie het Afvalwijzer scherm - eyes/, async () => {
     const runner = new ClassicRunner()
     const eyes = new Eyes(runner)
-    await eyes.open(driver, "Amsterdam App", "De Afvalwijzer module raadplegen")
+    await eyes.open(driver, "Amsterdam App", "ik zie het Afvalwijze startscherm")
     await eyes.check()
     await eyes.close()
     await eyes.abortIfNotClosed()
 })
 
-Then(/ik zie de juiste informatie in de afvalwijzer/, async () => {
+Then(/ik zie de juiste informatie in de afvalwijzer voor adressen (.*)/, async omschrijving => {
     const runner = new ClassicRunner()
     const eyes = new Eyes(runner)
-    await eyes.open(driver, "Amsterdam App", "De Afvalwijzer module raadplegen")
+    await eyes.open(driver, "Amsterdam App", "ik zie de juiste informatie in de afvalwijzer voor adressen" + omschrijving)
     await eyes.check()
     await eyes.close()
     await eyes.abortIfNotClosed()
+})
+
+//Then - percy
+Then(/ik zie het Afvalwijzer scherm - percy/, async () => {
+    await percyScreenshot('Afvalwijzer')
 })

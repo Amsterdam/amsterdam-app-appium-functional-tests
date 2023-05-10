@@ -1,4 +1,5 @@
 import { ClassicRunner, Eyes, Target } from '@applitools/eyes-webdriverio';
+import percyScreenshot from '@percy/appium-app';
 import { Then, When } from '@wdio/cucumber-framework';
 import HomeScreen from '../screenobjects/home.screen.js';
 
@@ -17,3 +18,7 @@ Then(/ik zie het Gft-container openen scherm - eyes/, async () => {
     await eyes.abortIfNotClosed()
 })
 
+//Then - percy
+Then(/ik zie het Gft-container openen scherm - percy/, async () => {
+    await percyScreenshot('Gft-container')
+})

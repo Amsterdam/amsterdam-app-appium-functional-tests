@@ -6,7 +6,6 @@ import ContactScreen from '../screenobjects/contact.screen.js';
 import HomeScreen from '../screenobjects/home.screen.js';
 
 Given(/ik ben op het contactscherm/, async () => {
-    await driver.launchApp()
     await HomeScreen.getHomeScreen()
     await HomeScreen.homeContactModuleButton.click()
     await expect(HomeScreen.headerTitle).toHaveText('Contact')
@@ -54,6 +53,12 @@ Then(/^het juiste stadsloket wordt getoond: (.*)$/, async title => {
         await expect(currentCityOfficeTitle).toContain(title)
     } else {
         //define Android
+        await driver.pause(2000)
+        await ContactScreen.ContactCurrentCityOfficeButtonTitle.waitForDisplayed(5000)
+        // const currentCityOfficeTitle = await ContactScreen.ContactCurrentCityOfficeButtonTitle.getText()
+        // console.log(await currentCityOfficeTitle)
+        // await expect(currentCityOfficeTitle).toEqual(title)
+        await expect(ContactScreen.ContactCurrentCityOfficeButtonTitle).toHaveText(title)
     }
 })
 
@@ -76,10 +81,11 @@ Then(/ik zie het contact scherm - eyes/, async () => {
     await eyes.abortIfNotClosed()
 })
 
-
-Then(/^het juiste stadsloket wordt getoond - percy (.*)$/, async () => {
+//Then - percy
+Then(/ik zie het contact scherm - percy/, async () => {
     if (await ContactScreen.contactVisitingHoursTooltipButton.isDisplayed()) {
         await ContactScreen.contactVisitingHoursTooltipButton.click()
     }
     await percyScreenshot('Op de contactpagina vind ik informatie over de stadsloketten die ik kan bezoeken', { fullPage: true, screenLengths: 8 })
 })
+

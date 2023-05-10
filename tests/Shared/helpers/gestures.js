@@ -123,7 +123,7 @@ class Gestures {
                 { type: 'pointerMove', duration: 0, x: centerX, y: startY },
                 { type: 'pointerDown', button: 0 },
                 { type: 'pause', duration: 100 },
-                { type: 'pointerMove', duration: 500, x: centerX, y: endY },
+                { type: 'pointerMove', duration: 700, x: centerX, y: endY },
                 { type: 'pointerUp', button: 0 },
                 { type: 'pause', duration: 500 },
             ]
