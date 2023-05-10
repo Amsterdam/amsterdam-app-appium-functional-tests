@@ -1,0 +1,18 @@
+trigger:
+  - main
+
+pr: none
+
+jobs:
+  - job: "Push_to_github"
+    timeoutInMinutes: 30
+    pool:
+      vmImage: macOS-12
+    variables:
+      - group: github-authorization
+    steps:
+      - template: ./templates/push-repo-to-github.yml
+        parameters:
+          repository: "amsterdam-app-appium-functional-tests"
+          sshKeySecureFile: "Appium-Functional-Tests-github-ssh"
+          sshPublicKey: $(sshPublicKeyAppiumFunctionalTests)
