@@ -66,7 +66,7 @@ class Gestures {
         }
     }
 
-    async checkProjectDisplayedWithScrollDownAndClick(element, amount, maxScrolls) {
+    async checkProjectDisplayedWithScrollDownAndClick(element, maxScrolls) {
         for (let i = 0; i < maxScrolls; i++) {
             if (!await element.isDisplayed()) {
                 this.swipeUp();
@@ -74,7 +74,7 @@ class Gestures {
                 await driver.pause(2000)
                 await element.click()
                 break
-            } else if (amount > maxScrolls) {
+            } else if (i > maxScrolls) {
                 throw new Error(`The element '${element}' could not be found or is not visible.`);
             }
         }
