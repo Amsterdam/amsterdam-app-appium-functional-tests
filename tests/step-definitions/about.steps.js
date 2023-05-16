@@ -39,7 +39,6 @@ When(/ik klik op toegankelijkheidsverklaring/, async () => {
 
 //Then - eyes
 Then(/ik zie het over deze app scherm - eyes/, async () => {
-    //await driver.launchApp();
     const runner = new ClassicRunner()
     const eyes = new Eyes(runner)
     await eyes.open(driver, "Amsterdam App", "De over deze app module raadplegen")

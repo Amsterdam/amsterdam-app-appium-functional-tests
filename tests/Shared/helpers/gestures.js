@@ -66,7 +66,7 @@ class Gestures {
         }
     }
 
-    async checkProjectDisplayedWithScrollDownAndClick(element, maxScrolls) {
+    async checkProjectDisplayedWithScrollDownAndClick(element, amount, maxScrolls) {
         for (let i = 0; i < maxScrolls; i++) {
             if (!await element.isDisplayed()) {
                 this.swipeUp();

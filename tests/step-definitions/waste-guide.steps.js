@@ -60,7 +60,7 @@ Then(/ik zie het Afvalwijzer scherm - eyes/, async () => {
 Then(/ik zie de juiste informatie in de afvalwijzer voor adressen (.*)/, async omschrijving => {
     const runner = new ClassicRunner()
     const eyes = new Eyes(runner)
-    await eyes.open(driver, "Amsterdam App", "ik zie de juiste informatie in de afvalwijzer voor adressen" + omschrijving)
+    await eyes.open(driver, "Amsterdam App", "ik zie de juiste informatie in de afvalwijzer voor adressen " + omschrijving)
     await eyes.check()
     await eyes.close()
     await eyes.abortIfNotClosed()

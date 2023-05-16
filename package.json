@@ -2,8 +2,6 @@
   "name": "my-new-project",
   "type": "module",
   "devDependencies": {
-    "@percy/appium-app": "^1.1.0",
-    "@percy/cli": "^1.24.0",
     "@wdio/allure-reporter": "^8.5.0",
     "@wdio/appium-service": "^8.3.11",
     "@wdio/browserstack-service": "^8.10.1",
@@ -19,11 +17,13 @@
   "scripts": {
     "wdio-android": "wdio run ./wdio.conf.android.js",
     "wdio-ios": "wdio run ./wdio.conf.ios.js",
+    "run-ios": "npm run wdio-shared && npm run wdio-ios",
     "wdio-browserstack": "wdio run ./wdio.conf.browserstack.js",
     "wdio-browserstack-landscape-functional-eyes": "wdio run ./wdio.conf.browserstack-landscape-functional-eyes.js",
     "wdio-browserstack-portrait-functional-eyes": "wdio run ./wdio.conf.browserstack-portrait-functional-eyes.js",
     "wdio-browserstack-landscape-percy": "wdio run ./wdio.conf.percy-landscape.js",
     "wdio-browserstack-portrait-percy": "wdio run ./wdio.conf.percy-portrait.js",
+    "wdio-shared": "wdio run ./wdio.conf.shared.js",
     "allure-report": "allure generate --clean && allure open",
     "reset-uiautomator2": "appium driver run uiautomator2 reset",
     "allure help": "allure help",
@@ -33,6 +33,8 @@
   },
   "dependencies": {
     "@applitools/eyes-webdriverio": "^5.42.2",
+    "@percy/appium-app": "^1.1.0",
+    "@percy/cli": "^1.24.0",
     "allure-commandline": "^2.21.0",
     "eslint": "^8.37.0"
   }

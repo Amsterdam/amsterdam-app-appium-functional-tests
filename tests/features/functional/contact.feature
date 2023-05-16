@@ -20,7 +20,7 @@ Feature: Contact
 
     Scenario: Als ik Weesp als stadsloket selecteer kan ik een afspraak maken
         Given ik ben op het contactscherm
-        When ik selecteer stadsloket Weesp
+        When ik selecteer het stadsloket Weesp
         And ik zie een maak een afspraakknop
 
 

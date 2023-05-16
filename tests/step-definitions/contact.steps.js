@@ -26,7 +26,7 @@ When(/^ik selecteer stadsloket (.*)$/, async stadsloket => {
     await ContactScreen.tapCityOfficeButton(stadsloket)
 })
 
-When(/ik selecteer stadsloket Weesp/, async () => {
+When(/ik selecteer het stadsloket Weesp/, async () => {
     await gestures.checkProjectDisplayedWithScrollDown(ContactScreen.ContactCurrentCityOfficeButton, 4)
     await ContactScreen.ContactCurrentCityOfficeButton.click()
     await ContactScreen.tapCityOfficeButton('Weesp')
