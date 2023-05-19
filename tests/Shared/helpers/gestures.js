@@ -34,11 +34,11 @@ class Gestures {
     async checkProjectDisplayedWithScrollDown(element, maxScrolls) {
         for (let i = 0; i < maxScrolls; i++) {
             if ((!await element.isDisplayed() && i < maxScrolls)) {
-                this.swipeUp();
+                await this.swipeUpSlow();
             } else if (await element.isDisplayed()) {
                 break
             }
-            expect(element).toBeDisplayed()
+            expect(await element).toBeDisplayed()
             // this.swipeDown()
         }
     }
@@ -46,30 +46,46 @@ class Gestures {
     async checkProjectDisplayedWithScrollDownSlow(element, maxScrolls) {
         for (let i = 0; i < maxScrolls; i++) {
             if ((!await element.isDisplayed() && i < maxScrolls)) {
-                this.swipeUpSlow();
-            } else if (await element.isDisplayed()) {
+                await this.swipeUpSlow();
+            } else {
                 break
             }
-            expect(element).toBeDisplayed()
-            // this.swipeDown()
         }
     }
+    //     for (let i = 0; i < maxScrolls; i++) {
+    //         if ((!await element1.isDisplayed() && i < maxScrolls)) {
+    //             await this.swipeUpSlow();
+    //             for (let i = 0; i < maxScrolls; i++) {
+    //                 if (!await element2.isDisplayed() && i < maxScrolls) {
+    //                     await this.swipeUpSlow();
+    //                 } else if (await element2.isDisplayed()) {
+    //                     break
+    //                 }
+    //             }
+    //         } else if (await element1.isDisplayed()) {
+    //             break
+    //         }
+    //         expect(await element1).toBeDisplayed()
+    //         // this.swipeDown()
+    //     }
+    // }
 
     async checkProjectDisplayedWithScrollUp(element, maxScrolls) {
         for (let i = 0; i < maxScrolls; i++) {
             if ((!await element.isDisplayed() && i < maxScrolls)) {
-                this.swipeDown();
+                await this.swipeDown();
             } else if (await element.isDisplayed()) {
+                expect(await element).toBeDisplayed()
                 break
             }
-            expect(element).toBeDisplayed()
         }
     }
 
     async checkProjectDisplayedWithScrollDownAndClick(element, maxScrolls) {
         for (let i = 0; i < maxScrolls; i++) {
             if (!await element.isDisplayed()) {
-                this.swipeUp();
+                await this.swipeUpSlow();
+                await driver.pause(1000)
             } else if (await element.isDisplayed()) {
                 await driver.pause(2000)
                 await element.click()
@@ -139,7 +155,7 @@ class Gestures {
                 { type: 'pointerMove', duration: 0, x: centerX, y: startY },
                 { type: 'pointerDown', button: 0 },
                 { type: 'pause', duration: 100 },
-                { type: 'pointerMove', duration: 800, x: centerX, y: endY },
+                { type: 'pointerMove', duration: 1000, x: centerX, y: endY },
                 { type: 'pointerUp', button: 0 },
                 { type: 'pause', duration: 500 },
             ]

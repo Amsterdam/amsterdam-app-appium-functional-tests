@@ -16,13 +16,15 @@ When(/ik open de Afvalwijzer module/, async () => {
     await expect(HomeScreen.headerTitle).toHaveText('Afvalwijzer')
 })
 
-When(/ik vul adres 'Balistraat 1-1' in/, async () => {
+Given(/ik heb een adres ingevoerd/, async () => {
     await WasteGuideScreen.wasteGuideEnterAddressButton.click()
     await expect(WasteGuideScreen.headerTitle).toHaveText('Adres')
+    await ProfileScreen.addressStreetInputSearchField.addValue('Balistraat 1-1')
+    await ProfileScreen.addressSearchResultBalistraat1hg1.click()
 })
 
-When(/^het adres (.*) is een adres (.*)$/, async (adres, omschrijving) => {
-    await WasteGuideScreen.wasteGuideEnterAddressButton.click()
+When(/^ik verander het adres naar (.*): dit is een adres (.*)$/, async (adres, omschrijving) => {
+    await WasteGuideScreen.wasteGuideButtonEditAddress.click()
     await expect(WasteGuideScreen.headerTitle).toHaveText('Adres')
     await ProfileScreen.addressStreetInputSearchField.addValue(adres)
     const addressSelector = await ProfileScreen.addressSelector(adres)
@@ -31,7 +33,7 @@ When(/^het adres (.*) is een adres (.*)$/, async (adres, omschrijving) => {
 })
 
 When(/ik voer een adres (.*) in dat geen woonadres is/, async adres => {
-    await WasteGuideScreen.wasteGuideEnterAddressButton.click()
+    await WasteGuideScreen.wasteGuideButtonEditAddress.click()
     await expect(WasteGuideScreen.headerTitle).toHaveText('Adres')
     await ProfileScreen.addressStreetInputSearchField.addValue(adres)
     const addressSelector = await ProfileScreen.addressSelector(adres)
@@ -58,6 +60,16 @@ Then(/ik zie het Afvalwijzer scherm - eyes/, async () => {
 })
 
 Then(/ik zie de juiste informatie in de afvalwijzer voor adressen (.*)/, async omschrijving => {
+    const runner = new ClassicRunner()
+    const eyes = new Eyes(runner)
+    await eyes.open(driver, "Amsterdam App", "ik zie de juiste informatie in de afvalwijzer voor adressen " + omschrijving)
+    await eyes.check()
+    await eyes.close()
+    await eyes.abortIfNotClosed()
+
+})
+
+Then(/ik zie de juiste informatie in de afvalwijzer/, async omschrijving => {
     const runner = new ClassicRunner()
     const eyes = new Eyes(runner)
     await eyes.open(driver, "Amsterdam App", "ik zie de juiste informatie in de afvalwijzer voor adressen " + omschrijving)

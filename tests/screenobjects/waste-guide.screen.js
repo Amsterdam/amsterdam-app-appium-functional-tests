@@ -5,6 +5,10 @@ import Screen from './screen.js';
  */
 class WasteGuideScreen extends Screen {
 
+    get wasteGuideButtonEditAddress() {
+        return createSelector("WasteGuideButtonEditAddress");
+    }
+
     get wasteGuideEnterAddressButton() {
         return createSelector("WasteGuideEnterAddressButton");
     }

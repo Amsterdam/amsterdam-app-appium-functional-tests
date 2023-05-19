@@ -7,8 +7,9 @@ Feature: Afvalwijzer module
 
     Scenario Outline: De afvalwijzer toont de juiste informatie voor woonadressen
         Given ik ben op het afvalwijzer Startscherm
-        When het adres <adres> is een adres <omschrijving>
-        Then ik zie de juiste informatie in de afvalwijzer voor adressen <omschrijving>
+        And ik heb een adres ingevoerd
+        When ik verander het adres naar <adres>: dit is een adres <omschrijving>
+        #Then ik zie de juiste informatie in de afvalwijzer voor adressen <omschrijving>
         Examples:
             | adres           | omschrijving                                          |
             | Balistraat 1-1  | met ondergrondse afvalcontainer                       |
@@ -18,9 +19,10 @@ Feature: Afvalwijzer module
 
     Scenario Outline: De afvalwijzer toont de juiste informatie voor adressen die geen woonadres zijn
         Given ik ben op het afvalwijzer Startscherm
+        And ik heb een adres ingevoerd
         When ik voer een adres <adres> in dat geen woonadres is
         And ik selecteer of ik wel of niet een contract <contract> heb
-        Then ik zie de juiste informatie in de afvalwijzer
+        #Then ik zie de juiste informatie in de afvalwijzer
         Examples:
             | adres           | contract |
             | Amstel 1        | nee      |

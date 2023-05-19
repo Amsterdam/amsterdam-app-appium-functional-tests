@@ -12,7 +12,8 @@
     "appium": "^2.0.0-beta.55",
     "appium-uiautomator2-driver": "^2.14.0",
     "appium-xcuitest-driver": "^4.21.7",
-    "axios": "^1.3.4"
+    "axios": "^1.3.4",
+    "chai": "^4.3.7"
   },
   "scripts": {
     "wdio-android": "wdio run ./wdio.conf.android.js",
