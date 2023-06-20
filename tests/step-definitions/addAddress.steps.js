@@ -2,6 +2,7 @@ import { Given, Then, When } from "@wdio/cucumber-framework";
 import HomeScreen from "../screenobjects/home.screen.js";
 import ProfileScreen from "../screenobjects/profile.screen.js";
 
+
 //Given
 Given(/ik ben op het mijn profiel scherm/, async () => {
     await HomeScreen.getHomeScreen()
@@ -18,6 +19,7 @@ When(/ik ga naar mijn profiel/, async () => {
 When(/ik zoek op 'Weesperstraat 113'/, async () => {
     await ProfileScreen.addressAddButton.click()
     await expect(ProfileScreen.headerTitle).toHaveText('Adres')
+    await ProfileScreen.addressStreetInputSearchField.waitForDisplayed(3000)
     await ProfileScreen.addressStreetInputSearchField.addValue("Weesperstraat 113")
     //await gestures.hitEnter()
 })

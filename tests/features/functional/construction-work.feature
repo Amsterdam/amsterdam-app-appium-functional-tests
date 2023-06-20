@@ -1,5 +1,6 @@
 Feature: Werkzaamheden module
 
+    @Before
     Scenario: Projecten volgen en ontvolgen
         Given ik ben op het werkzaamheden scherm
         When ik volg het project 'Amsterdam Science Park'
@@ -7,11 +8,13 @@ Feature: Werkzaamheden module
         When ik ontvolg het project 'Amsterdam Science Park'
         Then de status 'volgend' verdwijnt
 
+    @Before
     Scenario: Zoeken op 'Amsterdam'
         Given ik ben op het werkzaamheden scherm
         When ik zoek op 'Amsterdam'
         Then krijg ik de juiste zoekresultaten in het 'Zoek in werkzaamheden' scherm
 
+    @Before
     Scenario: Geen zoekresultaten
         Given ik ben op het werkzaamheden scherm
         When ik zoek op 'jfklds'

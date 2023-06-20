@@ -5,6 +5,7 @@ import gestures from '../Shared/helpers/gestures.js';
 import ContactScreen from '../screenobjects/contact.screen.js';
 import HomeScreen from '../screenobjects/home.screen.js';
 
+
 Given(/ik ben op het contactscherm/, async () => {
     await HomeScreen.getHomeScreen()
     await HomeScreen.homeContactModuleButton.click()
@@ -18,7 +19,7 @@ When(/ik open de contact module/, async () => {
 })
 
 When(/ik klik op het stadsloket/, async () => {
-    await gestures.checkProjectDisplayedWithScrollDown(ContactScreen.ContactCurrentCityOfficeButton, 4)
+    await gestures.checkProjectDisplayedWithScrollDownSlow(ContactScreen.ContactCurrentCityOfficeButton, 4)
     await ContactScreen.ContactCurrentCityOfficeButton.click()
 })
 
@@ -27,7 +28,7 @@ When(/^ik selecteer stadsloket (.*)$/, async stadsloket => {
 })
 
 When(/ik selecteer het stadsloket Weesp/, async () => {
-    await gestures.checkProjectDisplayedWithScrollDown(ContactScreen.ContactCurrentCityOfficeButton, 4)
+    await gestures.checkProjectDisplayedWithScrollDownSlow(ContactScreen.ContactCurrentCityOfficeButton, 4)
     await ContactScreen.ContactCurrentCityOfficeButton.click()
     await ContactScreen.tapCityOfficeButton('Weesp')
 })

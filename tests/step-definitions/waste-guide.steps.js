@@ -69,10 +69,10 @@ Then(/ik zie de juiste informatie in de afvalwijzer voor adressen (.*)/, async o
 
 })
 
-Then(/ik zie de juiste informatie in de afvalwijzer/, async omschrijving => {
+Then(/ik zie de juiste informatie in de afvalwijzer/, async contract => {
     const runner = new ClassicRunner()
     const eyes = new Eyes(runner)
-    await eyes.open(driver, "Amsterdam App", "ik zie de juiste informatie in de afvalwijzer voor adressen " + omschrijving)
+    await eyes.open(driver, "Amsterdam App", "ik zie de juiste informatie in de afvalwijzer met contract: " + contract)
     await eyes.check()
     await eyes.close()
     await eyes.abortIfNotClosed()

@@ -4,6 +4,21 @@ import { Given, Then, When } from "@wdio/cucumber-framework";
 import AboutScreen from "../screenobjects/about.screen.js";
 import HomeScreen from "../screenobjects/home.screen.js";
 
+// Before(async () => {
+//     await driver.launchApp()
+// })
+
+// After(async () => {
+//     const currentOS = driver.capabilities.platformName
+//     if (currentOS === 'iOS') {
+//         await driver.closeApp()
+//         await driver.removeApp('nl.amsterdam.app.dev')
+//     }
+//     else {
+//         await driver.closeApp()
+//     }
+// })
+
 //Given
 Given(/ik ben op het over deze app scherm/, async () => {
     await HomeScreen.getHomeScreen()

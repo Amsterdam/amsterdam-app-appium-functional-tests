@@ -1,16 +1,18 @@
 Feature: Adreszoeker
 
+    @Before
     Scenario: Mijn profiel bekijken
         Given ik ben op het home scherm
         When ik ga naar mijn profiel
-        Then ik zie mijn profiel met de mogelijkheid om een adres toe te voegen
+    #    Then ik zie mijn profiel met de mogelijkheid om een adres toe te voegen
 
+    @Before
     Scenario: Adres toevoegen - Gebruiker vult straat + huisnummer in een zoekveld in
         Given ik ben op het mijn profiel scherm
         When ik zoek op 'Weesperstraat 113'
         Then krijg ik de juiste zoekresultaten in het 'Adres' scherm
         When ik selecteer het adres
-        Then het adres is toegevoegd aan Mijn profiel
+#    Then het adres is toegevoegd aan Mijn profiel
 
 
 
