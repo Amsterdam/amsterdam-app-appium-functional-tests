@@ -1,7 +1,7 @@
 import { ClassicRunner, Eyes } from '@applitools/eyes-webdriverio';
 import percyScreenshot from '@percy/appium-app';
 import { Given, Then, When } from '@wdio/cucumber-framework';
-import chai from 'chai';
+//import chai, { expect } from 'chai';
 import gestures from '../Shared/helpers/gestures.js';
 import ConstructionWorkScreen from '../screenobjects/construction-work.screen.js';
 import HomeScreen from '../screenobjects/home.screen.js';
@@ -47,6 +47,22 @@ When(/ik zoek op 'jfklds'/, async () => {
   await ConstructionWorkScreen.constructionWorkProjectsTextSearchField.addValue("jfklds")
   await gestures.hitEnter()
 })
+
+When(/ik bekijk het project 'Corantijnstraat'/, async () => {
+  await ConstructionWorkScreen.constructionWorkProjectsNavigatorSearchField.click()
+  await expect(ConstructionWorkScreen.headerTitle).toHaveText('Zoek in werkzaamheden')
+  await ConstructionWorkScreen.constructionWorkProjectsTextSearchField.waitForDisplayed(3000)
+  await ConstructionWorkScreen.constructionWorkProjectsTextSearchField.addValue("Corantijnstraat")
+  await gestures.hitEnter()
+  await ConstructionWorkScreen.constructionWorkCorantijnstraatProjectCard.waitForDisplayed(3000)
+  await ConstructionWorkScreen.constructionWorkCorantijnstraatProjectCard.click()
+})
+
+When(/ik klik op de subpagina (.*)$/, async subpagina => {
+  await ConstructionWorkScreen.tapSubPage(subpagina)
+})
+
+
 
 //Then - functional
 Then(/het project krijgt de status 'volgend'/, async () => {
@@ -138,15 +154,23 @@ Then(/krijg ik de juiste zoekresultaten in het 'Zoek in werkzaamheden' scherm/, 
   //await gestures.checkProjectDisplayedWithScrollDown(ConstructionWorkScreen.constructionWorkCardProjectDijksgrachtOost, 4)
   await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkAmsterdamZuidoostProjectCard, 4)
   await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkCentrumgebiedAmsterdamNoordProjectCard, 4)
-  await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.ConstructionWorkAmsterdamseBosProjectCard, 4)
-  await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.ConstructionWorkDeEntreeProjectCard, 4)
-  await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.ConstructionWorkCardProjectCentrumeiland, 4)
+  await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkAmsterdamseBosProjectCard, 4)
+  await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkDeEntreeProjectCard, 4)
+  await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkCardProjectCentrumeiland, 4)
 })
 
 Then(/ik zie een melding dat er geen zoekresulaten zijn/, async () => {
-  await expect(ConstructionWorkScreen.ConstructionWorkListEmptyMessage).toBeDisplayed()
+  await expect(ConstructionWorkScreen.constructionWorkListEmptyMessage).toBeDisplayed()
 })
 
+Then(/ik zie de projectdetailpagina van project 'Corantijnstraat'/, async () => {
+  await expect(ConstructionWorkScreen.headerTitle).toHaveText('Corantijnstraat')
+  await expect(ConstructionWorkScreen.constructionWorkProjectTitle).toBeDisplayed()
+  await expect(ConstructionWorkScreen.constructionWorkProjectFollowButton).toBeDisplayed()
+  await expect(ConstructionWorkScreen.constructionWorkProjectAboutButton).toBeDisplayed()
+  await expect(ConstructionWorkScreen.constructionWorkProjectPlanningButton).toBeDisplayed()
+  await expect(ConstructionWorkScreen.constructionWorkProjectContactButton).toBeDisplayed()
+})
 
 //Then - eyes
 Then(/ik zie het Werkzaamheden scherm - eyes/, async () => {
@@ -158,10 +182,22 @@ Then(/ik zie het Werkzaamheden scherm - eyes/, async () => {
   await eyes.abortIfNotClosed()
 })
 
+Then(/Then ik zie het (.*) scherm - eyes/, async subpagina => {
+  const runner = new ClassicRunner()
+  const eyes = new Eyes(runner)
+  await eyes.open(driver, "Amsterdam App", `Projectdetails bekijken van project 'Corantijnstraat' met subpagina: ${subpagina}`)
+  await eyes.check()
+  await eyes.close()
+  await eyes.abortIfNotClosed()
+})
+//   
+
 //Then - percy
 Then(/ik zie het Werkzaamheden scherm - percy/, async () => {
   await percyScreenshot('Werkzaamheden')
 })
+
+
 
 
 

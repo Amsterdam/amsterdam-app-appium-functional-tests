@@ -36,19 +36,23 @@ class ConstructionWorkScreen extends Screen {
     return createSelector("ConstructionWork584340ProjectCard")
   }
 
-  get ConstructionWorkAmsterdamseBosProjectCard() {
+  get constructionWorkAmsterdamseBosProjectCard() {
     return createSelector("ConstructionWork1142882ProjectCard")
   }
 
-  get ConstructionWorkDeEntreeProjectCard() {
+  get constructionWorkDeEntreeProjectCard() {
     return createSelector("ConstructionWork947553ProjectCard")
+  }
+
+  get constructionWorkCorantijnstraatProjectCard() {
+    return createSelector("ConstructionWork1200494ProjectCard")
   }
 
   get constructionWorkCardProjectAmsterdamSciencePark() {
     return createSelector("ConstructionWork1046740ProjectCard")
   }
 
-  get ConstructionWorkCardProjectCentrumeiland() {
+  get constructionWorkCardProjectCentrumeiland() {
     return createSelector("ConstructionWork694239ProjectCard")
   }
 
@@ -74,12 +78,48 @@ class ConstructionWorkScreen extends Screen {
     return createSelector("ConstructionWorkProjectsTextSearchField")
   }
 
-  get ConstructionWorkProjectCardSubtitleAmsterdamSciencePark() {
+  get constructionWorkProjectCardSubtitleAmsterdamSciencePark() {
     return $$(`android=new UiSelector().resourceId("ConstructionWork1046740ProjectCard")`).$$(`android=new UiSelector().resourceId("ConstructionWorkProjectCardSubtitle")`)
   }
 
-  get ConstructionWorkListEmptyMessage() {
+  get constructionWorkListEmptyMessage() {
     return createSelector("ConstructionWorkListEmptyMessage")
+  }
+
+  get constructionWorkProjectTitle() {
+    return createSelector("ConstructionWorkProjectTitle")
+  }
+
+  get constructionWorkProjectSubtitle() {
+    return createSelector("ConstructionWorkProjectSubtitle")
+  }
+
+  async tapSubPage(subpagina) {
+    switch (subpagina) {
+      case 'Over dit project':
+        await this.constructionWorkProjectAboutButton.click()
+        break
+      case 'Planning':
+        await this.constructionWorkProjectPlanningButton.click()
+        break
+      case 'Contact':
+        await this.constructionWorkProjectContactButton.click()
+        break
+      default:
+        assert.fail(`Subpagina ‘${subpagina}’ bestaan niet`)
+    }
+  }
+
+  get constructionWorkProjectAboutButton() {
+    return createSelector("ConstructionWorkProjectAboutButton")
+  }
+
+  get constructionWorkProjectPlanningButton() {
+    return createSelector("ConstructionWorkProjectPlanningButton")
+  }
+
+  get constructionWorkProjectContactButton() {
+    return createSelector("ConstructionWorkProjectContactButton")
   }
 }
 
