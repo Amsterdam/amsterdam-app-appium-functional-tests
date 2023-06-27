@@ -26,7 +26,7 @@ Feature: Werkzaamheden module
         When ik bekijk het project 'Corantijnstraat'
         Then ik zie de projectdetailpagina van project 'Corantijnstraat'
         When ik klik op de subpagina <subpagina>
-        #Then ik zie het <subpagina> scherm - eyes
+        Then ik zie het <subpagina> scherm - eyes
         Examples:
             | subpagina        |
             | Over dit project |

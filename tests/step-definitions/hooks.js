@@ -7,7 +7,7 @@ Before({ tags: '@Before' }, async () => {
 Before({ tags: '@BeforeClean' }, async () => {
     const currentOS = driver.capabilities.platformName
     if (currentOS === 'iOS') {
-        await driver.installApp("bs://35c90e1a55f162f7828280935d0bd20e26535036")
+        await driver.installApp("bs://8c0346c5962ccc4108fc223327f616ef7c6325c0")
         await driver.launchApp()
     } else {
         await driver.launchApp()
