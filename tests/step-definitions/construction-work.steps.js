@@ -1,7 +1,7 @@
 import { ClassicRunner, Eyes } from '@applitools/eyes-webdriverio';
 import percyScreenshot from '@percy/appium-app';
 import { Given, Then, When } from '@wdio/cucumber-framework';
-//import chai, { expect } from 'chai';
+import chai from 'chai';
 import gestures from '../Shared/helpers/gestures.js';
 import ConstructionWorkScreen from '../screenobjects/construction-work.screen.js';
 import HomeScreen from '../screenobjects/home.screen.js';
@@ -182,7 +182,7 @@ Then(/ik zie het Werkzaamheden scherm - eyes/, async () => {
   await eyes.abortIfNotClosed()
 })
 
-Then(/Then ik zie het (.*) scherm - eyes/, async subpagina => {
+Then(/ik zie de (.*) van het projectdetailscherm - eyes/, async subpagina => {
   const runner = new ClassicRunner()
   const eyes = new Eyes(runner)
   await eyes.open(driver, "Amsterdam App", `Projectdetails bekijken van project 'Corantijnstraat' met subpagina: ${subpagina}`)
@@ -190,11 +190,15 @@ Then(/Then ik zie het (.*) scherm - eyes/, async subpagina => {
   await eyes.close()
   await eyes.abortIfNotClosed()
 })
-//   
+
 
 //Then - percy
 Then(/ik zie het Werkzaamheden scherm - percy/, async () => {
   await percyScreenshot('Werkzaamheden')
+})
+
+Then(/ik zie de subpagina (.*) van het projectdetailscherm - percy/, async subpagina => {
+  await percyScreenshot(`ik zie de subpagina ${subpagina} van het projectdetailscherm`, { fullPage: true, screenLengths: 8 })
 })
 
 

@@ -59,26 +59,29 @@ Then(/ik zie het Afvalwijzer scherm - eyes/, async () => {
     await eyes.abortIfNotClosed()
 })
 
-Then(/ik zie de juiste informatie in de afvalwijzer voor adressen (.*)/, async omschrijving => {
+Then(/ik zie de juiste informatie in de afvalwijzer voor adressen (.*) - eyes/, async omschrijving => {
     const runner = new ClassicRunner()
     const eyes = new Eyes(runner)
     await eyes.open(driver, "Amsterdam App", "ik zie de juiste informatie in de afvalwijzer voor adressen " + omschrijving)
     await eyes.check()
     await eyes.close()
     await eyes.abortIfNotClosed()
-
 })
 
-Then(/ik zie de juiste informatie in de afvalwijzer/, async contract => {
-    const runner = new ClassicRunner()
-    const eyes = new Eyes(runner)
-    await eyes.open(driver, "Amsterdam App", "ik zie de juiste informatie in de afvalwijzer met contract: " + contract)
-    await eyes.check()
-    await eyes.close()
-    await eyes.abortIfNotClosed()
-})
+// Then(/ik zie de juiste informatie in de afvalwijzer/, async contract => {
+//     const runner = new ClassicRunner()
+//     const eyes = new Eyes(runner)
+//     await eyes.open(driver, "Amsterdam App", "ik zie de juiste informatie in de afvalwijzer met contract: " + contract)
+//     await eyes.check()
+//     await eyes.close()
+//     await eyes.abortIfNotClosed()
+// })
 
 //Then - percy
 Then(/ik zie het Afvalwijzer scherm - percy/, async () => {
     await percyScreenshot('Afvalwijzer')
+})
+
+Then(/^ik zie de juiste informatie in de afvalwijzer voor adressen (.*) - percy$/, async (omschrijving) => {
+    await percyScreenshot(omschrijving, { fullPage: true, screenLengths: 8 })
 })

@@ -4,7 +4,7 @@ Feature: Afvalwijzer module
     Scenario: De Afvalwijzer module raadplegen
         Given ik ben op het home scherm
         When ik open de Afvalwijzer module
-        Then ik zie het Afvalwijzer scherm - eyes
+        Then ik zie het correcte scherm: "Afvalwijzer"
 
     @BeforeClean @AfterClean
     Scenario Outline: De afvalwijzer toont de juiste informatie voor woonadressen
@@ -25,10 +25,10 @@ Feature: Afvalwijzer module
         And ik heb een adres ingevoerd
         When ik voer een adres <adres> in dat geen woonadres is
         And ik selecteer of ik wel of niet een contract <contract> heb
-        Then ik zie de juiste informatie in de afvalwijzer
+        Then ik zie de juiste informatie in de afvalwijzer voor adressen <omschrijving>
         Examples:
-            | adres           | contract |
-            | Amstel 1        | nee      |
-            | Javastraat 20-H | ja       |
+            | adres           | omschrijving    |
+            | Amstel 1        | zonder contract |
+            | Javastraat 20-H | met contract    |
 
 

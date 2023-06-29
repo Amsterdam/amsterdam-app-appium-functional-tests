@@ -4,7 +4,7 @@ Feature: Adreszoeker
     Scenario: Mijn profiel bekijken
         Given ik ben op het home scherm
         When ik ga naar mijn profiel
-        Then ik zie het correcte scherm: "mijn profiel met adres toevoegen mogelijheid"
+        Then ik zie het correcte scherm: "mijn profiel met adres toevoegen mogelijkheid" - percy
 
 
     @Before
