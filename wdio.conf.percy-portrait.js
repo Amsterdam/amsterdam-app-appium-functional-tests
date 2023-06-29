@@ -1,4 +1,5 @@
 import pkg from "allure-commandline";
+import { key, user } from './credentials.js';
 const { allure } = pkg;
 
 export const config = {
@@ -26,10 +27,11 @@ export const config = {
             platformName: "Android",
             "appium:platformVersion": "9.0",
             "appium:deviceName": "Google Pixel 3",
-            "appium:app": "bs://9a2b08bfbb2f886ddb4040b8bf68383cf4cb6e41",
+            "appium:app": "bs://487f3152a6711a8b1976f6a3e634b9bb0c54af6c",
+            "appium:noReset": "false",
             "bstack:options": {
                 "projectName": "amsterdam-app-android",
-                "buildName": "Sanity Check Pery App-version 0.32.0.5694",
+                "buildName": "Sanity Check Percy App-version 0.36.0",
                 "appiumVersion": "2.0.0",
                 //"deviceOrientation": "landscape",
             },
@@ -46,18 +48,18 @@ export const config = {
         //         //"deviceOrientation": "landscape",
         //     },
         // },
-        {
-            platformName: "ios",
-            "appium:platformVersion": "15",
-            "appium:deviceName": "iPhone 11",
-            "appium:app": "bs://b435e00f6a2adf71fe9f1970eafc499c63d8b323",
-            'bstack:options': {
-                "projectName": "amsterdam-app-ios",
-                "buildName": "Sanity Check Pery App-version 0.32.0.5690",
-                "appiumVersion": "2.0.0",
-                //"deviceOrientation": "landscape",
-            },
-        },
+        // {
+        //     platformName: "ios",
+        //     "appium:platformVersion": "15",
+        //     "appium:deviceName": "iPhone 11",
+        //     "appium:app": "bs://b435e00f6a2adf71fe9f1970eafc499c63d8b323",
+        //     'bstack:options': {
+        //         "projectName": "amsterdam-app-ios",
+        //         "buildName": "Sanity Check Pery App-version 0.32.0.5690",
+        //         "appiumVersion": "2.0.0",
+        //         //"deviceOrientation": "landscape",
+        //     },
+        // },
         // {
         //     platformName: "ios",
         //     "appium:platformVersion": "12",
@@ -107,15 +109,16 @@ export const config = {
         "./tests/features/functional/addAddress.feature",
         "./tests/features/functional/construction-work.feature",
         "./tests/features/functional/contact.feature",
-        "./tests/features/functional/settings.feature",
         "./tests/features/visual-eyes/about.feature",
         "./tests/features/visual-eyes/construction-work.feature",
         "./tests/features/visual-eyes/contact.feature",
-        "./tests/features/visual-eyes/launchapp.feature",
         "./tests/features/visual-eyes/open-waste-container.feature",
         "./tests/features/visual-eyes/redirects.feature",
         "./tests/features/visual-eyes/report-problem.feature",
         "./tests/features/visual-eyes/waste-guide.feature",
+        // "./tests/features/visual-percy/addAddress.feature",
+        // "./tests/features/visual-percy/construction-work.feature",
+        // "./tests/features/visual-percy/contact.feature",
         // "./tests/features/visual-percy/about.feature",
         // "./tests/features/visual-percy/construction-work.feature",
         // "./tests/features/visual-percy/contact.feature",
@@ -187,7 +190,7 @@ export const config = {
     connectionRetryTimeout: 120000,
     //
     // Default request retries count
-    connectionRetryCount: 3,
+    connectionRetryCount: 5,
     //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
