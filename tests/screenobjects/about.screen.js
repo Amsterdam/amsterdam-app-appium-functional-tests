@@ -1,5 +1,5 @@
-import createSelector from '../Shared/helpers/helpers.js'
-import Screen from './screen.js'
+import helpers from '../Shared/helpers/helpers.js';
+import Screen from './screen.js';
 /**
  * sub screen containing specific selectors and methods for a specific screen
  */
@@ -7,34 +7,34 @@ class AboutScreen extends Screen {
   /**
    * define selectors using getter methods
    */
-  
+
   get AboutTitleAmsterdam() {
-    return createSelector("AboutTitleAmsterdam")
+    return helpers.createSelector("AboutTitleAmsterdam")
     //return $('//android.view.View[contains(@resource-id, "AboutTitleAmsterdam")')
   }
 
   get AboutTextVersion() {
-    return createSelector("AboutTextVersion")
+    return helpers.createSelector("AboutTextVersion")
     //return $('//android.view.View[contains(@resource-id, "AboutTextVersion")]')
   }
 
   get aboutAboutTheAppDutchButton() {
-    return createSelector("AboutAboutTheAppDutchButton")
+    return helpers.createSelector("AboutAboutTheAppDutchButton")
     //return $('//android.view.View[contains(@resource-id, "AboutAboutTheAppDutchButton")]')
   }
 
-   get aboutAboutTheAppEnglishButton() {
-    return createSelector("AboutAboutTheAppEnglishButton")
+  get aboutAboutTheAppEnglishButton() {
+    return helpers.createSelector("AboutAboutTheAppEnglishButton")
     //return $('//android.view.View[contains(@resource-id, "AboutAboutTheAppEnglishButton")]')
   }
 
   get aboutPrivacyStatementButton() {
-    return createSelector("AboutPrivacyStatementButton")
+    return helpers.createSelector("AboutPrivacyStatementButton")
     //return $('//android.view.View[contains(@resource-id, "AboutPrivacyStatementButton")]')
   }
 
   get aboutAccessibilityStatementButton() {
-    return createSelector("AboutAccessibilityStatementButton")
+    return helpers.createSelector("AboutAccessibilityStatementButton")
     //return $('//android.view.View[contains(@resource-id, "AboutAccessibilityStatementButton")]')
   }
 }

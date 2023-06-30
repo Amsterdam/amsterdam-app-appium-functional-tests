@@ -1,4 +1,4 @@
-import createSelector from '../Shared/helpers/helpers.js'
+import helpers from '../Shared/helpers/helpers.js'
 import Screen from './screen.js'
 /**
  * sub page containing specific selectors and methods for a specific page
@@ -9,129 +9,129 @@ class ContactScreen extends Screen {
    */
 
   get ContactTitleContactOptions() {
-    return createSelector("ContactTitleContactOptions")
+    return helpers.createSelector("ContactTitleContactOptions")
   }
 
   get ContactTextContactOptions() {
-    return createSelector("ContactTextContactOptions")
+    return helpers.createSelector("ContactTextContactOptions")
   }
 
   get ContactButtonContactform() {
-    return createSelector("ContactButtonContactform")
+    return helpers.createSelector("ContactButtonContactform")
   }
 
   get ContactButtonContactformTitle() {
-    return createSelector("ContactButtonContactformTitle")
+    return helpers.createSelector("ContactButtonContactformTitle")
   }
 
   get ContactButtonContactformText() {
-    return createSelector("ContactButtonContactformText")
+    return helpers.createSelector("ContactButtonContactformText")
   }
 
   get ContactButtonPhone() {
-    return createSelector("ContactButtonPhone")
+    return helpers.createSelector("ContactButtonPhone")
   }
 
   get ContactButtonPhoneTitle() {
-    return createSelector("ContactButtonPhoneTitle")
+    return helpers.createSelector("ContactButtonPhoneTitle")
   }
 
   get ContactButtonPhoneText() {
-    return createSelector("ContactButtonPhoneText")
+    return helpers.createSelector("ContactButtonPhoneText")
   }
 
   get ContactButtonWhatsapp() {
-    return createSelector("ContactButtonWhatsapp")
+    return helpers.createSelector("ContactButtonWhatsapp")
   }
 
   get ContactButtonWhatsappTitle() {
-    return createSelector("ContactButtonWhatsappTitle")
+    return helpers.createSelector("ContactButtonWhatsappTitle")
   }
 
   get ContactButtonWhatsappText() {
-    return createSelector("ContactButtonWhatsappText")
+    return helpers.createSelector("ContactButtonWhatsappText")
   }
 
   get ContactButtonMyAmsterdam() {
-    return createSelector("ContactButtonMyAmsterdam")
+    return helpers.createSelector("ContactButtonMyAmsterdam")
   }
 
   get ContactButtonMyAmsterdamTitle() {
-    return createSelector("ContactButtonMyAmsterdamTitle")
+    return helpers.createSelector("ContactButtonMyAmsterdamTitle")
   }
 
   get ContactButtonMyAmsterdamText() {
-    return createSelector("ContactButtonMyAmsterdamText")
+    return helpers.createSelector("ContactButtonMyAmsterdamText")
   }
 
   get ContactVisitUsTitle() {
-    return createSelector("ContactVisitUsTitle")
+    return helpers.createSelector("ContactVisitUsTitle")
   }
 
   get ContactCurrentCityOfficeButton() {
-    return createSelector("ContactCurrentCityOfficeButton")
+    return helpers.createSelector("ContactCurrentCityOfficeButton")
   }
 
   get ContactCurrentCityOfficeButtonTitle() {
-    return createSelector("ContactCurrentCityOfficeButtonTitle")
+    return helpers.createSelector("ContactCurrentCityOfficeButtonTitle")
   }
 
   get ContactTextVisitingHours() {
-    return createSelector("ContactTextVisitingHours")
+    return helpers.createSelector("ContactTextVisitingHours")
   }
 
   get ContactButtonVisitingHoursDetails() {
-    return createSelector("ContactButtonVisitingHoursDetails")
+    return helpers.createSelector("ContactButtonVisitingHoursDetails")
   }
 
   get contactSeeRouteButton() {
-    return createSelector("ContactSeeRouteButton")
+    return helpers.createSelector("ContactSeeRouteButton")
   }
 
   get contactMakeAppointmentButton() {
-    return createSelector("ContactMakeAppointmentButton")
+    return helpers.createSelector("ContactMakeAppointmentButton")
   }
 
   get ContactButtonRouteLabel() {
-    return createSelector("ContactButtonRouteLabel")
+    return helpers.createSelector("ContactButtonRouteLabel")
   }
 
   get contactVisitingHoursTooltipButton() {
-    return createSelector("ContactVisitingHoursTooltipButton")
+    return helpers.createSelector("ContactVisitingHoursTooltipButton")
   }
   get cityOfficeCentrumButton() {
-    return createSelector('ContactCityOfficee9871a7716da02a4c20cfb06f9547005Button')
+    return helpers.createSelector('ContactCityOfficee9871a7716da02a4c20cfb06f9547005Button')
   }
 
   get cityOfficeNieuwWestButton() {
-    return createSelector('ContactCityOffice5d9637689a8b902fa1a13acdf0006d26Button')
+    return helpers.createSelector('ContactCityOffice5d9637689a8b902fa1a13acdf0006d26Button')
   }
 
   get cityOfficeNoordButton() {
-    return createSelector('ContactCityOffice081d6a38f46686905693fcd6087039f5Button')
+    return helpers.createSelector('ContactCityOffice081d6a38f46686905693fcd6087039f5Button')
   }
 
   get cityOfficeOostButton() {
-    return createSelector('ContactCityOffice29e3b63d09d1f0c9a9c7238064c70790Button')
+    return helpers.createSelector('ContactCityOffice29e3b63d09d1f0c9a9c7238064c70790Button')
   }
 
   get cityOfficeWestButton() {
-    return createSelector
+    return helpers.createSelector
       ('ContactCityOfficeb4b178107cbc0c609d8d190bbdbdfb08Button')
   }
 
   get cityOfficeZuidButton() {
-    return createSelector
+    return helpers.createSelector
       ('ContactCityOfficeb887a4d081821c4245c02f07e2de3290Button')
   }
 
   get cityOfficeZuidoostButton() {
-    return createSelector
+    return helpers.createSelector
       ('ContactCityOfficed338d28f8e6132ea2cfcf3e61785454cButton')
   }
 
   get cityOfficeWeespButton() {
-    return createSelector
+    return helpers.createSelector
       ('ContactCityOffice5ae1d0dd98a417fbf6772aeec85cb40fButton')
   }
 

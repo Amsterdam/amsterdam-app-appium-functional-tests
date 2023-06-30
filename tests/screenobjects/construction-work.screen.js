@@ -1,4 +1,4 @@
-import createSelector from '../Shared/helpers/helpers.js';
+import helpers from '../Shared/helpers/helpers.js';
 import Screen from './screen.js';
 /**
  * sub page containing specific selectors and methods for a specific page
@@ -10,72 +10,72 @@ class ConstructionWorkScreen extends Screen {
 
 
   get constructionWorkCardProjectDijksgrachtOost() {
-    return createSelector("ConstructionWork1089175ProjectCard")
+    return helpers.createSelector("ConstructionWork1089175ProjectCard")
     //return $('//android.widget.Button[contains(@resource-id, "ConstructionWorkCardProject1089175")]')
   }
 
   get constructionWorkCardProjectOsdorpplein() {
-    return createSelector("ConstructionWorkCardProject670053")
+    return helpers.createSelector("ConstructionWorkCardProject670053")
     //return $('//android.widget.Button[contains(@resource-id, "ConstructionWorkCardProject670053")]')
   }
 
   get constructionWorkCardProjectBullebakBullesluis() {
-    return createSelector("ConstructionWorkCardProject1055386")
+    return helpers.createSelector("ConstructionWorkCardProject1055386")
     //return $('//android.widget.Button[contains(@resource-id, "ConstructionWorkCardProject1055386")]')
   }
 
   get constructionWorkAmsterdamZuidoostProjectCard() {
-    return createSelector("ConstructionWork1177659ProjectCard")
+    return helpers.createSelector("ConstructionWork1177659ProjectCard")
   }
 
   get constructionWorkFoodCenterAmsterdamProjectCard() {
-    return createSelector("ConstructionWork744089ProjectCard")
+    return helpers.createSelector("ConstructionWork744089ProjectCard")
   }
 
   get constructionWorkCentrumgebiedAmsterdamNoordProjectCard() {
-    return createSelector("ConstructionWork584340ProjectCard")
+    return helpers.createSelector("ConstructionWork584340ProjectCard")
   }
 
   get constructionWorkAmsterdamseBosProjectCard() {
-    return createSelector("ConstructionWork1142882ProjectCard")
+    return helpers.createSelector("ConstructionWork1142882ProjectCard")
   }
 
   get constructionWorkDeEntreeProjectCard() {
-    return createSelector("ConstructionWork947553ProjectCard")
+    return helpers.createSelector("ConstructionWork947553ProjectCard")
   }
 
   get constructionWorkCorantijnstraatProjectCard() {
-    return createSelector("ConstructionWork1200494ProjectCard")
+    return helpers.createSelector("ConstructionWork1200494ProjectCard")
   }
 
   get constructionWorkCardProjectAmsterdamSciencePark() {
-    return createSelector("ConstructionWork1046740ProjectCard")
+    return helpers.createSelector("ConstructionWork1046740ProjectCard")
   }
 
   get constructionWorkCardProjectCentrumeiland() {
-    return createSelector("ConstructionWork694239ProjectCard")
+    return helpers.createSelector("ConstructionWork694239ProjectCard")
   }
 
   get constructionWorkProjectFollowButton() {
-    return createSelector("ConstructionWorkProjectFollowButton")
+    return helpers.createSelector("ConstructionWorkProjectFollowButton")
     //return $('//android.widget.Button[contains(@resource-id, "ConstructionWorkProjectFollowButton")]')
   }
 
   get constructionWorkProjectFollowButtonLabel() {
-    return createSelector("ConstructionWorkProjectFollowButtonLabel")
+    return helpers.createSelector("ConstructionWorkProjectFollowButtonLabel")
     //return $('//android.widget.Button[contains(@resource-id, "ConstructionWorkProjectFollowButtonLabel")]')
   }
 
   get constructionWorkProjectFollowingTraitLabel() {
-    return createSelector("ConstructionWorkProjectFollowingTraitLabel")
+    return helpers.createSelector("ConstructionWorkProjectFollowingTraitLabel")
   }
 
   get constructionWorkProjectsNavigatorSearchField() {
-    return createSelector("ConstructionWorkProjectsNavigatorSearchField")
+    return helpers.createSelector("ConstructionWorkProjectsNavigatorSearchField")
   }
 
   get constructionWorkProjectsTextSearchField() {
-    return createSelector("ConstructionWorkProjectsTextSearchField")
+    return helpers.createSelector("ConstructionWorkProjectsTextSearchField")
   }
 
   get constructionWorkProjectCardSubtitleAmsterdamSciencePark() {
@@ -83,15 +83,15 @@ class ConstructionWorkScreen extends Screen {
   }
 
   get constructionWorkListEmptyMessage() {
-    return createSelector("ConstructionWorkListEmptyMessage")
+    return helpers.createSelector("ConstructionWorkListEmptyMessage")
   }
 
   get constructionWorkProjectTitle() {
-    return createSelector("ConstructionWorkProjectTitle")
+    return helpers.createSelector("ConstructionWorkProjectTitle")
   }
 
   get constructionWorkProjectSubtitle() {
-    return createSelector("ConstructionWorkProjectSubtitle")
+    return helpers.createSelector("ConstructionWorkProjectSubtitle")
   }
 
   async tapSubPage(subpagina) {
@@ -111,15 +111,15 @@ class ConstructionWorkScreen extends Screen {
   }
 
   get constructionWorkProjectAboutButton() {
-    return createSelector("ConstructionWorkProjectAboutButton")
+    return helpers.createSelector("ConstructionWorkProjectAboutButton")
   }
 
   get constructionWorkProjectPlanningButton() {
-    return createSelector("ConstructionWorkProjectPlanningButton")
+    return helpers.createSelector("ConstructionWorkProjectPlanningButton")
   }
 
   get constructionWorkProjectContactButton() {
-    return createSelector("ConstructionWorkProjectContactButton")
+    return helpers.createSelector("ConstructionWorkProjectContactButton")
   }
 }
 

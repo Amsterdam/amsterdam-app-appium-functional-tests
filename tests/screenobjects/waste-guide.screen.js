@@ -1,4 +1,4 @@
-import createSelector from '../Shared/helpers/helpers.js';
+import helpers from '../Shared/helpers/helpers.js';
 import Screen from './screen.js';
 /**
  * sub page containing specific selectors and methods for a specific page
@@ -6,19 +6,19 @@ import Screen from './screen.js';
 class WasteGuideScreen extends Screen {
 
     get wasteGuideButtonEditAddress() {
-        return createSelector("WasteGuideButtonEditAddress");
+        return helpers.createSelector("WasteGuideButtonEditAddress");
     }
 
     get wasteGuideEnterAddressButton() {
-        return createSelector("WasteGuideEnterAddressButton");
+        return helpers.createSelector("WasteGuideEnterAddressButton");
     }
 
     get wasteGuideSelectContractRadioGroupfalseRadioButton() {
-        return createSelector("WasteGuideSelectContractRadioGroupfalseRadioButton")
+        return helpers.createSelector("WasteGuideSelectContractRadioGroupfalseRadioButton")
     }
 
     get wasteGuideSelectContractRadioGrouptrueRadioButton() {
-        return createSelector("WasteGuideSelectContractRadioGrouptrueRadioButton")
+        return helpers.createSelector("WasteGuideSelectContractRadioGrouptrueRadioButton")
     }
 
 }

@@ -1,4 +1,4 @@
-import createSelector from '../Shared/helpers/helpers.js';
+import helpers from '../Shared/helpers/helpers.js';
 import Screen from './screen.js';
 /**
  * sub page containing specific selectors and methods for a specific page
@@ -6,39 +6,39 @@ import Screen from './screen.js';
 class HomeScreen extends Screen {
 
     get homeContactModuleButton() {
-        return createSelector("HomeContactModuleButton");
+        return helpers.createSelector("HomeContactModuleButton");
     }
 
     get homeConstructionWorkModuleButton() {
-        return createSelector("HomeConstructionWorkModuleButton")
+        return helpers.createSelector("HomeConstructionWorkModuleButton")
     }
 
     get homeWasteGuideModuleButton() {
-        return createSelector("HomeWasteGuideModuleButton")
+        return helpers.createSelector("HomeWasteGuideModuleButton")
     }
 
     get homeOpenWasteContainerModuleButton() {
-        return createSelector("HomeOpenWasteContainerModuleButton")
+        return helpers.createSelector("HomeOpenWasteContainerModuleButton")
     }
 
     get homeReportProblemModuleButton() {
-        return createSelector("HomeReportProblemModuleButton")
+        return helpers.createSelector("HomeReportProblemModuleButton")
     }
 
     get homeRedirectsModuleButton() {
-        return createSelector("HomeRedirectsModuleButton")
+        return helpers.createSelector("HomeRedirectsModuleButton")
     }
 
     get homeAboutModuleButton() {
-        return createSelector("HomeAboutModuleButton")
+        return helpers.createSelector("HomeAboutModuleButton")
     }
 
     get headerUserButton() {
-        return createSelector("HeaderUserButton")
+        return helpers.createSelector("HeaderUserButton")
     }
 
     get headerModuleSettingsButton() {
-        return createSelector("HeaderModuleSettingsButton")
+        return helpers.createSelector("HeaderModuleSettingsButton")
     }
 
     async getHomeScreen() {
