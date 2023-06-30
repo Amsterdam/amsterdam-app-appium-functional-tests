@@ -53,13 +53,13 @@ class ProfileScreen extends Screen {
         return helpers.createSelector("AddressPostalcodeAndCityText")
     }
 
-    get deletedTxt() {
-        return "~Gelukt, Het adres is verwijderd uit uw profiel."
-    }
-
     // get deletedTxt() {
-    //     return createContentSelector("~Gelukt, Het adres is verwijderd uit uw profiel.")
+    //     return "~Gelukt, Het adres is verwijderd uit uw profiel."
     // }
+
+    get deletedTxt() {
+        return helpers.createContentSelector("Gelukt, Het adres is verwijderd uit uw profiel.")
+    }
 
     async addressSelector(adres) {
         return helpers.createSelector(`AddressSearchResult${adres}Button`)
@@ -68,7 +68,6 @@ class ProfileScreen extends Screen {
     async addAddress(adres) {
         await expect(this.headerTitle).toHaveText('Adres')
         await this.addressStreetInputSearchField.waitForDisplayed(3000)
-        await driver.pause(2000)
         await this.addressStreetInputSearchField.addValue(adres)
     }
 
