@@ -91,10 +91,6 @@ Then(/^het adres (.*) met postcode (.*) wordt nog steeds getoond$/, async (adres
 })
 
 Then(/het label over het adres verwijderen is verdwenen/, async () => {
-    //console.log(await (ProfileScreen.deletedTxt).toBeDisplayed())
     await expect(ProfileScreen.deletedTxt).not.toBeDisplayed()
 })
-// Then(/mijn adres is succesvol gewijzigd/, async () => {
-//     await ProfileScreen.checkAddressAdded('Balistraat 1-1', '1094 JA AMSTERDAM')
-// })
 
