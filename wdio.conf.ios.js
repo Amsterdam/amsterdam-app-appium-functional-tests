@@ -31,9 +31,9 @@ export const config = {
     ],
     // Patterns to exclude.
     exclude: [
-        //"./tests/features/functional/settings.feature",
+        // "./tests/features/functional/notifications.feature",
+        "./tests/features/functional/settings.feature",
         "./tests/features/functional/mijnprofiel.feature",
-        "./tests/features/functional/addAddress.feature",
         "./tests/features/functional/construction-work.feature",
         "./tests/features/functional/contact.feature",
         "./tests/features/visual-eyes/about.feature",
@@ -43,7 +43,6 @@ export const config = {
         "./tests/features/visual-eyes/redirects.feature",
         "./tests/features/visual-eyes/report-problem.feature",
         "./tests/features/visual-eyes/waste-guide.feature",
-        "./tests/features/visual-percy/addAddress.feature",
         "./tests/features/visual-percy/construction-work.feature",
         "./tests/features/visual-percy/contact.feature",
         "./tests/features/visual-percy/about.feature",
@@ -76,17 +75,65 @@ export const config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    capabilities: [{
-        'appium:platformName': 'iOS',
-        'appium:platformVersion': '16.4',
-        'appium:deviceName': 'iPhone 11',
-        //'appium:platformVersion': '16.3.1',
-        //This should be the exact same name from the device you use in the Android Emulator
-        'appium:automationName': 'XCUITest',
-        //'appium:app': 'nl.amsterdam.app.dev',
-        'appium:app': 'app/iOS/Amsterdam test.app',
-        'appium:autoAcceptAlerts': true
-    }],
+    // capabilities: {
+    //     amsterdamApp: {
+    //         capabilities: {
+    //             'appium:platformName': 'iOS',
+    //             'appium:platformVersion': '16.4',
+    //             'appium:deviceName': 'iPhone 11',
+    //             //'appium:platformVersion': '16.3.1',
+    //             //This should be the exact same name from the device you use in the Android Emulator
+    //             'appium:automationName': 'XCUITest',
+    //             //'appium:app': 'nl.amsterdam.app.dev',
+    //             'appium:app': 'app/iOS/Amsterdam test.app',
+    //             'appium:autoAcceptAlerts': true,
+    //         }
+    //     },
+    //     chromeBrowser: {
+    //         capabilities: {
+    //             'appium:platformName': 'iOS',
+    //             'appium:platformVersion': '16.4',
+    //             'appium:deviceName': 'iPhone 11',
+    //             'appium:automationName': 'XCUITest',
+    //             browserName: 'chrome',
+    //             'appium:autoAcceptAlerts': true
+    //         }
+    //     }
+    // },
+
+    capabilities: [
+        // {
+        //     'appium:platformName': 'iOS',
+        //     'appium:platformVersion': '16.4',
+        //     'appium:deviceName': 'iPhone 11',
+        //     'appium:automationName': 'XCUITest',
+        //     'browserName': 'Safari',
+        // },
+        {
+            'appium:platformName': 'iOS',
+            'appium:platformVersion': '16.4',
+            'appium:deviceName': 'iPhone 11',
+            //'appium:platformVersion': '16.3.1',
+            //This should be the exact same name from the device you use in the Android Emulator
+            'appium:automationName': 'XCUITest',
+            //'appium:app': 'nl.amsterdam.app.dev',
+            'appium:app': 'app/iOS/Amsterdam test.app',
+            'appium:autoAcceptAlerts': true,
+            'browserName': 'Safari',
+        },
+        //real device
+        // {
+        //     'appium:platformName': 'iOS',
+        //     'appium:platformVersion': '16.5.1',
+        //     'appium:deviceName': 'iPhone Amsterdam App',
+        //     'appium:automationName': 'XCUITest',
+        //     //'appium:app': 'nl.amsterdam.app.dev',
+        //     'appium:app': 'app/iOS/AmsterdamTest.ipa',
+        //     'appium:autoAcceptAlerts': true,
+        //     'appium:udid': '00008110-000251640E29401E',
+        //     //'browserName': 'Safari',
+        // },
+    ],
     //launch app from playstore
     //  capabilities: [{
     //     'appium:platformName': 'Android',
