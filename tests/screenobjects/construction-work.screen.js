@@ -56,6 +56,10 @@ class ConstructionWorkScreen extends Screen {
     return helpers.createSelector("ConstructionWork694239ProjectCard")
   }
 
+  get constructionWorkAmstelIIIProjectCard() {
+    return helpers.createSelector("ConstructionWork976821ProjectCard")
+  }
+
   get constructionWorkProjectFollowButton() {
     return helpers.createSelector("ConstructionWorkProjectFollowButton")
     //return $('//android.widget.Button[contains(@resource-id, "ConstructionWorkProjectFollowButton")]')
