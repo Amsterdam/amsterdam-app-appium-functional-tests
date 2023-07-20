@@ -1,4 +1,5 @@
 import pkg from "allure-commandline";
+import { deviceName, udid, xcodeOrgId, xcodeSigningId } from './iosCaps';
 const { allure } = pkg;
 
 export const config = {
@@ -31,11 +32,10 @@ export const config = {
     ],
     // Patterns to exclude.
     exclude: [
-        //"./tests/features/functional/settings.feature",
-        "./tests/features/functional/mijnprofiel.feature",
-        "./tests/features/functional/addAddress.feature",
+        //  "./tests/features/functional/mijnprofiel.feature",
         "./tests/features/functional/construction-work.feature",
         "./tests/features/functional/contact.feature",
+        "./tests/features/functional/settings.feature",
         "./tests/features/visual-eyes/about.feature",
         "./tests/features/visual-eyes/construction-work.feature",
         "./tests/features/visual-eyes/contact.feature",
@@ -43,7 +43,6 @@ export const config = {
         "./tests/features/visual-eyes/redirects.feature",
         "./tests/features/visual-eyes/report-problem.feature",
         "./tests/features/visual-eyes/waste-guide.feature",
-        "./tests/features/visual-percy/addAddress.feature",
         "./tests/features/visual-percy/construction-work.feature",
         "./tests/features/visual-percy/contact.feature",
         "./tests/features/visual-percy/about.feature",
@@ -76,17 +75,32 @@ export const config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    capabilities: [{
-        'appium:platformName': 'iOS',
-        'appium:platformVersion': '16.4',
-        'appium:deviceName': 'iPhone 11',
-        //'appium:platformVersion': '16.3.1',
-        //This should be the exact same name from the device you use in the Android Emulator
-        'appium:automationName': 'XCUITest',
-        //'appium:app': 'nl.amsterdam.app.dev',
-        'appium:app': 'app/iOS/Amsterdam test.app',
-        'appium:autoAcceptAlerts': true
-    }],
+    capabilities: [
+        //     {
+        //     'appium:platformName': 'iOS',
+        //     'appium:platformVersion': '16.4',
+        //     'appium:deviceName': 'iPhone 11',
+        //     //'appium:platformVersion': '16.3.1',
+        //     //This should be the exact same name from the device you use in the Android Emulator
+        //     'appium:automationName': 'XCUITest',
+        //     //'appium:app': 'nl.amsterdam.app.dev',
+        //     'appium:app': 'app/iOS/Amsterdam test.app',
+        //     'appium:autoAcceptAlerts': true
+        // },
+        //real device
+        {
+            'appium:platformName': 'iOS',
+            'appium:platformVersion': '16.5.1',
+            'appium:deviceName': deviceName,
+            'appium:automationName': 'XCUITest',
+            'appium:bundleId': 'nl.amsterdam.app.dev',
+            'appium:udid': udid,
+            'appium:xcodeOrgId': xcodeOrgId,
+            'appum: xcodeSigningId': xcodeSigningId,
+            'appium:app': 'app/iOS/AmsterdamTest.ipa',
+            'appium: updatedWDABundleid': 'nl.amsterdam.app.dev',
+            'appium:autoAcceptAlerts': true
+        }],
     //launch app from playstore
     //  capabilities: [{
     //     'appium:platformName': 'Android',
