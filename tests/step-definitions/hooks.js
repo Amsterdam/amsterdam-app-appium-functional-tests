@@ -1,4 +1,5 @@
 import { After, Before } from "@wdio/cucumber-framework";
+import { bsUrliOS } from '../../credentials.js';
 
 Before({ tags: '@Before' }, async () => {
     await driver.launchApp()
@@ -7,7 +8,7 @@ Before({ tags: '@Before' }, async () => {
 Before({ tags: '@BeforeClean' }, async () => {
     const currentOS = driver.capabilities.platformName
     if (currentOS === 'iOS') {
-        await driver.installApp("bs://8c0346c5962ccc4108fc223327f616ef7c6325c0")
+        await driver.installApp(bsUrliOS)
         await driver.launchApp()
     } else {
         await driver.launchApp()

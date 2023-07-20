@@ -1,18 +1,20 @@
 import pkg from "allure-commandline";
-import { key, user } from './credentials.js';
+import { bsUrlAndroid, bsUrliOS, key, user } from './credentials.js';
 const { allure } = pkg;
 
 export const config = {
 
     user,
     key,
+    bsUrliOS,
+    bsUrlAndroid,
 
     capabilities: [
         // {
         //     platformName: "Android",
         //     "appium:platformVersion": "9.0",
         //     "appium:deviceName": "Google Pixel 3",
-        //     "appium:app": "bs://e96670d2a27d5033ca494c17cb4db0f9779db691",
+        //     "appium:app": bsUrlAndroid,
         //     "appium:noReset": "false",
         //     "bstack:options": {
         //         "projectName": "amsterdam-app-android",
@@ -25,11 +27,11 @@ export const config = {
             platformName: "Android",
             "appium:platformVersion": "12.0",
             "appium:deviceName": "Samsung Galaxy S22",
-            "appium:app": "bs://487f3152a6711a8b1976f6a3e634b9bb0c54af6c",
+            "appium:app": bsUrlAndroid,
             "appium:noReset": "false",
             "bstack:options": {
                 "projectName": "amsterdam-app-android",
-                "buildName": "Regression Test - Release 0.36.0",
+                "buildName": "Rerun visual regression Android - 0.37.0",
                 "appiumVersion": "2.0.0",
                 //"deviceOrientation": "landscape",
             },
@@ -38,16 +40,16 @@ export const config = {
             platformName: "ios",
             "appium:platformVersion": "15.6",
             "appium:deviceName": "iPhone 11",
-            "appium:app": "bs://8c0346c5962ccc4108fc223327f616ef7c6325c0",
+            "appium:app": bsUrliOS,
             "appium:noReset": "false",
             //"appium:fullReset": "true",
             "appium:autoAcceptAlerts": "true",
             //"appium:clearPackageData": true,
             'bstack:options': {
                 "projectName": "amsterdam-app-ios",
-                "buildName": "Regressie Test - Release 0.36.0",
+                "buildName": "Rerun visual regression iOS - 0.37.0",
                 "appiumVersion": "2.0.0",
-                "midSessionInstallApps": ["bs://8c0346c5962ccc4108fc223327f616ef7c6325c0"]
+                "midSessionInstallApps": [bsUrliOS]
                 //"autoAcceptAlerts": "true"
                 //"deviceOrientation": "landscape",
             },
@@ -56,7 +58,7 @@ export const config = {
         //     platformName: "ios",
         //     "appium:platformVersion": "12",
         //     "appium:deviceName": "iPhone 11",
-        //     "appium:app": "bs://35c90e1a55f162f7828280935d0bd20e26535036",
+        //     "appium:app": "bsUrliOS",
         //     'bstack:options': {
         //         "projectName": "amsterdam-app-ios",
         //         "buildName": "Sanity Check Eyes+functional App-version 0.32.0.5690",
@@ -103,23 +105,26 @@ export const config = {
     ],
     // Patterns to exclude.
     exclude: [
-        //"./tests/features/functional/addAddress.feature",
-        //"./tests/features/functional/construction-work.feature",
-        //"./tests/features/functional/contact.feature",
-        //"./tests/features/visual-eyes/about.feature",
-        //"./tests/features/visual-eyes/construction-work.feature",
-        //"./tests/features/visual-eyes/contact.feature",
-        //"./tests/features/visual-eyes/open-waste-container.feature",
-        //"./tests/features/visual-eyes/redirects.feature",
-        //"./tests/features/visual-eyes/report-problem.feature",
-        //"./tests/features/visual-eyes/waste-guide.feature",
-        "./tests/features/visual-percy/about.feature",
-        "./tests/features/visual-percy/construction-work.feature",
-        "./tests/features/visual-percy/contact.feature",
-        "./tests/features/visual-percy/open-waste-container.feature",
-        "./tests/features/visual-percy/redirects.feature",
-        "./tests/features/visual-percy/report-problem.feature",
-        "./tests/features/visual-percy/waste-guide.feature",
+        "./tests/features/functional/mijnprofiel.feature",
+        "./tests/features/functional/construction-work.feature",
+        "./tests/features/functional/contact.feature",
+        "./tests/features/functional/settings.feature",
+        "./tests/features/visual-eyes/about.feature",
+        "./tests/features/visual-eyes/construction-work.feature",
+        "./tests/features/visual-eyes/contact.feature",
+        "./tests/features/visual-eyes/open-waste-container.feature",
+        "./tests/features/visual-eyes/redirects.feature",
+        "./tests/features/visual-eyes/report-problem.feature",
+        "./tests/features/visual-eyes/waste-guide.feature",
+        // "./tests/features/visual-percy/construction-work.feature",
+        // "./tests/features/visual-percy/contact.feature",
+        // "./tests/features/visual-percy/about.feature",
+        // "./tests/features/visual-percy/construction-work.feature",
+        // "./tests/features/visual-percy/contact.feature",
+        // "./tests/features/visual-percy/open-waste-container.feature",
+        // "./tests/features/visual-percy/redirects.feature",
+        // "./tests/features/visual-percy/report-problem.feature",
+        // "./tests/features/visual-percy/waste-guide.feature",
     ],
     //
     // ============
