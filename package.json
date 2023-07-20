@@ -32,7 +32,7 @@
     "allure help": "allure help",
     "allure-clean-results": "rm -rf allure-results",
     "run percy landscape": "npx percy app:exec -- npm run wdio-browserstack-landscape-percy",
-    "run percy portrait": "npx percy app:exec -- npm run wdio-browserstack-portrait-percy"
+    "run percy portrait": "npx percy app:exec -- npm run wdio-browserstack-portrait-functional-eyes"
   },
   "dependencies": {
     "@applitools/eyes-webdriverio": "^5.42.2",
