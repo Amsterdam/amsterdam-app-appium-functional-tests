@@ -21,7 +21,7 @@ When(/ik open de Werkzaamheden module/, async () => {
 })
 
 When(/ik volg het project 'Amsterdam Science Park'/, async () => {
-  await gestures.checkProjectDisplayedWithScrollDownAndClick(ConstructionWorkScreen.constructionWorkCardProjectAmsterdamSciencePark, 14)
+  await gestures.checkProjectDisplayedWithScrollDownAndClick(ConstructionWorkScreen.constructionWorkCardProjectAmsterdamSciencePark, 30)
   await expect(ConstructionWorkScreen.headerTitle).toHaveText('Amsterdam Science Park')
   await ConstructionWorkScreen.constructionWorkProjectFollowButton.click()
   await driver.pause(2000)
@@ -76,7 +76,7 @@ Then(/het project krijgt de status 'volgend'/, async () => {
     console.log(await attribute)
     await expect(await attribute).toEqual('Volgend')
     await ConstructionWorkScreen.headerBackButton.click()
-    await gestures.checkProjectDisplayedWithScrollUp(ConstructionWorkScreen.constructionWorkCardProjectAmsterdamSciencePark, 14)
+    await gestures.checkProjectDisplayedWithScrollUp(ConstructionWorkScreen.constructionWorkCardProjectAmsterdamSciencePark, 30)
     const projectCardLabel = await ConstructionWorkScreen.constructionWorkCardProjectAmsterdamSciencePark.getAttribute("label")
     console.log(await projectCardLabel)
     console.log(typeof await projectCardLabel)
