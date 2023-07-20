@@ -47,8 +47,8 @@ class HomeScreen extends Screen {
 
     async getHomeScreen() {
         //await driver.launchApp()
-        await this.homeConstructionWorkModuleButton.waitForDisplayed()
-        await expect(this.homeConstructionWorkModuleButton).toBeDisplayed()
+        await this.homeAboutModuleButton.waitForDisplayed(10000)
+        await expect(this.homeAboutModuleButton).toBeDisplayed()
     }
 
     async checkModulesExist(module) {
