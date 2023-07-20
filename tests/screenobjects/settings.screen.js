@@ -1,3 +1,4 @@
+import gestures from '../Shared/helpers/gestures.js';
 import helpers from '../Shared/helpers/helpers.js';
 import Screen from './screen.js';
 /**
@@ -36,24 +37,31 @@ class SettingsScreen extends Screen {
     async tapSettingsSwitchButton(module) {
         switch (module) {
             case 'Afvalwijzer':
+                await gestures.checkProjectDisplayedWithScrollDownSlow(this.homeModuleSettingWasteGuideSwitch, 4)
                 await this.homeModuleSettingWasteGuideSwitch.click()
                 break
             case 'Gft-container openen':
+                await gestures.checkProjectDisplayedWithScrollDown(this.homeModuleSettingOpenWasteContainerSwitch, 4)
                 await this.homeModuleSettingOpenWasteContainerSwitch.click()
                 break
             case 'Werkzaamheden':
+                await gestures.checkProjectDisplayedWithScrollDown(this.HomeModuleSettingConstructionWorkSwitch)
                 await this.HomeModuleSettingConstructionWorkSwitch.click()
                 break
             case 'Melding doen':
+                await gestures.checkProjectDisplayedWithScrollDown(this.HomeModuleSettingReportProblemSwitch, 4)
                 await this.HomeModuleSettingReportProblemSwitch.click()
                 break
             case 'Contact':
+                await gestures.checkProjectDisplayedWithScrollDown(this.HomeModuleSettingContactSwitch, 4)
                 await this.HomeModuleSettingContactSwitch.click()
                 break
             case 'Direct regelen':
+                await gestures.checkProjectDisplayedWithScrollDown(this.HomeModuleSettingRedirectsSwitch, 4)
                 await this.HomeModuleSettingRedirectsSwitch.click()
                 break
             case 'Welkomstscherm':
+                await gestures.checkProjectDisplayedWithScrollDown(this.HomeModuleSettingWelcomeSwitch, 4)
                 await this.HomeModuleSettingWelcomeSwitch.click()
                 break
             default:
@@ -67,7 +75,9 @@ class SettingsScreen extends Screen {
         await this.HomeModuleSettingConstructionWorkSwitch.click()
         await this.HomeModuleSettingReportProblemSwitch.click()
         await this.HomeModuleSettingContactSwitch.click()
+        await gestures.checkProjectDisplayedWithScrollDown(this.HomeModuleSettingRedirectsSwitch, 4)
         await this.HomeModuleSettingRedirectsSwitch.click()
+        await gestures.checkProjectDisplayedWithScrollDown(this.HomeModuleSettingWelcomeSwitch, 4)
         await this.HomeModuleSettingWelcomeSwitch.click()
     }
 }
