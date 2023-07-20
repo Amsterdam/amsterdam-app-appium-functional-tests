@@ -1,5 +1,5 @@
-Feature: Instellinge
-    @Before
+Feature: Instellingen
+    @BeforeClean @AfterClean
     Scenario Outline: Modules uitzetten
         Given de module <module> staat aan
         And ik ben op het instellingen scherm
@@ -14,7 +14,7 @@ Feature: Instellinge
             | Contact              |
             | Direct regelen       |
 
-    @Before
+    @BeforeClean @AfterClean
     Scenario Outline: Modules aanzetten
         Given de module <module> staat uit
         And ik ben op het instellingen scherm
@@ -29,7 +29,7 @@ Feature: Instellinge
             | Contact              |
             | Direct regelen       |
 
-    @Before
+    @BeforeClean
     Scenario Outline: Over deze app module moet altijd aan staan
         Given alle modules staan uit
         When ik ga naar het homescherm
