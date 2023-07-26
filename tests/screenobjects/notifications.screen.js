@@ -1,3 +1,4 @@
+import gestures from "../Shared/helpers/gestures.js";
 import helpers from '../Shared/helpers/helpers.js';
 import Screen from './screen.js';
 /**
@@ -44,6 +45,22 @@ class NotificationsScreen extends Screen {
 
   get successMessage() {
     return helpers.createContentSelector("Gelukt! De app herkent je nu als omgevingsmanager voor onderstaande projecten. Tik op het project waarvoor je een bericht wilt plaatsen.")
+  }
+
+  get constructionWorkEditorCreateMessageAddImageButton() {
+    return helpers.createSelector("ConstructionWorkEditorCreateMessageAddImageButton")
+  }
+
+  get ConstructionWorkEditorCreateMessageTakeImageButton() {
+    return helpers.createSelector("ConstructionWorkEditorCreateMessageTakeImageButton")
+  }
+
+  async createMessageNoPhoto(titel, tekst) {
+    await this.constructionWorkEditorCreateMessageTitleInput.waitForDisplayed(2000)
+    await this.constructionWorkEditorCreateMessageTitleInput.addValue(titel)
+    await this.constructionWorkEditorCreateMessageBodyInput.addValue(tekst)
+    await gestures.checkProjectDisplayedWithScrollDownShortScreen(this.constructionWorkEditorCreateMessageNextButton, 4)
+    await this.constructionWorkEditorCreateMessageNextButton.click()
   }
 
 }
