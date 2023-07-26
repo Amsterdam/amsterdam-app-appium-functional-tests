@@ -1,4 +1,5 @@
-import { After, Before } from "@wdio/cucumber-framework"
+import { After, Before } from "@wdio/cucumber-framework";
+import { openDeepLinkUrl } from "../Shared/helpers/openDeeplink.js";
 
 Before({ tags: '@Before' }, async () => {
     await driver.launchApp()
@@ -7,9 +8,7 @@ Before({ tags: '@Before' }, async () => {
 Before({ tags: '@Deeplink' }, async () => {
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
-        await driver.url("https://api-backend.app-amsterdam.nl/omgevingsmanager/adc76105-50fe-4fd6-9602-b6b197df7ee0")
-        await driver.pause(3000)
-        await driver.activateApp('nl.amsterdam.app.dev')
+        await openDeepLinkUrl("https://api-backend.app-amsterdam.nl/omgevingsmanager/adc76105-50fe-4fd6-9602-b6b197df7ee0")
     }
     else {
         await driver.execute('mobile:deepLink', {
