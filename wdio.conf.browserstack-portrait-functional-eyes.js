@@ -1,11 +1,13 @@
 import pkg from "allure-commandline";
-import { key, user } from './credentials.js';
+import { bsUrlAndroid, bsUrliOS, key, user } from './credentials.js';
 const { allure } = pkg;
 
 export const config = {
 
     user,
     key,
+    bsUrliOS,
+    bsUrlAndroid,
 
     capabilities: [
         // {
@@ -21,38 +23,38 @@ export const config = {
         //         //"deviceOrientation": "landscape",
         //     },
         // },Use this one
-        // {
-        //     platformName: "Android",
-        //     "appium:platformVersion": "12.0",
-        //     "appium:deviceName": "Samsung Galaxy S22",
-        //     "appium:app": "bs://487f3152a6711a8b1976f6a3e634b9bb0c54af6c",
-        //     "appium:noReset": "false",
-        //     "bstack:options": {
-        //         "projectName": "amsterdam-app-android",
-        //         "buildName": "Regression Test - Release 0.36.0",
-        //         "appiumVersion": "2.0.0",
-        //         //"deviceOrientation": "landscape",
-        //     },
-        // },
         {
-            platformName: "ios",
-            "appium:platformVersion": "15.6",
-            "appium:deviceName": "iPhone 11",
-            "appium:app": "bs://8c0346c5962ccc4108fc223327f616ef7c6325c0",
+            platformName: "Android",
+            "appium:platformVersion": "12.0",
+            "appium:deviceName": "Samsung Galaxy S22",
+            "appium:app": bsUrlAndroid,
             "appium:noReset": "false",
-            //"appium:fullReset": "true",
-            "appium:autoAcceptAlerts": "true",
-            //"appium:clearPackageData": true,
-            'browserName': 'Safari',
-            'bstack:options': {
-                "projectName": "amsterdam-app-ios",
-                "buildName": "Regressie Test - Release 0.36.0",
+            "bstack:options": {
+                "projectName": "amsterdam-app-android",
+                "buildName": "Regression Test - Release 0.36.0",
                 "appiumVersion": "2.0.0",
-                "midSessionInstallApps": ["bs://8c0346c5962ccc4108fc223327f616ef7c6325c0"]
-                //"autoAcceptAlerts": "true"
                 //"deviceOrientation": "landscape",
             },
         },
+        // {
+        //     platformName: "ios",
+        //     "appium:platformVersion": "15.6",
+        //     "appium:deviceName": "iPhone 11",
+        //     "appium:app": "bs://8c0346c5962ccc4108fc223327f616ef7c6325c0",
+        //     "appium:noReset": "false",
+        //     //"appium:fullReset": "true",
+        //     "appium:autoAcceptAlerts": "true",
+        //     //"appium:clearPackageData": true,
+        //     'browserName': 'Safari',
+        //     'bstack:options': {
+        //         "projectName": "amsterdam-app-ios",
+        //         "buildName": "Regressie Test - Release 0.36.0",
+        //         "appiumVersion": "2.0.0",
+        //         "midSessionInstallApps": ["bs://8c0346c5962ccc4108fc223327f616ef7c6325c0"]
+        //         //"autoAcceptAlerts": "true"
+        //         //"deviceOrientation": "landscape",
+        //     },
+        // },
         // {
         //     platformName: "ios",
         //     "appium:platformVersion": "12",
