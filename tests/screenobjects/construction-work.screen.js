@@ -125,6 +125,14 @@ class ConstructionWorkScreen extends Screen {
   get constructionWorkProjectContactButton() {
     return helpers.createSelector("ConstructionWorkProjectContactButton")
   }
+
+  async ConstructionWorkProjectArticlePreviewTitle(title) {
+    const date = new Date();
+    const day = date.getDate();
+    const months = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
+    const month = months[date.getMonth()]
+    return helpers.createContentSelector(`Nieuw, ${day} ${month}, ${title}`)
+  }
 }
 
 
