@@ -1,43 +1,20 @@
 import { Given, Then, When } from "@wdio/cucumber-framework";
 import gestures from "../Shared/helpers/gestures.js";
-import { randomtekst, randomtitel } from "../features/functional/testdata/pushberichten.js";
+import { openDeepLinkUrl } from "../Shared/helpers/openDeeplink.js";
 import constructionWorkScreen from "../screenobjects/construction-work.screen.js";
 import homeScreen from "../screenobjects/home.screen.js";
-import NotificationsScreen from "../screenobjects/notifications.screen.js";
+import { default as NotificationsScreen } from "../screenobjects/notifications.screen.js";
+
+const url = 'https://api-backend.app-amsterdam.nl/omgevingsmanager/34f21359-7332-40df-8e9e-efd1d284e125'
 
 Given(/ik launch de app met plaats berichten/, async () => {
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
-        // await driver.installApp('/Users/moniquevanbenthem/testing/amsterdam-app-functional/app/iOS/Amsterdam test.app')
-        // await driver.pause(3000)
-        // await driver.url("https://api-backend.app-amsterdam.nl/omgevingsmanager/adc76105-50fe-4fd6-9602-b6b197df7ee0")
-        // await driver.pause(3000)
-        // await driver.activateApp('nl.amsterdam.app.dev')
-        await driver.activateApp("com.apple.mobilesafari");
-        const urlSelector = $('URL')
-        await urlSelector.waitForDisplayed(3000)
-        //await urlSelector.click()
-        await urlSelector.addValue("https://api-backend.app-amsterdam.nl/omgevingsmanager/adc76105-50fe-4fd6-9602-b6b197df7ee0")
-        // await safariScreen.tabBarItemTitle.waitForDisplayed(3000)
-        // await safariScreen.tabBarItemTitle.click()
-        // await safariScreen.tabBarItemTitle.sendKeys('https://api-backend.app-amsterdam.nl/omgevingsmanager/adc76105-50fe-4fd6-9602-b6b197df7ee0')
-        const goSelector = $('Go')
-        await goSelector.waitForDisplayed(3000)
-        await goSelector.click()
-        await driver.activateApp('nl.amsterdam.app.dev')
-        // driver.findElementByAccessibilityId("URL").click();
-        // Thread.sleep(3000);
-        // driver.findElementByAccessibilityId("URL").sendKeys("https://www.maxmind.com/en/locate-my-ip-address");
-        // Thread.sleep(3000);
-        // driver.findElementByAccessibilityId("Go").click();
-        // Thread.sleep(5000);
-        // driver.navigate().back();
-
-        // driver.activateApp("com.browserstack.Sample-iOS");
+        openDeepLinkUrl(url)
     }
     else {
         await driver.execute('mobile:deepLink', {
-            url: "https://api-backend.app-amsterdam.nl/omgevingsmanager/adc76105-50fe-4fd6-9602-b6b197df7ee0",
+            url: url,
             package: "com.android.chrome "
         });
     }
