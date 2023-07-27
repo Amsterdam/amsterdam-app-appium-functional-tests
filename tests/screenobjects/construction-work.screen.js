@@ -131,7 +131,13 @@ class ConstructionWorkScreen extends Screen {
     const day = date.getDate();
     const months = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
     const month = months[date.getMonth()]
-    return helpers.createContentSelector(`Nieuw, ${day} ${month}, ${title}`)
+    const currentOS = driver.capabilities.platformName
+    if (currentOS === 'Android') {
+      return helpers.createContentSelector(`Nieuw, ${day} ${month}, ${title}`)
+    } else {
+      return helpers.createContentSelector(`Nieuw ${day} ${month} ${title}`)
+    }
+
   }
 }
 

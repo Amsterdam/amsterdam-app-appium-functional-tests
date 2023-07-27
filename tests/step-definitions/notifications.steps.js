@@ -46,6 +46,15 @@ Given(/ik ben OM\/CA en heb een plaats berichten module in de app/, async () => 
             package: "com.android.chrome "
         });
     }
+    //autoAcceptAlerts turned off
+    const openSelector = 'label == "Open" AND name == "Open" AND type == "XCUIElementTypeButton"'
+    const open = $(`-ios predicate string:${openSelector}`);
+    const allowSelector = $(`-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow"`)
+    await open.waitForDisplayed()
+    await open.click()
+    await allowSelector.waitForDisplayed()
+    await allowSelector.click()
+    //
     await notificationsScreen.headerTitle.waitForDisplayed(10000)
     await expect(notificationsScreen.headerTitle).toHaveText('Plaats berichten')
     await notificationsScreen.projectCardPlaatsBerichtenAmstelIII.waitForExist(3000)
@@ -80,20 +89,29 @@ When(/^ik plaats een bericht met pushbericht, zonder foto, voor project Amstel I
 })
 
 When(/^ik plaats een bericht zonder pushbericht, met foto middels de foto toevoegen knop, voor project Amstel III$/, async () => {
-    await driver.pushFile('/sdcard/Download/image.jpg', image);
+    //await driver.pushFile('/sdcard/Download/image.jpg', image);
+    //await driver.pushFile('@com.browserstack.Sample-iOS:documents/image.jpg', image)
     //await driver.pushFile('content://com.android.providers.media.documents/document/documents_root/image.jpg', image)
     //https://appium.io/docs/en/2.0/reference/interfaces/appium_types.ExternalDriver/#pushfile
+    const currentOS = driver.capabilities.platformName
+    if (currentOS === 'Android') {
+        await driver.pushFile('/sdcard/Download/image.jpg', image);
+    } else {
+        //await driver.pushFile('@com.apple.mobileslideshow/image.jpg', image)
+    }
     await notificationsScreen.projectCardPlaatsBerichtenAmstelIII.click()
     await expect(notificationsScreen.headerTitle).toHaveText('Amstel III')
     const { title, text } = randomTitleText()
     titleMessage = title
     await notificationsScreen.createMessagePhoto(title, text)
-    const currentOS = driver.capabilities.platformName
     if (currentOS === 'Android') {
         await notificationsScreen.addPhotoAndroid()
+    } else {
+        await notificationsScreen.addPhotoiOS()
     }
     await notificationsScreen.constructionWorkEditorCreateMessageSubmitButton.click()
     await expect(notificationsScreen.headerTitle).toHaveText('Plaats berichten')
+    await expect(notificationsScreen.successMessageAlert).toBeDisplayed()
     //await driver.pullFile('/sdcard/Pictures/image.jpg');
     //await gestures.checkProjectDisplayedWithScrollDownShortScreen(notificationsScreen.constructionWorkEditorCreateMessageSubmitButton, 4)
 

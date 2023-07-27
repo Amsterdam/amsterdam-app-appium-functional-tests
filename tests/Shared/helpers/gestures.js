@@ -4,7 +4,7 @@ const scrollViewRect = await driver.getWindowRect()
 //get starting points for scrolling    
 const centerX = scrollViewRect.x + (scrollViewRect.width / 2)
 const startY = scrollViewRect.y + (scrollViewRect.height * 0.9)
-const startZ = scrollViewRect.y + (scrollViewRect.height * 0.7)
+const startZ = scrollViewRect.y + (scrollViewRect.height * 0.6)
 const endY = scrollViewRect.y
 const topY = scrollViewRect.y + (scrollViewRect.height * 0.2)
 

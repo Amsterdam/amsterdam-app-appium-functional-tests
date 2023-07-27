@@ -36,25 +36,25 @@ export const config = {
                 //"deviceOrientation": "landscape",
             },
         },
-        // {
-        //     platformName: "ios",
-        //     "appium:platformVersion": "15.6",
-        //     "appium:deviceName": "iPhone 11",
-        //     "appium:app": "bs://8c0346c5962ccc4108fc223327f616ef7c6325c0",
-        //     "appium:noReset": "false",
-        //     //"appium:fullReset": "true",
-        //     "appium:autoAcceptAlerts": "true",
-        //     //"appium:clearPackageData": true,
-        //     'browserName': 'Safari',
-        //     'bstack:options': {
-        //         "projectName": "amsterdam-app-ios",
-        //         "buildName": "Regressie Test - Release 0.36.0",
-        //         "appiumVersion": "2.0.0",
-        //         "midSessionInstallApps": ["bs://8c0346c5962ccc4108fc223327f616ef7c6325c0"]
-        //         //"autoAcceptAlerts": "true"
-        //         //"deviceOrientation": "landscape",
-        //     },
-        // },
+        {
+            platformName: "ios",
+            "appium:platformVersion": "15.6",
+            "appium:deviceName": "iPhone 11",
+            "appium:app": bsUrliOS,
+            "appium:noReset": "false",
+            //"appium:fullReset": "true",
+            //"appium:autoAcceptAlerts": "true",
+            //"appium:clearPackageData": true,
+            'browserName': 'Safari',
+            'bstack:options': {
+                "projectName": "amsterdam-app-ios",
+                "buildName": "Regressie Test - Release 0.36.0",
+                "appiumVersion": "2.0.0",
+                "midSessionInstallApps": [bsUrliOS]
+                //"autoAcceptAlerts": "true"
+                //"deviceOrientation": "landscape",
+            },
+        },
         // {
         //     platformName: "ios",
         //     "appium:platformVersion": "12",
@@ -184,7 +184,7 @@ export const config = {
     baseUrl: 'http://localhost',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 10000,
+    waitforTimeout: 15000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response

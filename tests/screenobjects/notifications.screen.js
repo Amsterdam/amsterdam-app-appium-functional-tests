@@ -58,15 +58,6 @@ class NotificationsScreen extends Screen {
   get hamburgerMenuIcon() {
     return helpers.createContentSelector("Show roots")
   }
-  get imageSelector() {
-    return $('android=new UiSelector().descriptionContains("image.jpg")')
-  }
-
-  get downloadButton() {
-    const selector = 'new UiSelector().text("Downloads").className("android.widget.Textview")'
-    const button = $(`android=${selector}`)
-    return button
-  }
 
   get photoEditorCropButton() {
     return helpers.createContentSelector("Crop")
@@ -80,18 +71,66 @@ class NotificationsScreen extends Screen {
     return helpers.createSelector("ConstructionWorkEditorCreateMessageImageDescriptionInput")
   }
 
+  get constructionWorkEditorAddImageToMessageNextButton() {
+    return helpers.createSelector("ConstructionWorkEditorAddImageToMessageNextButton")
+  }
+
+  get successMessageAlert() {
+    return helpers.createContentSelector('Gelukt, Uw bericht is geplaatst.')
+  }
+
+  //specific ios selectors
+  get recentPhotos() {
+    const simulatorRegex = new RegExp('(.*-.*){2,}');
+    // Check if we are a simulator
+    if ('udid' in driver.capabilities && simulatorRegex.test(driver.capabilities.udid)) {
+      const selector = 'label == "Recents"'
+      return $(`-ios predicate string:${selector}`);
+    } else {
+      const selector = 'label == "Recent"'
+      return $(`-ios predicate string:${selector}`);
+    }
+  }
+
+  get accessPhotos() {
+    //const selector = 'label == "Select Photos..."'
+    //label == "Selecteer foto's…"
+    //-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow"
+    return $(`-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow Access to All Photos"`);
+  }
+
+  get pickImage() {
+    const selector = '**/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeImage'
+    return $(`-ios class chain:${selector}`)
+  }
+
+  get kiezenButton() {
+    return $('-ios predicate string:label == "Kiezen" AND name == "Kiezen" AND type == "XCUIElementTypeButton"');
+  }
+
+  get photo() {
+    return $('-ios predicate string:type == "XCUIElementTypeImage"')
+  }
+
+  //specific android selectors
+  get emulatorAllowAccessPhotos() {
+    return helpers.createSelector("com.android.permissioncontroller:id/permission_allow_button")
+  }
+
   get addPhotoTitle() {
     const selector = 'new UiSelector().text("Foto toevoegen").className("android.view.View")'
     const title = $(`android=${selector}`)
     return title
   }
 
-  get constructionWorkEditorAddImageToMessageNextButton() {
-    return helpers.createSelector("ConstructionWorkEditorAddImageToMessageNextButton")
+  get imageSelector() {
+    return $('android=new UiSelector().descriptionContains("image.jpg")')
   }
 
-  get emulatorAllowAccessPhotos() {
-    return helpers.createSelector("com.android.permissioncontroller:id/permission_allow_button")
+  get downloadButton() {
+    const selector = 'new UiSelector().text("Downloads").className("android.widget.Textview")'
+    const button = $(`android=${selector}`)
+    return button
   }
 
   async createMessageNoPhoto(titel, tekst) {
@@ -125,6 +164,17 @@ class NotificationsScreen extends Screen {
     await this.constructionWorkEditorAddImageToMessageNextButton.click()
   }
 
+  async addPhotoiOS() {
+    await this.constructionWorkEditorCreateMessageAddImageButton.click()
+    await this.accessPhotos.click()
+    await this.recentPhotos.click()
+    await this.pickImage.click()
+    await this.kiezenButton.click()
+    await expect(this.constructionWorkEditorCreateMessageImageDescriptionInput).toBeDisplayed()
+    await this.constructionWorkEditorCreateMessageImageDescriptionInput.setValue("Aan de Amstel")
+    await this.photo.click()
+    await this.constructionWorkEditorAddImageToMessageNextButton.click()
+  }
 }
 
 export default new NotificationsScreen();

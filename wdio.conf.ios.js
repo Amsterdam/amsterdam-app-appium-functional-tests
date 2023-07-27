@@ -118,8 +118,9 @@ export const config = {
             'appium:automationName': 'XCUITest',
             //'appium:app': 'nl.amsterdam.app.dev',
             'appium:app': 'app/iOS/Amsterdam test.app',
-            'appium:autoAcceptAlerts': true,
-            'browserName': 'Safari',
+            //'appium:autoAcceptAlerts': true,
+            //'appium:autoDismissAlerts': true,
+            //'browserName': 'Safari',
         },
         //real device
         // {
