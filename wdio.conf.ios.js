@@ -31,7 +31,8 @@ export const config = {
     ],
     // Patterns to exclude.
     exclude: [
-        // "./tests/features/functional/notifications.feature",
+        "./tests/features/functional/notifications.feature",
+        //"./tests/features/functional/notifications_simulator.feature",
         "./tests/features/functional/settings.feature",
         "./tests/features/functional/mijnprofiel.feature",
         "./tests/features/functional/construction-work.feature",

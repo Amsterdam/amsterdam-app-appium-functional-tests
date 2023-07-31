@@ -112,6 +112,21 @@ class NotificationsScreen extends Screen {
     return $('-ios predicate string:type == "XCUIElementTypeImage"')
   }
 
+  get accessCamera() {
+    //const selector = 'label == "Select Photos..."'
+    //label == "Selecteer foto's…"
+    //-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow"
+    return $(`-ios predicate string:type == "XCUIElementTypeButton" AND label == "OK"`);
+  }
+
+  get photoCaptureButton() {
+    return $(`-ios predicate string:type == "XCUIElementTypeButton" AND name == "PhotoCapture"`);
+  }
+
+  get usePhotoButton() {
+    return $(`-ios predicate string:type == "	XCUIElementTypeButton" AND name == "Done" AND label == "Gebruik foto"`);
+  }
+
   //specific android selectors
   get emulatorAllowAccessPhotos() {
     return helpers.createSelector("com.android.permissioncontroller:id/permission_allow_button")
@@ -133,18 +148,30 @@ class NotificationsScreen extends Screen {
     return button
   }
 
-  async createMessageNoPhoto(titel, tekst) {
+  get shutterButton() {
+    return helpers.createSelector('com.android.camera2:id/shutter_button')
+  }
+
+  get doneButton() {
+    return helpers.createSelector('com.android.camera2:id/done_button')
+  }
+
+  get cameraPermissionButton() {
+    return helpers.createSelector("com.android.permissioncontroller:id/permission_allow_foreground_only_button")
+  }
+
+  async createMessageNoPhoto(title, text) {
     await this.constructionWorkEditorCreateMessageTitleInput.waitForDisplayed(2000)
-    await this.constructionWorkEditorCreateMessageTitleInput.addValue(titel)
-    await this.constructionWorkEditorCreateMessageBodyInput.addValue(tekst)
+    await this.constructionWorkEditorCreateMessageTitleInput.addValue(title)
+    await this.constructionWorkEditorCreateMessageBodyInput.addValue(text)
     await gestures.checkProjectDisplayedWithScrollDownShortScreen(this.constructionWorkEditorCreateMessageNextButton, 4)
     await this.constructionWorkEditorCreateMessageNextButton.click()
   }
 
-  async createMessagePhoto(titel, tekst) {
+  async createMessagePhoto(title, text) {
     await this.constructionWorkEditorCreateMessageTitleInput.waitForDisplayed(2000)
-    await this.constructionWorkEditorCreateMessageTitleInput.addValue(titel)
-    await this.constructionWorkEditorCreateMessageBodyInput.addValue(tekst)
+    await this.constructionWorkEditorCreateMessageTitleInput.addValue(title)
+    await this.constructionWorkEditorCreateMessageBodyInput.addValue(text)
     await gestures.checkProjectDisplayedWithScrollDownShortScreen(this.constructionWorkEditorCreateMessageNextButton, 4)
   }
 
@@ -164,6 +191,19 @@ class NotificationsScreen extends Screen {
     await this.constructionWorkEditorAddImageToMessageNextButton.click()
   }
 
+  async takePhotoAndroid() {
+    await this.constructionWorkEditorCreateMessageTakeImageButton.click()
+    await this.cameraPermissionButton.click()
+    await this.shutterButton.click()
+    await this.doneButton.click()
+    await this.photoEditorCropButton.click()
+    await this.photoEditorCropButton.click()
+    await expect(this.addPhotoTitle).toBeDisplayed()
+    await expect(this.constructionWorkEditorCreateMessageImageDescriptionInput).toBeDisplayed()
+    await this.constructionWorkEditorCreateMessageImageDescriptionInput.addValue("Aan de Amstel")
+    await this.constructionWorkEditorAddImageToMessageNextButton.click()
+  }
+
   async addPhotoiOS() {
     await this.constructionWorkEditorCreateMessageAddImageButton.click()
     await this.accessPhotos.click()
@@ -175,6 +215,24 @@ class NotificationsScreen extends Screen {
     await this.photo.click()
     await this.constructionWorkEditorAddImageToMessageNextButton.click()
   }
+
+  async takePhotoiOS() {
+    await this.constructionWorkEditorCreateMessageTakeImageButton.click()
+    await this.accessCamera.waitForDisplayed()
+    await this.accessCamera.click()
+    await this.photoCaptureButton.waitForDisplayed()
+    await this.photoCaptureButton.click()
+    await this.usePhotoButton.waitForDisplayed()
+    await this.usePhotoButton.click()
+    await this.kiezenButton.waitForDisplayed()
+    await this.kiezenButton.click()
+    await expect(this.constructionWorkEditorCreateMessageImageDescriptionInput).toBeDisplayed()
+    await this.constructionWorkEditorCreateMessageImageDescriptionInput.setValue("Aan de Amstel")
+    await this.photo.click()
+    await this.constructionWorkEditorAddImageToMessageNextButton.click()
+  }
 }
+
+
 
 export default new NotificationsScreen();

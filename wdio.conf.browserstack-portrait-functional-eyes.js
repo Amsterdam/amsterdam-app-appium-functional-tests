@@ -33,6 +33,7 @@ export const config = {
                 "projectName": "amsterdam-app-android",
                 "buildName": "Regression Test - Release 0.36.0",
                 "appiumVersion": "2.0.0",
+                "enableCameraImageInjection": "true",
                 //"deviceOrientation": "landscape",
             },
         },
@@ -50,7 +51,8 @@ export const config = {
                 "projectName": "amsterdam-app-ios",
                 "buildName": "Regressie Test - Release 0.36.0",
                 "appiumVersion": "2.0.0",
-                "midSessionInstallApps": [bsUrliOS]
+                "midSessionInstallApps": [bsUrliOS],
+                "enableCameraImageInjection": "true",
                 //"autoAcceptAlerts": "true"
                 //"deviceOrientation": "landscape",
             },
@@ -107,6 +109,7 @@ export const config = {
     // Patterns to exclude.
     exclude: [
         // "./tests/features/functional/notifications.feature",
+        "./tests/features/functional/notifications_simulator.feature",
         "./tests/features/functional/settings.feature",
         "./tests/features/functional/mijnprofiel.feature",
         "./tests/features/functional/construction-work.feature",

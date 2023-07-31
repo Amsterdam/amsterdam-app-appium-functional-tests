@@ -1,10 +1,14 @@
-import { After, Before } from "@wdio/cucumber-framework";
+import { After, Before, BeforeAll } from "@wdio/cucumber-framework";
+import { bsUrliOS } from "../../credentials.js";
 import { openDeepLinkUrl } from "../Shared/helpers/openDeeplink.js";
 
 Before({ tags: '@Before' }, async () => {
     await driver.launchApp()
 })
 
+BeforeAll({ tags: '@BeforeDeeplink' }, async () => {
+
+})
 Before({ tags: '@Deeplink' }, async () => {
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
@@ -21,12 +25,13 @@ Before({ tags: '@Deeplink' }, async () => {
 Before({ tags: '@BeforeClean' }, async () => {
     const currentOS = driver.capabilities.platformName
     if (currentOS === 'iOS') {
-        await driver.installApp("bs://8c0346c5962ccc4108fc223327f616ef7c6325c0")
+        await driver.installApp(bsUrliOS)
         await driver.launchApp()
     } else {
         await driver.launchApp()
     }
 })
+
 
 After({ tags: '@After' }, async function () {
     await driver.closeApp()
