@@ -18,6 +18,7 @@ Given(/de module (.*) staat uit/, async (module) => {
     await HomeScreen.getHomeScreen()
     await HomeScreen.checkModulesExist(module)
     await HomeScreen.headerModuleSettingsButton.click()
+    await driver.pause(2000)
     await settingsScreen.tapSettingsSwitchButton(module)
     await settingsScreen.headerBackButton.click()
     await HomeScreen.checkModulesNotExist(module)
