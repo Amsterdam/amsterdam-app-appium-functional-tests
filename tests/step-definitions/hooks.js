@@ -24,7 +24,12 @@ Before({ tags: '@Deeplink' }, async () => {
 
 Before({ tags: '@BeforeClean' }, async () => {
     const currentOS = driver.capabilities.platformName
-    if (currentOS === 'iOS') {
+    const simulatorRegex = new RegExp('(.*-.*){2,}');
+    // Check if we are a simulator
+    if ('udid' in driver.capabilities && simulatorRegex.test(driver.capabilities.udid) && currentOS === 'iOS') {
+        await driver.installApp('/Users/moniquevanbenthem/testing/amsterdam-app-functional/app/iOS/Amsterdam test.app')
+    }
+    else if (currentOS === 'iOS') {
         await driver.installApp(bsUrliOS)
         await driver.launchApp()
     } else {

@@ -23,6 +23,16 @@ class NotificationsScreen extends Screen {
     }
   }
 
+  get projectCardPlaatsBerichtenSluisbuurt() {
+    const OS = driver.capabilities.platformName
+    if (OS === 'iOS') {
+      const selector = '**/XCUIElementTypeButton[`label == "Sluisbuurt op Zeeburgereiland, 5.500 nieuwe woningen"`]'
+      return $(`-ios class chain:${selector}`)
+    } else {
+      return helpers.createContentSelector("Sluisbuurt op Zeeburgereiland, 5.500 nieuwe woningen")
+    }
+  }
+
   get constructionWorkEditorCreateMessageTitleInput() {
     return helpers.createSelector("ConstructionWorkEditorCreateMessageTitleInput")
   }

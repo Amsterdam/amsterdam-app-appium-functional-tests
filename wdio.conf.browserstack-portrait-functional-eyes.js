@@ -49,7 +49,7 @@ export const config = {
             'browserName': 'Safari',
             'bstack:options': {
                 "projectName": "amsterdam-app-ios",
-                "buildName": "Regressie Test - Release 0.36.0",
+                "buildName": "Testrun sprint 38",
                 "appiumVersion": "2.0.0",
                 "midSessionInstallApps": [bsUrliOS],
                 "enableCameraImageInjection": "true",
@@ -110,10 +110,10 @@ export const config = {
     exclude: [
         // "./tests/features/functional/notifications.feature",
         "./tests/features/functional/notifications_simulator.feature",
-        "./tests/features/functional/settings.feature",
-        "./tests/features/functional/mijnprofiel.feature",
-        "./tests/features/functional/construction-work.feature",
-        "./tests/features/functional/contact.feature",
+        //"./tests/features/functional/settings.feature",
+        //"./tests/features/functional/mijnprofiel.feature",
+        //"./tests/features/functional/construction-work.feature",
+        //"./tests/features/functional/contact.feature",
         "./tests/features/visual-eyes/about.feature",
         "./tests/features/visual-eyes/construction-work.feature",
         "./tests/features/visual-eyes/contact.feature",
@@ -121,15 +121,15 @@ export const config = {
         "./tests/features/visual-eyes/redirects.feature",
         "./tests/features/visual-eyes/report-problem.feature",
         "./tests/features/visual-eyes/waste-guide.feature",
-        "./tests/features/visual-percy/construction-work.feature",
-        "./tests/features/visual-percy/contact.feature",
-        "./tests/features/visual-percy/about.feature",
-        "./tests/features/visual-percy/construction-work.feature",
-        "./tests/features/visual-percy/contact.feature",
-        "./tests/features/visual-percy/open-waste-container.feature",
-        "./tests/features/visual-percy/redirects.feature",
-        "./tests/features/visual-percy/report-problem.feature",
-        "./tests/features/visual-percy/waste-guide.feature",
+        //"./tests/features/visual-percy/construction-work.feature",
+        //"./tests/features/visual-percy/contact.feature",
+        //"./tests/features/visual-percy/about.feature",
+        //"./tests/features/visual-percy/construction-work.feature",
+        //"./tests/features/visual-percy/contact.feature",
+        //"./tests/features/visual-percy/open-waste-container.feature",
+        //"./tests/features/visual-percy/redirects.feature",
+        //"./tests/features/visual-percy/report-problem.feature",
+        //"./tests/features/visual-percy/waste-guide.feature",
     ],
     //
     // ============
@@ -217,7 +217,7 @@ export const config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: ['spec', ['allure', {
-        //outputDir: 'allure-results',
+        outputDir: 'allure-results',
         disableWebdriverStepsReporting: true,
         disableWebdriverScreenshotsReporting: true,
         useCucumberStepReporter: false,
