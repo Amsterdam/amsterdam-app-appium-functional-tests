@@ -109,6 +109,10 @@ class NotificationsScreen extends Screen {
     return $(`-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow Access to All Photos"`);
   }
 
+  get allowSelector() {
+    return $(`-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow"`)
+  }
+
   get pickImage() {
     const selector = '**/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeImage'
     return $(`-ios class chain:${selector}`)

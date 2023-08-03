@@ -32,11 +32,10 @@ Given(/ik ben OM\/CA en heb een plaats berichten module in de app/, async () => 
         openDeepLinkUrl(url)
         const openSelector = 'label == "Open" AND name == "Open" AND type == "XCUIElementTypeButton"'
         const open = $(`-ios predicate string:${openSelector}`);
-        const allowSelector = $(`-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow"`)
         await open.waitForDisplayed()
         await open.click()
-        await allowSelector.waitForDisplayed()
-        await allowSelector.click()
+        await notificationsScreen.allowSelector.waitForDisplayed()
+        await notificationsScreen.allowSelector.click()
     }
     else {
         await driver.execute('mobile:deepLink', {
