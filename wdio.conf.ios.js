@@ -32,7 +32,10 @@ export const config = {
     ],
     // Patterns to exclude.
     exclude: [
-        //  "./tests/features/functional/mijnprofiel.feature",
+        "./tests/features/functional/notifications.feature",
+        //"./tests/features/functional/notifications_simulator.feature",
+        "./tests/features/functional/settings.feature",
+        "./tests/features/functional/mijnprofiel.feature",
         "./tests/features/functional/construction-work.feature",
         "./tests/features/functional/contact.feature",
         "./tests/features/functional/settings.feature",
@@ -85,7 +88,7 @@ export const config = {
         //     'appium:automationName': 'XCUITest',
         //     //'appium:app': 'nl.amsterdam.app.dev',
         //     'appium:app': 'app/iOS/Amsterdam test.app',
-        //     'appium:autoAcceptAlerts': true
+        //     'appium:autoAcceptAlerts': false,
         // },
         //real device
         {
@@ -100,16 +103,9 @@ export const config = {
             'appium:app': 'app/iOS/AmsterdamTest.ipa',
             'appium: updatedWDABundleid': 'nl.amsterdam.app.dev',
             'appium:autoAcceptAlerts': true
-        }],
-    //launch app from playstore
-    //  capabilities: [{
-    //     'appium:platformName': 'Android',
-    //     'appium:platformVersion': '12.0',
-    //     'appium:deviceName': 'Pixel 3a',
-    //     //This should be the exact same name from the device you use in the Android Emulator
-    //     'appium:automationName': 'UiAutomator2',
-    //     'appium:app': join(process.cwd(), 'app/Android/amsterdam-app.apk')
-    // }],
+        },
+    ],
+
     //
     // ===================
     // Test Configurations

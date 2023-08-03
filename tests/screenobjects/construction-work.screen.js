@@ -56,6 +56,14 @@ class ConstructionWorkScreen extends Screen {
     return helpers.createSelector("ConstructionWork694239ProjectCard")
   }
 
+  get constructionWorkSluisbuurtOpZeeburgereilandProjectCard() {
+    return helpers.createSelector("ConstructionWork1010139ProjectCard")
+  }
+
+  get constructionWorkAmstelIIIProjectCard() {
+    return helpers.createSelector("ConstructionWork976821ProjectCard")
+  }
+
   get constructionWorkProjectFollowButton() {
     return helpers.createSelector("ConstructionWorkProjectFollowButton")
     //return $('//android.widget.Button[contains(@resource-id, "ConstructionWorkProjectFollowButton")]')
@@ -120,6 +128,20 @@ class ConstructionWorkScreen extends Screen {
 
   get constructionWorkProjectContactButton() {
     return helpers.createSelector("ConstructionWorkProjectContactButton")
+  }
+
+  async ConstructionWorkProjectArticlePreviewTitle(title) {
+    const date = new Date();
+    const day = date.getDate();
+    const months = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
+    const month = months[date.getMonth()]
+    const currentOS = driver.capabilities.platformName
+    if (currentOS === 'Android') {
+      return helpers.createContentSelector(`Nieuw, ${day} ${month}, ${title}`)
+    } else {
+      return helpers.createContentSelector(`Nieuw ${day} ${month} ${title}`)
+    }
+
   }
 }
 

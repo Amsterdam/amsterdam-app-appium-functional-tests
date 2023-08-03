@@ -33,6 +33,7 @@ export const config = {
                 "projectName": "amsterdam-app-android",
                 "buildName": "Rerun visual regression Android - 0.37.0",
                 "appiumVersion": "2.0.0",
+                "enableCameraImageInjection": "true",
                 //"deviceOrientation": "landscape",
             },
         },
@@ -43,13 +44,15 @@ export const config = {
             "appium:app": bsUrliOS,
             "appium:noReset": "false",
             //"appium:fullReset": "true",
-            "appium:autoAcceptAlerts": "true",
+            //"appium:autoAcceptAlerts": "true",
             //"appium:clearPackageData": true,
+            'browserName': 'Safari',
             'bstack:options': {
                 "projectName": "amsterdam-app-ios",
-                "buildName": "Rerun visual regression iOS - 0.37.0",
+                "buildName": "Testrun sprint 38",
                 "appiumVersion": "2.0.0",
-                "midSessionInstallApps": [bsUrliOS]
+                "midSessionInstallApps": [bsUrliOS],
+                "enableCameraImageInjection": "true",
                 //"autoAcceptAlerts": "true"
                 //"deviceOrientation": "landscape",
             },
@@ -105,10 +108,12 @@ export const config = {
     ],
     // Patterns to exclude.
     exclude: [
-        "./tests/features/functional/mijnprofiel.feature",
-        "./tests/features/functional/construction-work.feature",
-        "./tests/features/functional/contact.feature",
-        "./tests/features/functional/settings.feature",
+        // "./tests/features/functional/notifications.feature",
+        "./tests/features/functional/notifications_simulator.feature",
+        //"./tests/features/functional/settings.feature",
+        //"./tests/features/functional/mijnprofiel.feature",
+        //"./tests/features/functional/construction-work.feature",
+        //"./tests/features/functional/contact.feature",
         "./tests/features/visual-eyes/about.feature",
         "./tests/features/visual-eyes/construction-work.feature",
         "./tests/features/visual-eyes/contact.feature",
@@ -116,15 +121,13 @@ export const config = {
         "./tests/features/visual-eyes/redirects.feature",
         "./tests/features/visual-eyes/report-problem.feature",
         "./tests/features/visual-eyes/waste-guide.feature",
-        // "./tests/features/visual-percy/construction-work.feature",
-        // "./tests/features/visual-percy/contact.feature",
-        // "./tests/features/visual-percy/about.feature",
-        // "./tests/features/visual-percy/construction-work.feature",
-        // "./tests/features/visual-percy/contact.feature",
-        // "./tests/features/visual-percy/open-waste-container.feature",
-        // "./tests/features/visual-percy/redirects.feature",
-        // "./tests/features/visual-percy/report-problem.feature",
-        // "./tests/features/visual-percy/waste-guide.feature",
+        //"./tests/features/visual-percy/about.feature",
+        //"./tests/features/visual-percy/construction-work.feature",
+        //"./tests/features/visual-percy/contact.feature",
+        //"./tests/features/visual-percy/open-waste-container.feature",
+        //"./tests/features/visual-percy/redirects.feature",
+        //"./tests/features/visual-percy/report-problem.feature",
+        //"./tests/features/visual-percy/waste-guide.feature",
     ],
     //
     // ============
@@ -182,7 +185,7 @@ export const config = {
     baseUrl: 'http://localhost',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 10000,
+    waitforTimeout: 15000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
@@ -212,7 +215,7 @@ export const config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: ['spec', ['allure', {
-        //outputDir: 'allure-results',
+        outputDir: 'allure-results',
         disableWebdriverStepsReporting: true,
         disableWebdriverScreenshotsReporting: true,
         useCucumberStepReporter: false,

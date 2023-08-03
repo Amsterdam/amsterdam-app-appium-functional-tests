@@ -4,7 +4,9 @@ const scrollViewRect = await driver.getWindowRect()
 //get starting points for scrolling    
 const centerX = scrollViewRect.x + (scrollViewRect.width / 2)
 const startY = scrollViewRect.y + (scrollViewRect.height * 0.9)
+const startZ = scrollViewRect.y + (scrollViewRect.height * 0.6)
 const endY = scrollViewRect.y
+const endZ = scrollViewRect.y + (scrollViewRect.height * 0.5)
 const topY = scrollViewRect.y + (scrollViewRect.height * 0.2)
 
 class Gestures {
@@ -47,6 +49,16 @@ class Gestures {
         for (let i = 0; i < maxScrolls; i++) {
             if ((!await element.isDisplayed() && i < maxScrolls)) {
                 await this.swipeUpSlow();
+            } else {
+                break
+            }
+        }
+    }
+
+    async checkProjectDisplayedWithScrollDownShortScreen(element, maxScrolls) {
+        for (let i = 0; i < maxScrolls; i++) {
+            if ((!await element.isDisplayed() && i < maxScrolls)) {
+                await this.swipeUpSlowShortScreen();
             } else {
                 break
             }
@@ -156,6 +168,38 @@ class Gestures {
                 { type: 'pointerDown', button: 0 },
                 { type: 'pause', duration: 100 },
                 { type: 'pointerMove', duration: 1000, x: centerX, y: endY },
+                { type: 'pointerUp', button: 0 },
+                { type: 'pause', duration: 500 },
+            ]
+        }])
+    }
+
+    async swipeUpSlowShortScreen() {
+        await driver.performActions([{
+            type: 'pointer',
+            id: 'finger',
+            parameters: { pointerType: 'touch' },
+            actions: [
+                { type: 'pointerMove', duration: 0, x: centerX, y: startZ },
+                { type: 'pointerDown', button: 0 },
+                { type: 'pause', duration: 100 },
+                { type: 'pointerMove', duration: 1000, x: centerX, y: endY },
+                { type: 'pointerUp', button: 0 },
+                { type: 'pause', duration: 500 },
+            ]
+        }])
+    }
+
+    async swipeUpSlowFraction() {
+        await driver.performActions([{
+            type: 'pointer',
+            id: 'finger',
+            parameters: { pointerType: 'touch' },
+            actions: [
+                { type: 'pointerMove', duration: 0, x: centerX, y: startZ },
+                { type: 'pointerDown', button: 0 },
+                { type: 'pause', duration: 100 },
+                { type: 'pointerMove', duration: 500, x: centerX, y: endZ },
                 { type: 'pointerUp', button: 0 },
                 { type: 'pause', duration: 500 },
             ]
