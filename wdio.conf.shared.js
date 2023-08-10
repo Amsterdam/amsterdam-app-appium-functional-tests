@@ -1,7 +1,13 @@
 import pkg from "allure-commandline";
+import { bsUrlAndroid, bsUrliOS, key, user } from './credentials.js';
 const { allure } = pkg;
 
-exports.config = {
+export const config = {
+
+    user,
+    key,
+    bsUrliOS,
+    bsUrlAndroid,
     //
     // ====================
     // Runner Configuration
@@ -9,7 +15,7 @@ exports.config = {
     // WebdriverIO supports running e2e tests as well as unit and component tests.
     runner: 'local',
 
-    port: 4723,
+    //port: 4723,
     //
     // ==================
     // Specify Test Files
@@ -30,27 +36,7 @@ exports.config = {
         "./tests/features/**/*.feature"
     ],
     // Patterns to exclude.
-    exclude: [
-        "./tests/features/functional/addAddress.feature",
-        "./tests/features/functional/construction-work.feature",
-        "./tests/features/functional/contact.feature",
-        "./tests/features/functional/settings.feature",
-        "./tests/features/visual-eyes/about.feature",
-        "./tests/features/visual-eyes/construction-work.feature",
-        "./tests/features/visual-eyes/contact.feature",
-        "./tests/features/visual-eyes/launchapp.feature",
-        "./tests/features/visual-eyes/open-waste-container.feature",
-        //"./tests/features/visual-eyes/redirects.feature",
-        "./tests/features/visual-eyes/report-problem.feature",
-        "./tests/features/visual-eyes/waste-guide.feature",
-        "./tests/features/visual-percy/about.feature",
-        "./tests/features/visual-percy/construction-work.feature",
-        "./tests/features/visual-percy/contact.feature",
-        "./tests/features/visual-percy/open-waste-container.feature",
-        "./tests/features/visual-percy/redirects.feature",
-        "./tests/features/visual-percy/report-problem.feature",
-        "./tests/features/visual-percy/waste-guide.feature",
-    ],
+
     //
     // ============
     // Capabilities
@@ -67,7 +53,7 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 1,
+    maxInstances: 2,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -107,7 +93,7 @@ exports.config = {
     baseUrl: 'http://localhost',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 10000,
+    waitforTimeout: 15000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
@@ -137,7 +123,7 @@ exports.config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: ['spec', ['allure', {
-        //outputDir: 'allure-results',
+        outputDir: 'allure-results',
         disableWebdriverStepsReporting: true,
         disableWebdriverScreenshotsReporting: true,
         useCucumberStepReporter: false,
@@ -249,10 +235,11 @@ exports.config = {
      * @param {ITestCaseHookParameter} world    world object containing information on pickle and test step
      * @param {Object}                 context  Cucumber World object
      */
-    beforeScenario: function (world, context) {
-        driver.launchApp()
-        //driver.activateApp()
-    },
+    // beforeScenario: function (world, context) {
+    //     driver.installApp("bs://7e8d5441c535c6a96e485b9bfd64d20796015c00")
+    //     driver.launchApp()
+    //     //driver.activateApp("nl.amsterdam.app")
+    // },
     /**
      *
      * Runs before a Cucumber Step.
@@ -288,10 +275,14 @@ exports.config = {
      * @param {number}                 result.duration  duration of scenario in milliseconds
      * @param {Object}                 context          Cucumber World object
      */
-    afterScenario: function (world, result, context) {
-        //driver.terminateApp()
-        driver.closeApp()
-    },
+    //afterScenario: function (world, result, context) {
+    // driver.terminateApp()
+    // driver.closeApp()
+    // const currentOS = driver.capabilities.platformName
+    // if (currentOS === 'iOS') {
+    //     driver.removeApp('nl.amsterdam.app.dev')
+    // }
+    //},
     /**
      *
      * Runs after a Cucumber Feature.
