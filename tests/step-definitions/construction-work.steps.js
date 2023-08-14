@@ -79,7 +79,7 @@ Then(/het project krijgt de status 'volgend'/, async () => {
     //await driver.executeScript("mobile: alert", [{ action: "accept" }]);
     const attribute = await ConstructionWorkScreen.constructionWorkProjectFollowButton.getAttribute("label");
     console.log(await attribute)
-    await expect(await attribute).toEqual('Volgend')
+    await expect(await attribute).toEqual('Ontvolg dit project')
     await ConstructionWorkScreen.headerBackButton.click()
     await gestures.checkProjectDisplayedWithScrollUp(ConstructionWorkScreen.constructionWorkCardProjectAmsterdamSciencePark, 30)
     const projectCardLabel = await ConstructionWorkScreen.constructionWorkCardProjectAmsterdamSciencePark.getAttribute("label")
