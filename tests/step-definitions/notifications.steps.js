@@ -66,7 +66,7 @@ Given(/ik ben OM\/CA en heb een plaats berichten module in de app/, async () => 
 
 When(/^ik plaats een bericht zonder pushbericht, zonder foto, voor project Sluisbuurt op Zeeburgereiland$/, async () => {
     await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.click()
-    await expect(notificationsScreen.headerTitle).toHaveText('Sluisbuurt op Zeeburgereiland')
+    await expect(notificationsScreen.headerTitle).toHaveTextContaining(['Sluisbuurt op Zeeburgereiland', 'Sluisb…Zeeburgereiland'])
     const { title, text } = randomTitleText()
     titleMessage = title
     await notificationsScreen.createMessageNoPhoto(title, text)
@@ -77,7 +77,7 @@ When(/^ik plaats een bericht zonder pushbericht, zonder foto, voor project Sluis
 
 When(/^ik plaats een bericht met pushbericht, zonder foto, voor project Sluisbuurt op Zeeburgereiland$/, async () => {
     await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.click()
-    await expect(notificationsScreen.headerTitle).toHaveText('Sluisbuurt op Zeeburgereiland')
+    await expect(notificationsScreen.headerTitle).toHaveTextContaining(['Sluisbuurt op Zeeburgereiland', 'Sluisb…Zeeburgereiland'])
     const { title, text } = randomTitleText()
     titleMessage = title
     await notificationsScreen.createMessageNoPhoto(title, text)
@@ -97,7 +97,7 @@ When(/^ik plaats een bericht zonder pushbericht, met foto middels de foto toevoe
         //await driver.pushFile('@com.apple.mobileslideshow/image.jpg', image)
     }
     await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.click()
-    await expect(notificationsScreen.headerTitle).toHaveText('Sluisbuurt op Zeeburgereiland')
+    await expect(notificationsScreen.headerTitle).toHaveTextContaining(['Sluisbuurt op Zeeburgereiland', 'Sluisb…Zeeburgereiland'])
     const { title, text } = randomTitleText()
     titleMessage = title
     await notificationsScreen.createMessagePhoto(title, text)
@@ -121,7 +121,7 @@ When(/^ik plaats een bericht met pushbericht, met foto middels de foto toevoegen
         //await driver.pushFile('@com.apple.mobileslideshow/image.jpg', image)
     }
     await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.click()
-    await expect(notificationsScreen.headerTitle).toHaveText('Sluisbuurt op Zeeburgereiland')
+    await expect(notificationsScreen.headerTitle).toHaveTextContaining(['Sluisbuurt op Zeeburgereiland', 'Sluisb…Zeeburgereiland'])
     const { title, text } = randomTitleText()
     titleMessage = title
     await notificationsScreen.createMessagePhoto(title, text)
@@ -130,7 +130,7 @@ When(/^ik plaats een bericht met pushbericht, met foto middels de foto toevoegen
     } else {
         await notificationsScreen.addPhotoiOS()
     }
-    await gestures.checkProjectDisplayedWithScrollDownSlow(notificationsScreen.constructionWorkEditorCreateMessageSendPushNotificationCheckbox, 3)
+    await gestures.checkProjectDisplayedWithScrollDownShortScreen(notificationsScreen.constructionWorkEditorCreateMessageSendPushNotificationCheckbox, 4)
     await notificationsScreen.constructionWorkEditorCreateMessageSendPushNotificationCheckbox.click()
     await notificationsScreen.constructionWorkEditorCreateMessageSubmitButton.click()
     await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.waitForDisplayed()
