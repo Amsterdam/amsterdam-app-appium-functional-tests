@@ -53,6 +53,10 @@ class ProfileScreen extends Screen {
         return helpers.createSelector("AddressPostalcodeAndCityText")
     }
 
+    get bottomSheetSelectAddressButton() {
+        return helpers.createSelector("BottomSheetSelectAddressButton")
+    }
+
     // get deletedTxt() {
     //     return "~Gelukt, Het adres is verwijderd uit uw profiel."
     // }
