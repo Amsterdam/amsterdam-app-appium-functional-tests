@@ -26,7 +26,9 @@ Given(/ik heb een adres ingevoerd/, async () => {
 })
 
 When(/^ik verander het adres naar (.*): dit is een adres (.*)$/, async (adres, omschrijving) => {
-    await WasteGuideScreen.wasteGuideButtonEditAddress.click()
+    await WasteGuideScreen.wasteGuideChangeLocationButton.click()
+    await ProfileScreen.bottomSheetSelectAddressButton.waitForDisplayed(2000)
+    //wijzig adres button
     await expect(WasteGuideScreen.headerTitle).toHaveText('Adres')
     await ProfileScreen.addressStreetInputSearchField.addValue(adres)
     const addressSelector = await ProfileScreen.addressSelector(adres)
@@ -35,7 +37,7 @@ When(/^ik verander het adres naar (.*): dit is een adres (.*)$/, async (adres, o
 })
 
 When(/ik voer een adres (.*) in dat geen woonadres is/, async adres => {
-    await WasteGuideScreen.wasteGuideButtonEditAddress.click()
+    await WasteGuideScreen.wasteGuideChangeLocationButton.click()
     await expect(WasteGuideScreen.headerTitle).toHaveText('Adres')
     await ProfileScreen.addressStreetInputSearchField.addValue(adres)
     const addressSelector = await ProfileScreen.addressSelector(adres)
