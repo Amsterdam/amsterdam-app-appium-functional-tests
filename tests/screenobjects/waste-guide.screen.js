@@ -9,8 +9,8 @@ class WasteGuideScreen extends Screen {
         return helpers.createSelector("WasteGuideButtonEditAddress");
     }
 
-    get wasteGuideEnterAddressButton() {
-        return helpers.createSelector("WasteGuideEnterAddressButton");
+    get wasteGuideRequestLocationButton() {
+        return helpers.createSelector("WasteGuideRequestLocationButton");
     }
 
     get wasteGuideSelectContractRadioGroupfalseRadioButton() {

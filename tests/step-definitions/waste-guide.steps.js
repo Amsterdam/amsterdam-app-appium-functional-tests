@@ -17,7 +17,7 @@ When(/ik open de Afvalwijzer module/, async () => {
 })
 
 Given(/ik heb een adres ingevoerd/, async () => {
-    await WasteGuideScreen.wasteGuideEnterAddressButton.click()
+    await WasteGuideScreen.wasteGuideRequestLocationButton.click()
     await expect(WasteGuideScreen.headerTitle).toHaveText('Adres')
     await ProfileScreen.addressStreetInputSearchField.addValue('Balistraat 1-1')
     await ProfileScreen.addressSearchResultBalistraat1hg1.click()
