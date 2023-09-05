@@ -28,6 +28,7 @@ Before({ tags: '@BeforeClean' }, async () => {
     // Check if we are a simulator
     if ('udid' in driver.capabilities && simulatorRegex.test(driver.capabilities.udid) && currentOS === 'iOS') {
         await driver.installApp('/Users/moniquevanbenthem/testing/amsterdam-app-functional/app/iOS/Amsterdam test.app')
+        await driver.launchApp()
     }
     else if (currentOS === 'iOS') {
         await driver.installApp(bsUrliOS)

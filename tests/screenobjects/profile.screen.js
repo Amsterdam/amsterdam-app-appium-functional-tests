@@ -25,8 +25,12 @@ class ProfileScreen extends Screen {
         return helpers.createSelector("AddressSearchResultWeesperstraat 113Button")
     }
 
+    // get addressSearchResultBalistraat1hg1() {
+    //     return helpers.createSelector("AddressSearchResultBalistraat 1-1Button")
+    // }
+
     get addressSearchResultBalistraat1hg1() {
-        return helpers.createSelector("AddressSearchResultBalistraat 1-1Button")
+        return helpers.createContentSelector("Balistraat 1-1")
     }
 
     get addressSearchResultWeesperstraat() {
@@ -57,6 +61,10 @@ class ProfileScreen extends Screen {
         return helpers.createSelector("BottomSheetSelectAddressButton")
     }
 
+    get bottomSheetChangeAddressButton() {
+        return helpers.createSelector("BottomSheetChangeAddressButton")
+    }
+
     // get deletedTxt() {
     //     return "~Gelukt, Het adres is verwijderd uit uw profiel."
     // }
@@ -66,7 +74,14 @@ class ProfileScreen extends Screen {
     }
 
     async addressSelector(adres) {
-        return helpers.createSelector(`AddressSearchResult${adres}Button`)
+        const OS = await driver.capabilities.platformName
+        if (OS === 'iOS') {
+            return $(`-ios predicate string: label == "${adres}"`)
+        }
+        //Android:
+        else { return helpers.createContentSelector(adres) }
+
+        //return helpers.createSelector(`AddressSearchResult${adres}Button`)
     }
 
     async addAddress(adres) {

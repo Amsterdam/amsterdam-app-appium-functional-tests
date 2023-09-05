@@ -22,27 +22,70 @@ Given(/ik heb een adres ingevoerd/, async () => {
     await ProfileScreen.bottomSheetSelectAddressButton.click()
     await expect(WasteGuideScreen.headerTitle).toHaveText('Adres')
     await ProfileScreen.addressStreetInputSearchField.addValue('Balistraat 1-1')
-    await ProfileScreen.addressSearchResultBalistraat1hg1.click()
+    const addressSelector = await ProfileScreen.addressSelector('Balistraat 1-1')
+    await addressSelector.click()
+    //await ProfileScreen.bottomSheetSelectAddressButton.click()
+    const OS = await driver.capabilities.platformName
+    if (OS === 'iOS') {
+        const attribute = await WasteGuideScreen.wasteGuideChangeLocationButton.getAttribute("label");
+        console.log(await attribute)
+        await expect(await attribute).toEqual('Mijn adres, Balistraat 1-1')
+    }
+    //Android:
+    else {
+        await expect(WasteGuideScreen.wasteGuideChangeLocationButtonText).toHaveText('Balistraat 1-1')
+    }
 })
 
 When(/^ik verander het adres naar (.*): dit is een adres (.*)$/, async (adres, omschrijving) => {
+    await WasteGuideScreen.wasteGuideChangeLocationButton.waitForDisplayed(5000)
     await WasteGuideScreen.wasteGuideChangeLocationButton.click()
-    await ProfileScreen.bottomSheetSelectAddressButton.waitForDisplayed(2000)
-    //wijzig adres button
-    await expect(WasteGuideScreen.headerTitle).toHaveText('Adres')
+    await ProfileScreen.bottomSheetSelectAddressButton.waitForDisplayed(5000)
+    await ProfileScreen.bottomSheetChangeAddressButton.click()
+    await expect(ProfileScreen.headerTitle).toHaveText('Mijn profiel')
+    await ProfileScreen.addressAddButton.click()
+    await expect(ProfileScreen.headerTitle).toHaveText('Adres')
     await ProfileScreen.addressStreetInputSearchField.addValue(adres)
     const addressSelector = await ProfileScreen.addressSelector(adres)
     await addressSelector.click()
+    await ProfileScreen.headerBackButton.click()
     await expect(WasteGuideScreen.headerTitle).toHaveText('Afvalwijzer')
+    await ProfileScreen.bottomSheetSelectAddressButton.click()
+    const OS = await driver.capabilities.platformName
+    if (OS === 'iOS') {
+        const attribute = await WasteGuideScreen.wasteGuideChangeLocationButton.getAttribute("label");
+        console.log(await attribute)
+        await expect(await attribute).toEqual(`Mijn adres, ${adres}`)
+    }
+    //Android:
+    else {
+        await expect(WasteGuideScreen.wasteGuideChangeLocationButtonText).toHaveText(adres)
+    }
 })
 
 When(/ik voer een adres (.*) in dat geen woonadres is/, async adres => {
     await WasteGuideScreen.wasteGuideChangeLocationButton.click()
+    await ProfileScreen.bottomSheetSelectAddressButton.waitForDisplayed(2000)
+    await ProfileScreen.bottomSheetChangeAddressButton.click()
+    await expect(ProfileScreen.headerTitle).toHaveText('Mijn profiel')
+    await ProfileScreen.addressAddButton.click()
     await expect(WasteGuideScreen.headerTitle).toHaveText('Adres')
     await ProfileScreen.addressStreetInputSearchField.addValue(adres)
     const addressSelector = await ProfileScreen.addressSelector(adres)
     await addressSelector.click()
+    await ProfileScreen.headerBackButton.click()
     await expect(WasteGuideScreen.headerTitle).toHaveText('Afvalwijzer')
+    await ProfileScreen.bottomSheetSelectAddressButton.click()
+    const OS = await driver.capabilities.platformName
+    if (OS === 'iOS') {
+        const attribute = await WasteGuideScreen.wasteGuideChangeLocationButton.getAttribute("label");
+        console.log(await attribute)
+        await expect(await attribute).toEqual(`Mijn adres, ${adres}`)
+    }
+    //Android:
+    else {
+        await expect(WasteGuideScreen.wasteGuideChangeLocationButtonText).toHaveText(adres)
+    }
 })
 
 When(/ik selecteer of ik wel of niet een contract (.*) heb/, async contract => {

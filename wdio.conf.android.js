@@ -25,7 +25,7 @@ sharedconfig.exclude = [
     "./tests/features/visual-percy/open-waste-container.feature",
     "./tests/features/visual-percy/redirects.feature",
     "./tests/features/visual-percy/report-problem.feature",
-    "./tests/features/visual-percy/waste-guide.feature",
+    //"./tests/features/visual-percy/waste-guide.feature",
 ]
 
 sharedconfig.capabilities = [{
