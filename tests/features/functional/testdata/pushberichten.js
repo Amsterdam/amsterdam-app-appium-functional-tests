@@ -40,7 +40,7 @@ const data = [{
 },
 ]
 
-export const randomTitleText = () => {
-    return data[randInt()]
+export const titleText = (index) => {
+    return data[index]
 }
-export const randInt = () => { return Math.floor(Math.random() * data.length) }
+//export const randInt = () => { return Math.floor(Math.random() * data.length) }

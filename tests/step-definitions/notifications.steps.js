@@ -3,7 +3,7 @@ import gestures from "../Shared/helpers/gestures.js";
 import helpers from "../Shared/helpers/helpers.js";
 import { openDeepLinkUrl } from "../Shared/helpers/openDeeplink.js";
 import { image } from "../features/functional/testdata/img.js";
-import { randomTitleText } from "../features/functional/testdata/pushberichten.js";
+import { titleText } from "../features/functional/testdata/pushberichten.js";
 import constructionWorkScreen from "../screenobjects/construction-work.screen.js";
 import homeScreen from "../screenobjects/home.screen.js";
 import notificationsScreen from "../screenobjects/notifications.screen.js";
@@ -67,18 +67,19 @@ Given(/ik ben OM\/CA en heb een plaats berichten module in de app/, async () => 
 When(/^ik plaats een bericht zonder pushbericht, zonder foto, voor project Sluisbuurt op Zeeburgereiland$/, async () => {
     await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.click()
     await expect(notificationsScreen.headerTitle).toHaveTextContaining(['Sluisbuurt op Zeeburgereiland', 'Sluisb…Zeeburgereiland'])
-    const { title, text } = randomTitleText()
+    const { title, text } = titleText(0)
     titleMessage = title
     await notificationsScreen.createMessageNoPhoto(title, text)
     await gestures.checkProjectDisplayedWithScrollDownShortScreen(notificationsScreen.constructionWorkEditorCreateMessageSubmitButton, 4)
     await notificationsScreen.constructionWorkEditorCreateMessageSubmitButton.click()
+    await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.waitForDisplayed()
     await expect(notificationsScreen.headerTitle).toHaveText('Plaats berichten')
 })
 
 When(/^ik plaats een bericht met pushbericht, zonder foto, voor project Sluisbuurt op Zeeburgereiland$/, async () => {
     await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.click()
     await expect(notificationsScreen.headerTitle).toHaveTextContaining(['Sluisbuurt op Zeeburgereiland', 'Sluisb…Zeeburgereiland'])
-    const { title, text } = randomTitleText()
+    const { title, text } = titleText(1)
     titleMessage = title
     await notificationsScreen.createMessageNoPhoto(title, text)
     await gestures.checkProjectDisplayedWithScrollDownShortScreen(notificationsScreen.constructionWorkEditorCreateMessageSendPushNotificationCheckbox, 4)
@@ -98,7 +99,7 @@ When(/^ik plaats een bericht zonder pushbericht, met foto middels de foto toevoe
     }
     await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.click()
     await expect(notificationsScreen.headerTitle).toHaveTextContaining(['Sluisbuurt op Zeeburgereiland', 'Sluisb…Zeeburgereiland'])
-    const { title, text } = randomTitleText()
+    const { title, text } = titleText(2)
     titleMessage = title
     await notificationsScreen.createMessagePhoto(title, text)
     if (currentOS === 'Android') {
@@ -122,7 +123,7 @@ When(/^ik plaats een bericht met pushbericht, met foto middels de foto toevoegen
     }
     await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.click()
     await expect(notificationsScreen.headerTitle).toHaveTextContaining(['Sluisbuurt op Zeeburgereiland', 'Sluisb…Zeeburgereiland'])
-    const { title, text } = randomTitleText()
+    const { title, text } = titleText(3)
     titleMessage = title
     await notificationsScreen.createMessagePhoto(title, text)
     if (currentOS === 'Android') {

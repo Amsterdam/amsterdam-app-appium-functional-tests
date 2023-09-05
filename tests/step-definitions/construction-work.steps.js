@@ -21,9 +21,9 @@ When(/ik open de Werkzaamheden module/, async () => {
   await expect(HomeScreen.headerTitle).toHaveText('Werkzaamheden')
 })
 
-When(/ik volg het project 'Amsterdam Science Park'/, async () => {
-  await gestures.checkProjectDisplayedWithScrollDownAndClick(ConstructionWorkScreen.constructionWorkCardProjectAmsterdamSciencePark, 30)
-  await expect(ConstructionWorkScreen.headerTitle).toHaveText('Amsterdam Science Park')
+When(/ik volg het project 'Houthaven'/, async () => {
+  await gestures.checkProjectDisplayedWithScrollDownAndClick(ConstructionWorkScreen.constructionWorkHouthavenProjectCard, 30)
+  await expect(ConstructionWorkScreen.headerTitle).toHaveText('Houthaven')
   await ConstructionWorkScreen.constructionWorkProjectFollowButton.click()
   const OS = await driver.capabilities.platformName
   if (OS === 'iOS') {
@@ -32,9 +32,9 @@ When(/ik volg het project 'Amsterdam Science Park'/, async () => {
   await driver.pause(2000)
 })
 
-When(/ik ontvolg het project 'Amsterdam Science Park'/, async () => {
-  await ConstructionWorkScreen.constructionWorkCardProjectAmsterdamSciencePark.click()
-  await expect(ConstructionWorkScreen.headerTitle).toHaveText('Amsterdam Science Park')
+When(/ik ontvolg het project 'Houthaven'/, async () => {
+  await ConstructionWorkScreen.constructionWorkHouthavenProjectCard.click()
+  await expect(ConstructionWorkScreen.headerTitle).toHaveText('Houthaven')
   await ConstructionWorkScreen.constructionWorkProjectFollowButton.click()
   await driver.pause(2000)
 })
@@ -67,63 +67,33 @@ When(/ik klik op de subpagina (.*)$/, async subpagina => {
   await ConstructionWorkScreen.tapSubPage(subpagina)
 })
 
-
-
-//Then - functional
 Then(/het project krijgt de status 'volgend'/, async () => {
   const OS = await driver.capabilities.platformName
   //iOS 
   if (OS === 'iOS') {
-    // const allowNotifications = await $(~Allow)
-    // await allowNotifications.click()
-    //await driver.executeScript("mobile: alert", [{ action: "accept" }]);
     const attribute = await ConstructionWorkScreen.constructionWorkProjectFollowButton.getAttribute("label");
     console.log(await attribute)
     await expect(await attribute).toEqual('Ontvolg dit project')
     await ConstructionWorkScreen.headerBackButton.click()
-    await gestures.checkProjectDisplayedWithScrollUp(ConstructionWorkScreen.constructionWorkCardProjectAmsterdamSciencePark, 30)
-    const projectCardLabel = await ConstructionWorkScreen.constructionWorkCardProjectAmsterdamSciencePark.getAttribute("label")
+    await gestures.checkProjectDisplayedWithScrollUp(ConstructionWorkScreen.constructionWorkHouthavenProjectCard, 30)
+    const projectCardLabel = await ConstructionWorkScreen.constructionWorkHouthavenProjectCard.getAttribute("label")
     console.log(await projectCardLabel)
     console.log(typeof await projectCardLabel)
-    //await expect(projectCardLabel).toContain(['Volgend', 'Berichten'])
-    //chai.expect(await projectCardLabel).to.have.any.keys('Volgend', 'Berichten')
-    //chai.expect(await projectCardLabel).to.include.any('Volgend', 'Berichten')
-    //await expect(await projectCardLabel).toHaveTextContaining(['Volgend', 'Berichten'])
-    async function checkElementContainsExpectedValues(element) {
-      // Define the expected values
-      const expectedValues = ['Volgend', 'Berichten'];
-      // Check if the element text contains any of the expected values
-      const containsExpectedValue = expectedValues.some(value => element.includes(value));
-      // Assertion
-      chai.assert.ok(containsExpectedValue, `Element does not contain any of the expected values: ${expectedValues.join(', ')}`);
-    }
-
-    // Usage example
-    (async () => {
-      // Assuming you have located the element and stored it in a variable called 'element'
-
-      try {
-        await checkElementContainsExpectedValues(await projectCardLabel);
-        console.log('Assertion passed!');
-      } catch (error) {
-        console.error('Assertion failed:', error.message);
-      }
-    })
+    // Define the expected values
+    const expectedValues = ['Volgend', 'Berichten'];
+    // Check if the element text contains any of the expected values
+    const containsExpectedValue = expectedValues.some(value => projectCardLabel.includes(value));
+    chai.assert.isTrue(containsExpectedValue, 'The project card label contains "Volgend" or "Berichten"');
   }
   //Android:
   else {
     await expect(ConstructionWorkScreen.constructionWorkProjectFollowButtonLabel).toHaveText('Volgend')
     await ConstructionWorkScreen.headerBackButton.click()
-    await gestures.checkProjectDisplayedWithScrollUp(ConstructionWorkScreen.constructionWorkCardProjectAmsterdamSciencePark, 30)
+    await gestures.checkProjectDisplayedWithScrollUp(ConstructionWorkScreen.constructionWorkHouthavenProjectCard, 30)
     //await expect(ConstructionWorkScreen.constructionWorkProjectFollowingTraitLabel).toHaveText('Volgend')
-    const projectCardLabel = await ConstructionWorkScreen.constructionWorkCardProjectAmsterdamSciencePark.getAttribute("contentDescription")
+    const projectCardLabel = await ConstructionWorkScreen.constructionWorkHouthavenProjectCard.getAttribute("contentDescription")
     console.log(await projectCardLabel)
     console.log(typeof await projectCardLabel)
-    //await expect(projectCardLabel).toContain(['Volgend', 'Berichten'])
-    //chai.expect(await projectCardLabel).to.have.any.keys('Volgend', 'Berichten')
-    //chai.expect(await projectCardLabel).to.include.any('Volgend', 'Berichten')
-    //await expect(await projectCardLabel).toHaveTextContaining(['Volgend', 'Berichten'])
-    //async function checkElementContainsExpectedValues(element) {
     // Define the expected values
     const expectedValues = ['Volgend', 'Berichten'];
     // Check if the element text contains any of the expected values
@@ -138,29 +108,34 @@ Then(/de status 'volgend' verdwijnt/, async () => {
   if (OS === 'iOS') {
     const attribute = await ConstructionWorkScreen.constructionWorkProjectFollowButton.getAttribute("label");
     console.log(await attribute)
-    await expect(attribute).toEqual('Volgen')
+    await expect(attribute).toEqual('Volg dit project')
     await ConstructionWorkScreen.headerBackButton.click()
-    await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkCardProjectAmsterdamSciencePark, 30)
-    const projectCardLabel = await ConstructionWorkScreen.constructionWorkCardProjectAmsterdamSciencePark.getAttribute("label")
+    await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkHouthavenProjectCard, 30)
+    const projectCardLabel = await ConstructionWorkScreen.constructionWorkHouthavenProjectCard.getAttribute("label")
     await expect(projectCardLabel).not.toExist()
   }
   //Android:
   else {
     await expect(ConstructionWorkScreen.constructionWorkProjectFollowButtonLabel).toHaveText('Volgen')
     await ConstructionWorkScreen.headerBackButton.click()
-    await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkCardProjectAmsterdamSciencePark, 30)
+    await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkHouthavenProjectCard, 30)
     await expect(ConstructionWorkScreen.constructionWorkProjectFollowingTraitLabel).not.toExist()
   }
 })
 
 Then(/krijg ik de juiste zoekresultaten in het 'Zoek in werkzaamheden' scherm/, async () => {
-  await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkFoodCenterAmsterdamProjectCard, 4)
   await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkCardProjectAmsterdamSciencePark, 4)
-  //await gestures.checkProjectDisplayedWithScrollDown(ConstructionWorkScreen.constructionWorkCardProjectDijksgrachtOost, 4)
+  await gestures.swipeDown()
+  await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkFoodCenterAmsterdamProjectCard, 4)
+  await gestures.swipeDown()
   await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkAmsterdamZuidoostProjectCard, 4)
+  await gestures.swipeDown()
   await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkCentrumgebiedAmsterdamNoordProjectCard, 4)
+  await gestures.swipeDown()
   await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkAmsterdamseBosProjectCard, 4)
+  await gestures.swipeDown()
   await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkDeEntreeProjectCard, 4)
+  await gestures.swipeDown()
   await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkCardProjectCentrumeiland, 4)
 })
 
