@@ -110,7 +110,7 @@ sharedconfig.exclude = [
     "./tests/features/visual-percy/redirects.feature",
     "./tests/features/visual-percy/report-problem.feature",
     "./tests/features/visual-percy/waste-guide.feature",
-    "./tests/features/visual-percy/my-location-construction-work-android.feature",
+    //"./tests/features/visual-percy/my-location-construction-work-android.feature",
     //"./tests/features/visual-percy/my-location-waste-guide-android copy.feature"
 ]
 

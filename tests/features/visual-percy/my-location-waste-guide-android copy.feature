@@ -1,4 +1,4 @@
-Feature: Locatievoorzieningen
+Feature: Locatievoorzieningen afvalwijzer
 
     @BeforeClean @AfterClean
     Scenario: De afvalwijzer toont de juiste informatie bij gebruik van 'Mijn locatie'
