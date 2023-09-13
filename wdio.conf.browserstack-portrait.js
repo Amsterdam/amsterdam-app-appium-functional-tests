@@ -1,4 +1,4 @@
-import { bsUrlAndroid, bsUrliOS } from './credentials.js';
+import { bsUrlAndroid } from './credentials.js';
 import { config as sharedconfig } from "./wdio.conf.shared.js";
 
 sharedconfig.capabilities = [
@@ -40,7 +40,7 @@ sharedconfig.capabilities = [
         //"appium:clearPackageData": true,
         'bstack:options': {
             "projectName": "amsterdam-app-ios",
-            "buildName": "Sprint 40 prerun - iOS",
+            "buildName": "Checkup sprint 39 - iOS",
             "appiumVersion": "2.0.0",
             "midSessionInstallApps": [bsUrliOS],
             "enableCameraImageInjection": "true",
@@ -48,6 +48,25 @@ sharedconfig.capabilities = [
             //"deviceOrientation": "landscape",
         },
     },
+    // {
+    //     platformName: "ios",
+    //     "appium:platformVersion": "15.6",
+    //     "appium:deviceName": "iPhone 11",
+    //     "appium:app": bsUrliOS,
+    //     "appium:noReset": "false",
+    //     //"appium:fullReset": "true",
+    //     //"appium:autoAcceptAlerts": "true",
+    //     //"appium:clearPackageData": true,
+    //     'bstack:options': {
+    //         "projectName": "amsterdam-app-ios",
+    //         "buildName": "Checkup sprint 39 - iOS",
+    //         "appiumVersion": "2.0.0",
+    //         "midSessionInstallApps": [bsUrliOS],
+    //         "enableCameraImageInjection": "true",
+    //         //"autoAcceptAlerts": "true"
+    //         //"deviceOrientation": "landscape",
+    //     },
+    // },
     // {
     //     platformName: "ios",
     //     "appium:platformVersion": "12",
@@ -90,7 +109,9 @@ sharedconfig.exclude = [
     "./tests/features/visual-percy/open-waste-container.feature",
     "./tests/features/visual-percy/redirects.feature",
     "./tests/features/visual-percy/report-problem.feature",
-    //"./tests/features/visual-percy/waste-guide.feature",
+    "./tests/features/visual-percy/waste-guide.feature",
+    "./tests/features/visual-percy/my-location-construction-work-android.feature",
+    //"./tests/features/visual-percy/my-location-waste-guide-android copy.feature"
 ]
 
 export const config = sharedconfig;

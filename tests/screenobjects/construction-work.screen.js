@@ -134,6 +134,18 @@ class ConstructionWorkScreen extends Screen {
     return helpers.createSelector("ConstructionWorkProjectContactButton")
   }
 
+  get constructionWorkChangeLocationButton() {
+    return helpers.createSelector("ConstructionWorkChangeLocationButton");
+  }
+
+  get constructionWorkChangeLocationButtonText() {
+    return helpers.createSelector("ConstructionWorkChangeLocationButtonText");
+  }
+
+  get constructionWorkRequestLocationButton() {
+    return helpers.createSelector("ConstructionWorkRequestLocationButton");
+  }
+
   async ConstructionWorkProjectArticlePreviewTitle(title) {
     const date = new Date();
     const day = date.getDate();

@@ -6,13 +6,49 @@ import gestures from '../Shared/helpers/gestures.js';
 import ConstructionWorkScreen from '../screenobjects/construction-work.screen.js';
 import HomeScreen from '../screenobjects/home.screen.js';
 import notificationsScreen from '../screenobjects/notifications.screen.js';
-
+import PermissionsScreen from '../screenobjects/permissions.screen.js';
+import ProfileScreen from '../screenobjects/profile.screen.js';
 
 //Given
 Given(/ik ben op het werkzaamheden scherm/, async () => {
   await HomeScreen.getHomeScreen()
   await HomeScreen.homeConstructionWorkModuleButton.click()
   await expect(HomeScreen.headerTitle).toHaveText('Werkzaamheden')
+})
+
+Given(/^ik gebruik 'Mijn locatie' met de permissie 'tijdens' bij werkzaamheden/, async () => {
+  await driver.setGeoLocation({ latitude: 52.363114, longitude: 4.907245, altitude: 0 })
+  await ConstructionWorkScreen.constructionWorkRequestLocationButton.waitForDisplayed(5000)
+  await ConstructionWorkScreen.constructionWorkRequestLocationButton.click()
+  await ProfileScreen.bottomSheetSelectLocationButton.waitForDisplayed(5000)
+  await ProfileScreen.bottomSheetSelectLocationButton.click()
+  await PermissionsScreen.androidAllowWhileUsingAppButton.click()
+  await driver.pause(5000)
+  await expect(ProfileScreen.bottomSheetSelectLocationButtonText).toHaveText('In de buurt van Weesperstraat 113')
+  await ProfileScreen.bottomSheetSelectLocationButton.click()
+  await driver.pause(2000)
+  //Deny location
+  // await PermissionsScreen.androidAllowDontAllowButton.click()
+  // await expect(shareLocationScreen.headerTitle).toHaveText('Locatie delen')
+  // await ProfileScreen.bottomSheetSelectLocationButton.click()
+})
+
+Given(/^ik gebruik 'Mijn locatie' met de permissie 'altijd vragen' bij werkzaamheden/, async () => {
+  await driver.setGeoLocation({ latitude: 52.363114, longitude: 4.907245, altitude: 0 })
+  await ConstructionWorkScreen.constructionWorkRequestLocationButton.waitForDisplayed(5000)
+  await ConstructionWorkScreen.constructionWorkRequestLocationButton.click()
+  await ProfileScreen.bottomSheetSelectLocationButton.waitForDisplayed(5000)
+  await ProfileScreen.bottomSheetSelectLocationButton.click()
+  await PermissionsScreen.androidAllowOnlyThisTimeButton.click()
+  await driver.pause(5000)
+  console.log(await driver.getGeoLocation())
+  await expect(ProfileScreen.bottomSheetSelectLocationButtonText).toHaveText('In de buurt van Weesperstraat 113')
+  await ProfileScreen.bottomSheetSelectLocationButton.click()
+  await driver.pause(2000)
+  //Deny location
+  // await PermissionsScreen.androidAllowDontAllowButton.click()
+  // await expect(shareLocationScreen.headerTitle).toHaveText('Locatie delen')
+  // await ProfileScreen.bottomSheetSelectLocationButton.click()
 })
 
 //When

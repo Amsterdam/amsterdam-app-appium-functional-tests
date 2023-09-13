@@ -22,4 +22,20 @@ export default class Screen {
     get headerBackButton() {
         return helpers.createSelector("HeaderBackButton")
     }
+
+    get allowLocationButton() {
+        this.allowLocationSelector()
+    }
+
+    async allowLocationSelector() {
+        const OS = await driver.capabilities.platformName
+        if (OS === 'iOS') {
+            return $(`-ios predicate string: label == "Allow While Using App"`)
+        }
+        //Android:
+        else { return helpers.createSelector("com.android.permissioncontroller:id/permission_allow_foreground_only_button") }
+
+        //return helpers.createSelector(`AddressSearchResult${adres}Button`)
+    }
+
 }

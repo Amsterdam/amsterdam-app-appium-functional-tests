@@ -65,6 +65,14 @@ class ProfileScreen extends Screen {
         return helpers.createSelector("BottomSheetChangeAddressButton")
     }
 
+    get bottomSheetSelectLocationButton() {
+        return helpers.createSelector("BottomSheetSelectLocationButton")
+    }
+
+    get bottomSheetSelectLocationButtonText() {
+        return helpers.createSelector("BottomSheetSelectLocationButtonText")
+    }
+
     // get deletedTxt() {
     //     return "~Gelukt, Het adres is verwijderd uit uw profiel."
     // }

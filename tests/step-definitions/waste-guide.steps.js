@@ -2,6 +2,7 @@ import { ClassicRunner, Eyes } from '@applitools/eyes-webdriverio';
 import percyScreenshot from '@percy/appium-app';
 import { Given, Then, When } from '@wdio/cucumber-framework';
 import HomeScreen from '../screenobjects/home.screen.js';
+import PermissionsScreen from '../screenobjects/permissions.screen.js';
 import ProfileScreen from '../screenobjects/profile.screen.js';
 import WasteGuideScreen from '../screenobjects/waste-guide.screen.js';
 
@@ -36,6 +37,43 @@ Given(/ik heb een adres ingevoerd/, async () => {
         await expect(WasteGuideScreen.wasteGuideChangeLocationButtonText).toHaveText('Balistraat 1-1')
     }
 })
+
+Given(/^ik gebruik 'Mijn locatie' met de permissie 'tijdens' bij de afvalwijzer/, async () => {
+    await driver.setGeoLocation({ latitude: 52.363114, longitude: 4.907245, altitude: 0 })
+    await WasteGuideScreen.wasteGuideRequestLocationButton.waitForDisplayed(5000)
+    await WasteGuideScreen.wasteGuideRequestLocationButton.click()
+    await ProfileScreen.bottomSheetSelectLocationButton.waitForDisplayed(5000)
+    await ProfileScreen.bottomSheetSelectLocationButton.click()
+    await PermissionsScreen.androidAllowWhileUsingAppButton.click()
+    await driver.pause(5000)
+    await expect(ProfileScreen.bottomSheetSelectLocationButtonText).toHaveText('In de buurt van Weesperstraat 113')
+    await ProfileScreen.bottomSheetSelectLocationButton.click()
+    await driver.pause(2000)
+    //Deny location
+    // await PermissionsScreen.androidAllowDontAllowButton.click()
+    // await expect(shareLocationScreen.headerTitle).toHaveText('Locatie delen')
+    // await ProfileScreen.bottomSheetSelectLocationButton.click()
+})
+
+Given(/^ik gebruik 'Mijn locatie' met de permissie 'altijd vragen' bij de afvalwijzer/, async () => {
+    await driver.setGeoLocation({ latitude: 52.363114, longitude: 4.907245, altitude: 0 })
+    await WasteGuideScreen.wasteGuideRequestLocationButton.waitForDisplayed(5000)
+    await WasteGuideScreen.wasteGuideRequestLocationButton.click()
+    await ProfileScreen.bottomSheetSelectLocationButton.waitForDisplayed(5000)
+    await ProfileScreen.bottomSheetSelectLocationButton.click()
+    await PermissionsScreen.androidAllowOnlyThisTimeButton.click()
+    await driver.pause(5000)
+    console.log(await driver.getGeoLocation())
+    await expect(ProfileScreen.bottomSheetSelectLocationButtonText).toHaveText('In de buurt van Weesperstraat 113')
+    await ProfileScreen.bottomSheetSelectLocationButton.click()
+    await driver.pause(2000)
+    //Deny location
+    // await PermissionsScreen.androidAllowDontAllowButton.click()
+    // await expect(shareLocationScreen.headerTitle).toHaveText('Locatie delen')
+    // await ProfileScreen.bottomSheetSelectLocationButton.click()
+})
+
+
 
 When(/^ik verander het adres naar (.*): dit is een adres (.*)$/, async (adres, omschrijving) => {
     await WasteGuideScreen.wasteGuideChangeLocationButton.waitForDisplayed(5000)
@@ -94,6 +132,10 @@ When(/ik selecteer of ik wel of niet een contract (.*) heb/, async contract => {
     } else {
         await WasteGuideScreen.wasteGuideSelectContractRadioGrouptrueRadioButton.click()
     }
+})
+
+Then(/ik zie het juiste adres in het afvalwijzerscherm/, async () => {
+    await expect(WasteGuideScreen.wasteGuideChangeLocationButtonText).toHaveText('In de buurt van Weesperstraat 113')
 })
 
 //Then - eyes

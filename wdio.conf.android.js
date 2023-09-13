@@ -10,6 +10,7 @@ sharedconfig.exclude = [
     "./tests/features/functional/mijnprofiel.feature",
     "./tests/features/functional/construction-work.feature",
     "./tests/features/functional/contact.feature",
+    //"./tests/features/functional/my-location.feature",
     "./tests/features/visual-eyes/about.feature",
     "./tests/features/visual-eyes/construction-work.feature",
     "./tests/features/visual-eyes/contact.feature",
@@ -25,13 +26,17 @@ sharedconfig.exclude = [
     "./tests/features/visual-percy/open-waste-container.feature",
     "./tests/features/visual-percy/redirects.feature",
     "./tests/features/visual-percy/report-problem.feature",
-    //"./tests/features/visual-percy/waste-guide.feature",
+    "./tests/features/visual-percy/waste-guide.feature",
+    "./tests/features/visual-percy/my-location-construction-work-android.feature",
+    //"./tests/features/visual-percy/my-location-waste-guide-android copy.feature"
+
+
 ]
 
 sharedconfig.capabilities = [{
     'appium:platformName': 'Android',
-    'appium:platformVersion': '13.0',
-    'appium:deviceName': 'Pixel 5',
+    'appium:platformVersion': '12.0',
+    'appium:deviceName': 'Pixel3atest',
     'appium:noReset': 'false',
     //This should be the exact same name from the device you use in the Android Emulator
     'appium:automationName': 'UiAutomator2',

@@ -1,4 +1,4 @@
-//import { deviceName, udid, xcodeOrgId, xcodeSigningId } from './iosCaps';
+import { deviceName, udid, xcodeOrgId, xcodeSigningId } from "./iosCaps.js";
 import { config as sharedconfig } from "./wdio.conf.shared.js";
 
 sharedconfig.exclude = [
@@ -41,19 +41,19 @@ sharedconfig.capabilities = [
         'appium:autoAcceptAlerts': false,
     },
     //real device
-    // {
-    //     'appium:platformName': 'iOS',
-    //     'appium:platformVersion': '16.5.1',
-    //     'appium:deviceName': deviceName,
-    //     'appium:automationName': 'XCUITest',
-    //     'appium:bundleId': 'nl.amsterdam.app.dev',
-    //     'appium:udid': udid,
-    //     'appium:xcodeOrgId': xcodeOrgId,
-    //     'appum: xcodeSigningId': xcodeSigningId,
-    //     'appium:app': 'app/iOS/AmsterdamTest.ipa',
-    //     'appium: updatedWDABundleid': 'nl.amsterdam.app.dev',
-    //     'appium:autoAcceptAlerts': true
-    // },
+    {
+        'appium:platformName': 'iOS',
+        'appium:platformVersion': '16.5.1',
+        'appium:deviceName': deviceName,
+        'appium:automationName': 'XCUITest',
+        'appium:bundleId': 'nl.amsterdam.app.dev',
+        'appium:udid': udid,
+        'appium:xcodeOrgId': xcodeOrgId,
+        'appum: xcodeSigningId': xcodeSigningId,
+        //'appium:app': 'app/iOS/AmsterdamTest.ipa',
+        'appium: updatedWDABundleid': 'nl.amsterdam.app.dev',
+        'appium:autoAcceptAlerts': true
+    },
 ]
 
 sharedconfig.services = ['appium']
