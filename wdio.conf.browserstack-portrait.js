@@ -23,8 +23,8 @@ sharedconfig.capabilities = [
         "appium:noReset": "false",
         "bstack:options": {
             "projectName": "amsterdam-app-android",
-            "buildName": "Sprint 40 prerun - Android",
-            "appiumVersion": "2.0.0",
+            "buildName": "Checkup sprint 39 - Android",
+            "appiumVersion": "2.0.1",
             "enableCameraImageInjection": "true",
             //"deviceOrientation": "landscape",
         },
@@ -60,7 +60,7 @@ sharedconfig.capabilities = [
     //     'bstack:options': {
     //         "projectName": "amsterdam-app-ios",
     //         "buildName": "Checkup sprint 39 - iOS",
-    //         "appiumVersion": "2.0.0",
+    //         "appiumVersion": "2.0.1",
     //         "midSessionInstallApps": [bsUrliOS],
     //         "enableCameraImageInjection": "true",
     //         //"autoAcceptAlerts": "true"
