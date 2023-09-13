@@ -6,7 +6,7 @@ sharedconfig.exclude = [
     "./tests/features/functional/notifications_simulator.feature",
     "./tests/features/functional/settings.feature",
     "./tests/features/functional/mijnprofiel.feature",
-    //"./tests/features/functional/construction-work.feature",
+    "./tests/features/functional/construction-work.feature",
     "./tests/features/functional/contact.feature",
     "./tests/features/functional/settings.feature",
     "./tests/features/visual-eyes/about.feature",

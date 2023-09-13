@@ -5,7 +5,7 @@ import { config as sharedconfig } from "./wdio.conf.shared.js";
 // Patterns to exclude.
 sharedconfig.exclude = [
     "./tests/features/functional/notifications.feature",
-    //"./tests/features/functional/notifications_simulator.feature",
+    "./tests/features/functional/notifications_simulator.feature",
     "./tests/features/functional/settings.feature",
     "./tests/features/functional/mijnprofiel.feature",
     "./tests/features/functional/construction-work.feature",
