@@ -145,6 +145,9 @@ class ConstructionWorkScreen extends Screen {
   get constructionWorkRequestLocationButton() {
     return helpers.createSelector("ConstructionWorkRequestLocationButton");
   }
+  get constructionWorkChangeLocationButtonText() {
+    return helpers.createSelector("ConstructionWorkChangeLocationButtonText");
+  }
 
   async ConstructionWorkProjectArticlePreviewTitle(title) {
     const date = new Date();

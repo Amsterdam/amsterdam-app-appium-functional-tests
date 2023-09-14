@@ -188,6 +188,10 @@ Then(/ik zie de projectdetailpagina van project 'Corantijnstraat'/, async () => 
   await expect(ConstructionWorkScreen.constructionWorkProjectContactButton).toBeDisplayed()
 })
 
+Then(/ik zie het juiste adres in het werkzaamhedenscherm/, async () => {
+  await expect(ConstructionWorkScreen.constructionWorkChangeLocationButtonText).toHaveText('In de buurt van Weesperstraat 113')
+})
+
 //Then - eyes
 Then(/ik zie het Werkzaamheden scherm - eyes/, async () => {
   const runner = new ClassicRunner()
