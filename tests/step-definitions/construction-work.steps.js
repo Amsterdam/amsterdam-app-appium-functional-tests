@@ -75,7 +75,7 @@ Then(/het project krijgt de status 'volgend'/, async () => {
     console.log(await attribute)
     await expect(await attribute).toEqual('Ontvolg dit project')
     await ConstructionWorkScreen.headerBackButton.click()
-    await gestures.checkProjectDisplayedWithScrollUp(ConstructionWorkScreen.constructionWorkHouthavenProjectCard, 30)
+    await gestures.checkProjectDisplayedWithScrollUp(ConstructionWorkScreen.constructionWorkHouthavenProjectCard, 40)
     const projectCardLabel = await ConstructionWorkScreen.constructionWorkHouthavenProjectCard.getAttribute("label")
     console.log(await projectCardLabel)
     console.log(typeof await projectCardLabel)
@@ -89,7 +89,7 @@ Then(/het project krijgt de status 'volgend'/, async () => {
   else {
     await expect(ConstructionWorkScreen.constructionWorkProjectFollowButtonLabel).toHaveText('Volgend')
     await ConstructionWorkScreen.headerBackButton.click()
-    await gestures.checkProjectDisplayedWithScrollUp(ConstructionWorkScreen.constructionWorkHouthavenProjectCard, 30)
+    await gestures.checkProjectDisplayedWithScrollUp(ConstructionWorkScreen.constructionWorkHouthavenProjectCard, 40)
     //await expect(ConstructionWorkScreen.constructionWorkProjectFollowingTraitLabel).toHaveText('Volgend')
     const projectCardLabel = await ConstructionWorkScreen.constructionWorkHouthavenProjectCard.getAttribute("contentDescription")
     console.log(await projectCardLabel)
