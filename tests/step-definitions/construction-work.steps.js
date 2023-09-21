@@ -51,6 +51,20 @@ Given(/^ik gebruik 'Mijn locatie' met de permissie 'altijd vragen' bij werkzaamh
   // await ProfileScreen.bottomSheetSelectLocationButton.click()
 })
 
+Given(/^ik geef geen toestemming om 'Mijn locatie' te delen bij werkzaamheden/, async () => {
+  //await driver.setGeoLocation({ latitude: 52.363114, longitude: 4.907245, altitude: 0 })
+  await ConstructionWorkScreen.constructionWorkRequestLocationButton.waitForDisplayed(5000)
+  await ConstructionWorkScreen.constructionWorkRequestLocationButton.click()
+  await ProfileScreen.bottomSheetSelectLocationButton.waitForDisplayed(5000)
+  await ProfileScreen.bottomSheetSelectLocationButton.click()
+  await PermissionsScreen.androidAllowDontAllowButton.click()
+  await driver.pause(5000)
+  //console.log(await driver.getGeoLocation())
+  //await expect(ProfileScreen.bottomSheetSelectLocationButtonText).toHaveText('In de buurt van Weesperstraat 113')
+  //await ProfileScreen.bottomSheetSelectLocationButton.click()
+  //await driver.pause(2000)
+})
+
 //When
 When(/ik open de Werkzaamheden module/, async () => {
   await HomeScreen.homeConstructionWorkModuleButton.click()

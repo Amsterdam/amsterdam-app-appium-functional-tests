@@ -1,4 +1,4 @@
-Feature: Werkzaamheden module
+Feature: Werkzaamheden module - percy
 
     @Before
     Scenario Outline: Projectdetails bekijken van project 'Corantijnstraat'

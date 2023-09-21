@@ -83,7 +83,7 @@ class ConstructionWorkScreen extends Screen {
   }
 
   get constructionWorkProjectsNavigatorSearchField() {
-    return helpers.createSelector("ConstructionWorkProjectsNavigatorSearchField")
+    return helpers.createContentSelector("Zoek in werkzaamheden")
   }
 
   get constructionWorkProjectsTextSearchField() {

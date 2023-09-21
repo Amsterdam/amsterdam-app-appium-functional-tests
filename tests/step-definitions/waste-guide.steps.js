@@ -63,7 +63,7 @@ Given(/^ik gebruik 'Mijn locatie' met de permissie 'altijd vragen' bij de afvalw
     await ProfileScreen.bottomSheetSelectLocationButton.click()
     await PermissionsScreen.androidAllowOnlyThisTimeButton.click()
     await driver.pause(5000)
-    console.log(await driver.getGeoLocation())
+    //console.log(await driver.getGeoLocation())
     await expect(ProfileScreen.bottomSheetSelectLocationButtonText).toHaveText('In de buurt van Weesperstraat 113')
     await ProfileScreen.bottomSheetSelectLocationButton.click()
     await driver.pause(2000)
@@ -73,7 +73,9 @@ Given(/^ik gebruik 'Mijn locatie' met de permissie 'altijd vragen' bij de afvalw
     // await ProfileScreen.bottomSheetSelectLocationButton.click()
 })
 
+Given(/^ik geef geen toestemming om 'Mijn locatie' te delen bij de afvalwijzer/, async () => {
 
+})
 
 When(/^ik verander het adres naar (.*): dit is een adres (.*)$/, async (adres, omschrijving) => {
     await WasteGuideScreen.wasteGuideChangeLocationButton.waitForDisplayed(5000)

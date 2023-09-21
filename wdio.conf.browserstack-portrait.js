@@ -1,4 +1,4 @@
-import { bsUrlAndroid } from './credentials.js';
+import { bsUrlAndroid, bsUrliOS } from './credentials.js';
 import { config as sharedconfig } from "./wdio.conf.shared.js";
 
 sharedconfig.capabilities = [
@@ -23,7 +23,7 @@ sharedconfig.capabilities = [
         "appium:noReset": "false",
         "bstack:options": {
             "projectName": "amsterdam-app-android",
-            "buildName": "Checkup sprint 39 - Android",
+            "buildName": "Sprint 40 checkup - Android",
             "appiumVersion": "2.0.1",
             "enableCameraImageInjection": "true",
             //"deviceOrientation": "landscape",
@@ -40,8 +40,8 @@ sharedconfig.capabilities = [
         //"appium:clearPackageData": true,
         'bstack:options': {
             "projectName": "amsterdam-app-ios",
-            "buildName": "Checkup sprint 39 - iOS",
-            "appiumVersion": "2.0.0",
+            "buildName": "Sprint 40 checkup - iOS",
+            "appiumVersion": "2.0.1",
             "midSessionInstallApps": [bsUrliOS],
             "enableCameraImageInjection": "true",
             //"autoAcceptAlerts": "true"
@@ -89,11 +89,11 @@ sharedconfig.services = [
 
 // Patterns to exclude.
 sharedconfig.exclude = [
-    "./tests/features/functional/notifications.feature",
+    "./tests/features/functional/settings.feature",
     "./tests/features/functional/notifications_simulator.feature",
-    "./tests/features/functional/launchapp.feature",
-    //"./tests/features/functional/settings.feature",
     "./tests/features/functional/mijnprofiel.feature",
+    "./tests/features/functional/notifications.feature",
+    "./tests/features/functional/launchapp.feature",
     "./tests/features/functional/construction-work.feature",
     "./tests/features/functional/contact.feature",
     "./tests/features/visual-eyes/about.feature",
@@ -110,8 +110,8 @@ sharedconfig.exclude = [
     "./tests/features/visual-percy/redirects.feature",
     "./tests/features/visual-percy/report-problem.feature",
     "./tests/features/visual-percy/waste-guide.feature",
-    //"./tests/features/visual-percy/my-location-construction-work-android.feature",
-    //"./tests/features/visual-percy/my-location-waste-guide-android copy.feature"
+    //"./tests/features/location-features/my-location-construction-work-android.feature",
+    "./tests/features/location-features/my-location-waste-guide-android.feature"
 ]
 
 export const config = sharedconfig;

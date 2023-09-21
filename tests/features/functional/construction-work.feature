@@ -1,4 +1,4 @@
-Feature: Werkzaamheden module
+Feature: Werkzaamheden module - functional
 
     @Before
     Scenario: Projecten volgen en ontvolgen
