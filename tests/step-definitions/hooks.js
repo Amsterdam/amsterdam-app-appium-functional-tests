@@ -3,7 +3,14 @@ import { bsUrliOS } from "../../credentials.js";
 import { openDeepLinkUrl } from "../Shared/helpers/openDeeplink.js";
 
 Before({ tags: '@Before' }, async () => {
-    await driver.launchApp()
+    const OS = await driver.capabilities.platformName
+    if (OS === 'iOS') {
+        await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
+    }
+    else {
+        await driver.launchApp()
+    }
+
 })
 
 BeforeAll({ tags: '@BeforeDeeplink' }, async () => {
@@ -28,7 +35,7 @@ Before({ tags: '@BeforeClean' }, async () => {
     // Check if we are a simulator
     if ('udid' in driver.capabilities && simulatorRegex.test(driver.capabilities.udid) && currentOS === 'iOS') {
         await driver.installApp('/Users/moniquevanbenthem/testing/amsterdam-app-functional/app/iOS/Amsterdam test.app')
-        await driver.launchApp()
+        await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
     }
     else if (currentOS === 'iOS') {
         await driver.installApp(bsUrliOS)
@@ -40,13 +47,18 @@ Before({ tags: '@BeforeClean' }, async () => {
 
 
 After({ tags: '@After' }, async function () {
-    await driver.closeApp()
+    const currentOS = driver.capabilities.platformName
+    if (currentOS === 'iOS') {
+        await driver.executeScript('mobile: terminateApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
+    } else {
+        driver.closeApp()
+    }
 });
 
 After({ tags: '@AfterClean' }, async function () {
     const currentOS = driver.capabilities.platformName
     if (currentOS === 'iOS') {
-        await driver.closeApp()
+        await driver.executeScript('mobile: terminateApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
         await driver.removeApp('nl.amsterdam.app.dev')
     } else {
         driver.closeApp()
