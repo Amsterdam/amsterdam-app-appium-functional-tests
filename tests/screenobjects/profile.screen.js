@@ -13,6 +13,14 @@ class ProfileScreen extends Screen {
         return helpers.createSelector("AddressInstructionParagraph")
     }
 
+    get addressAddButtonTitle() {
+        return helpers.createSelector("AddressAddButtonTitle")
+    }
+
+    get addressAddButtonText() {
+        return helpers.createSelector("AddressAddButtonText")
+    }
+
     get addressAddButton() {
         return helpers.createSelector("AddressAddButton")
     }
@@ -22,7 +30,7 @@ class ProfileScreen extends Screen {
     }
 
     get addressSearchResultWeesperstraat113() {
-        return helpers.createSelector("AddressSearchResultWeesperstraat 113Button")
+        return helpers.createContentSelector("Weesperstraat 113")
     }
 
     // get addressSearchResultBalistraat1hg1() {
@@ -73,12 +81,41 @@ class ProfileScreen extends Screen {
         return helpers.createSelector("BottomSheetSelectLocationButtonText")
     }
 
-    // get deletedTxt() {
-    //     return "~Gelukt, Het adres is verwijderd uit uw profiel."
-    // }
+    get addedTxt() {
+        return helpers.createContentSelector("Gelukt, Het adres is toegevoegd aan uw profiel.")
+    }
 
     get deletedTxt() {
         return helpers.createContentSelector("Gelukt, Het adres is verwijderd uit uw profiel.")
+    }
+
+    get addressLocationPrivacyInfoButton() {
+        const OS = driver.capabilities.platformName
+        if (OS === 'iOS') {
+            return $(`-ios predicate string: label == "Hoe gebruiken we uw adres en locatie?"`)
+        }
+        //Android:
+        else {
+            const selector = 'new UiSelector().text("Hoe gebruiken we uw adres en locatie?").className("android.view.View")'
+            const androidSelector = $(`android=${selector}`)
+            return androidSelector
+        }
+    }
+
+    get addressPrivacyInfoTitle() {
+        return helpers.createSelector("AddressPrivacyInfoTitle")
+    }
+
+    get addressPrivacyInfoModalHeaderCloseButton() {
+        return helpers.createSelector("AddressPrivacyInfoModalHeaderCloseButton")
+    }
+
+    get addressPrivacyInfoModalCloseButton() {
+        return helpers.createSelector("AddressPrivacyInfoModalCloseButton")
+    }
+
+    get addressPrivacyInfoModalCloseButtonLabel() {
+        return helpers.createSelector("AddressPrivacyInfoModalCloseButtonLabel")
     }
 
     async addressSelector(adres) {
@@ -98,12 +135,12 @@ class ProfileScreen extends Screen {
         await this.addressStreetInputSearchField.addValue(adres)
     }
 
-    async checkAddressAdded(adres, postcode) {
-        await expect(this.addressTitle).toBeDisplayed()
-        await expect(this.addressStreetnameAndNumberText).toBeDisplayed()
-        await expect(this.addressPostalcodeAndCityText).toBeDisplayed()
-        await expect(this.addressStreetnameAndNumberText).toHaveText(adres)
-        await expect(this.addressPostalcodeAndCityText).toHaveText(postcode)
+    async checkAddressAdded(adres) {
+        await expect(this.addedTxt).toBeDisplayed()
+        await expect(this.addressAddButtonTitle).toBeDisplayed()
+        await expect(this.addressAddButtonText).toBeDisplayed()
+        await expect(this.addressAddButtonTitle).toHaveText('Mijn adres')
+        await expect(this.addressAddButtonText).toHaveText(adres)
     }
 }
 

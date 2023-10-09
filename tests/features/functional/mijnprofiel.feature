@@ -13,13 +13,11 @@ Feature: Adreszoeker
         When ik selecteer het adres
         Then mijn adres is succesvol "toegevoegd"
 
-
     @BeforeClean @AfterClean
     Scenario Outline: Adres wijzigen
         Given ik heb een adres toegevoegd
         When ik wijzig mijn adres
         Then mijn adres is succesvol "gewijzigd"
-
 
     @BeforeClean @AfterClean
     Scenario Outline: Adres verwijderen
@@ -32,23 +30,22 @@ Feature: Adreszoeker
             | status     |
             | verwijderd |
 
+    @BeforeClean @AfterClean
+    Scenario Outline: Privacy en locatie informatie bekijken
+        Given ik ben op het mijn profiel scherm
+        When ik klik op 'Hoe gebruiken we uw adres en locatie?'
+        Then ik zie de privacy en locatie informatie
+        When ik sluit het scherm middels de <button> button
+        Then ik ben terug op het mijn profiel scherm
+        Examples:
+            | button               |
+            | close                |
+            | Oké, ik begrijp het! |
 
 
 
 
 
 
-# Scenario: Adres toevoegen - Gebruiker vult eerst straat in, daarn huisnummer in apart zoekveld
-#
-# Scenario: Adres zoeken op postcode
-#
-# Scenario: Adres wijzigen
-#
-# Scenario: Adres verwijderen
-#
-#
-#
-#
-# Scenario: Mijn profiel - Adres onbekend - visuele check
-#
-# Scenario: Mijn profiel - Adres bekend - visuele check
+
+
