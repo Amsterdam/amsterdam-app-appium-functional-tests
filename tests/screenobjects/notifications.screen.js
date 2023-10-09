@@ -191,8 +191,10 @@ class NotificationsScreen extends Screen {
 
   async addPhotoAndroid() {
     await this.constructionWorkEditorCreateMessageAddImageButton.click()
-    if (this.emulatorAllowAccessPhotos.isDisplayed == true) {
-      await this.emulatorAllowAccessPhotos.click()
+    await driver.pause(2000)
+    const allowButton = helpers.createSelector('com.android.permissioncontroller:id/permission_allow_button')
+    if (await allowButton.isDisplayed() == true) {
+      await allowButton.click()
     }
     if (this.downloadButton.isDisplayed() == true) {
       await this.downloadButton.click()

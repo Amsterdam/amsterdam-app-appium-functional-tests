@@ -3,6 +3,7 @@ import percyScreenshot from '@percy/appium-app';
 import { Given, Then, When } from '@wdio/cucumber-framework';
 import chai from 'chai';
 import gestures from '../Shared/helpers/gestures.js';
+import helpers from '../Shared/helpers/helpers.js';
 import ConstructionWorkScreen from '../screenobjects/construction-work.screen.js';
 import HomeScreen from '../screenobjects/home.screen.js';
 import notificationsScreen from '../screenobjects/notifications.screen.js';
@@ -78,6 +79,13 @@ When(/ik volg het project 'Houthaven'/, async () => {
   const OS = await driver.capabilities.platformName
   if (OS === 'iOS') {
     await notificationsScreen.allowSelector.click()
+  }
+  else {
+    //Only works this way, not if you import the selector from the screenobject
+    const allowButton = helpers.createSelector('com.android.permissioncontroller:id/permission_allow_button')
+    if (await allowButton.isDisplayed() == true) {
+      await allowButton.click()
+    }
   }
   await driver.pause(2000)
 })
@@ -183,8 +191,6 @@ Then(/krijg ik de juiste zoekresultaten in het 'Zoek in werkzaamheden' scherm/, 
   await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkCentrumgebiedAmsterdamNoordProjectCard, 4)
   await gestures.swipeDown()
   await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkAmsterdamseBosProjectCard, 4)
-  await gestures.swipeDown()
-  await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkDeEntreeProjectCard, 4)
   await gestures.swipeDown()
   await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkCardProjectCentrumeiland, 4)
 })

@@ -149,6 +149,12 @@ class ConstructionWorkScreen extends Screen {
     return helpers.createSelector("ConstructionWorkChangeLocationButtonText");
   }
 
+  get androidAllowNotificationsButton() {
+    const androidSelector = 'new UiSelector().text("Allow").className("android.widget.Button")'
+    const selector = $(`android=${androidSelector}`)
+    return selector
+  }
+
   async ConstructionWorkProjectArticlePreviewTitle(title) {
     const date = new Date();
     const day = date.getDate();

@@ -43,6 +43,7 @@ Given(/ik ben OM\/CA en heb een plaats berichten module in de app/, async () => 
             package: "com.android.chrome "
         });
         //This code is for android simulator
+        //Only works this way, not if you import the selector from the screenobject
         const acceptContinueButton = helpers.createSelector('com.android.chrome:id/terms_accept')
         if (await acceptContinueButton.isDisplayed() == true) {
             await acceptContinueButton.click()
@@ -50,6 +51,10 @@ Given(/ik ben OM\/CA en heb een plaats berichten module in de app/, async () => 
         const noThanksButton = helpers.createSelector('com.android.chrome:id/negative_button')
         if (await noThanksButton.isDisplayed() == true) {
             await noThanksButton.click()
+        }
+        const allowButton = helpers.createSelector('com.android.permissioncontroller:id/permission_allow_button')
+        if (await allowButton.isDisplayed() == true) {
+            await allowButton.click()
         }
     }
     await notificationsScreen.headerTitle.waitForDisplayed(10000)
@@ -108,6 +113,7 @@ When(/^ik plaats een bericht zonder pushbericht, met foto middels de foto toevoe
         await notificationsScreen.addPhotoiOS()
     }
     await notificationsScreen.constructionWorkEditorCreateMessageSubmitButton.click()
+    //Deze faalt vanwege een 403 error bij post image: bug 93577
     await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.waitForDisplayed()
     await expect(notificationsScreen.headerTitle).toHaveText('Plaats berichten')
     await expect(notificationsScreen.successMessageAlert).toBeDisplayed()

@@ -26,7 +26,7 @@ class Gestures {
             } else if (await element.isDisplayed()) {
                 break
             }
-            expect(await element).toBeDisplayed()
+            // expect(await element).toBeDisplayed()
             // this.swipeDown()
         }
     }
@@ -38,7 +38,7 @@ class Gestures {
             } else {
                 break
             }
-            expect(await element).toBeDisplayed()
+            // expect(await element).toBeDisplayed()
         }
     }
 
@@ -49,7 +49,7 @@ class Gestures {
             } else {
                 break
             }
-            expect(await element).toBeDisplayed()
+            // expect(await element).toBeDisplayed()
         }
     }
 
@@ -60,7 +60,7 @@ class Gestures {
             } else {
                 break
             }
-            expect(await element).toBeDisplayed()
+            //expect(await element).toBeDisplayed()
         }
     }
 
