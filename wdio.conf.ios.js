@@ -2,7 +2,7 @@ import { config as sharedconfig } from "./wdio.conf.shared.js";
 
 sharedconfig.exclude = [
     "./tests/features/functional/notifications.feature",
-    "./tests/features/functional/notifications_simulator.feature",
+    //"./tests/features/functional/notifications_simulator.feature",
     "./tests/features/functional/settings.feature",
     "./tests/features/functional/mijnprofiel.feature",
     "./tests/features/functional/construction-work.feature",
@@ -23,7 +23,7 @@ sharedconfig.exclude = [
     "./tests/features/visual-percy/report-problem.feature",
     "./tests/features/visual-percy/waste-guide.feature",
     "./tests/features/functional/launchapp.feature",
-    //"./tests/features/location-features/my-location-waste-guide-android.feature",
+    "./tests/features/location-features/my-location-waste-guide-android.feature",
     "./tests/features/location-features/my-location-construction-work-android.feature"
 ]
 
@@ -31,7 +31,7 @@ sharedconfig.exclude = [
 sharedconfig.capabilities = [
     {
         'appium:platformName': 'iOS',
-        'appium:platformVersion': '16.4',
+        'appium:platformVersion': '17.0',
         'appium:deviceName': 'iPhone 11',
         //'appium:platformVersion': '16.3.1',
         //This should be the exact same name from the device you use in the Android Emulator

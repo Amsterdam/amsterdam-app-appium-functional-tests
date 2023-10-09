@@ -23,7 +23,7 @@ sharedconfig.capabilities = [
         "appium:noReset": "false",
         "bstack:options": {
             "projectName": "amsterdam-app-android",
-            "buildName": "Sprint 40 checkup - Android",
+            "buildName": "Sprint 40 fixed - Android",
             "appiumVersion": "2.0.1",
             "enableCameraImageInjection": "true",
             //"deviceOrientation": "landscape",
@@ -40,7 +40,7 @@ sharedconfig.capabilities = [
         //"appium:clearPackageData": true,
         'bstack:options': {
             "projectName": "amsterdam-app-ios",
-            "buildName": "Sprint 40 checkup - iOS",
+            "buildName": "Sprint 40 fixed - iOS",
             "appiumVersion": "2.0.1",
             "midSessionInstallApps": [bsUrliOS],
             "enableCameraImageInjection": "true",
@@ -89,13 +89,13 @@ sharedconfig.services = [
 
 // Patterns to exclude.
 sharedconfig.exclude = [
-    "./tests/features/functional/settings.feature",
+    // "./tests/features/functional/settings.feature",
     "./tests/features/functional/notifications_simulator.feature",
-    "./tests/features/functional/mijnprofiel.feature",
-    "./tests/features/functional/notifications.feature",
+    //"./tests/features/functional/mijnprofiel.feature",
+    //"./tests/features/functional/notifications.feature",
     "./tests/features/functional/launchapp.feature",
-    "./tests/features/functional/construction-work.feature",
-    "./tests/features/functional/contact.feature",
+    //"./tests/features/functional/construction-work.feature",
+    //"./tests/features/functional/contact.feature",
     "./tests/features/visual-eyes/about.feature",
     "./tests/features/visual-eyes/construction-work.feature",
     "./tests/features/visual-eyes/contact.feature",
@@ -111,7 +111,7 @@ sharedconfig.exclude = [
     "./tests/features/visual-percy/report-problem.feature",
     "./tests/features/visual-percy/waste-guide.feature",
     //"./tests/features/location-features/my-location-construction-work-android.feature",
-    "./tests/features/location-features/my-location-waste-guide-android.feature"
+    //"./tests/features/location-features/my-location-waste-guide-android.feature"
 ]
 
 export const config = sharedconfig;
