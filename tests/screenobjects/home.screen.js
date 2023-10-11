@@ -17,10 +17,6 @@ class HomeScreen extends Screen {
         return helpers.createSelector("HomeWasteGuideModuleButton")
     }
 
-    get homeOpenWasteContainerModuleButton() {
-        return helpers.createSelector("HomeOpenWasteContainerModuleButton")
-    }
-
     get homeReportProblemModuleButton() {
         return helpers.createSelector("HomeReportProblemModuleButton")
     }
@@ -61,9 +57,6 @@ class HomeScreen extends Screen {
             case 'Afvalwijzer':
                 await expect(this.homeWasteGuideModuleButton).toBeDisplayed()
                 break
-            case 'Gft-container openen':
-                await expect(this.homeOpenWasteContainerModuleButton).toBeDisplayed()
-                break
             case 'Werkzaamheden':
                 await expect(this.homeConstructionWorkModuleButton).toBeDisplayed()
                 break
@@ -94,9 +87,6 @@ class HomeScreen extends Screen {
             case 'Afvalwijzer':
                 await expect(this.homeWasteGuideModuleButton).not.toBeDisplayed()
                 break
-            case 'Gft-container openen':
-                await expect(this.homeOpenWasteContainerModuleButton).not.toBeDisplayed()
-                break
             case 'Werkzaamheden':
                 await expect(this.homeConstructionWorkModuleButton).not.toBeDisplayed()
                 break
@@ -124,7 +114,6 @@ class HomeScreen extends Screen {
 
     async checkAllModulesNotExist() {
         await expect(this.homeWasteGuideModuleButton).not.toBeDisplayed()
-        await expect(this.homeOpenWasteContainerModuleButton).not.toBeDisplayed()
         await expect(this.homeConstructionWorkModuleButton).not.toBeDisplayed()
         await expect(this.homeReportProblemModuleButton).not.toBeDisplayed()
         await expect(this.homeContactModuleButton).not.toBeDisplayed()

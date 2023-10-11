@@ -10,10 +10,6 @@ class SettingsScreen extends Screen {
         return helpers.createSelector("HomeModuleSettingWasteGuideSwitch");
     }
 
-    get homeModuleSettingOpenWasteContainerSwitch() {
-        return helpers.createSelector("HomeModuleSettingOpenWasteContainerSwitch")
-    }
-
     get HomeModuleSettingConstructionWorkSwitch() {
         return helpers.createSelector("HomeModuleSettingConstructionWorkSwitch")
     }
@@ -39,10 +35,6 @@ class SettingsScreen extends Screen {
             case 'Afvalwijzer':
                 await gestures.checkProjectDisplayedWithScrollDownSlow(this.homeModuleSettingWasteGuideSwitch, 4)
                 await this.homeModuleSettingWasteGuideSwitch.click()
-                break
-            case 'Gft-container openen':
-                await gestures.checkProjectDisplayedWithScrollDown(this.homeModuleSettingOpenWasteContainerSwitch, 4)
-                await this.homeModuleSettingOpenWasteContainerSwitch.click()
                 break
             case 'Werkzaamheden':
                 await gestures.checkProjectDisplayedWithScrollDown(this.HomeModuleSettingConstructionWorkSwitch)
@@ -71,7 +63,6 @@ class SettingsScreen extends Screen {
 
     async switchAllModulesOff() {
         await this.homeModuleSettingWasteGuideSwitch.click()
-        await this.homeModuleSettingOpenWasteContainerSwitch.click()
         await this.HomeModuleSettingConstructionWorkSwitch.click()
         await this.HomeModuleSettingReportProblemSwitch.click()
         await this.HomeModuleSettingContactSwitch.click()

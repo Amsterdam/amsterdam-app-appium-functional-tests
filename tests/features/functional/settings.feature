@@ -6,13 +6,12 @@ Feature: Instellingen
         When ik zet de module <module> uit
         Then ik zie de module <module> niet in mijn home scherm
         Examples:
-            | module               |
-            | Afvalwijzer          |
-            | Gft-container openen |
-            | Werkzaamheden        |
-            | Melding doen         |
-            | Contact              |
-            | Direct regelen       |
+            | module         |
+            | Afvalwijzer    |
+            | Werkzaamheden  |
+            | Melding doen   |
+            | Contact        |
+            | Direct regelen |
 
     @BeforeClean @AfterClean
     Scenario Outline: Modules aanzetten
@@ -21,13 +20,12 @@ Feature: Instellingen
         When ik zet de module <module> aan
         Then ik zie de module <module> in mijn home scherm
         Examples:
-            | module               |
-            | Afvalwijzer          |
-            | Gft-container openen |
-            | Werkzaamheden        |
-            | Melding doen         |
-            | Contact              |
-            | Direct regelen       |
+            | module         |
+            | Afvalwijzer    |
+            | Werkzaamheden  |
+            | Melding doen   |
+            | Contact        |
+            | Direct regelen |
 
     @BeforeClean
     Scenario Outline: Over deze app module moet altijd aan staan
