@@ -1,5 +1,5 @@
-Feature: Adreszoeker
-    @Before
+Feature: Mijn profiel
+    @Before @After
     Scenario: Mijn profiel bekijken
         Given ik ben op het home scherm
         When ik ga naar mijn profiel
@@ -12,6 +12,8 @@ Feature: Adreszoeker
         Then krijg ik de juiste zoekresultaten in het 'Adres' scherm
         When ik selecteer het adres
         Then mijn adres is succesvol "toegevoegd"
+        When ik sluit de app en start de app opnieuw
+        Then het adres wordt nog steeds getoond
 
     @BeforeClean @AfterClean
     Scenario Outline: Adres wijzigen

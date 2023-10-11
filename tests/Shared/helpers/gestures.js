@@ -185,6 +185,24 @@ class Gestures {
         }
     }
 
+    async launchApp() {
+        const OS = driver.capabilities.platformName
+        if (OS === 'iOS') {
+            await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
+        }
+        else {
+            await driver.launchApp()
+        }
+    }
+
+    async closeApp() {
+        const currentOS = driver.capabilities.platformName
+        if (currentOS === 'iOS') {
+            await driver.executeScript('mobile: terminateApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
+        } else {
+            await driver.closeApp()
+        }
+    }
 }
 
 export default new Gestures;

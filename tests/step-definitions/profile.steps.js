@@ -1,7 +1,7 @@
 import { Given, Then, When } from "@wdio/cucumber-framework";
+import helpers from "../Shared/helpers/helpers.js";
 import HomeScreen from "../screenobjects/home.screen.js";
 import ProfileScreen from "../screenobjects/profile.screen.js";
-
 
 //Given
 Given(/ik ben op het mijn profiel scherm/, async () => {
@@ -15,6 +15,7 @@ Given(/ik heb een adres toegevoegd/, async () => {
     await HomeScreen.headerUserButton.click()
     await expect(HomeScreen.headerTitle).toHaveText('Mijn profiel')
     await ProfileScreen.addressAddButton.click()
+    await driver.pause(2000)
     await ProfileScreen.addAddress('Weesperstraat 113')
     await (ProfileScreen.addressSearchResultWeesperstraat113).click()
     await ProfileScreen.checkAddressAdded('Weesperstraat 113')
@@ -28,6 +29,7 @@ When(/ik ga naar mijn profiel/, async () => {
 
 When(/ik zoek op 'Weesperstraat 113'/, async () => {
     await ProfileScreen.addressAddButton.click()
+    await driver.pause(2000)
     await ProfileScreen.addAddress('Weesperstraat 113')
 })
 
@@ -36,10 +38,12 @@ When(/ik selecteer het adres/, async () => {
 })
 
 When(/ik sluit de app en start de app opnieuw/, async () => {
-    await driver.closeApp()
-    //  await driver.setCapability({ 'appium:noReset': 'false' })
-    await driver.launchApp()
-    //await driver.activateApp('nl.amsterdam.app.dev')
+    //android
+    // await driver.terminateApp('nl.amsterdam.app.dev')
+    // await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
+    await helpers.closeApp()
+    await helpers.launchApp()
+    //ios
 })
 
 When(/ik wijzig mijn adres/, async () => {
@@ -75,8 +79,7 @@ When(/ik sluit het scherm middels de (.*) button/, async button => {
 //Then
 Then(/ik zie mijn profiel met de mogelijkheid om een adres toe te voegen/, async () => {
     await expect(ProfileScreen.addressTitle).toBeDisplayed()
-    await expect(ProfileScreen.addressAddButtonTitle).toBeDisplayed()
-    await expect(ProfileScreen.addressAddButtonText).toBeDisplayed()
+    await expect(ProfileScreen.addressAddButton).toBeDisplayed()
     await expect(ProfileScreen.addressLocationPrivacyInfoButton).toBeDisplayed()
 })
 
@@ -91,16 +94,16 @@ Then(/^mijn adres is succesvol (.*)$/, async (status) => {
     else if (status == "verwijderd") {
         console.log(await status)
         await expect(ProfileScreen.deletedTxt).toBeDisplayed()
-        await expect(ProfileScreen.addressAddButtonText).toHaveText('Vul een adres in')
+        //Weer aanzetten als iOS testIDs gefixt zijn
+        //await expect(ProfileScreen.addressAddButtonText).toHaveText('Vul een adres in')
     }
 })
 
-Then(/^het adres (.*) met postcode (.*) wordt nog steeds getoond$/, async (adres) => {
+Then(/^het adres wordt nog steeds getoond$/, async () => {
     await HomeScreen.getHomeScreen()
     await HomeScreen.headerUserButton.click()
     await expect(HomeScreen.headerTitle).toHaveText('Mijn profiel')
-    await ProfileScreen.checkAddressAdded(adres, postcode)
-    await driver.removeApp('nl.amsterdam.app.dev')
+    await ProfileScreen.checkAddressAddedAfterRefresh('Weesperstraat 113')
 })
 
 Then(/het label over het adres verwijderen is verdwenen/, async () => {
@@ -111,7 +114,7 @@ Then(/ik zie de privacy en locatie informatie/, async () => {
     await expect(ProfileScreen.addressPrivacyInfoModalCloseButton).toBeDisplayed()
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
-        const attribute = await ProfileScreen.addressPrivacyInfoModalCloseButtonLabel.getAttribute("label");
+        const attribute = await ProfileScreen.addressPrivacyInfoModalCloseButton.getAttribute("label");
         console.log(await attribute)
         await expect(await attribute).toEqual('Oké, ik begrijp het!')
     }
