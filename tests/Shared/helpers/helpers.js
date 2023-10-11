@@ -1,3 +1,5 @@
+import { execSync } from 'child_process'
+
 class Helpers {
 
   createSelector(id) {
@@ -38,6 +40,16 @@ class Helpers {
       await driver.executeScript('mobile: terminateApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
     } else {
       await driver.terminateApp('nl.amsterdam.app.dev')
+    }
+  }
+
+  isEmulator() {
+    try {
+      const adbDevicesOutput = execSync('adb devices -l').toString();
+      return /(?:emulator|virtual)/i.test(adbDevicesOutput);
+    } catch (error) {
+      console.error('Error:', error.message);
+      return false; // Assume it's not an emulator in case of an error
     }
   }
 }

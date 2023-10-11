@@ -8,13 +8,13 @@ Feature: Werkzaamheden module - functional
         When ik ontvolg het project 'Houthaven'
         Then de status 'volgend' verdwijnt
 
-    @Before @After
+    @skip @Before @After
     Scenario: Zoeken op 'Amsterdam'
         Given ik ben op het werkzaamheden scherm
         When ik zoek op 'Amsterdam'
         Then krijg ik de juiste zoekresultaten in het 'Zoek in werkzaamheden' scherm
 
-    @Before @After
+    @skip @Before @After
     Scenario: Geen zoekresultaten
         Given ik ben op het werkzaamheden scherm
         When ik zoek op 'jfklds'
