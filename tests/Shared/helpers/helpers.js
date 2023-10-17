@@ -46,7 +46,7 @@ class Helpers {
   isEmulator() {
     try {
       const adbDevicesOutput = execSync('adb devices -l').toString();
-      return /(?:emulator|virtual)/i.test(adbDevicesOutput);
+      return /(?:emulator)/i.test(adbDevicesOutput);
     } catch (error) {
       console.error('Error:', error.message);
       return false; // Assume it's not an emulator in case of an error

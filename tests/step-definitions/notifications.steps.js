@@ -53,9 +53,7 @@ Given(/ik ben OM\/CA en heb een plaats berichten module in de app/, async () => 
             await noThanksButton.click()
         }
         const allowButton = helpers.createSelector('com.android.permissioncontroller:id/permission_allow_button')
-        //instead of checking if the button is displayed, we check if the device is an emulator.
-        //only on emulators we get this permission dialog
-        if (helpers.isEmulator) {
+        if (await allowButton.isDisplayed()) {
             await allowButton.click()
         }
     }

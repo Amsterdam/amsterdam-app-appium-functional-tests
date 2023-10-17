@@ -1,5 +1,6 @@
 import { After, Before, BeforeAll } from "@wdio/cucumber-framework";
 import { bsUrliOS } from "../../credentials.js";
+import helpers from "../Shared/helpers/helpers.js";
 import { openDeepLinkUrl } from "../Shared/helpers/openDeeplink.js";
 
 Before({ tags: '@Before' }, async () => {
@@ -10,7 +11,11 @@ Before({ tags: '@Before' }, async () => {
     else {
         await driver.launchApp()
     }
-
+    if (helpers.isEmulator()) {
+        console.log('This is an emulator.')
+    } else {
+        console.log('This is a real device.');
+    }
 })
 
 BeforeAll({ tags: '@BeforeDeeplink' }, async () => {
@@ -42,6 +47,12 @@ Before({ tags: '@BeforeClean' }, async () => {
         await driver.launchApp()
     } else {
         await driver.launchApp()
+    }
+
+    if (helpers.isEmulator()) {
+        console.log('This is an emulator.')
+    } else {
+        console.log('This is a real device.');
     }
 })
 

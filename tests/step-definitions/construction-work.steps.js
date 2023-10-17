@@ -83,19 +83,10 @@ When(/ik volg het project 'Houthaven'/, async () => {
   else {
     //Only works this way, not if you import the selector from the screenobject
     const allowButton = helpers.createSelector('com.android.permissioncontroller:id/permission_allow_button')
-    //const allowButton = 'new UiSelector().text("Allow").className("android.widget.Button")'
-    //const allowButton = '/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.Button[1]'
-
     //check if device is emulator or real device
     if (helpers.isEmulator()) {
       await allowButton.click()
-    } else {
-      console.log('This is a real device.');
     }
-    // await driver.execute('mobile:changePermissions', {
-    //   permissions: 'POST_NOTIFICATIONS',
-    //   action: 'grant'
-    // });
   }
   await driver.pause(2000)
 })

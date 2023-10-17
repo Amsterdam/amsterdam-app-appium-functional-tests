@@ -127,29 +127,12 @@ class ProfileScreen extends Screen {
         }
         //Android:
         else { return helpers.createContentSelector(adres) }
-
-        //return helpers.createSelector(`AddressSearchResult${adres}Button`)
     }
 
     async addAddress(adres) {
-        const OS = await driver.capabilities.platformName
-        if (OS === 'iOS') {
-            await expect(this.headerTitle).toHaveText('Adres')
-            await this.addressStreetInputSearchField.waitForDisplayed(3000)
-            const address = adres.split('')
-            await address.forEach(element => {
-                this.addressStreetInputSearchField.addValue(element)
-                driver.pause(100)
-            });
-        }
-        //Android:
-        else {
-            await expect(this.headerTitle).toHaveText('Adres')
-            await this.addressStreetInputSearchField.waitForDisplayed(3000)
-            await this.addressStreetInputSearchField.addValue(adres)
-        }
-
-
+        await expect(this.headerTitle).toHaveText('Adres')
+        await this.addressStreetInputSearchField.waitForDisplayed(3000)
+        await this.addressStreetInputSearchField.setValue(adres)
     }
 
     async checkAddressAdded() {
