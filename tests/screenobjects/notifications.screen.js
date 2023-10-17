@@ -174,18 +174,56 @@ class NotificationsScreen extends Screen {
     return helpers.createSelector("com.android.permissioncontroller:id/permission_allow_foreground_only_button")
   }
 
+  get constructionWorkEditorCreateMessageTitleTitle() {
+    const OS = driver.capabilities.platformName
+    if (OS === 'iOS') {
+      const selector = ''
+      return $(`-ios class chain:${selector}`)
+    } else {
+      const selector = 'new UiSelector().text("Wat is de titel van je bericht?").className("android.view.View")'
+      const button = $(`android=${selector}`)
+      return button
+    }
+  }
+
+  get constructionWorkEditorCreateMessageBodyTitle() {
+    const OS = driver.capabilities.platformName
+    if (OS === 'iOS') {
+      const selector = ''
+      return $(`-ios class chain:${selector}`)
+    } else {
+      const selector = 'new UiSelector().text("Wat is de tekst van je bericht?").className("android.view.View")'
+      const button = $(`android=${selector}`)
+      return button
+    }
+  }
+
   async createMessageNoPhoto(title, text) {
+    const OS = driver.capabilities.platformName
     await this.constructionWorkEditorCreateMessageTitleInput.waitForDisplayed(2000)
     await this.constructionWorkEditorCreateMessageTitleInput.addValue(title)
+    if (OS === 'Android') {
+      await this.constructionWorkEditorCreateMessageTitleTitle.click()
+    }
     await this.constructionWorkEditorCreateMessageBodyInput.addValue(text)
+    if (OS === 'Android') {
+      await this.constructionWorkEditorCreateMessageBodyTitle.click()
+    }
     await gestures.checkProjectDisplayedWithScrollDownShortScreen(this.constructionWorkEditorCreateMessageNextButton, 4)
     await this.constructionWorkEditorCreateMessageNextButton.click()
   }
 
   async createMessagePhoto(title, text) {
+    const OS = driver.capabilities.platformName
     await this.constructionWorkEditorCreateMessageTitleInput.waitForDisplayed(2000)
     await this.constructionWorkEditorCreateMessageTitleInput.addValue(title)
+    if (OS === 'Android') {
+      await this.constructionWorkEditorCreateMessageTitleTitle.click()
+    }
     await this.constructionWorkEditorCreateMessageBodyInput.addValue(text)
+    if (OS === 'Android') {
+      await this.constructionWorkEditorCreateMessageBodyTitle.click()
+    }
     await gestures.checkProjectDisplayedWithScrollDownShortScreen(this.constructionWorkEditorCreateMessageNextButton, 4)
   }
 
