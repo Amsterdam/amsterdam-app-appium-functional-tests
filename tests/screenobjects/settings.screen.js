@@ -26,9 +26,6 @@ class SettingsScreen extends Screen {
         return helpers.createSelector("HomeModuleSettingRedirectsSwitch")
     }
 
-    get HomeModuleSettingWelcomeSwitch() {
-        return helpers.createSelector("HomeModuleSettingWelcomeSwitch")
-    }
 
     async tapSettingsSwitchButton(module) {
         switch (module) {
@@ -52,10 +49,6 @@ class SettingsScreen extends Screen {
                 await gestures.checkProjectDisplayedWithScrollDown(this.HomeModuleSettingRedirectsSwitch, 4)
                 await this.HomeModuleSettingRedirectsSwitch.click()
                 break
-            case 'Welkomstscherm':
-                await gestures.checkProjectDisplayedWithScrollDown(this.HomeModuleSettingWelcomeSwitch, 4)
-                await this.HomeModuleSettingWelcomeSwitch.click()
-                break
             default:
                 assert.fail(`Module setting switch button ‘${module}’ doesn't exist`)
         }
@@ -68,8 +61,6 @@ class SettingsScreen extends Screen {
         await this.HomeModuleSettingContactSwitch.click()
         await gestures.checkProjectDisplayedWithScrollDown(this.HomeModuleSettingRedirectsSwitch, 4)
         await this.HomeModuleSettingRedirectsSwitch.click()
-        await gestures.checkProjectDisplayedWithScrollDown(this.HomeModuleSettingWelcomeSwitch, 4)
-        await this.HomeModuleSettingWelcomeSwitch.click()
     }
 }
 
