@@ -9,7 +9,8 @@ Before({ tags: '@Before' }, async () => {
         await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
     }
     else {
-        await driver.launchApp()
+        await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
+        //await driver.launchApp()
     }
     if (helpers.isEmulator()) {
         console.log('This is an emulator.')
@@ -44,9 +45,9 @@ Before({ tags: '@BeforeClean' }, async () => {
     }
     else if (currentOS === 'iOS') {
         await driver.installApp(bsUrliOS)
-        await driver.launchApp()
+        await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
     } else {
-        await driver.launchApp()
+        await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
     }
 
     if (helpers.isEmulator()) {
@@ -62,7 +63,7 @@ After({ tags: '@After' }, async function () {
     if (currentOS === 'iOS') {
         await driver.executeScript('mobile: terminateApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
     } else {
-        driver.closeApp()
+        await driver.terminateApp('nl.amsterdam.app.dev')
     }
 });
 
@@ -72,6 +73,10 @@ After({ tags: '@AfterClean' }, async function () {
         await driver.executeScript('mobile: terminateApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
         await driver.removeApp('nl.amsterdam.app.dev')
     } else {
-        driver.closeApp()
+        await driver.terminateApp('nl.amsterdam.app.dev')
+        //await driver.clearApp('nl.amsterdam.app.dev')
+        await driver.execute('mobile:clearApp', {
+            appId: 'nl.amsterdam.app.dev',
+        });
     }
 });
