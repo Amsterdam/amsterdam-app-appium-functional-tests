@@ -1,4 +1,4 @@
-import { bsUrliOS } from "../credentials.js";
+import { appiumVersion, bsUrliOS, buildNameIosTablet, projectName } from "../credentials.js";
 import { config as sharedconfig } from "../wdio.conf.shared.js";
 
 
@@ -10,9 +10,9 @@ sharedconfig.capabilities = [
         "appium:app": bsUrliOS,
         "appium:noReset": "false",
         'bstack:options': {
-            "projectName": "amsterdam-app-tablet-ios",
-            "buildName": "Sprint 42 - iOS - run 3",
-            "appiumVersion": "1.22.0",
+            "projectName": projectName,
+            "buildName": buildNameIosTablet,
+            "appiumVersion": appiumVersion,
             "midSessionInstallApps": [bsUrliOS],
             "enableCameraImageInjection": "true",
         },

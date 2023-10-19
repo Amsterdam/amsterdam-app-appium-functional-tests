@@ -1,4 +1,4 @@
-import { bsUrlAndroid } from '../credentials.js';
+import { appiumVersion, bsUrlAndroid, buildNameAndroidTablet, projectName } from '../credentials.js';
 import { config as sharedconfig } from "../wdio.conf.shared.js";
 
 sharedconfig.capabilities = [
@@ -10,9 +10,9 @@ sharedconfig.capabilities = [
         "appium:app": bsUrlAndroid,
         "appium:noReset": "false",
         'bstack:options': {
-            "projectName": "amsterdam-app-tablet-android",
-            "buildName": "Sprint 42",
-            "appiumVersion": "2.0.1",
+            "projectName": projectName,
+            "buildName": buildNameAndroidTablet,
+            "appiumVersion": appiumVersion,
             "enableCameraImageInjection": "true",
         },
     },

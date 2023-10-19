@@ -1,4 +1,4 @@
-import { bsUrlAndroid } from './credentials.js';
+import { appiumVersion, bsUrlAndroid, buildNameAndroidMobile, projectName } from './credentials.js';
 import { config as sharedconfig } from "./wdio.conf.shared.js";
 
 sharedconfig.capabilities = [
@@ -8,9 +8,9 @@ sharedconfig.capabilities = [
         "appium:deviceName": "Xiaomi Redmi Note 11",
         "appium:app": bsUrlAndroid,
         'bstack:options': {
-            "projectName": "amsterdam-app-mobile-android",
-            "buildName": "Sprint 42",
-            "appiumVersion": "2.0.1",
+            "projectName": projectName,
+            "buildName": buildNameAndroidMobile,
+            "appiumVersion": appiumVersion,
             "enableCameraImageInjection": "true",
         },
     },

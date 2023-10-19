@@ -1,4 +1,4 @@
-import { bsUrliOS } from '../credentials.js';
+import { appiumVersion, bsUrliOS, buildNameIosMobile, projectName } from '../credentials.js';
 import { config as sharedconfig } from "../wdio.conf.shared.js";
 
 sharedconfig.capabilities = [
@@ -9,9 +9,9 @@ sharedconfig.capabilities = [
         "appium:app": bsUrliOS,
         "appium:noReset": "false",
         'bstack:options': {
-            "projectName": "amsterdam-app-mobile-ios",
-            "buildName": "Sprint 42 - iOS - run 4",
-            "appiumVersion": "2.0.1",
+            "projectName": projectName,
+            "buildName": buildNameIosMobile,
+            "appiumVersion": appiumVersion,
             "midSessionInstallApps": [bsUrliOS],
             "enableCameraImageInjection": "true",
         },
