@@ -1,15 +1,12 @@
-import { join } from "path";
 import { config as sharedconfig } from "./wdio.conf.shared.js";
 
-
-// Patterns to exclude.
 sharedconfig.exclude = [
     "./tests/features/functional/notifications.feature",
-    //"./tests/features/functional/notifications_simulator.feature",
+    "./tests/features/functional/notifications_simulator.feature",
     "./tests/features/functional/settings.feature",
     "./tests/features/functional/mijnprofiel.feature",
     "./tests/features/functional/construction-work.feature",
-    "./tests/features/functional/contact.feature",
+    // "./tests/features/functional/contact.feature",
     "./tests/features/functional/waste-guide.feature",
     "./tests/features/visual-eyes/about.feature",
     "./tests/features/visual-eyes/construction-work.feature",
@@ -29,21 +26,37 @@ sharedconfig.exclude = [
     "./tests/features/functional/launchapp.feature",
     "./tests/features/location-features/my-location-waste-guide-android.feature",
     "./tests/features/location-features/my-location-construction-work-android.feature"
-
-
 ]
 
-sharedconfig.capabilities = [{
-    'appium:platformName': 'Android',
-    'appium:platformVersion': '13.0',
-    'appium:deviceName': 'Pixel_5',
-    'appium:noReset': 'false',
-    //This should be the exact same name from the device you use in the Android Emulator
-    'appium:automationName': 'UiAutomator2',
-    'appium:app': join(process.cwd(), 'app/Android/amsterdam-app.apk')
-}]
+//
+sharedconfig.capabilities = [
+    {
+        'appium:platformName': 'iOS',
+        'appium:platformVersion': '17.0',
+        'appium:deviceName': 'iPhone 11',
+        //'appium:platformVersion': '16.3.1',
+        //This should be the exact same name from the device you use in the Android Emulator
+        'appium:automationName': 'XCUITest',
+        //'appium:app': 'nl.amsterdam.app.dev',
+        'appium:app': 'app/iOS/Amsterdam test.app',
+        'appium:autoAcceptAlerts': false,
+    },
+    //real device
+    // {
+    //     'appium:platformName': 'iOS',
+    //     'appium:platformVersion': '16.5.1',
+    //     'appium:deviceName': deviceName,
+    //     'appium:automationName': 'XCUITest',
+    //     'appium:bundleId': 'nl.amsterdam.app.dev',
+    //     'appium:udid': udid,
+    //     'appium:xcodeOrgId': xcodeOrgId,
+    //     'appum: xcodeSigningId': xcodeSigningId,
+    //     //'appium:app': 'app/iOS/AmsterdamTest.ipa',
+    //     'appium: updatedWDABundleid': 'nl.amsterdam.app.dev',
+    //     'appium:autoAcceptAlerts': true
+    // },
+]
 
 sharedconfig.services = ['appium']
 
 export const config = sharedconfig;
-
