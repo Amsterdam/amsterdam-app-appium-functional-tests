@@ -13,6 +13,20 @@ class Helpers {
     const testID = currentOS === 'iOS' ? `~${id}` : `android=new UiSelector().descriptionMatches("${id}")`
     return $(testID)
   }
+
+  createTextBasedSelector(text, className) {
+    const currentOS = driver.capabilities.platformName
+    if (currentOS === 'iOS') {
+      const iOSTestID = `~${text}`
+      return $(iOSTestID)
+    } else {
+      const selector = `new UiSelector().text("${text}").className("${className}")`
+      const androidTestID = $(`android=${selector}`)
+      return androidTestID
+    }
+
+  }
+
   // export default function checkOS() {
   //   const currentOS = driver.capabilities.platformName
   //   return currentOS
