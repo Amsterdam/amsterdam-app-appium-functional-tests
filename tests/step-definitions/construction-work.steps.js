@@ -84,7 +84,8 @@ When(/ik volg het project 'Houthaven'/, async () => {
     //Only works this way, not if you import the selector from the screenobject
     const allowButton = helpers.createSelector('com.android.permissioncontroller:id/permission_allow_button')
     //check if device is emulator or real device
-    if (helpers.isEmulator()) {
+    //if (helpers.isEmulator()) {
+    if (await allowButton.isDisplayed()) {
       await allowButton.click()
     }
   }
