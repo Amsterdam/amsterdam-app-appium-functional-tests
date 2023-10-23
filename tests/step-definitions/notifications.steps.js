@@ -29,7 +29,7 @@ Given(/ik ben OM\/CA en heb een plaats berichten module in de app/, async () => 
     //await driver.switchContext('NATIVE_APP')
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
-        openDeepLinkUrl(url)
+        await openDeepLinkUrl(url)
         const openSelector = 'label == "Open" AND name == "Open" AND type == "XCUIElementTypeButton"'
         const open = $(`-ios predicate string:${openSelector}`);
         await open.waitForDisplayed()
