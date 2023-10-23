@@ -3,6 +3,7 @@ import { bsUrliOS } from "../../credentials.js";
 import helpers from "../Shared/helpers/helpers.js";
 
 Before({ tags: '@Before' }, async () => {
+    //launch app
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
         await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
@@ -11,6 +12,7 @@ Before({ tags: '@Before' }, async () => {
         await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
         //await driver.launchApp()
     }
+    //check if device is real or emulator
     if (helpers.isEmulator()) {
         console.log('This is an emulator.')
     } else {
