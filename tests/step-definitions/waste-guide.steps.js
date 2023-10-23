@@ -173,6 +173,11 @@ Then(/ik zie het Afvalwijzer scherm - percy/, async () => {
     await percyScreenshot('Afvalwijzer')
 })
 
+Then(/ik zie het Afvalwijzer scherm/, async () => {
+    await expect(WasteGuideScreen.wasteGuideRequestLocationButton).toBeDisplayed()
+    await expect(WasteGuideScreen.wasteGuideScreenTitle).toBeDisplayed()
+})
+
 Then(/^ik zie de juiste informatie in de afvalwijzer voor adressen (.*) - percy$/, async (omschrijving) => {
     await percyScreenshot(omschrijving, { fullPage: true, screenLengths: 8 })
 })

@@ -25,6 +25,10 @@ class WasteGuideScreen extends Screen {
         return helpers.createSelector("WasteGuideSelectContractRadioGrouptrueRadioButton")
     }
 
+    get wasteGuideScreenTitle() {
+        return helpers.createTextBasedSelector("Voor welke locatie wilt u informatie over afval?", "android.view.View")
+    }
+
 }
 
 export default new WasteGuideScreen();

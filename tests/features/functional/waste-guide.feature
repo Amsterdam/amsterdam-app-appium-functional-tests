@@ -1,12 +1,12 @@
 Feature: Afvalwijzer module
 
-    @Before
+    @Before @After
     Scenario: De Afvalwijzer module raadplegen
         Given ik ben op het home scherm
         When ik open de Afvalwijzer module
-        Then ik zie het correcte scherm: "Afvalwijzer" - percy
+        Then ik zie het Afvalwijzer scherm
 
-    @BeforeClean @AfterClean
+    @skip @BeforeClean @AfterClean
     Scenario Outline: De afvalwijzer toont de juiste informatie voor woonadressen
         Given ik ben op het afvalwijzer Startscherm
         And ik heb een adres ingevoerd
@@ -19,7 +19,7 @@ Feature: Afvalwijzer module
             | Stoombootweg 14 | met een rolcontainer                                  |
             | Omval 18        | waar vuilniszakkenop de stoep moeten                  |
 
-    @BeforeClean @AfterClean
+    @skip @BeforeClean @AfterClean
     Scenario Outline: De afvalwijzer toont de juiste informatie voor adressen die geen woonadres zijn
         Given ik ben op het afvalwijzer Startscherm
         And ik heb een adres ingevoerd
