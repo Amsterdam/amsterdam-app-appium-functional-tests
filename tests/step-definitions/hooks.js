@@ -1,7 +1,6 @@
-import { After, Before, BeforeAll } from "@wdio/cucumber-framework";
+import { After, Before } from "@wdio/cucumber-framework";
 import { bsUrliOS } from "../../credentials.js";
 import helpers from "../Shared/helpers/helpers.js";
-import { openDeepLinkUrl } from "../Shared/helpers/openDeeplink.js";
 
 Before({ tags: '@Before' }, async () => {
     const OS = await driver.capabilities.platformName
@@ -16,22 +15,6 @@ Before({ tags: '@Before' }, async () => {
         console.log('This is an emulator.')
     } else {
         console.log('This is a real device.');
-    }
-})
-
-BeforeAll({ tags: '@BeforeDeeplink' }, async () => {
-
-})
-Before({ tags: '@Deeplink' }, async () => {
-    const OS = await driver.capabilities.platformName
-    if (OS === 'iOS') {
-        await openDeepLinkUrl("https://api-backend.app-amsterdam.nl/omgevingsmanager/adc76105-50fe-4fd6-9602-b6b197df7ee0")
-    }
-    else {
-        await driver.execute('mobile:deepLink', {
-            url: "https://api-backend.app-amsterdam.nl/omgevingsmanager/adc76105-50fe-4fd6-9602-b6b197df7ee0",
-            package: "com.android.chrome "
-        });
     }
 })
 
