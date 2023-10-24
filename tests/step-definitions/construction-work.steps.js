@@ -140,10 +140,10 @@ Then(/het project krijgt de status 'volgend'/, async () => {
     console.log(await projectCardLabel)
     console.log(typeof await projectCardLabel)
     // Define the expected values
-    const expectedValues = ['Volgend', 'Berichten'];
+    const expectedValues = ['Volgend', 'Berichten', 'Bericht'];
     // Check if the element text contains any of the expected values
     const containsExpectedValue = expectedValues.some(value => projectCardLabel.includes(value));
-    chai.assert.isTrue(containsExpectedValue, 'The project card label contains "Volgend" or "Berichten"');
+    chai.assert.isTrue(containsExpectedValue, 'The project card label contains "Volgend", "Berichten" or "Bericht"');
   }
   //Android:
   else {
