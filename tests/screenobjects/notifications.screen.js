@@ -205,6 +205,10 @@ class NotificationsScreen extends Screen {
     if (OS === 'Android') {
       await this.constructionWorkEditorCreateMessageTitleTitle.click()
     }
+    //check if keyboard is shown
+    if (!(await driver.isKeyboardShown())) {
+      await this.constructionWorkEditorCreateMessageBodyInput.click()
+    }
     await this.constructionWorkEditorCreateMessageBodyInput.addValue(text)
     if (OS === 'Android') {
       await this.constructionWorkEditorCreateMessageBodyTitle.click()
