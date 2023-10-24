@@ -46,8 +46,13 @@ export async function openDeepLinkUrl(url) {
         }
 
         // Submit the URL and add a break
-        await addressBar.setValue(`${url}\uE007`);
+        if ((await urlField.isDisplayed())) {
+            await urlField.setValue(`${url}\uE007`);
+        } else {
+            await addressBar.setValue(`${url}\uE007`);
+        }
+        //await addressBar.setValue(`${url}\uE007`);
         //Bij ipad mini 2021 OS 15 werkt onderstaande niet, bovenstaande wel
-        // await urlField.setValue(`${url}\uE007`);
+        //await urlField.setValue(`${url}\uE007`);
     }
 }
