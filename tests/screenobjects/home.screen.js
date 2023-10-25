@@ -45,6 +45,14 @@ class HomeScreen extends Screen {
         return helpers.createSelector("HeaderModuleSettingsButton")
     }
 
+    get headerEnvironmentButton() {
+        return helpers.createSelector("HeaderEnvironmentButton")
+    }
+
+    get environmentProduction() {
+        return helpers.createContentSelector('Production')
+    }
+
     async getHomeScreen() {
         //await driver.launchApp()
         //await this.welcomeImageAndQuoteButton.click()
