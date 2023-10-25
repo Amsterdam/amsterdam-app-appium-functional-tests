@@ -27,9 +27,9 @@ Feature: Afvalwijzer module
         And ik selecteer of ik wel of niet een contract <contract> heb
         Then ik zie de juiste informatie in de afvalwijzer voor adressen <omschrijving> - percy
         Examples:
-            | adres           | omschrijving    |
-            | Amstel 1        | zonder contract |
-            | Javastraat 20-H | met contract    |
+            | adres           | omschrijving    | contract |
+            | Amstel 1        | zonder contract | nee      |
+            | Javastraat 20-H | met contract    | ja       |
 
 
 
