@@ -8,6 +8,10 @@ import WasteGuideScreen from '../screenobjects/waste-guide.screen.js';
 
 Given(/ik ben op het afvalwijzer Startscherm/, async () => {
     await HomeScreen.getHomeScreen()
+    await HomeScreen.headerEnvironmentButton.click()
+    await HomeScreen.environmentProduction.click()
+    await HomeScreen.headerBackButton.click()
+    await HomeScreen.homeWasteGuideModuleButton.waitForDisplayed(10000)
     await HomeScreen.homeWasteGuideModuleButton.click()
     await expect(HomeScreen.headerTitle).toHaveText('Afvalwijzer')
 })
@@ -104,6 +108,7 @@ When(/^ik verander het adres naar (.*): dit is een adres (.*)$/, async (adres, o
 })
 
 When(/ik voer een adres (.*) in dat geen woonadres is/, async adres => {
+    await WasteGuideScreen.wasteGuideChangeLocationButton.waitForDisplayed(5000)
     await WasteGuideScreen.wasteGuideChangeLocationButton.click()
     await ProfileScreen.bottomSheetSelectAddressButton.waitForDisplayed(2000)
     await ProfileScreen.bottomSheetChangeAddressButton.click()
