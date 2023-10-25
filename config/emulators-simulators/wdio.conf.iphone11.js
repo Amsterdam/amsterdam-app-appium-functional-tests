@@ -5,7 +5,7 @@ sharedconfig.exclude = [
     "../../tests/features/functional/notifications_simulator.feature",
     "../../tests/features/functional/settings.feature",
     "../../tests/features/functional/mijnprofiel.feature",
-    //"../../tests/features/functional/construction-work.feature",
+    "../../tests/features/functional/construction-work.feature",
     "../../tests/features/functional/contact.feature",
     "../../tests/features/functional/waste-guide.feature",
     "../../tests/features/visual-eyes/about.feature",
@@ -22,7 +22,7 @@ sharedconfig.exclude = [
     "../../tests/features/visual-percy/open-waste-container.feature",
     "../../tests/features/visual-percy/redirects.feature",
     "../../tests/features/visual-percy/report-problem.feature",
-    "../../tests/features/visual-percy/waste-guide.feature",
+    // "../../tests/features/visual-percy/waste-guide.feature",
     "../../tests/features/functional/launchapp.feature",
     "../../tests/features/location-features/my-location-waste-guide-android.feature",
     "../../tests/features/location-features/my-location-construction-work-android.feature"
