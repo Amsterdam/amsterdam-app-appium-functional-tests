@@ -1,6 +1,6 @@
 Feature: Werkzaamheden module - percy
 
-    @Before
+    @Before @After
     Scenario Outline: Projectdetails bekijken van project 'Corantijnstraat'
         Given ik ben op het werkzaamheden scherm
         When ik bekijk het project 'Corantijnstraat'
