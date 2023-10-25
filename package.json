@@ -65,6 +65,7 @@
     "allure-clean-results": "rm -rf allure-results",
     "run percy landscape": "npx percy app:exec -- npm run wdio-browserstack-landscape-percy",
     "run percy portrait": "npx percy app:exec -- npm run wdio-browserstack-portrait",
+    "clean-warnings": "node clean-warnings.js",
     "run percy android": "npx percy app:exec -- npm run android-tablet",
     "run percy ios": "npx percy app:exec -- npm run os16-ipad-pro-2022"
   },
