@@ -1,4 +1,4 @@
-Feature: Afvalwijzer module
+Feature: Afvalwijzer module - functional
 
     @Before @After
     Scenario: De Afvalwijzer module raadplegen
