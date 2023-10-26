@@ -30,7 +30,7 @@
     "os10-samsung-galaxy-note-20": "wdio run ./config/conf-android-mobile/os10-samsung-galaxy-note-20.js",
     "os11-oppo-reno-6": "wdio run ./config/conf-android-mobile/os11-oppo-reno-6.js",
     "os11-samsung-galaxy-m32": "wdio run ./config/conf-android-mobile/os11-samsung-galaxy-m32.js",
-    "os11-xiaomi-redmi-note-11": "wdio run ./conf-android-mobile/os11-xiaomi-redmi-note-11.js",
+    "os11-xiaomi-redmi-note-11": "wdio run ./config/conf-android-mobile/os11-xiaomi-redmi-note-11.js",
     "os12-samsung-galaxy-s22": "wdio run ./conf-android-mobile/os12-samsung-galaxy-s22.js",
     "os13-oneplus-11r": "wdio run ./conf-android-mobile/os13-oneplus-11r.js",
     "os13-samsung-galaxy-s23-ultra": "wdio run ./config/conf-android-mobile/os13-samsung-galaxy-s23-ultra.js",
@@ -45,7 +45,7 @@
     "os14-iphone12": "wdio run ./config/conf-ios-mobile/os14-iphone12.js",
     "os15-iphone11": "wdio run ./config/conf-ios-mobile/os15-iphone11.js",
     "os15-iphoneXS": "wdio run ./config/conf-ios-mobile/os15-iphoneXS.js",
-    "os16-iphone12mini": "wdio run ./conf-ios-mobile/os16-iphone12mini.js",
+    "os16-iphone12mini": "wdio run ./config/conf-ios-mobile/os16-iphone12mini.js",
     "os16-iphone14plus": "wdio run ./conf-ios-mobile/os16-iphone14plus.js",
     "os16-iphoneSE2020": "wdio run ./conf-ios-mobile/os16-iphoneSE2020.js",
     "os17-iphone13": "wdio run ./config/conf-ios-mobile/os17-iphone13.js",
@@ -67,7 +67,7 @@
     "run percy portrait": "npx percy app:exec -- npm run wdio-browserstack-portrait",
     "clean-warnings": "node clean-warnings.js",
     "run percy android": "npx percy app:exec -- npm run android-tablet",
-    "run percy ios": "npx percy app:exec -- npm run os16-ipad-pro-2022"
+    "run percy ios": "npx percy app:exec -- npm run os11-xiaomi-redmi-note-11"
   },
   "dependencies": {
     "@applitools/eyes-webdriverio": "^5.42.2",
