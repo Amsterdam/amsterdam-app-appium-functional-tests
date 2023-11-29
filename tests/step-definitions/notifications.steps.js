@@ -8,7 +8,7 @@ import constructionWorkScreen from "../screenobjects/construction-work.screen.js
 import homeScreen from "../screenobjects/home.screen.js";
 import notificationsScreen from "../screenobjects/notifications.screen.js";
 
-const url = 'https://api-backend.app-amsterdam.nl/omgevingsmanager/34f21359-7332-40df-8e9e-efd1d284e125'
+const url = 'https://api-backend.app-amsterdam.nl/omgevingsmanager/f811fb88-4318-47c7-af21-0e7694a61e7a'
 let titleMessage
 
 Given(/ik launch de app met plaats berichten/, async () => {

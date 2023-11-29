@@ -106,7 +106,12 @@ class NotificationsScreen extends Screen {
     //const selector = 'label == "Select Photos..."'
     //label == "Selecteer foto's…"
     //-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow"
-    return $(`-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow Access to All Photos"`);
+    const platformVersion = parseInt(driver.capabilities.platformVersion)
+    if (platformVersion > 16) {
+      return $(`-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow Full Access"`);
+    } else {
+      return $(`-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow Access to All Photos"`);
+    }
   }
 
   get allowSelector() {
@@ -269,7 +274,7 @@ class NotificationsScreen extends Screen {
     await this.pickImage.click()
     await this.kiezenButton.click()
     await expect(this.constructionWorkEditorCreateMessageImageDescriptionInput).toBeDisplayed()
-    await this.constructionWorkEditorCreateMessageImageDescriptionInput.setValue("Aan de Amstel")
+    await this.constructionWorkEditorCreateMessageImageDescriptionInput.addValue("Aan de Amstel")
     await this.photo.click()
     await this.constructionWorkEditorAddImageToMessageNextButton.click()
   }
@@ -285,7 +290,7 @@ class NotificationsScreen extends Screen {
     await this.kiezenButton.waitForDisplayed()
     await this.kiezenButton.click()
     await expect(this.constructionWorkEditorCreateMessageImageDescriptionInput).toBeDisplayed()
-    await this.constructionWorkEditorCreateMessageImageDescriptionInput.setValue("Aan de Amstel")
+    await this.constructionWorkEditorCreateMessageImageDescriptionInput.addValue("Aan de Amstel")
     await this.photo.click()
     await this.constructionWorkEditorAddImageToMessageNextButton.click()
   }

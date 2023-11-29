@@ -20,6 +20,7 @@
     "wdio-chromedriver-service": "^8.1.1"
   },
   "scripts": {
+    "android-ios": "wdio run ./config/conf-ios-mobile/android+iOS.js",
     "android-emulator-mobile": "wdio run ./config/emulators-simulators/wdio.conf.android.js",
     "ios-simulator-iphone11": "wdio run ./config/emulators-simulators/wdio.conf.iphone11.js",
     "ios-simulator-ipad": "wdio run ./config/emulators-simulators/wdio.conf.ios-tablet.js",
@@ -31,7 +32,7 @@
     "os11-oppo-reno-6": "wdio run ./config/conf-android-mobile/os11-oppo-reno-6.js",
     "os11-samsung-galaxy-m32": "wdio run ./config/conf-android-mobile/os11-samsung-galaxy-m32.js",
     "os11-xiaomi-redmi-note-11": "wdio run ./config/conf-android-mobile/os11-xiaomi-redmi-note-11.js",
-    "os12-samsung-galaxy-s22": "wdio run ./conf-android-mobile/os12-samsung-galaxy-s22.js",
+    "os12-samsung-galaxy-s22": "wdio run ./config/conf-android-mobile/os12-samsung-galaxy-s22.js",
     "os13-oneplus-11r": "wdio run ./conf-android-mobile/os13-oneplus-11r.js",
     "os13-samsung-galaxy-s23-ultra": "wdio run ./config/conf-android-mobile/os13-samsung-galaxy-s23-ultra.js",
     "os14-google-pixel-8-pro": "wdio run ./conf-android-mobile/os14-google-pixel-8-pro.js",
@@ -49,7 +50,7 @@
     "os16-iphone14plus": "wdio run ./conf-ios-mobile/os16-iphone14plus.js",
     "os16-iphoneSE2020": "wdio run ./conf-ios-mobile/os16-iphoneSE2020.js",
     "os17-iphone13": "wdio run ./config/conf-ios-mobile/os17-iphone13.js",
-    "os17-iphone15promax": "wdio run ./os17-iphone15promax.js",
+    "os17-iphone15promax": "wdio run ./config/conf-ios-mobile/os17-iphone15promax.js",
     "os-13-ipad-air-2019": "wdio run ./conf-ios-tablets/os13-ipad-air-2019.js",
     "os14-ipad-pro-2021": "wdio run ./config/conf-ios-tablets/os14-ipad-pro-2021.js",
     "os15-ipad-mini-2021": "wdio run ./config/conf-ios-tablets/os15-ipad-mini-2021.js",
@@ -67,7 +68,9 @@
     "run percy portrait": "npx percy app:exec -- npm run wdio-browserstack-portrait",
     "clean-warnings": "node clean-warnings.js",
     "run percy android": "npx percy app:exec -- npm run android-tablet",
-    "run percy ios": "npx percy app:exec -- npm run os11-xiaomi-redmi-note-11"
+    "visual-tests": "wdio run ./config/conf-ios-mobile/all-visual.js",
+    "functional-tests": "wdio run ./config/conf-ios-mobile/android+iOS.js",
+    "run percy": "npx percy app:exec -- npm run visual-tests"
   },
   "dependencies": {
     "@applitools/eyes-webdriverio": "^5.42.2",

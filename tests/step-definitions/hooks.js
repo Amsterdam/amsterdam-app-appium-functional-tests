@@ -16,7 +16,7 @@ Before({ tags: '@Before' }, async () => {
     if (helpers.isEmulator()) {
         console.log('This is an emulator.')
     } else {
-        console.log('This is a real device.');
+        console.log('This is a real device/ios simulator.');
     }
 })
 
