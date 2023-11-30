@@ -47,7 +47,7 @@
     "os15-iphone11": "wdio run ./config/conf-ios-mobile/os15-iphone11.js",
     "os15-iphoneXS": "wdio run ./config/conf-ios-mobile/os15-iphoneXS.js",
     "os16-iphone12mini": "wdio run ./config/conf-ios-mobile/os16-iphone12mini.js",
-    "os16-iphone14plus": "wdio run ./conf-ios-mobile/os16-iphone14plus.js",
+    "os16-iphone14plus": "wdio run ./config/conf-ios-mobile/os16-iphone14plus.js",
     "os16-iphoneSE2020": "wdio run ./conf-ios-mobile/os16-iphoneSE2020.js",
     "os17-iphone13": "wdio run ./config/conf-ios-mobile/os17-iphone13.js",
     "os17-iphone15promax": "wdio run ./config/conf-ios-mobile/os17-iphone15promax.js",

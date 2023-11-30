@@ -28,7 +28,7 @@ sharedconfig.services = [
 sharedconfig.exclude = [
     "./../../tests/features/functional/settings.feature",
     "./../../tests/features/functional/mijnprofiel.feature",
-    "./../../tests/features/functional/notifications.feature",
+    //"./../../tests/features/functional/notifications.feature",
     "./../../tests/features/functional/launchapp.feature",
     "./../../tests/features/functional/construction-work.feature",
     "./../../tests/features/functional/contact.feature",
