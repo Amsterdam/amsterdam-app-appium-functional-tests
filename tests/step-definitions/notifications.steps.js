@@ -36,6 +36,7 @@ Given(/ik ben OM\/CA en heb een plaats berichten module in de app/, async () => 
         await open.click()
         await notificationsScreen.allowSelector.waitForDisplayed()
         await notificationsScreen.allowSelector.click()
+        await driver.pause(5000)
     }
     else {
         await driver.execute('mobile:deepLink', {
@@ -79,6 +80,7 @@ When(/^ik plaats een bericht zonder pushbericht, zonder foto, voor project Sluis
     await notificationsScreen.constructionWorkEditorCreateMessageSubmitButton.click()
     await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.waitForDisplayed()
     await expect(notificationsScreen.headerTitle).toHaveText('Plaats berichten')
+    await expect(notificationsScreen.successMessageAlert).toBeDisplayed()
 })
 
 When(/^ik plaats een bericht met pushbericht, zonder foto, voor project Sluisbuurt op Zeeburgereiland$/, async () => {
@@ -92,6 +94,7 @@ When(/^ik plaats een bericht met pushbericht, zonder foto, voor project Sluisbuu
     await notificationsScreen.constructionWorkEditorCreateMessageSubmitButton.click()
     await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.waitForDisplayed()
     await expect(notificationsScreen.headerTitle).toHaveText('Plaats berichten')
+    await expect(notificationsScreen.successMessageAlert).toBeDisplayed()
 })
 
 When(/^ik plaats een bericht zonder pushbericht, met foto middels de foto toevoegen knop, voor project Sluisbuurt op Zeeburgereiland$/, async () => {
