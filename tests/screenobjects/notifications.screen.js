@@ -1,3 +1,4 @@
+import { config } from "../../config/conf-ios-mobile/os17-iphone15promax.js";
 import gestures from "../Shared/helpers/gestures.js";
 import helpers from '../Shared/helpers/helpers.js';
 import Screen from './screen.js';
@@ -106,7 +107,7 @@ class NotificationsScreen extends Screen {
     //const selector = 'label == "Select Photos..."'
     //label == "Selecteer foto's…"
     //-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow"
-    const platformVersion = parseInt(driver.capabilities.platformVersion)
+    const platformVersion = parseInt(config.capabilities[0]['appium:platformVersion'])
     if (platformVersion > 16) {
       return $(`-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow Full Access"`);
     } else {
