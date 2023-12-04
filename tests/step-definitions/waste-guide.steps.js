@@ -30,7 +30,7 @@ Given(/ik heb een adres ingevoerd/, async () => {
     await ProfileScreen.addressStreetInputSearchField.addValue('Balistraat 1-1')
     const addressSelector = await ProfileScreen.addressSelector('Balistraat 1, 1 hoog')
     await addressSelector.click()
-    //await ProfileScreen.bottomSheetSelectAddressButton.click()
+    await WasteGuideScreen.wasteGuideChangeLocationButton.waitForDisplayed(15000)
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
         const attribute = await WasteGuideScreen.wasteGuideChangeLocationButton.getAttribute("label");
@@ -82,7 +82,7 @@ Given(/^ik geef geen toestemming om 'Mijn locatie' te delen bij de afvalwijzer/,
 
 })
 
-When(/^ik verander het adres naar (.*)$/, async (adres, adreslabel) => {
+When(/^ik verander het adres naar (.*) met (.*)$/, async (adres, adreslabel) => {
     await WasteGuideScreen.wasteGuideChangeLocationButton.waitForDisplayed(5000)
     await WasteGuideScreen.wasteGuideChangeLocationButton.click()
     await ProfileScreen.bottomSheetSelectAddressButton.waitForDisplayed(5000)
@@ -95,7 +95,7 @@ When(/^ik verander het adres naar (.*)$/, async (adres, adreslabel) => {
     await addressSelector.click()
     await ProfileScreen.headerBackButton.click()
     await expect(WasteGuideScreen.headerTitle).toHaveText('Afvalwijzer')
-    await ProfileScreen.bottomSheetSelectAddressButton.click()
+    await WasteGuideScreen.wasteGuideChangeLocationButton.waitForDisplayed(15000)
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
         const attribute = await WasteGuideScreen.wasteGuideChangeLocationButton.getAttribute("label");
@@ -121,7 +121,7 @@ When(/ik voer een adres (.*) in dat geen woonadres is/, async adres => {
     await addressSelector.click()
     await ProfileScreen.headerBackButton.click()
     await expect(WasteGuideScreen.headerTitle).toHaveText('Afvalwijzer')
-    await ProfileScreen.bottomSheetSelectAddressButton.click()
+    await WasteGuideScreen.wasteGuideChangeLocationButton.waitForDisplayed(15000)
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
         const attribute = await WasteGuideScreen.wasteGuideChangeLocationButton.getAttribute("label");

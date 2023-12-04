@@ -1,6 +1,6 @@
-Feature: Afvalwijzer module - visual
+Feature: Afvalwijzer module
 
-    @skip @Before
+    @Before
     Scenario: De Afvalwijzer module raadplegen
         Given ik ben op het home scherm
         When ik open de Afvalwijzer module
@@ -10,7 +10,7 @@ Feature: Afvalwijzer module - visual
     Scenario Outline: De afvalwijzer toont de juiste informatie voor woonadressen
         Given ik ben op het afvalwijzer Startscherm
         And ik heb een adres ingevoerd
-        When ik verander het adres naar <adres>
+        When ik verander het adres naar <adres> met <adreslabel>
         Then ik zie de juiste informatie in de afvalwijzer voor <adres> - percy
         Examples:
             | adres           | adreslabel           |
@@ -19,7 +19,7 @@ Feature: Afvalwijzer module - visual
             | Stoombootweg 14 | Stoombootweg 14      |
             | Omval 18        | Omval 18             |
 
-    @skip @BeforeClean @AfterClean
+    @BeforeClean @AfterClean
     Scenario Outline: De afvalwijzer toont de juiste informatie voor adressen die geen woonadres zijn
         Given ik ben op het afvalwijzer Startscherm
         And ik heb een adres ingevoerd
