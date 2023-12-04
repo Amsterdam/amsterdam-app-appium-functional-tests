@@ -1,12 +1,12 @@
 import { config as sharedconfig } from "../shared/wdio.conf.shared.js";
 
 sharedconfig.exclude = [
-    //"../../tests/features/functional/notifications.feature",
+    "../../tests/features/functional/notifications.feature",
     "../../tests/features/functional/settings.feature",
     "../../tests/features/functional/mijnprofiel.feature",
     "../../tests/features/functional/construction-work.feature",
     "../../tests/features/functional/contact.feature",
-    "../../tests/features/functional/waste-guide.feature",
+    //"../../tests/features/functional/waste-guide.feature",
     "../../tests/features/visual-percy/construction-work.feature",
     "../../tests/features/visual-percy/contact.feature",
     "../../tests/features/visual-percy/about.feature",

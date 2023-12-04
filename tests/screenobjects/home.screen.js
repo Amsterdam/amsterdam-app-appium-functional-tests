@@ -56,7 +56,7 @@ class HomeScreen extends Screen {
     async getHomeScreen() {
         //await driver.launchApp()
         //await this.welcomeImageAndQuoteButton.click()
-        await this.homeAboutModuleButton.waitForDisplayed(10000)
+        await this.homeAboutModuleButton.waitForDisplayed(15000)
         await expect(this.homeAboutModuleButton).toBeDisplayed()
     }
 

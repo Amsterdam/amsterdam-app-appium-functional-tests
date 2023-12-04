@@ -28,7 +28,7 @@ Given(/ik heb een adres ingevoerd/, async () => {
     await ProfileScreen.bottomSheetSelectAddressButton.click()
     await expect(WasteGuideScreen.headerTitle).toHaveText('Adres')
     await ProfileScreen.addressStreetInputSearchField.addValue('Balistraat 1-1')
-    const addressSelector = await ProfileScreen.addressSelector('Balistraat 1-1')
+    const addressSelector = await ProfileScreen.addressSelector('Balistraat 1, 1 hoog')
     await addressSelector.click()
     //await ProfileScreen.bottomSheetSelectAddressButton.click()
     const OS = await driver.capabilities.platformName
@@ -82,7 +82,7 @@ Given(/^ik geef geen toestemming om 'Mijn locatie' te delen bij de afvalwijzer/,
 
 })
 
-When(/^ik verander het adres naar (.*): dit is een adres (.*)$/, async (adres, omschrijving) => {
+When(/^ik verander het adres naar (.*)$/, async (adres, adreslabel) => {
     await WasteGuideScreen.wasteGuideChangeLocationButton.waitForDisplayed(5000)
     await WasteGuideScreen.wasteGuideChangeLocationButton.click()
     await ProfileScreen.bottomSheetSelectAddressButton.waitForDisplayed(5000)
@@ -91,7 +91,7 @@ When(/^ik verander het adres naar (.*): dit is een adres (.*)$/, async (adres, o
     await ProfileScreen.addressAddButton.click()
     await expect(ProfileScreen.headerTitle).toHaveText('Adres')
     await ProfileScreen.addressStreetInputSearchField.addValue(adres)
-    const addressSelector = await ProfileScreen.addressSelector(adres)
+    const addressSelector = await ProfileScreen.addressSelector(adreslabel)
     await addressSelector.click()
     await ProfileScreen.headerBackButton.click()
     await expect(WasteGuideScreen.headerTitle).toHaveText('Afvalwijzer')
@@ -156,7 +156,7 @@ Then(/ik zie het Afvalwijzer scherm - eyes/, async () => {
     await eyes.abortIfNotClosed()
 })
 
-Then(/ik zie de juiste informatie in de afvalwijzer voor adressen (.*) - eyes/, async omschrijving => {
+Then(/ik zie de juiste informatie in de afvalwijzer voor (.*) - eyes/, async omschrijving => {
     const runner = new ClassicRunner()
     const eyes = new Eyes(runner)
     await eyes.open(driver, "Amsterdam App", "ik zie de juiste informatie in de afvalwijzer voor adressen " + omschrijving)
@@ -184,6 +184,6 @@ Then(/ik zie het Afvalwijzer scherm/, async () => {
     await expect(WasteGuideScreen.wasteGuideScreenTitle).toBeDisplayed()
 })
 
-Then(/^ik zie de juiste informatie in de afvalwijzer voor adressen (.*) - percy$/, async (omschrijving) => {
-    await percyScreenshot(omschrijving, { fullPage: true, screenLengths: 8 })
+Then(/^ik zie de juiste informatie in de afvalwijzer (.*) - percy$/, async (adres) => {
+    await percyScreenshot(adres, { fullPage: true, screenLengths: 8 })
 })

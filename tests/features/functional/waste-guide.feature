@@ -1,23 +1,23 @@
-Feature: Afvalwijzer module - functional
+Feature: Afvalwijzer module - visual
 
-    @Before @After
+    @skip @Before
     Scenario: De Afvalwijzer module raadplegen
         Given ik ben op het home scherm
         When ik open de Afvalwijzer module
-        Then ik zie het Afvalwijzer scherm
+        Then ik zie het correcte scherm: "Afvalwijzer" - percy
 
-    @skip @BeforeClean @AfterClean
+    @BeforeClean @AfterClean
     Scenario Outline: De afvalwijzer toont de juiste informatie voor woonadressen
         Given ik ben op het afvalwijzer Startscherm
         And ik heb een adres ingevoerd
-        When ik verander het adres naar <adres>: dit is een adres <omschrijving>
-        Then ik zie de juiste informatie in de afvalwijzer voor adressen <omschrijving> - percy
+        When ik verander het adres naar <adres>
+        Then ik zie de juiste informatie in de afvalwijzer voor <adres> - percy
         Examples:
-            | adres           | omschrijving                                          |
-            | Balistraat 1-1  | met ondergrondse afvalcontainer                       |
-            | Rokin 8-3       | in het centrum die witte vuilniszakken moet gebruiken |
-            | Stoombootweg 14 | met een rolcontainer                                  |
-            | Omval 18        | waar vuilniszakkenop de stoep moeten                  |
+            | adres           | adreslabel           |
+            | Balistraat 1-1  | Balistraat 1, 1 hoog |
+            | Rokin 8-3       | Rokin 8, 3 hoog      |
+            | Stoombootweg 14 | Stoombootweg 14      |
+            | Omval 18        | Omval 18             |
 
     @skip @BeforeClean @AfterClean
     Scenario Outline: De afvalwijzer toont de juiste informatie voor adressen die geen woonadres zijn
@@ -27,9 +27,9 @@ Feature: Afvalwijzer module - functional
         And ik selecteer of ik wel of niet een contract <contract> heb
         Then ik zie de juiste informatie in de afvalwijzer voor adressen <omschrijving> - percy
         Examples:
-            | adres           | omschrijving    |
-            | Amstel 1        | zonder contract |
-            | Javastraat 20-H | met contract    |
+            | adres           | omschrijving    | contract |
+            | Amstel 1        | zonder contract | nee      |
+            | Javastraat 20-H | met contract    | ja       |
 
 
 

@@ -13,11 +13,11 @@ Feature: Afvalwijzer module - visual
         When ik verander het adres naar <adres>: dit is een adres <omschrijving>
         Then ik zie de juiste informatie in de afvalwijzer voor adressen <omschrijving> - percy
         Examples:
-            | adres           | omschrijving                                          |
-            | Balistraat 1-1  | met ondergrondse afvalcontainer                       |
-            | Rokin 8-3       | in het centrum die witte vuilniszakken moet gebruiken |
-            | Stoombootweg 14 | met een rolcontainer                                  |
-            | Omval 18        | waar vuilniszakkenop de stoep moeten                  |
+            | adres           | adreslabel           | omschrijving                                          |
+            | Balistraat 1-1  | Balistraat 1, 1 hoog | met ondergrondse afvalcontainer                       |
+            | Rokin 8-3       | Rokin 8, 3 hoog      | in het centrum die witte vuilniszakken moet gebruiken |
+            | Stoombootweg 14 | Stoombootweg 14      | met een rolcontainer                                  |
+            | Omval 18        | Omval 18             | waar vuilniszakkenop de stoep moeten                  |
 
     @BeforeClean @AfterClean
     Scenario Outline: De afvalwijzer toont de juiste informatie voor adressen die geen woonadres zijn
