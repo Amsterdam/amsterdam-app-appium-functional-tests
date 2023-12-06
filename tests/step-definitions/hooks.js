@@ -1,8 +1,9 @@
 import { After, Before } from "@wdio/cucumber-framework";
 import { bsUrliOS } from "../../credentials.js";
 import helpers from "../Shared/helpers/helpers.js";
+import onboardingScreen from "../screenobjects/onboarding.screen.js";
 
-Before({ tags: '@Before' }, async () => {
+Before({ tags: '@BeforeOnboarding' }, async () => {
     //launch app
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
@@ -20,6 +21,30 @@ Before({ tags: '@Before' }, async () => {
     }
 })
 
+Before({ tags: '@Before' }, async () => {
+    //launch app
+    const OS = await driver.capabilities.platformName
+    if (OS === 'iOS') {
+        await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
+        if (await onboardingScreen.nextButtonSelector.isDisplayed()) {
+            await onboardingScreen.closeOnboarding()
+        }
+    }
+    else {
+        await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
+        if (await onboardingScreen.nextButtonSelector.isDisplayed()) {
+            await onboardingScreen.closeOnboarding()
+        }
+        //await driver.launchApp()
+    }
+    //check if device is real or emulator
+    if (helpers.isEmulator()) {
+        console.log('This is an emulator.')
+    } else {
+        console.log('This is a real device/ios simulator.');
+    }
+})
+
 Before({ tags: '@BeforeClean' }, async () => {
     const currentOS = driver.capabilities.platformName
     const simulatorRegex = new RegExp('(.*-.*){2,}');
@@ -27,10 +52,12 @@ Before({ tags: '@BeforeClean' }, async () => {
     if ('udid' in driver.capabilities && simulatorRegex.test(driver.capabilities.udid) && currentOS === 'iOS') {
         await driver.installApp('/Users/moniquevanbenthem/testing/amsterdam-app-functional/app/iOS/Amsterdam test.app')
         await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
+        await onboardingScreen.closeOnboarding()
     }
     else if (currentOS === 'iOS') {
         await driver.installApp(bsUrliOS)
         await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
+        await onboardingScreen.closeOnboarding()
     } else {
         await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
     }
