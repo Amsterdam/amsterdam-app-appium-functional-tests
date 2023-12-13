@@ -10,5 +10,11 @@ Feature: Onboarding
         Then ik zie het homescherm
         Examples:
             | button      |
-            #    | sluiten     |
+            | sluiten     |
             | Aan de slag |
+
+    @BeforeClean @AfterClean
+    Scenario: Ik kan de onboarding bekijken vanuit de 'over deze app' module
+        Given ik ben op het over deze app scherm
+        When ik open de onboarding
+        Then de onboarding caroussel start

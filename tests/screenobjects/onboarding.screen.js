@@ -42,12 +42,12 @@ class OnboardingScreen extends Screen {
     }
 
     get onboardingScreenSlide0Text() {
-        const text = "Snel en gemakkelijk informatie opzoeken, werkzaamheden bekijken en meldingen doen."
+        const text = "Informatie en diensten binnen handbereik."
         if (this.OS === 'iOS') {
             return helpers.createContentSelector(text)
         }
         else {
-            const testID = 'new UiSelector().text("Snel en gemakkelijk informatie opzoeken, werkzaamheden bekijken en meldingen doen.").className("android.widget.TextView")'
+            const testID = 'new UiSelector().text("Informatie en diensten binnen handbereik.").className("android.widget.TextView")'
             const selector = $(`android=${testID}`)
             return selector
         }
@@ -165,57 +165,94 @@ class OnboardingScreen extends Screen {
     }
 
     get onboardingScreenPagineationZero() {
-        return helpers.createSelector('Pagination0')
+        return helpers.createSelector('OnboardingPagination0')
     }
 
     get onboardingScreenPagineationOne() {
-        return helpers.createSelector('Pagination1')
+        return helpers.createSelector('OnboardingPagination1')
     }
 
     get onboardingScreenPagineationTwo() {
-        return helpers.createSelector('Pagination2')
+        return helpers.createSelector('OnboardingPagination2')
     }
 
     get onboardingScreenPagineationThree() {
-        return helpers.createSelector('Pagination3')
+        return helpers.createSelector('OnboardingPagination3')
     }
 
     get onboardingScreenPagineationFour() {
-        return helpers.createSelector('Pagination4')
+        return helpers.createSelector('OnboardingPagination4')
     }
 
     get onboardingScreenPagineationFive() {
-        return helpers.createSelector('Pagination5')
+        return helpers.createSelector('OnboardingPagination5')
+    }
+
+    get onboardingScreenImageSlideZero() {
+        return helpers.createSelector('OnboardingSide0')
+    }
+
+    get onboardingScreenImageSlideOne() {
+        return helpers.createSelector('OnboardingSide1')
+    }
+
+    get onboardingScreenImageSlideTwo() {
+        return helpers.createSelector('OnboardingSide2')
+    }
+
+    get onboardingScreenImageSlideThree() {
+        return helpers.createSelector('OnboardingSide3')
+    }
+
+    get onboardingScreenImageSlideFour() {
+        return helpers.createSelector('OnboardingSide4')
+    }
+
+    get onboardingScreenImageSlideFive() {
+        return helpers.createSelector('OnboardingSide5')
+    }
+
+    get onboardingCloseButton() {
+        return helpers.createSelector('OnboardingCloseButton')
     }
 
     async closeOnboarding() {
-        for (let i = 0; i < 5; i++) {
-            await this.nextButtonSelector.click()
-        }
-        await this.letsGoButton.click()
+        await this.onboardingCloseButton.click()
     }
 
     async checkOnboardingSlides() {
         await this.nextButtonSelector.click()
         await expect(this.onboardingScreenSlide1Title).toBeDisplayed()
         await expect(this.onboardingScreenSlide1Text).toBeDisplayed()
+        await expect(this.onboardingScreenImageSlideOne).toBeDisplayed()
         await expect(this.onboardingScreenPagineationOne).toBeDisplayed()
         await this.nextButtonSelector.click()
         await expect(this.onboardingScreenSlide2Title).toBeDisplayed()
         await expect(this.onboardingScreenSlide2Text).toBeDisplayed()
+        await expect(this.onboardingScreenImageSlideTwo).toBeDisplayed()
         await expect(this.onboardingScreenPagineationTwo).toBeDisplayed()
         await this.nextButtonSelector.click()
         await expect(this.onboardingScreenSlide3Title).toBeDisplayed()
         await expect(this.onboardingScreenSlide3Text).toBeDisplayed()
+        await expect(this.onboardingScreenImageSlideThree).toBeDisplayed()
         await expect(this.onboardingScreenPagineationThree).toBeDisplayed()
         await this.nextButtonSelector.click()
         await expect(this.onboardingScreenSlide4Title).toBeDisplayed()
         await expect(this.onboardingScreenSlide4Text).toBeDisplayed()
+        await expect(this.onboardingScreenImageSlideFour).toBeDisplayed()
         await expect(this.onboardingScreenPagineationFour).toBeDisplayed()
         await this.nextButtonSelector.click()
         await expect(this.onboardingScreenSlide5Title).toBeDisplayed()
         await expect(this.onboardingScreenSlide5Text).toBeDisplayed()
+        await expect(this.onboardingScreenImageSlideFive).toBeDisplayed()
         await expect(this.onboardingScreenPagineationFive).toBeDisplayed()
+    }
+
+    async checkOnboardingSlideZero() {
+        await expect(this.onboardingScreenSlide0Title).toBeDisplayed()
+        await expect(this.onboardingScreenSlide0Text).toBeDisplayed()
+        await expect(this.onboardingScreenImageSlideZero).toBeDisplayed()
+        await expect(this.onboardingScreenPagineationZero).toBeDisplayed()
     }
 
 

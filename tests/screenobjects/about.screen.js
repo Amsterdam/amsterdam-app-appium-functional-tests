@@ -37,6 +37,10 @@ class AboutScreen extends Screen {
     return helpers.createSelector("AboutAccessibilityStatementButton")
     //return $('//android.view.View[contains(@resource-id, "AboutAccessibilityStatementButton")]')
   }
+
+  get aboutOnboardingButton() {
+    return helpers.createSelector("AboutOnboardingButton")
+  }
 }
 
 export default new AboutScreen();

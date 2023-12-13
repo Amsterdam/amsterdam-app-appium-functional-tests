@@ -60,6 +60,7 @@ Before({ tags: '@BeforeClean' }, async () => {
         await onboardingScreen.closeOnboarding()
     } else {
         await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
+        await onboardingScreen.closeOnboarding()
     }
 
     if (helpers.isEmulator()) {
