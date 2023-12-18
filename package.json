@@ -35,7 +35,7 @@
     "os12-samsung-galaxy-s22": "wdio run ./config/conf-android-mobile/os12-samsung-galaxy-s22.js",
     "os13-oneplus-11r": "wdio run ./conf-android-mobile/os13-oneplus-11r.js",
     "os13-samsung-galaxy-s23-ultra": "wdio run ./config/conf-android-mobile/os13-samsung-galaxy-s23-ultra.js",
-    "os14-google-pixel-8-pro": "wdio run ./conf-android-mobile/os14-google-pixel-8-pro.js",
+    "os14-google-pixel-8-pro": "wdio run ./config/conf-android-mobile/os14-google-pixel-8-pro.js",
     "os8-1-samsung-galaxy-tab-s4.js": "wdio run ./os8-1-samsung-galaxy-tab-s4.js",
     "os9-samsung-galaxy-tab-s6.js": "wdio run ./config/conf-android-tablets/os9-samsung-galaxy-tab-s6.js",
     "os10-samsung-galaxy-tab-s7": "wdio run ./config/conf-android-tablets/os10-samsung-galaxy-tab-s7.js",

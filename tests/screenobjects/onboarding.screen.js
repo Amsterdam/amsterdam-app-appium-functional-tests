@@ -1,3 +1,4 @@
+import GesturesScreen from '../Shared/helpers/gesturesv2.js';
 import helpers from '../Shared/helpers/helpers.js';
 import Screen from './screen.js';
 
@@ -216,32 +217,54 @@ class OnboardingScreen extends Screen {
         return helpers.createSelector('OnboardingCloseButton')
     }
 
+    get onboardingScreenScrollView() {
+        if (this.OS === 'iOS') {
+            const type = 'type == "XCUIElementTypeScrollView"';
+            const selector = $(`-ios predicate string:${type}`);
+            return selector
+        }
+        else {
+            const testID = 'new UiSelector().className("android.widget.HorizontalScrollView")'
+            const selector = $(`android=${testID}`)
+            return selector
+        }
+
+    }
+
     async closeOnboarding() {
         await this.onboardingCloseButton.click()
     }
 
-    async checkOnboardingSlides() {
-        await this.nextButtonSelector.click()
+    async nextPageMethod(method) {
+        if (method === 'swipeLeft') {
+            GesturesScreen.swipeLeftSelector(this.onboardingScreenScrollView)
+        } else if (method === 'nextButton') {
+            this.nextButtonSelector.click()
+        }
+    }
+
+    async checkOnboardingSlides(method) {
+        await this.nextPageMethod(method)
         await expect(this.onboardingScreenSlide1Title).toBeDisplayed()
         await expect(this.onboardingScreenSlide1Text).toBeDisplayed()
         await expect(this.onboardingScreenImageSlideOne).toBeDisplayed()
         await expect(this.onboardingScreenPagineationOne).toBeDisplayed()
-        await this.nextButtonSelector.click()
+        await this.nextPageMethod(method)
         await expect(this.onboardingScreenSlide2Title).toBeDisplayed()
         await expect(this.onboardingScreenSlide2Text).toBeDisplayed()
         await expect(this.onboardingScreenImageSlideTwo).toBeDisplayed()
         await expect(this.onboardingScreenPagineationTwo).toBeDisplayed()
-        await this.nextButtonSelector.click()
+        await this.nextPageMethod(method)
         await expect(this.onboardingScreenSlide3Title).toBeDisplayed()
         await expect(this.onboardingScreenSlide3Text).toBeDisplayed()
         await expect(this.onboardingScreenImageSlideThree).toBeDisplayed()
         await expect(this.onboardingScreenPagineationThree).toBeDisplayed()
-        await this.nextButtonSelector.click()
+        await this.nextPageMethod(method)
         await expect(this.onboardingScreenSlide4Title).toBeDisplayed()
         await expect(this.onboardingScreenSlide4Text).toBeDisplayed()
         await expect(this.onboardingScreenImageSlideFour).toBeDisplayed()
         await expect(this.onboardingScreenPagineationFour).toBeDisplayed()
-        await this.nextButtonSelector.click()
+        await this.nextPageMethod(method)
         await expect(this.onboardingScreenSlide5Title).toBeDisplayed()
         await expect(this.onboardingScreenSlide5Text).toBeDisplayed()
         await expect(this.onboardingScreenImageSlideFive).toBeDisplayed()
