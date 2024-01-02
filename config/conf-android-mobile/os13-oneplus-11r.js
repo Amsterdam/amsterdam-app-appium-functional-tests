@@ -12,7 +12,7 @@ sharedconfig.capabilities = [
             "projectName": projectName,
             "buildName": buildNameAndroidMobile,
             "appiumVersion": appiumVersion,
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
             //"deviceOrientation": "landscape",
         },
     },

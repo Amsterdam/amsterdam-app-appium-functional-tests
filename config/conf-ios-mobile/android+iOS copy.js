@@ -14,7 +14,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameIosMobile,
             "appiumVersion": appiumVersion,
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -28,7 +28,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameIosMobile,
             "appiumVersion": appiumVersion,
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -42,7 +42,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameIosMobile,
             "appiumVersion": appiumVersion,
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -56,7 +56,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameIosMobile,
             "appiumVersion": appiumVersion,
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -70,7 +70,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameIosMobile,
             "appiumVersion": appiumVersion,
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -84,7 +84,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameIosMobile,
             "appiumVersion": appiumVersion,
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -98,7 +98,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameIosMobile,
             "appiumVersion": appiumVersion,
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -112,7 +112,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameIosMobile,
             "appiumVersion": appiumVersion,
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     //iOS Tablet
@@ -127,7 +127,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameiOSTablet,
             "appiumVersion": "2.0.1",
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
 
@@ -142,7 +142,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameiOSTablet,
             "appiumVersion": "2.0.1",
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -156,7 +156,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameiOSTablet,
             "appiumVersion": "2.0.1",
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     //Android Mobile
@@ -169,7 +169,7 @@ sharedconfig.capabilities = [
             "projectName": projectName,
             "buildName": buildNameAndroidMobile,
             "appiumVersion": "2.0.1",
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -181,7 +181,7 @@ sharedconfig.capabilities = [
             "projectName": projectName,
             "buildName": buildNameAndroidMobile,
             "appiumVersion": "2.0.1",
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -193,7 +193,7 @@ sharedconfig.capabilities = [
             "projectName": projectName,
             "buildName": buildNameAndroidMobile,
             "appiumVersion": "2.0.1",
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -205,7 +205,7 @@ sharedconfig.capabilities = [
             "projectName": projectName,
             "buildName": buildNameAndroidMobile,
             "appiumVersion": "2.0.1",
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -217,7 +217,7 @@ sharedconfig.capabilities = [
             "projectName": projectName,
             "buildName": buildNameAndroidMobile,
             "appiumVersion": "2.0.1",
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -229,7 +229,7 @@ sharedconfig.capabilities = [
             "projectName": projectName,
             "buildName": buildNameAndroidMobile,
             "appiumVersion": "2.0.1",
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -241,7 +241,7 @@ sharedconfig.capabilities = [
             "projectName": projectName,
             "buildName": buildNameAndroidMobile,
             "appiumVersion": "2.0.1",
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -253,7 +253,7 @@ sharedconfig.capabilities = [
             "projectName": projectName,
             "buildName": buildNameAndroidMobile,
             "appiumVersion": "2.0.1",
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -266,7 +266,7 @@ sharedconfig.capabilities = [
             "projectName": projectName,
             "buildName": buildNameAndroidMobile,
             "appiumVersion": "2.0.1",
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
             //"deviceOrientation": "landscape",
         },
     },
@@ -280,7 +280,7 @@ sharedconfig.capabilities = [
             "projectName": projectName,
             "buildName": buildNameAndroidMobile,
             "appiumVersion": "2.0.1",
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
             //"deviceOrientation": "landscape",
         },
     },
@@ -294,7 +294,7 @@ sharedconfig.capabilities = [
             "projectName": projectName,
             "buildName": buildNameAndroidMobile,
             "appiumVersion": "2.0.1",
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
             //"deviceOrientation": "landscape",
         },
     },
@@ -308,7 +308,7 @@ sharedconfig.capabilities = [
             "projectName": projectName,
             "buildName": buildNameAndroidMobile,
             "appiumVersion": "2.0.1",
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
             //"deviceOrientation": "landscape",
         },
     },
@@ -324,7 +324,7 @@ sharedconfig.capabilities = [
             "projectName": projectName,
             "buildName": buildNameAndroidTablet,
             "appiumVersion": appiumVersion,
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -337,7 +337,7 @@ sharedconfig.capabilities = [
             "projectName": projectName,
             "buildName": buildNameAndroidTablet,
             "appiumVersion": appiumVersion,
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -350,7 +350,7 @@ sharedconfig.capabilities = [
             "projectName": projectName,
             "buildName": buildNameAndroidTablet,
             "appiumVersion": appiumVersion,
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -363,7 +363,7 @@ sharedconfig.capabilities = [
             "projectName": projectName,
             "buildName": buildNameAndroidTablet,
             "appiumVersion": appiumVersion,
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -376,7 +376,7 @@ sharedconfig.capabilities = [
             "projectName": projectName,
             "buildName": buildNameAndroidTablet,
             "appiumVersion": appiumVersion,
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
 ]

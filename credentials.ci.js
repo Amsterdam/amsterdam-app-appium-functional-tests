@@ -1,0 +1,14 @@
+export const user = process.env.BROWSERSTACK_USERNAME
+export const key = process.env.BROWSERSTACK_ACCESS_KEY
+export const bsUrliOS = process.env.BROWSERSTACK_APP_ID
+export const bsUrlAndroid = process.env.BROWSERSTACK_APP_ID
+export const username = process.env.WEB_USERNAME
+export const password = process.env.WEB_PASSWORD
+export const appiumVersion = '2.0.1'
+export const projectName = 'amsterdam-app'
+export const buildNumber = process.env.VersionNumber
+export const runNumber = process.env.RELEASE_ATTEMPTNUMBER
+export const buildNameIosTablet = `Build ${buildNumber} - iOS Table - run ${runNumber}`
+export const buildNameIosMobile = `Build ${buildNumber} - iOS Mobile - run ${runNumber}`
+export const buildNameAndroidTablet = `Build ${buildNumber} - Android Tablet - run ${runNumber}`
+export const buildNameAndroidMobile = `Build ${buildNumber} - Android Mobile - run ${runNumber}`

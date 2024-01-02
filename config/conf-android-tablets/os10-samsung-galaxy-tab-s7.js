@@ -13,7 +13,7 @@ sharedconfig.capabilities = [
             "projectName": projectName,
             "buildName": buildNameAndroidTablet,
             "appiumVersion": appiumVersion,
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
 ]

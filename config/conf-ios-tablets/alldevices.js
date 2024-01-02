@@ -14,7 +14,7 @@ sharedconfig.capabilities = [
             "buildName": "Sprint 42 - iOS - run 3",
             "appiumVersion": "1.22.0",
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -28,7 +28,7 @@ sharedconfig.capabilities = [
             "buildName": "Sprint 42 - iOS - run 3",
             "appiumVersion": "2.0.1",
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
 
@@ -43,7 +43,7 @@ sharedconfig.capabilities = [
             "buildName": "Sprint 42 - iOS - run 3",
             "appiumVersion": "2.0.1",
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -57,7 +57,7 @@ sharedconfig.capabilities = [
             "buildName": "Sprint 42 - iOS - run 3",
             "appiumVersion": "2.0.1",
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
 ]

@@ -14,7 +14,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameIosTablet,
             "appiumVersion": appiumVersion,
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
 ]

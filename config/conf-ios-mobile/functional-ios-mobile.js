@@ -17,7 +17,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameIosMobile,
             "appiumVersion": appiumVersion,
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
             //"autoAcceptAlerts": "true"
             //"deviceOrientation": "landscape",
         },
@@ -33,7 +33,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameIosMobile,
             "appiumVersion": "1.22.0",
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -47,7 +47,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameIosMobile,
             "appiumVersion": appiumVersion,
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -61,7 +61,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameIosMobile,
             "appiumVersion": appiumVersion,
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -75,7 +75,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameIosMobile,
             "appiumVersion": appiumVersion,
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -89,7 +89,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameIosMobile,
             "appiumVersion": appiumVersion,
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -103,7 +103,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameIosMobile,
             "appiumVersion": appiumVersion,
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -117,7 +117,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameIosMobile,
             "appiumVersion": appiumVersion,
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -131,7 +131,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameIosMobile,
             "appiumVersion": appiumVersion,
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
     {
@@ -145,7 +145,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameIosMobile,
             "appiumVersion": appiumVersion,
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
 ]

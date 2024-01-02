@@ -13,7 +13,7 @@ sharedconfig.capabilities = [
             "buildName": buildNameIosMobile,
             "appiumVersion": appiumVersion,
             "midSessionInstallApps": [bsUrliOS],
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
         },
     },
 ]

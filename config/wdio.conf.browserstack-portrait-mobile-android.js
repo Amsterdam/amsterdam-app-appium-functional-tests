@@ -150,7 +150,7 @@ sharedconfig.capabilities = [
             "projectName": "amsterdam-app-mobile-android",
             "buildName": "Sprint 42 - Android - run 4",
             "appiumVersion": "2.0.1",
-            "enableCameraImageInjection": "true",
+            // "enableCameraImageInjection": "true",
             //"deviceOrientation": "landscape",
         },
     },
