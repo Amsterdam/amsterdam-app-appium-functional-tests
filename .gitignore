@@ -5,5 +5,4 @@ allure-report/
 allure-results/
 credentials.js
 iosCaps.js
-
-
+logs/

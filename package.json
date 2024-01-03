@@ -60,6 +60,7 @@
     "simulator-iphoneSE": "wdio run ./wdio.conf.iphoneSE.js",
     "simulator-iphone11": "wdio run ./wdio.conf.iphone11.js",
     "simulator-ios-tablet": "wdio run ./wdio.conf.ios-tablet.js",
+    "run-ci": "wdio run ./config/shared/wdio.conf.ci.js",
     "allure-report": "allure generate --clean && allure open",
     "reset-uiautomator2": "appium driver run uiautomator2 reset",
     "allure help": "allure help",
