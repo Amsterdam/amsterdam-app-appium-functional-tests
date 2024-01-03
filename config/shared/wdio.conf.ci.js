@@ -60,7 +60,7 @@ const getCapabilitiesForDevice = (device, platform) => {
 const platform = process.env.PLATFORM
 let device = process.env.CONFIG
 
-console.log(`##vso[task.setvariable variable=BROWSERSTACK_BUILD_NAME]${(platform === 'android' ? buildNameAndroidMobile: buildNameIosMobile).replaceAll('.', ' ')}`)
+console.log(`##vso[task.setvariable variable=BROWSERSTACK_BUILD_NAME]${platform === 'android' ? buildNameAndroidMobile: buildNameIosMobile}`)
 
 if (device === 'random') {
     const keys = Object.keys(devices[platform])
