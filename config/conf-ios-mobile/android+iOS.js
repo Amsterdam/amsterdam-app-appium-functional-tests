@@ -290,6 +290,7 @@ sharedconfig.exclude = [
     //"./../../tests/features/functional/construction-work.feature",
     //"./../../tests/features/functional/contact.feature",
     //"./../../tests/features/functional/waste-guide.feature",
+    //"./../../tests/features/functional/onboarding.feature",
     "./../../tests/features/visual-percy/about.feature",
     "./../../tests/features/visual-percy/construction-work.feature",
     "./../../tests/features/visual-percy/contact.feature",
