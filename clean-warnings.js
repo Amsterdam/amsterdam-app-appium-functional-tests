@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { apiUrl, password, username } from "./credentials.js";
+import { DeviceAuthorization, apiUrl, password, username } from "./credentials.js";
 
 const getToken = `${apiUrl}/get-token/`
 const warnings = `${apiUrl}/project/warnings`
@@ -19,18 +19,21 @@ const token = axios.post(getToken, {
     });
 
 await axios.get(warnings, {
+    params: {
+        'project_id': 49
+    },
     headers: {
-        'AUTHORIZATION': await token,
+        'DeviceAuthorization': DeviceAuthorization,
     }
 })
     .then(response => {
-        const result = response.data.result
+        const result = response.data
         result.forEach(async element => {
             //for each identifier make another request to delete the notification
             const deleteWarning = `${apiUrl}/project/warning`
             axios.delete(deleteWarning, {
                 params: {
-                    'id': element.identifier,
+                    'id': element.id,
                 },
                 headers: {
                     'AUTHORIZATION': await token,
