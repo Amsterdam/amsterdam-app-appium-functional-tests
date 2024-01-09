@@ -3,9 +3,9 @@ Feature: Werkzaamheden module - functional
     @Before @After
     Scenario: Projecten volgen en ontvolgen
         Given ik ben op het werkzaamheden scherm
-        When ik volg het project 'Brasapark'
+        When ik volg het project 'Zeeburgereiland'
         Then het project krijgt de status 'volgend'
-        When ik ontvolg het project 'Brasapark'
+        When ik ontvolg het project 'Zeeburgereiland'
         Then de status 'volgend' verdwijnt
 
     @Before @After

@@ -52,8 +52,8 @@ class ConstructionWorkScreen extends Screen {
     return helpers.createSelector("ConstructionWork1046740ProjectCard")
   }
 
-  get constructionWorkBrasaparkProjectCard() {
-    return helpers.createSelector("ConstructionWork629306ProjectCard")
+  get constructionWorkZeeburgereilandProjectCard() {
+    return helpers.createSelector("ConstructionWork25ProjectCard")
   }
 
   get constructionWorkCardProjectCentrumeiland() {

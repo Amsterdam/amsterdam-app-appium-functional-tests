@@ -4,16 +4,6 @@ import helpers from "../Shared/helpers/helpers.js";
 import onboardingScreen from "../screenobjects/onboarding.screen.js";
 
 Before({ tags: '@BeforeOnboarding' }, async () => {
-    //launch app
-    // const OS = await driver.capabilities.platformName
-    // if (OS === 'iOS') {
-    //     await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
-    // }
-    // else {
-    //     await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
-    //     //await driver.launchApp()
-    // }
-
     const currentOS = driver.capabilities.platformName
     const simulatorRegex = new RegExp('(.*-.*){2,}');
     // Check if we are a simulator
