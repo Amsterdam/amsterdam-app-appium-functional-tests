@@ -7,12 +7,44 @@ const devices = {
             "appium:platformVersion": "8.1",
             "appium:deviceName": "Samsung Galaxy J7 Prime",
         },
+        'os9-huawei-p30': {
+            "appium:platformVersion": "9.0",
+            "appium:deviceName": "Huawei P30",
+        },
+        'os-10-motorola-moto-g9-play': {
+            "appium:platformVersion": "10.0",
+            "appium:deviceName": "Motorola Moto G9 Play",
+        },
         'os11-oppo-reno-6': {
             "appium:platformVersion": "11.0",
             "appium:deviceName": "Oppo Reno 6",
+        },
+        'os12-samsung-galaxy-s22': {
+            "appium:platformVersion": "12.0",
+            "appium:deviceName": "Samsung Galaxy S22",
+        },
+        'os13-oneplus-11R': {
+            "appium:platformVersion": "13.0",
+            "appium:deviceName": "OnePlus 11R",
+        },
+        'os14-google-pixel-8pro': {
+            "appium:platformVersion": "14.0",
+            "appium:deviceName": "Google Pixel 8 Pro",
         }
     },
     ios: {
+        'os12-iphone7': {
+            "appium:platformVersion": "12",
+            "appium:deviceName": "iPhone 7",
+        },
+        'os13-iphone8': {
+            "appium:platformVersion": "13",
+            "appium:deviceName": "iPhone 8",
+        },
+        'os14-iphone12': {
+            "appium:platformVersion": "14",
+            "appium:deviceName": "iPhone 12",
+        },
         'os15-iphoneXS': {
             "appium:platformVersion": "15",
             "appium:deviceName": "iPhone XS",
