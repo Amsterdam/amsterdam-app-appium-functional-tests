@@ -68,6 +68,7 @@ const getCapabilitiesForDevice = (device, platform) => {
                 "projectName": projectName,
                 "buildName": buildNameAndroidMobile,
                 "appiumVersion": appiumVersion,
+                "networkLogs": true
                 // "enableCameraImageInjection": "true",
             },
         }
@@ -77,12 +78,13 @@ const getCapabilitiesForDevice = (device, platform) => {
             "appium:platformVersion": deviceConfig["appium:platformVersion"],
             "appium:deviceName": deviceConfig["appium:deviceName"],
             "appium:app": bsUrliOS,
-            "appium:noReset": "false",
+            "appium:noReset": false,
             'bstack:options': {
                 "projectName": projectName,
                 "buildName": buildNameIosMobile,
                 "appiumVersion": appiumVersion,
                 "midSessionInstallApps": [bsUrliOS],
+                "networkLogs": true
                 // "enableCameraImageInjection": "true",
             },
         }
