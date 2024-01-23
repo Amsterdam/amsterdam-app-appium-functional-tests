@@ -96,17 +96,18 @@ After({ tags: '@After' }, async function () {
 });
 
 After({ tags: '@AfterClean' }, async function () {
-    // const currentOS = driver.capabilities.platformName
-    // if (currentOS === 'iOS') {
-    //     await driver.executeScript('mobile: terminateApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
-    //     await driver.removeApp('nl.amsterdam.app.dev')
-    // } else {
-    //     await driver.terminateApp('nl.amsterdam.app.dev')
-    //     //await driver.clearApp('nl.amsterdam.app.dev')
-    //     await driver.execute('mobile:clearApp', {
-    //         appId: 'nl.amsterdam.app.dev',
-    //     });
-    // }
-    await driver.terminateApp('nl.amsterdam.app.dev')
-    await driver.removeApp('nl.amsterdam.app.dev')
+    const currentOS = driver.capabilities.platformName
+    if (currentOS === 'iOS') {
+        // await driver.executeScript('mobile: terminateApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
+        // await driver.removeApp('nl.amsterdam.app.dev')
+        await driver.terminateApp('nl.amsterdam.app.dev')
+        await driver.removeApp('nl.amsterdam.app.dev')
+    } else {
+        await driver.terminateApp('nl.amsterdam.app.dev')
+        //await driver.clearApp('nl.amsterdam.app.dev')
+        await driver.execute('mobile:clearApp', {
+            appId: 'nl.amsterdam.app.dev',
+        });
+    }
+
 });
