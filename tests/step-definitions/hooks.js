@@ -9,13 +9,16 @@ Before({ tags: '@BeforeOnboarding' }, async () => {
     // Check if we are a simulator
     if ('udid' in driver.capabilities && simulatorRegex.test(driver.capabilities.udid) && currentOS === 'iOS') {
         await driver.installApp('/Users/moniquevanbenthem/testing/amsterdam-app-functional/app/iOS/Amsterdam test.app')
-        await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
+        await driver.activateApp('nl.amsterdam.app.dev')
+        //await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
     }
     else if (currentOS === 'iOS') {
         await driver.installApp(bsUrliOS)
-        await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
+        await driver.activateApp('nl.amsterdam.app.dev')
+        //await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
     } else {
-        await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
+        await driver.activateApp('nl.amsterdam.app.dev')
+        //await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
     }
 
 
@@ -31,13 +34,15 @@ Before({ tags: '@Before' }, async () => {
     //launch app
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
-        await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
+        await driver.activateApp('nl.amsterdam.app.dev')
+        //await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
         if (await onboardingScreen.nextButtonSelector.isDisplayed()) {
             await onboardingScreen.closeOnboarding()
         }
     }
     else {
-        await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
+        //await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
+        await driver.activateApp('nl.amsterdam.app.dev')
         if (await onboardingScreen.nextButtonSelector.isDisplayed()) {
             await onboardingScreen.closeOnboarding()
         }
@@ -57,15 +62,18 @@ Before({ tags: '@BeforeClean' }, async () => {
     // Check if we are a simulator
     if ('udid' in driver.capabilities && simulatorRegex.test(driver.capabilities.udid) && currentOS === 'iOS') {
         await driver.installApp('/Users/moniquevanbenthem/testing/amsterdam-app-functional/app/iOS/Amsterdam test.app')
-        await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
+        // await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
+        await driver.activateApp('nl.amsterdam.app.dev')
         await onboardingScreen.closeOnboarding()
     }
     else if (currentOS === 'iOS') {
         await driver.installApp(bsUrliOS)
-        await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
+        //await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
+        await driver.activateApp('nl.amsterdam.app.dev')
         await onboardingScreen.closeOnboarding()
     } else {
-        await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
+        //await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
+        await driver.activateApp('nl.amsterdam.app.dev')
         await onboardingScreen.closeOnboarding()
     }
 
@@ -78,24 +86,27 @@ Before({ tags: '@BeforeClean' }, async () => {
 
 
 After({ tags: '@After' }, async function () {
-    const currentOS = driver.capabilities.platformName
-    if (currentOS === 'iOS') {
-        await driver.executeScript('mobile: terminateApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
-    } else {
-        await driver.terminateApp('nl.amsterdam.app.dev')
-    }
+    // const currentOS = driver.capabilities.platformName
+    // if (currentOS === 'iOS') {
+    //     await driver.executeScript('mobile: terminateApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
+    // } else {
+    //     await driver.terminateApp('nl.amsterdam.app.dev')
+    // }
+    await driver.terminateApp('nl.amsterdam.app.dev')
 });
 
 After({ tags: '@AfterClean' }, async function () {
-    const currentOS = driver.capabilities.platformName
-    if (currentOS === 'iOS') {
-        await driver.executeScript('mobile: terminateApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
-        await driver.removeApp('nl.amsterdam.app.dev')
-    } else {
-        await driver.terminateApp('nl.amsterdam.app.dev')
-        //await driver.clearApp('nl.amsterdam.app.dev')
-        await driver.execute('mobile:clearApp', {
-            appId: 'nl.amsterdam.app.dev',
-        });
-    }
+    // const currentOS = driver.capabilities.platformName
+    // if (currentOS === 'iOS') {
+    //     await driver.executeScript('mobile: terminateApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
+    //     await driver.removeApp('nl.amsterdam.app.dev')
+    // } else {
+    //     await driver.terminateApp('nl.amsterdam.app.dev')
+    //     //await driver.clearApp('nl.amsterdam.app.dev')
+    //     await driver.execute('mobile:clearApp', {
+    //         appId: 'nl.amsterdam.app.dev',
+    //     });
+    // }
+    await driver.terminateApp('nl.amsterdam.app.dev')
+    await driver.removeApp('nl.amsterdam.app.dev')
 });
