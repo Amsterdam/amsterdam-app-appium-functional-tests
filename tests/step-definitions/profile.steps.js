@@ -28,6 +28,7 @@ When(/ik ga naar mijn profiel/, async () => {
 })
 
 When(/ik zoek op 'Weesperstraat 113'/, async () => {
+    await ProfileScreen.addressAddButton.waitForDisplayed(5000)
     await ProfileScreen.addressAddButton.click()
     await driver.pause(2000)
     await ProfileScreen.addAddress('Weesperstraat 113')
@@ -47,6 +48,7 @@ When(/ik sluit de app en start de app opnieuw/, async () => {
 })
 
 When(/ik wijzig mijn adres/, async () => {
+    await ProfileScreen.addressAddButton.waitForDisplayed(5000)
     await ProfileScreen.addressAddButton.click()
     await ProfileScreen.addAddress('Balistraat 1-1')
     await ProfileScreen.addressSearchResultBalistraat1hg1.click()
@@ -57,6 +59,7 @@ When(/ik verwijder mijn adres/, async () => {
 })
 
 When(/ik voeg opnieuw een adres toe/, async () => {
+    await ProfileScreen.addressAddButton.waitForDisplayed(5000)
     await ProfileScreen.addressAddButton.click()
     await ProfileScreen.addAddress('Weesperstraat 113')
     await ProfileScreen.addressSearchResultWeesperstraat113.click()
