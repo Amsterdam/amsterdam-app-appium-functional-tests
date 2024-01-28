@@ -2,9 +2,9 @@ import { ClassicRunner, Eyes, Target } from '@applitools/eyes-webdriverio';
 import percyScreenshot from '@percy/appium-app';
 import { Given, Then, When } from '@wdio/cucumber-framework';
 import gestures from '../Shared/helpers/gestures.js';
-import ContactScreen from '../screenobjects/contact.screen.js';
+import swipeGestures from '../Shared/helpers/gesturesv2.js';
+import { default as ContactScreen, default as contactScreen } from '../screenobjects/contact.screen.js';
 import HomeScreen from '../screenobjects/home.screen.js';
-
 
 Given(/ik ben op het contactscherm/, async () => {
     await HomeScreen.getHomeScreen()
@@ -55,11 +55,16 @@ Then(/^het juiste stadsloket wordt getoond: (.*)$/, async title => {
     } else {
         //define Android
         await driver.pause(2000)
-        await ContactScreen.ContactCurrentCityOfficeButtonTitle.waitForDisplayed(5000)
-        // const currentCityOfficeTitle = await ContactScreen.ContactCurrentCityOfficeButtonTitle.getText()
-        // console.log(await currentCityOfficeTitle)
-        // await expect(currentCityOfficeTitle).toEqual(title)
-        await expect(ContactScreen.ContactCurrentCityOfficeButtonTitle).toHaveText(title)
+        if (ContactScreen.ContactCurrentCityOfficeButtonTitle.isDisplayed()) {
+            // const currentCityOfficeTitle = await ContactScreen.ContactCurrentCityOfficeButtonTitle.getText()
+            // console.log(await currentCityOfficeTitle)
+            // await expect(currentCityOfficeTitle).toEqual(title)
+            await expect(ContactScreen.ContactCurrentCityOfficeButtonTitle).toHaveText(title)
+        }
+        else {
+            await swipeGestures.checkIfDisplayedWithSwipeUp(contactScreen.ContactCurrentCityOfficeButtonTitle, 1)
+            await expect(ContactScreen.ContactCurrentCityOfficeButtonTitle).toHaveText(title)
+        }
     }
 })
 

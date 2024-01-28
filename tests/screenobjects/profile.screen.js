@@ -136,8 +136,9 @@ class ProfileScreen extends Screen {
     }
 
     async checkAddressAdded() {
+        await this.addressAddButton.waitForDisplayed(5000)
         await expect(this.addedTxt).toBeDisplayed()
-        await expect(this.addressAddButton).toBeDisplayed()
+
         //Dit weer aanzetten als iOS testIDs gefixt zijn
         //await expect(this.addressAddButtonTitle).toBeDisplayed()
         //await expect(this.addressAddButtonText).toBeDisplayed()
