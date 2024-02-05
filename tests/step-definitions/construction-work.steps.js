@@ -79,6 +79,9 @@ When(/ik volg het project 'Zeeburgereiland'/, async () => {
   const OS = await driver.capabilities.platformName
   if (OS === 'iOS') {
     await notificationsScreen.allowSelector.click()
+    if (await notificationsScreen.allowSelector.isDisplayed()) {
+      await notificationsScreen.allowSelector.click()
+    }
   }
   else {
     //Only works this way, not if you import the selector from the screenobject

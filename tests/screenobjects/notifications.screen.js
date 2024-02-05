@@ -116,7 +116,7 @@ class NotificationsScreen extends Screen {
   }
 
   get allowSelector() {
-    return $(`-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow"`)
+    return $(`-ios predicate string:type == "XCUIElementTypeButton" AND name == "Allow"`)
   }
 
   get pickImage() {
