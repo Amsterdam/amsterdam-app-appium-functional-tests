@@ -25,19 +25,23 @@ class ConstructionWorkScreen extends Screen {
   }
 
   get constructionWorkAmsterdamZuidoostProjectCard() {
-    return helpers.createSelector("ConstructionWork1177659ProjectCard")
+    return helpers.createSelector("ConstructionWork139ProjectCard")
   }
 
   get constructionWorkFoodCenterAmsterdamProjectCard() {
-    return helpers.createSelector("ConstructionWork744089ProjectCard")
+    return helpers.createSelector("ConstructionWork17ProjectCard")
   }
 
   get constructionWorkCentrumgebiedAmsterdamNoordProjectCard() {
-    return helpers.createSelector("ConstructionWork584340ProjectCard")
+    return helpers.createSelector("ConstructionWork5ProjectCard")
+  }
+
+  get constructionWorkHaarlemmermerProjectCard() {
+    return helpers.createSelector("ConstructionWork324ProjectCard")
   }
 
   get constructionWorkAmsterdamseBosProjectCard() {
-    return helpers.createSelector("ConstructionWork1142882ProjectCard")
+    return helpers.createSelector("ConstructionWork108ProjectCard")
   }
 
   get constructionWorkDeEntreeProjectCard() {
@@ -49,7 +53,7 @@ class ConstructionWorkScreen extends Screen {
   }
 
   get constructionWorkCardProjectAmsterdamSciencePark() {
-    return helpers.createSelector("ConstructionWork1046740ProjectCard")
+    return helpers.createSelector("ConstructionWork58ProjectCard")
   }
 
   get constructionWorkZeeburgereilandProjectCard() {
@@ -57,7 +61,7 @@ class ConstructionWorkScreen extends Screen {
   }
 
   get constructionWorkCardProjectCentrumeiland() {
-    return helpers.createSelector("ConstructionWork694239ProjectCard")
+    return helpers.createSelector("ConstructionWork13ProjectCard")
   }
 
   get constructionWorkSluisbuurtOpZeeburgereilandProjectCard() {
@@ -65,7 +69,7 @@ class ConstructionWorkScreen extends Screen {
   }
 
   get constructionWorkAmstelIIIProjectCard() {
-    return helpers.createSelector("ConstructionWork976821ProjectCard")
+    return helpers.createSelector("ConstructionWork33ProjectCard")
   }
 
   get constructionWorkProjectFollowButton() {

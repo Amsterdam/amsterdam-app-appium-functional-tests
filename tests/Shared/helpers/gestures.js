@@ -38,7 +38,7 @@ class Gestures {
             } else {
                 break
             }
-            // expect(await element).toBeDisplayed()
+            expect(await element).toBeDisplayed()
         }
     }
 
