@@ -17,6 +17,18 @@ Given(/ik ben op het werkzaamheden scherm/, async () => {
   await expect(HomeScreen.headerTitle).toHaveText('Werkzaamheden')
 })
 
+Given(/ik ben op het project detailscherm/, async () => {
+  await HomeScreen.getHomeScreen()
+  await HomeScreen.homeConstructionWorkModuleButton.click()
+  await expect(HomeScreen.headerTitle).toHaveText('Werkzaamheden')
+  await ConstructionWorkScreen.constructionWorkProjectsNavigatorSearchField.click()
+  await expect(ConstructionWorkScreen.headerTitle).toHaveText('Zoek in werkzaamheden')
+  await ConstructionWorkScreen.constructionWorkProjectsTextSearchField.addValue("Amstel III")
+  await gestures.hitEnter()
+  await ConstructionWorkScreen.constructionWorkAmstelIIIProjectCard.click()
+  await expect(HomeScreen.headerTitle).toHaveText('Amstel III')
+})
+
 Given(/^ik gebruik 'Mijn locatie' met de permissie 'tijdens' bij werkzaamheden/, async () => {
   await driver.setGeoLocation({ latitude: 52.363114, longitude: 4.907245, altitude: 0 })
   await ConstructionWorkScreen.constructionWorkRequestLocationButton.waitForDisplayed(5000)
@@ -198,6 +210,8 @@ Then(/krijg ik de juiste zoekresultaten in het 'Zoek in werkzaamheden' scherm/, 
   await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkAmsterdamseBosProjectCard, 4)
   await gestures.swipeDown()
   await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkCardProjectCentrumeiland, 4)
+  await gestures.swipeDown()
+  await gestures.checkProjectDisplayedWithScrollDown(ConstructionWorkScreen.constructionWorkHaarlemmermerProjectCard, 4)
 })
 
 Then(/ik zie een melding dat er geen zoekresulaten zijn/, async () => {
