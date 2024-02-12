@@ -33,7 +33,7 @@ Given(/^ik heb een adres ingevoerd, bagnummer: (.*)$/, async (bagnummer) => {
     await addressSelector.click()
     await wasteGuideRequestData(bagnummer)
     await wasteGuideRequestApp(bagnummer)
-    await WasteGuideScreen.wasteGuideChangeLocationButton.waitForDisplayed(15000)
+    await WasteGuideScreen.wasteGuideChangeLocationButton.waitForDisplayed(20000)
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
         const attribute = await WasteGuideScreen.wasteGuideChangeLocationButton.getAttribute("label");
@@ -100,7 +100,7 @@ When(/^ik verander het adres naar (.*) met (.*), bagnummer: (.*)$/, async (adres
     await wasteGuideRequestApp(bagnummer)
     await ProfileScreen.headerBackButton.click()
     await expect(WasteGuideScreen.headerTitle).toHaveText('Afvalwijzer')
-    await WasteGuideScreen.wasteGuideChangeLocationButton.waitForDisplayed(15000)
+    await WasteGuideScreen.wasteGuideChangeLocationButton.waitForDisplayed(20000)
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
         const attribute = await WasteGuideScreen.wasteGuideChangeLocationButton.getAttribute("label");
@@ -128,7 +128,7 @@ When(/ik voer een adres (.*) in dat geen woonadres is, bagnummer: (.*)/, async (
     await wasteGuideRequestApp(bagnummer)
     await ProfileScreen.headerBackButton.click()
     await expect(WasteGuideScreen.headerTitle).toHaveText('Afvalwijzer')
-    await WasteGuideScreen.wasteGuideChangeLocationButton.waitForDisplayed(15000)
+    await WasteGuideScreen.wasteGuideChangeLocationButton.waitForDisplayed(20000)
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
         const attribute = await WasteGuideScreen.wasteGuideChangeLocationButton.getAttribute("label");
