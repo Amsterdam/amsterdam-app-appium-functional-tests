@@ -1,7 +1,41 @@
 import { After, Before } from "@wdio/cucumber-framework";
 import { bsUrliOS } from "../../credentials.js";
 import helpers from "../Shared/helpers/helpers.js";
+import HomeScreen from "../screenobjects/home.screen.js";
 import onboardingScreen from "../screenobjects/onboarding.screen.js";
+
+
+const environment = process.env.ENV
+const switchEnv = async environment => {
+    switch (environment) {
+        case 'DEV':
+            await HomeScreen.headerEnvironmentButton.click()
+            await HomeScreen.environmentDev.click()
+            await HomeScreen.headerBackButton.click()
+            await driver.pause(6000)
+            break
+        case 'TEST':
+            await HomeScreen.headerEnvironmentButton.click()
+            await HomeScreen.environmentTest.click()
+            await HomeScreen.headerBackButton.click()
+            await driver.pause(6000)
+            break
+        case 'ACC':
+            await HomeScreen.headerEnvironmentButton.click()
+            await HomeScreen.environmentAcc.click()
+            await HomeScreen.headerBackButton.click()
+            await driver.pause(6000)
+            break
+        case 'PROD':
+            await HomeScreen.headerEnvironmentButton.click()
+            await HomeScreen.environmentProduction.click()
+            await HomeScreen.headerBackButton.click()
+            await driver.pause(6000)
+            break
+        default:
+            await assert.fail(`${environment} doesn't exist`)
+    }
+}
 
 Before({ tags: '@BeforeOnboarding' }, async () => {
     const currentOS = driver.capabilities.platformName
@@ -48,6 +82,7 @@ Before({ tags: '@Before' }, async () => {
         }
         //await driver.launchApp()
     }
+    //await switchEnv(environment)
     //check if device is real or emulator
     if (helpers.isEmulator()) {
         console.log('This is an emulator.')
@@ -76,6 +111,7 @@ Before({ tags: '@BeforeClean' }, async () => {
         await driver.activateApp('nl.amsterdam.app.dev')
         await onboardingScreen.closeOnboarding()
     }
+    //await switchEnv(environment)
 
     if (helpers.isEmulator()) {
         console.log('This is an emulator.')
