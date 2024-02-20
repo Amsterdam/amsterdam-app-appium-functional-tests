@@ -66,7 +66,7 @@ When(/ik voeg opnieuw een adres toe/, async () => {
     await ProfileScreen.checkAddressAdded('Weesperstraat 113')
 })
 
-When(/ik klik op 'Hoe gebruiken we uw adres en locatie\?'/, async () => {
+When(/ik klik op 'Zo gebruiken wij uw locatie en adres.'/, async () => {
     await ProfileScreen.addressLocationPrivacyInfoButton.click()
 })
 

@@ -83,6 +83,10 @@ class ProfileScreen extends Screen {
         return helpers.createSelector("BottomSheetSelectLocationButtonText")
     }
 
+    get selectLocationTypeBottomSheet() {
+        return helpers.createSelector("SelectLocationTypeBottomSheet")
+    }
+
     get addedTxt() {
         return helpers.createContentSelector("Gelukt, Het adres is toegevoegd aan uw profiel.")
     }
@@ -94,11 +98,11 @@ class ProfileScreen extends Screen {
     get addressLocationPrivacyInfoButton() {
         const OS = driver.capabilities.platformName
         if (OS === 'iOS') {
-            return $(`-ios predicate string: label == "Hoe gebruiken we uw adres en locatie?"`)
+            return $(`-ios predicate string: label == "Zo gebruiken wij uw locatie en adres."`)
         }
         //Android:
         else {
-            const selector = 'new UiSelector().text("Hoe gebruiken we uw adres en locatie?").className("android.view.View")'
+            const selector = 'new UiSelector().text("Zo gebruiken wij uw locatie en adres.").className("android.view.View")'
             const androidSelector = $(`android=${selector}`)
             return androidSelector
         }
