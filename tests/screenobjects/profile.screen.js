@@ -98,11 +98,11 @@ class ProfileScreen extends Screen {
     get addressLocationPrivacyInfoButton() {
         const OS = driver.capabilities.platformName
         if (OS === 'iOS') {
-            return $(`-ios predicate string: label == "Zo gebruiken wij uw locatie en adres."`)
+            return $(`-ios predicate string: label == "Zo gebruiken wij uw locatie en adres"`)
         }
         //Android:
         else {
-            const selector = 'new UiSelector().text("Zo gebruiken wij uw locatie en adres.").className("android.view.View")'
+            const selector = 'new UiSelector().text("Zo gebruiken wij uw locatie en adres").className("android.view.View")'
             const androidSelector = $(`android=${selector}`)
             return androidSelector
         }

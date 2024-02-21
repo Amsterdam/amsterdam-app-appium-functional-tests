@@ -66,7 +66,7 @@ When(/ik voeg opnieuw een adres toe/, async () => {
     await ProfileScreen.checkAddressAdded('Weesperstraat 113')
 })
 
-When(/ik klik op 'Zo gebruiken wij uw locatie en adres.'/, async () => {
+When(/ik klik op 'Zo gebruiken wij uw locatie en adres'/, async () => {
     await ProfileScreen.addressLocationPrivacyInfoButton.click()
 })
 
@@ -126,7 +126,7 @@ Then(/ik zie de privacy en locatie informatie/, async () => {
         await expect(ProfileScreen.addressPrivacyInfoModalCloseButtonLabel).toHaveText('Oké, ik begrijp het!')
     }
     await expect(ProfileScreen.addressPrivacyInfoTitle).toBeDisplayed()
-    await expect(ProfileScreen.addressPrivacyInfoTitle).toHaveText('Hoe worden mijn locatie en adres gebruikt?')
+    await expect(ProfileScreen.addressPrivacyInfoTitle).toHaveText('Zo gebruiken wij uw locatie en adres')
     await expect(ProfileScreen.addressPrivacyInfoModalHeaderCloseButton).toBeDisplayed()
 })
 
