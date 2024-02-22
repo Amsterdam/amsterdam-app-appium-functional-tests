@@ -45,7 +45,8 @@ class OnboardingScreen extends Screen {
     get onboardingScreenSlide0Text() {
         const text = "Informatie en diensten binnen handbereik."
         if (this.OS === 'iOS') {
-            return helpers.createContentSelector(text)
+            const selector = $(`-ios predicate string:${text}`);
+            return selector
         }
         else {
             const testID = 'new UiSelector().text("Informatie en diensten binnen handbereik.").className("android.widget.TextView")'

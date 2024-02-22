@@ -86,8 +86,9 @@ class ConstructionWorkScreen extends Screen {
     return helpers.createSelector("ConstructionWorkProjectFollowingTraitLabel")
   }
 
-  get constructionWorkProjectsNavigatorSearchField() {
-    return helpers.createContentSelector("Zoek in werkzaamheden")
+  get constructionWorkSearchFieldButton() {
+    return helpers.createSelector("ConstructionWorkSearchFieldButton")
+    //constructionWorkProjectsNavigatorSearchField
   }
 
   get constructionWorkProjectsTextSearchField() {
@@ -149,8 +150,8 @@ class ConstructionWorkScreen extends Screen {
   get constructionWorkRequestLocationButton() {
     return helpers.createSelector("ConstructionWorkRequestLocationButton");
   }
-  get constructionWorkChangeLocationButtonText() {
-    return helpers.createSelector("ConstructionWorkChangeLocationButtonText");
+  get constructionWorkChangeLocationButtonTitle() {
+    return helpers.createSelector("ConstructionWorkChangeLocationButtonTitle");
   }
 
   get androidAllowNotificationsButton() {

@@ -50,7 +50,23 @@ class HomeScreen extends Screen {
     }
 
     get environmentProduction() {
-        return helpers.createContentSelector('Production')
+        //return helpers.createContentSelector('HomeEnvironmentSelectorProductionAzureButton')
+        return helpers.createSelector('HomeEnvironmentSelectorProductionButton')
+    }
+
+    get environmentDev() {
+        //return helpers.createContentSelector('HomeEnvironmentSelectorDevelopmentAzureButton')
+        return helpers.createSelector('HomeEnvironmentSelectorDevelopmentButton')
+    }
+
+    get environmentTest() {
+        //return helpers.createContentSelector('HomeEnvironmentSelectorTestAzureButton')
+        return helpers.createSelector('HomeEnvironmentSelectorAcceptanceButton')
+    }
+
+    get environmentAcc() {
+        //return helpers.createContentSelector('HomeEnvironmentSelectorAcceptanceAzureButton')
+        return helpers.createSelector('HomeEnvironmentSelectorAcceptanceButton  ')
     }
 
     async getHomeScreen() {

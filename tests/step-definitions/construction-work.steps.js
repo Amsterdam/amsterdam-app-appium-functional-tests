@@ -21,7 +21,7 @@ Given(/ik ben op het project detailscherm/, async () => {
   await HomeScreen.getHomeScreen()
   await HomeScreen.homeConstructionWorkModuleButton.click()
   await expect(HomeScreen.headerTitle).toHaveText('Werkzaamheden')
-  await ConstructionWorkScreen.constructionWorkProjectsNavigatorSearchField.click()
+  await ConstructionWorkScreen.constructionWorkSearchFieldButton.click()
   await expect(ConstructionWorkScreen.headerTitle).toHaveText('Zoek in werkzaamheden')
   await ConstructionWorkScreen.constructionWorkProjectsTextSearchField.addValue("Amstel III")
   await gestures.hitEnter()
@@ -115,21 +115,21 @@ When(/ik ontvolg het project 'Zeeburgereiland'/, async () => {
 })
 
 When(/ik zoek op 'Amsterdam'/, async () => {
-  await ConstructionWorkScreen.constructionWorkProjectsNavigatorSearchField.click()
+  await ConstructionWorkScreen.constructionWorkSearchFieldButton.click()
   await expect(ConstructionWorkScreen.headerTitle).toHaveText('Zoek in werkzaamheden')
   await ConstructionWorkScreen.constructionWorkProjectsTextSearchField.addValue("Amsterdam")
   await gestures.hitEnter()
 })
 
 When(/ik zoek op 'jfklds'/, async () => {
-  await ConstructionWorkScreen.constructionWorkProjectsNavigatorSearchField.click()
+  await ConstructionWorkScreen.constructionWorkSearchFieldButton.click()
   await expect(ConstructionWorkScreen.headerTitle).toHaveText('Zoek in werkzaamheden')
   await ConstructionWorkScreen.constructionWorkProjectsTextSearchField.addValue("jfklds")
   await gestures.hitEnter()
 })
 
 When(/ik bekijk het project 'Corantijnstraat'/, async () => {
-  await ConstructionWorkScreen.constructionWorkProjectsNavigatorSearchField.click()
+  await ConstructionWorkScreen.constructionWorkSearchFieldButton.click()
   await expect(ConstructionWorkScreen.headerTitle).toHaveText('Zoek in werkzaamheden')
   await ConstructionWorkScreen.constructionWorkProjectsTextSearchField.waitForDisplayed(3000)
   await ConstructionWorkScreen.constructionWorkProjectsTextSearchField.addValue("Corantijnstraat")

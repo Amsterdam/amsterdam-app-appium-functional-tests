@@ -162,7 +162,7 @@ Then(/^mijn bericht wordt getoond in het nieuwsoverzicht van project Sluisbuurt 
     await notificationsScreen.headerBackButton.click()
     await homeScreen.homeConstructionWorkModuleButton.waitForDisplayed(2000)
     await homeScreen.homeConstructionWorkModuleButton.click()
-    await constructionWorkScreen.constructionWorkProjectsNavigatorSearchField.click()
+    await constructionWorkScreen.constructionWorkSearchFieldButton.click()
     await expect(constructionWorkScreen.headerTitle).toHaveText('Zoek in werkzaamheden')
     await constructionWorkScreen.constructionWorkProjectsTextSearchField.addValue("Sluisbuurt op Zeeburgereiland")
     await gestures.hitEnter()
