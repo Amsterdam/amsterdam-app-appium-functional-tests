@@ -45,7 +45,7 @@ class OnboardingScreen extends Screen {
     get onboardingScreenSlide0Text() {
         const text = "Informatie en diensten binnen handbereik."
         if (this.OS === 'iOS') {
-            const selector = $(`-ios predicate string:label${text}`);
+            const selector = $(`-ios predicate string:label == ${text}`);
             return selector
         }
         else {
