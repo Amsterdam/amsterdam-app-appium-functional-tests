@@ -68,6 +68,11 @@ class OnboardingScreen extends Screen {
     }
 
     get onboardingScreenSlide1Text() {
+        const text = "Informatie en diensten binnen handbereik."
+        if (this.OS === 'iOS') {
+            const selector = $(`-ios predicate string:label == "${text}"`);
+            return selector
+        }
         if (this.OS === 'iOS') {
             return helpers.createContentSelector("De hele stad bekijken of alleen uw adres? Bepaal het in de app.")
         }
@@ -90,8 +95,10 @@ class OnboardingScreen extends Screen {
     }
 
     get onboardingScreenSlide2Text() {
+        const text = "Kies zelf wat u in de app wilt zien."
         if (this.OS === 'iOS') {
-            return helpers.createContentSelector("Kies zelf wat u in de app wilt zien.")
+            const selector = $(`-ios predicate string:label == "${text}"`);
+            return selector
         }
         else {
             const testID = 'new UiSelector().text("Kies zelf wat u in de app wilt zien.").className("android.widget.TextView")'
@@ -112,8 +119,10 @@ class OnboardingScreen extends Screen {
     }
 
     get onboardingScreenSlide3Text() {
+        const text = "Praktische informatie over afval altijd bij de hand."
         if (this.OS === 'iOS') {
-            return helpers.createContentSelector("Praktische informatie over afval altijd bij de hand.")
+            const selector = $(`-ios predicate string:label == "${text}"`);
+            return selector
         }
         else {
             const testID = 'new UiSelector().text("Praktische informatie over afval altijd bij de hand.").className("android.widget.TextView")'
@@ -134,8 +143,10 @@ class OnboardingScreen extends Screen {
     }
 
     get onboardingScreenSlide4Text() {
+        const text = "Bekijk waar wij aan het werk zijn."
         if (this.OS === 'iOS') {
-            return helpers.createContentSelector("Bekijk waar wij aan het werk zijn.")
+            const selector = $(`-ios predicate string:label == "${text}"`);
+            return selector
         }
         else {
             const testID = 'new UiSelector().text("Bekijk waar wij aan het werk zijn.").className("android.widget.TextView")'
@@ -156,8 +167,10 @@ class OnboardingScreen extends Screen {
     }
 
     get onboardingScreenSlide5Text() {
+        const text = "Overlast? Iets kapot? Vertel het ons via de app."
         if (this.OS === 'iOS') {
-            return helpers.createContentSelector("Overlast? Iets kapot? Vertel het ons via de app.")
+            const selector = $(`-ios predicate string:label == "${text}"`);
+            return selector
         }
         else {
             const testID = 'new UiSelector().text("Overlast? Iets kapot? Vertel het ons via de app.").className("android.widget.TextView")'
