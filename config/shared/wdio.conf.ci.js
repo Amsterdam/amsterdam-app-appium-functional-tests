@@ -33,14 +33,6 @@ const devices = {
         }
     },
     ios: {
-        'os12-iphone7': {
-            "appium:platformVersion": "12",
-            "appium:deviceName": "iPhone 7",
-        },
-        'os13-iphone8': {
-            "appium:platformVersion": "13",
-            "appium:deviceName": "iPhone 8",
-        },
         'os14-iphone12': {
             "appium:platformVersion": "14",
             "appium:deviceName": "iPhone 12",
