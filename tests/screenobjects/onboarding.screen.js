@@ -32,10 +32,6 @@ class OnboardingScreen extends Screen {
             return helpers.createContentSelector(title)
         }
         else {
-            // const testID = `new UiSelector().text(${title}).className("android.view.View")`
-            // const selector = $(`android=${testID}`)
-            // console.log(selector)
-            // return selector
             const testID = 'new UiSelector().text("Amsterdam App").className("android.view.View")'
             const selector = $(`android=${testID}`)
             return selector
@@ -43,10 +39,10 @@ class OnboardingScreen extends Screen {
     }
 
     get onboardingScreenSlide0Text() {
-        const text = "Informatie en diensten binnen handbereik."
         if (this.OS === 'iOS') {
-            const selector = $(`-ios predicate string:label == "${text}"`);
-            return selector
+            const label = 'label == "Informatie en diensten binnen handbereik."';
+            return helpers.createPredicateSelector(label)
+
         }
         else {
             const testID = 'new UiSelector().text("Informatie en diensten binnen handbereik.").className("android.widget.TextView")'
@@ -68,13 +64,9 @@ class OnboardingScreen extends Screen {
     }
 
     get onboardingScreenSlide1Text() {
-        const text = "Informatie en diensten binnen handbereik."
         if (this.OS === 'iOS') {
-            const selector = $(`-ios predicate string:label == "${text}"`);
-            return selector
-        }
-        if (this.OS === 'iOS') {
-            return helpers.createContentSelector("De hele stad bekijken of alleen uw adres? Bepaal het in de app.")
+            const label = 'label == "De hele stad bekijken of alleen uw adres? Bepaal het in de app."'
+            return helpers.createPredicateSelector(label)
         }
         else {
             const testID = 'new UiSelector().text("De hele stad bekijken of alleen uw adres? Bepaal het in de app.").className("android.widget.TextView")'
@@ -95,10 +87,9 @@ class OnboardingScreen extends Screen {
     }
 
     get onboardingScreenSlide2Text() {
-        const text = "Kies zelf wat u in de app wilt zien."
         if (this.OS === 'iOS') {
-            const selector = $(`-ios predicate string:label == "${text}"`);
-            return selector
+            const label = 'label == "Kies zelf wat u in de app wilt zien."'
+            return helpers.createPredicateSelector(label)
         }
         else {
             const testID = 'new UiSelector().text("Kies zelf wat u in de app wilt zien.").className("android.widget.TextView")'
@@ -119,10 +110,9 @@ class OnboardingScreen extends Screen {
     }
 
     get onboardingScreenSlide3Text() {
-        const text = "Praktische informatie over afval altijd bij de hand."
         if (this.OS === 'iOS') {
-            const selector = $(`-ios predicate string:label == "${text}"`);
-            return selector
+            const label = 'label == "Praktische informatie over afval altijd bij de hand."'
+            return helpers.createPredicateSelector(label)
         }
         else {
             const testID = 'new UiSelector().text("Praktische informatie over afval altijd bij de hand.").className("android.widget.TextView")'
@@ -143,10 +133,9 @@ class OnboardingScreen extends Screen {
     }
 
     get onboardingScreenSlide4Text() {
-        const text = "Bekijk waar wij aan het werk zijn."
         if (this.OS === 'iOS') {
-            const selector = $(`-ios predicate string:label == "${text}"`);
-            return selector
+            const label = 'label == "Bekijk waar wij aan het werk zijn."'
+            return helpers.createPredicateSelector(label)
         }
         else {
             const testID = 'new UiSelector().text("Bekijk waar wij aan het werk zijn.").className("android.widget.TextView")'
@@ -167,10 +156,9 @@ class OnboardingScreen extends Screen {
     }
 
     get onboardingScreenSlide5Text() {
-        const text = "Overlast? Iets kapot? Vertel het ons via de app."
         if (this.OS === 'iOS') {
-            const selector = $(`-ios predicate string:label == "${text}"`);
-            return selector
+            const label = 'label == "Overlast? Iets kapot? Vertel het ons via de app."'
+            return helpers.createPredicateSelector(label)
         }
         else {
             const testID = 'new UiSelector().text("Overlast? Iets kapot? Vertel het ons via de app.").className("android.widget.TextView")'

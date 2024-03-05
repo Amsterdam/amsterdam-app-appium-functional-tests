@@ -28,9 +28,6 @@ When(/ik open de onboarding/, async () => {
 Then(/ik kan door de onboarding swipen/, async () => {
     await driver.pause(2000)
     await onboardingScreen.checkOnboardingSlides('swipeLeft')
-    // const selector = onboardingScreen.onboardingScreenScrollView.elementId
-    // console.log(typeof (await selector))
-    // console.log(await selector)
     await GesturesScreen.swipeRightSelector(onboardingScreen.onboardingScreenScrollView)
     await expect(onboardingScreen.onboardingScreenSlide4Title).toBeDisplayed()
     await GesturesScreen.swipeRightSelector(onboardingScreen.onboardingScreenScrollView)
