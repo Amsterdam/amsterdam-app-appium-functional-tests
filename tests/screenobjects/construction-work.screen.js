@@ -25,23 +25,23 @@ class ConstructionWorkScreen extends Screen {
   }
 
   get constructionWorkAmsterdamZuidoostProjectCard() {
-    return helpers.createSelector("ConstructionWork139ProjectCard")
+    return helpers.createSelector("ConstructionWork136ProjectCard")
   }
 
   get constructionWorkFoodCenterAmsterdamProjectCard() {
-    return helpers.createSelector("ConstructionWork17ProjectCard")
+    return helpers.createSelector("ConstructionWork16ProjectCard")
   }
 
   get constructionWorkCentrumgebiedAmsterdamNoordProjectCard() {
-    return helpers.createSelector("ConstructionWork5ProjectCard")
+    return helpers.createSelector("ConstructionWork4ProjectCard")
   }
 
   get constructionWorkHaarlemmermerProjectCard() {
-    return helpers.createSelector("ConstructionWork324ProjectCard")
+    return helpers.createSelector("ConstructionWork318ProjectCard")
   }
 
   get constructionWorkAmsterdamseBosProjectCard() {
-    return helpers.createSelector("ConstructionWork108ProjectCard")
+    return helpers.createSelector("ConstructionWork106ProjectCard")
   }
 
   get constructionWorkDeEntreeProjectCard() {
@@ -53,15 +53,15 @@ class ConstructionWorkScreen extends Screen {
   }
 
   get constructionWorkCardProjectAmsterdamSciencePark() {
-    return helpers.createSelector("ConstructionWork58ProjectCard")
+    return helpers.createSelector("ConstructionWork57ProjectCard")
   }
 
   get constructionWorkZeeburgereilandProjectCard() {
-    return helpers.createSelector("ConstructionWork25ProjectCard")
+    return helpers.createSelector("ConstructionWork24ProjectCard")
   }
 
   get constructionWorkCardProjectCentrumeiland() {
-    return helpers.createSelector("ConstructionWork13ProjectCard")
+    return helpers.createSelector("ConstructionWork12ProjectCard")
   }
 
   get constructionWorkSluisbuurtOpZeeburgereilandProjectCard() {
