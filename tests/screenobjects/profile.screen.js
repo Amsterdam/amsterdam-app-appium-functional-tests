@@ -87,12 +87,12 @@ class ProfileScreen extends Screen {
         return helpers.createSelector("SelectLocationTypeBottomSheet")
     }
 
-    get addedTxt() {
-        return helpers.createContentSelector("Gelukt, Het adres is toegevoegd aan uw profiel.")
+    get addressAddedAlert() {
+        return helpers.createContentSelector("addressAddedAlert")
     }
 
-    get deletedTxt() {
-        return helpers.createContentSelector("Gelukt, Het adres is verwijderd uit uw profiel.")
+    get addressDeletedAlert() {
+        return helpers.createContentSelector("addressDeletedAlert")
     }
 
     get addressLocationPrivacyInfoButton() {
@@ -141,7 +141,7 @@ class ProfileScreen extends Screen {
 
     async checkAddressAdded() {
         await this.addressAddButton.waitForDisplayed(5000)
-        await expect(this.addedTxt).toBeDisplayed()
+        await expect(this.addressAddedAlert).toBeDisplayed()
 
         //Dit weer aanzetten als iOS testIDs gefixt zijn
         //await expect(this.addressAddButtonTitle).toBeDisplayed()
@@ -151,7 +151,7 @@ class ProfileScreen extends Screen {
     }
 
     async checkAddressAddedAfterRefresh() {
-        await expect(this.addedTxt).not.toBeDisplayed()
+        await expect(this.addressAddedAlert).not.toBeDisplayed()
         await expect(this.addressAddButton).toBeDisplayed()
         //Dit weer aanzetten als iOS testIDs gefixt zijn
         //await expect(this.addressAddButtonTitle).toBeDisplayed()

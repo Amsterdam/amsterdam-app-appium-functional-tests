@@ -96,7 +96,7 @@ Then(/^mijn adres is succesvol (.*)$/, async (status) => {
     }
     else if (status == "verwijderd") {
         console.log(await status)
-        await expect(ProfileScreen.deletedTxt).toBeDisplayed()
+        await expect(ProfileScreen.addressDeletedAlert).toBeDisplayed()
         //Weer aanzetten als iOS testIDs gefixt zijn
         //await expect(ProfileScreen.addressAddButtonText).toHaveText('Vul een adres in')
     }
@@ -110,7 +110,7 @@ Then(/^het adres wordt nog steeds getoond$/, async () => {
 })
 
 Then(/het label over het adres verwijderen is verdwenen/, async () => {
-    await expect(ProfileScreen.deletedTxt).not.toBeDisplayed()
+    await expect(ProfileScreen.addressDeletedAlert).not.toBeDisplayed()
 })
 
 Then(/ik zie de privacy en locatie informatie/, async () => {
