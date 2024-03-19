@@ -41,7 +41,8 @@ class OnboardingScreen extends Screen {
     get onboardingScreenSlide0Text() {
         if (this.OS === 'iOS') {
             const label = 'label == "Informatie en diensten binnen handbereik."';
-            return helpers.createPredicateSelector(label)
+            const selector = $(`-ios predicate string:${label}`);
+            return selector
 
         }
         else {
@@ -66,7 +67,8 @@ class OnboardingScreen extends Screen {
     get onboardingScreenSlide1Text() {
         if (this.OS === 'iOS') {
             const label = 'label == "De hele stad bekijken of alleen uw adres? Bepaal het in de app."'
-            return helpers.createPredicateSelector(label)
+            const selector = $(`-ios predicate string:${label}`);
+            return selector
         }
         else {
             const testID = 'new UiSelector().text("De hele stad bekijken of alleen uw adres? Bepaal het in de app.").className("android.widget.TextView")'
@@ -89,7 +91,8 @@ class OnboardingScreen extends Screen {
     get onboardingScreenSlide2Text() {
         if (this.OS === 'iOS') {
             const label = 'label == "Kies zelf wat u in de app wilt zien."'
-            return helpers.createPredicateSelector(label)
+            const selector = $(`-ios predicate string:${label}`);
+            return selector
         }
         else {
             const testID = 'new UiSelector().text("Kies zelf wat u in de app wilt zien.").className("android.widget.TextView")'
@@ -112,7 +115,8 @@ class OnboardingScreen extends Screen {
     get onboardingScreenSlide3Text() {
         if (this.OS === 'iOS') {
             const label = 'label == "Praktische informatie over afval altijd bij de hand."'
-            return helpers.createPredicateSelector(label)
+            const selector = $(`-ios predicate string:${label}`);
+            return selector
         }
         else {
             const testID = 'new UiSelector().text("Praktische informatie over afval altijd bij de hand.").className("android.widget.TextView")'
@@ -135,7 +139,8 @@ class OnboardingScreen extends Screen {
     get onboardingScreenSlide4Text() {
         if (this.OS === 'iOS') {
             const label = 'label == "Bekijk waar wij aan het werk zijn."'
-            return helpers.createPredicateSelector(label)
+            const selector = $(`-ios predicate string:${label}`);
+            return selector
         }
         else {
             const testID = 'new UiSelector().text("Bekijk waar wij aan het werk zijn.").className("android.widget.TextView")'
@@ -158,7 +163,8 @@ class OnboardingScreen extends Screen {
     get onboardingScreenSlide5Text() {
         if (this.OS === 'iOS') {
             const label = 'label == "Overlast? Iets kapot? Vertel het ons via de app."'
-            return helpers.createPredicateSelector(label)
+            const selector = $(`-ios predicate string:${label}`);
+            return selector
         }
         else {
             const testID = 'new UiSelector().text("Overlast? Iets kapot? Vertel het ons via de app.").className("android.widget.TextView")'
