@@ -86,7 +86,7 @@ When(/ik open de Werkzaamheden module/, async () => {
 
 When(/ik volg het project 'Zeeburgereiland'/, async () => {
   await gestures.checkProjectDisplayedWithScrollDownAndClick(ConstructionWorkScreen.constructionWorkZeeburgereilandProjectCard, 40)
-  await expect(ConstructionWorkScreen.headerTitle).toHaveText('Zeeburgereiland')
+  await expect(ConstructionWorkScreen.headerTitle).toHaveText('Sluisbuurt op Zeeburgereiland')
   await ConstructionWorkScreen.constructionWorkProjectFollowButton.click()
   const OS = await driver.capabilities.platformName
   if (OS === 'iOS') {
@@ -109,7 +109,7 @@ When(/ik volg het project 'Zeeburgereiland'/, async () => {
 
 When(/ik ontvolg het project 'Zeeburgereiland'/, async () => {
   await ConstructionWorkScreen.constructionWorkZeeburgereilandProjectCard.click()
-  await expect(ConstructionWorkScreen.headerTitle).toHaveText('Zeeburgereiland')
+  await expect(ConstructionWorkScreen.headerTitle).toHaveText('Sluisbuurt op Zeeburgereiland')
   await ConstructionWorkScreen.constructionWorkProjectFollowButton.click()
   await driver.pause(2000)
 })
@@ -211,7 +211,7 @@ Then(/krijg ik de juiste zoekresultaten in het 'Zoek in werkzaamheden' scherm/, 
   await gestures.swipeDown()
   await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkCardProjectCentrumeiland, 4)
   await gestures.swipeDown()
-  await gestures.checkProjectDisplayedWithScrollDown(ConstructionWorkScreen.constructionWorkHaarlemmermerProjectCard, 4)
+  await gestures.checkProjectDisplayedWithScrollDown(ConstructionWorkScreen.constructionWorkHaarlemmermeerProjectCard, 4)
 })
 
 Then(/ik zie een melding dat er geen zoekresulaten zijn/, async () => {
