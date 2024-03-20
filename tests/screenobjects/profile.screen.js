@@ -88,11 +88,11 @@ class ProfileScreen extends Screen {
     }
 
     get addressAddedAlert() {
-        return helpers.createContentSelector("AddressAddedAlert")
+        return helpers.createSelector("AddressAddedAlert")
     }
 
     get addressDeletedAlert() {
-        return helpers.createContentSelector("AddressDeletedAlert")
+        return helpers.createSelector("AddressDeletedAlert")
     }
 
     get addressLocationPrivacyInfoButton() {
