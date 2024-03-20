@@ -7,10 +7,10 @@ const devices = {
             "appium:platformVersion": "8.1",
             "appium:deviceName": "Samsung Galaxy J7 Prime",
         },
-        'os9-huawei-p30': {
-            "appium:platformVersion": "9.0",
-            "appium:deviceName": "Huawei P30",
-        },
+        // 'os9-huawei-p30': {
+        //     "appium:platformVersion": "9.0",
+        //     "appium:deviceName": "Huawei P30",
+        // },
         'os-10-motorola-moto-g9-play': {
             "appium:platformVersion": "10.0",
             "appium:deviceName": "Motorola Moto G9 Play",
