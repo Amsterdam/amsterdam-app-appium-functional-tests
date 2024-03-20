@@ -85,8 +85,8 @@ When(/ik open de Werkzaamheden module/, async () => {
 })
 
 When(/ik volg het project 'Zeeburgereiland'/, async () => {
-  await gestures.checkProjectDisplayedWithScrollDownAndClick(ConstructionWorkScreen.constructionWorkZeeburgereilandProjectCard, 40)
-  await expect(ConstructionWorkScreen.headerTitle).toHaveText('Sluisbuurt op Zeeburgereiland')
+  await gestures.checkProjectDisplayedWithScrollDownAndClick(ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard, 40)
+  await expect(ConstructionWorkScreen.headerTitle).toHaveText('Stedelijk Noord')
   await ConstructionWorkScreen.constructionWorkProjectFollowButton.click()
   const OS = await driver.capabilities.platformName
   if (OS === 'iOS') {
@@ -108,8 +108,8 @@ When(/ik volg het project 'Zeeburgereiland'/, async () => {
 })
 
 When(/ik ontvolg het project 'Zeeburgereiland'/, async () => {
-  await ConstructionWorkScreen.constructionWorkZeeburgereilandProjectCard.click()
-  await expect(ConstructionWorkScreen.headerTitle).toHaveText('Sluisbuurt op Zeeburgereiland')
+  await ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard.click()
+  await expect(ConstructionWorkScreen.headerTitle).toHaveText('Stedelijk Noord')
   await ConstructionWorkScreen.constructionWorkProjectFollowButton.click()
   await driver.pause(2000)
 })
@@ -150,8 +150,8 @@ Then(/het project krijgt de status 'volgend'/, async () => {
     console.log(await attribute)
     await expect(await attribute).toEqual('Ontvolg dit project')
     await ConstructionWorkScreen.headerBackButton.click()
-    await gestures.checkProjectDisplayedWithScrollUp(ConstructionWorkScreen.constructionWorkZeeburgereilandProjectCard, 40)
-    const projectCardLabel = await ConstructionWorkScreen.constructionWorkZeeburgereilandProjectCard.getAttribute("label")
+    await gestures.checkProjectDisplayedWithScrollUp(ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard, 40)
+    const projectCardLabel = await ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard.getAttribute("label")
     console.log(await projectCardLabel)
     console.log(typeof await projectCardLabel)
     // Define the expected values
@@ -164,9 +164,9 @@ Then(/het project krijgt de status 'volgend'/, async () => {
   else {
     await expect(ConstructionWorkScreen.constructionWorkProjectFollowButtonLabel).toHaveText('Volgend')
     await ConstructionWorkScreen.headerBackButton.click()
-    await gestures.checkProjectDisplayedWithScrollUp(ConstructionWorkScreen.constructionWorkZeeburgereilandProjectCard, 40)
+    await gestures.checkProjectDisplayedWithScrollUp(ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard, 40)
     //await expect(ConstructionWorkScreen.constructionWorkProjectFollowingTraitLabel).toHaveText('Volgend')
-    const projectCardLabel = await ConstructionWorkScreen.constructionWorkZeeburgereilandProjectCard.getAttribute("contentDescription")
+    const projectCardLabel = await ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard.getAttribute("contentDescription")
     console.log(await projectCardLabel)
     console.log(typeof await projectCardLabel)
     // Define the expected values
@@ -185,15 +185,15 @@ Then(/de status 'volgend' verdwijnt/, async () => {
     console.log(await attribute)
     await expect(attribute).toEqual('Volg dit project')
     await ConstructionWorkScreen.headerBackButton.click()
-    await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkZeeburgereilandProjectCard, 30)
-    const projectCardLabel = await ConstructionWorkScreen.constructionWorkZeeburgereilandProjectCard.getAttribute("label")
+    await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard, 30)
+    const projectCardLabel = await ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard.getAttribute("label")
     await expect(projectCardLabel).not.toExist()
   }
   //Android:
   else {
     await expect(ConstructionWorkScreen.constructionWorkProjectFollowButtonLabel).toHaveText('Volgen')
     await ConstructionWorkScreen.headerBackButton.click()
-    await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkZeeburgereilandProjectCard, 30)
+    await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard, 30)
     await expect(ConstructionWorkScreen.constructionWorkProjectFollowingTraitLabel).not.toExist()
   }
 })
