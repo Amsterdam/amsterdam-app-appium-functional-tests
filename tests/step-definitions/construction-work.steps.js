@@ -84,7 +84,7 @@ When(/ik open de Werkzaamheden module/, async () => {
   await expect(HomeScreen.headerTitle).toHaveText('Werkzaamheden')
 })
 
-When(/ik volg het project 'Zeeburgereiland'/, async () => {
+When(/ik volg het project 'Stedelijk Noord'/, async () => {
   await gestures.checkProjectDisplayedWithScrollDownAndClick(ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard, 40)
   await expect(ConstructionWorkScreen.headerTitle).toHaveText('Stedelijk Noord')
   await ConstructionWorkScreen.constructionWorkProjectFollowButton.click()
@@ -107,7 +107,7 @@ When(/ik volg het project 'Zeeburgereiland'/, async () => {
   await driver.pause(2000)
 })
 
-When(/ik ontvolg het project 'Zeeburgereiland'/, async () => {
+When(/ik ontvolg het project 'Stedelijk Noord'/, async () => {
   await ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard.click()
   await expect(ConstructionWorkScreen.headerTitle).toHaveText('Stedelijk Noord')
   await ConstructionWorkScreen.constructionWorkProjectFollowButton.click()
