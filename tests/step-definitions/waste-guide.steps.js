@@ -1,7 +1,7 @@
 import { ClassicRunner, Eyes } from '@applitools/eyes-webdriverio';
 import percyScreenshot from '@percy/appium-app';
 import { Given, Then, When } from '@wdio/cucumber-framework';
-import { wasteGuideRequestApp, wasteGuideRequestData } from '../../requests.js';
+//import { wasteGuideRequestApp, wasteGuideRequestData } from '../../requests.js';
 import HomeScreen from '../screenobjects/home.screen.js';
 import PermissionsScreen from '../screenobjects/permissions.screen.js';
 import ProfileScreen from '../screenobjects/profile.screen.js';
@@ -31,18 +31,18 @@ Given(/^ik heb een adres ingevoerd, bagnummer: (.*)$/, async (bagnummer) => {
     await ProfileScreen.addressStreetInputSearchField.addValue('Balistraat 1-1')
     const addressSelector = await ProfileScreen.addressSelector('Balistraat 1, 1 hoog')
     await addressSelector.click()
-    await wasteGuideRequestData(bagnummer)
-    await wasteGuideRequestApp(bagnummer)
-    await WasteGuideScreen.wasteGuideChangeLocationButton.waitForDisplayed(20000)
+    //await wasteGuideRequestData(bagnummer)
+    //await wasteGuideRequestApp(bagnummer)
+    await WasteGuideScreen.wasteGuideRequestLocationButton.waitForDisplayed(20000)
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
-        const attribute = await WasteGuideScreen.wasteGuideChangeLocationButton.getAttribute("label");
+        const attribute = await WasteGuideScreen.wasteGuideRequestLocationButton.getAttribute("label");
         console.log(await attribute)
         await expect(await attribute).toEqual('Mijn adres, Balistraat 1-1')
     }
     //Android:
     else {
-        await expect(WasteGuideScreen.wasteGuideChangeLocationButtonText).toHaveText('Balistraat 1-1')
+        await expect(WasteGuideScreen.wasteGuideRequestLocationButtonText).toHaveText('Balistraat 1-1')
     }
 })
 
@@ -86,8 +86,8 @@ Given(/^ik geef geen toestemming om 'Mijn locatie' te delen bij de afvalwijzer/,
 })
 
 When(/^ik verander het adres naar (.*) met (.*), bagnummer: (.*)$/, async (adres, adreslabel, bagnummer) => {
-    await WasteGuideScreen.wasteGuideChangeLocationButton.waitForDisplayed(5000)
-    await WasteGuideScreen.wasteGuideChangeLocationButton.click()
+    await WasteGuideScreen.wasteGuideRequestLocationButton.waitForDisplayed(5000)
+    await WasteGuideScreen.wasteGuideRequestLocationButton.click()
     await ProfileScreen.bottomSheetSelectAddressButton.waitForDisplayed(5000)
     await ProfileScreen.bottomSheetChangeAddressButton.click()
     await expect(ProfileScreen.headerTitle).toHaveText('Mijn profiel')
@@ -96,26 +96,26 @@ When(/^ik verander het adres naar (.*) met (.*), bagnummer: (.*)$/, async (adres
     await ProfileScreen.addressStreetInputSearchField.addValue(adres)
     const addressSelector = await ProfileScreen.addressSelector(adreslabel)
     await addressSelector.click()
-    await wasteGuideRequestData(bagnummer)
-    await wasteGuideRequestApp(bagnummer)
+    //await wasteGuideRequestData(bagnummer)
+    //await wasteGuideRequestApp(bagnummer)
     await ProfileScreen.headerBackButton.click()
     await expect(WasteGuideScreen.headerTitle).toHaveText('Afvalwijzer')
-    await WasteGuideScreen.wasteGuideChangeLocationButton.waitForDisplayed(20000)
+    await WasteGuideScreen.wasteGuideRequestLocationButton.waitForDisplayed(20000)
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
-        const attribute = await WasteGuideScreen.wasteGuideChangeLocationButton.getAttribute("label");
+        const attribute = await WasteGuideScreen.wasteGuideRequestLocationButton.getAttribute("label");
         console.log(await attribute)
         await expect(await attribute).toEqual(`Mijn adres, ${adres}`)
     }
     //Android:
     else {
-        await expect(WasteGuideScreen.wasteGuideChangeLocationButtonText).toHaveText(adres)
+        await expect(WasteGuideScreen.wasteGuideRequestLocationButtonText).toHaveText(adres)
     }
 })
 
 When(/ik voer een adres (.*) in dat geen woonadres is, bagnummer: (.*)/, async (adres, bagnummer) => {
-    await WasteGuideScreen.wasteGuideChangeLocationButton.waitForDisplayed(5000)
-    await WasteGuideScreen.wasteGuideChangeLocationButton.click()
+    await WasteGuideScreen.wasteGuideRequestLocationButton.waitForDisplayed(5000)
+    await WasteGuideScreen.wasteGuideRequestLocationButton.click()
     await ProfileScreen.bottomSheetSelectAddressButton.waitForDisplayed(2000)
     await ProfileScreen.bottomSheetChangeAddressButton.click()
     await expect(ProfileScreen.headerTitle).toHaveText('Mijn profiel')
@@ -124,20 +124,20 @@ When(/ik voer een adres (.*) in dat geen woonadres is, bagnummer: (.*)/, async (
     await ProfileScreen.addressStreetInputSearchField.addValue(adres)
     const addressSelector = await ProfileScreen.addressSelector(adres)
     await addressSelector.click()
-    await wasteGuideRequestData(bagnummer)
-    await wasteGuideRequestApp(bagnummer)
+    //await wasteGuideRequestData(bagnummer)
+    //await wasteGuideRequestApp(bagnummer)
     await ProfileScreen.headerBackButton.click()
     await expect(WasteGuideScreen.headerTitle).toHaveText('Afvalwijzer')
-    await WasteGuideScreen.wasteGuideChangeLocationButton.waitForDisplayed(20000)
+    await WasteGuideScreen.wasteGuideRequestLocationButton.waitForDisplayed(20000)
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
-        const attribute = await WasteGuideScreen.wasteGuideChangeLocationButton.getAttribute("label");
+        const attribute = await WasteGuideScreen.wasteGuideRequestLocationButton.getAttribute("label");
         console.log(await attribute)
         await expect(await attribute).toEqual(`Mijn adres, ${adres}`)
     }
     //Android:
     else {
-        await expect(WasteGuideScreen.wasteGuideChangeLocationButtonText).toHaveText(adres)
+        await expect(WasteGuideScreen.wasteGuideRequestLocationButtonText).toHaveText(adres)
     }
 })
 
@@ -150,7 +150,7 @@ When(/ik selecteer of ik wel of niet een contract (.*) heb/, async contract => {
 })
 
 Then(/ik zie het juiste adres in het afvalwijzerscherm/, async () => {
-    await expect(WasteGuideScreen.wasteGuideChangeLocationButtonText).toHaveText('In de buurt van Weesperstraat 113')
+    await expect(WasteGuideScreen.wasteGuideRequestLocationButtonText).toHaveText('In de buurt van Weesperstraat 113')
 })
 
 //Then - eyes
@@ -193,4 +193,5 @@ Then(/ik zie het Afvalwijzer scherm/, async () => {
 
 Then(/^ik zie de juiste informatie in de afvalwijzer (.*) - percy$/, async (adres) => {
     await percyScreenshot(adres, { fullPage: true, screenLengths: 8 })
+
 })
