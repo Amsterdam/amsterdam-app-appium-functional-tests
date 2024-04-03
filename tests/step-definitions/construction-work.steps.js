@@ -111,29 +111,19 @@ When(/ik ontvolg het project 'Stedelijk Noord'/, async () => {
   await ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard.click()
   await expect(ConstructionWorkScreen.headerTitle).toHaveText('Stedelijk Noord')
   await ConstructionWorkScreen.constructionWorkProjectFollowButton.click()
-  await driver.pause(2000)
+  await driver.pause(5000)
 })
 
 When(/ik zoek op 'Amsterdam'/, async () => {
-  await ConstructionWorkScreen.constructionWorkSearchFieldButton.click()
-  await expect(ConstructionWorkScreen.headerTitle).toHaveText('Zoek in werkzaamheden')
-  await ConstructionWorkScreen.constructionWorkProjectsTextSearchField.addValue("Amsterdam")
-  await gestures.hitEnter()
+  await ConstructionWorkScreen.searchProject("Amsterdam")
 })
 
 When(/ik zoek op 'jfklds'/, async () => {
-  await ConstructionWorkScreen.constructionWorkSearchFieldButton.click()
-  await expect(ConstructionWorkScreen.headerTitle).toHaveText('Zoek in werkzaamheden')
-  await ConstructionWorkScreen.constructionWorkProjectsTextSearchField.addValue("jfklds")
-  await gestures.hitEnter()
+  await ConstructionWorkScreen.searchProject("jfklds")
 })
 
 When(/ik bekijk het project 'Corantijnstraat'/, async () => {
-  await ConstructionWorkScreen.constructionWorkSearchFieldButton.click()
-  await expect(ConstructionWorkScreen.headerTitle).toHaveText('Zoek in werkzaamheden')
-  await ConstructionWorkScreen.constructionWorkProjectsTextSearchField.waitForDisplayed(3000)
-  await ConstructionWorkScreen.constructionWorkProjectsTextSearchField.addValue("Corantijnstraat")
-  await gestures.hitEnter()
+  await ConstructionWorkScreen.searchProject("Corantijnstraat")
   await ConstructionWorkScreen.constructionWorkCorantijnstraatProjectCard.waitForDisplayed(3000)
   await ConstructionWorkScreen.constructionWorkCorantijnstraatProjectCard.click()
 })
@@ -185,7 +175,8 @@ Then(/de status 'volgend' verdwijnt/, async () => {
     console.log(await attribute)
     await expect(attribute).toEqual('Volg dit project')
     await ConstructionWorkScreen.headerBackButton.click()
-    await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard, 30)
+    await expect(ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard).not.toBeDisplayed()
+    await ConstructionWorkScreen.searchProject("Stedelijk Noord")
     const projectCardLabel = await ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard.getAttribute("label")
     await expect(projectCardLabel).not.toExist()
   }
@@ -193,7 +184,8 @@ Then(/de status 'volgend' verdwijnt/, async () => {
   else {
     await expect(ConstructionWorkScreen.constructionWorkProjectFollowButtonLabel).toHaveText('Volgen')
     await ConstructionWorkScreen.headerBackButton.click()
-    await gestures.checkProjectDisplayedWithScrollDownSlow(ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard, 30)
+    await expect(ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard).not.toBeDisplayed()
+    await ConstructionWorkScreen.searchProject("Stedelijk Noord")
     await expect(ConstructionWorkScreen.constructionWorkProjectFollowingTraitLabel).not.toExist()
   }
 })

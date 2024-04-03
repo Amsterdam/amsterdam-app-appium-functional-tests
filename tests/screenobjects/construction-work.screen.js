@@ -1,3 +1,4 @@
+import gestures from '../Shared/helpers/gestures.js';
 import helpers from '../Shared/helpers/helpers.js';
 import Screen from './screen.js';
 /**
@@ -172,6 +173,13 @@ class ConstructionWorkScreen extends Screen {
       return helpers.createContentSelector(`Nieuw ${day} ${month} ${title}`)
     }
 
+  }
+
+  async searchProject(project) {
+    await this.constructionWorkSearchFieldButton.click()
+    await expect(this.headerTitle).toHaveText('Zoek in werkzaamheden')
+    await this.constructionWorkProjectsTextSearchField.addValue(project)
+    await gestures.hitEnter()
   }
 }
 
