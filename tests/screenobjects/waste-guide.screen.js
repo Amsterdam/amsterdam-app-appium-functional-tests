@@ -25,7 +25,7 @@ class WasteGuideScreen extends Screen {
     }
 
     get wasteGuideRequestLocationButtonText() {
-        return helpers.createSelector("WasteGuideChangeLocationButtonText");
+        return helpers.createSelector("WasteGuideRequestLocationButtonText");
     }
 
     get wasteGuideRequestLocationButton() {
