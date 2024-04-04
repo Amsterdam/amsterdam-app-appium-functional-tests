@@ -3,14 +3,14 @@ import { config as sharedconfig } from "./wdio.conf.shared.js";
 
 const devices = {
     android: {
-        'os8-1-samsung-galaxy-j7-prime': {
-            "appium:platformVersion": "8.1",
-            "appium:deviceName": "Samsung Galaxy J7 Prime",
+        'os8-0-samsung-galaxy-s9': {
+            "appium:platformVersion": "8.0",
+            "appium:deviceName": "Samsung Galaxy S9",
         },
-        // 'os9-huawei-p30': {
-        //     "appium:platformVersion": "9.0",
-        //     "appium:deviceName": "Huawei P30",
-        // },
+        'os9-google-pixel-3': {
+            "appium:platformVersion": "9.0",
+            "appium:deviceName": "Google Pixel 3",
+        },
         'os-10-motorola-moto-g9-play': {
             "appium:platformVersion": "10.0",
             "appium:deviceName": "Motorola Moto G9 Play",
@@ -56,6 +56,7 @@ const getCapabilitiesForDevice = (device, platform) => {
             "appium:platformVersion": deviceConfig["appium:platformVersion"],
             "appium:deviceName": deviceConfig["appium:deviceName"],
             "appium:app": bsUrlAndroid,
+            "appium:fullReset": true,
             'bstack:options': {
                 "projectName": projectName,
                 "buildName": buildNameAndroidMobile,
@@ -71,6 +72,7 @@ const getCapabilitiesForDevice = (device, platform) => {
             "appium:deviceName": deviceConfig["appium:deviceName"],
             "appium:app": bsUrliOS,
             "appium:noReset": false,
+            "appium:fullReset": true,
             'bstack:options': {
                 "projectName": projectName,
                 "buildName": buildNameIosMobile,
