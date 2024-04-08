@@ -22,7 +22,6 @@ sharedconfig.services = [
     }]
 ]
 
-sharedconfig.maxInstances = 5,
 
-        
+
 export const config = sharedconfig;

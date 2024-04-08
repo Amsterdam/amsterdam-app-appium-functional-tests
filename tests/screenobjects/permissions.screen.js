@@ -55,6 +55,10 @@ class PermissionsScreen extends Screen {
         return helpers.createContentSelector("Back")
     }
 
+    //iOS selectors
+    get iosAllowWhileUsingAppButton() {
+        return helpers.createSelector("Allow While Using App")
+    }
 
 }
 

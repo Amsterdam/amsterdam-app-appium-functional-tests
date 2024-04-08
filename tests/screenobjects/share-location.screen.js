@@ -9,6 +9,10 @@ class LocationScreen extends Screen {
         return helpers.createSelector("AddressLocationPermissionInstructionModalCloseButton");
     }
 
+    get constructionWorkRequestLocationButtonTitle() {
+        return helpers.createSelector("ConstructionWorkRequestLocationButtonTitle")
+    }
+
 
 
 }

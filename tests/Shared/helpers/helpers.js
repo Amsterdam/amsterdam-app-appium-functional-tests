@@ -1,22 +1,20 @@
 import { execSync } from 'child_process'
 
 class Helpers {
+  currentOS = driver.capabilities.platformName
 
   createSelector(id) {
-    const currentOS = driver.capabilities.platformName
-    const testID = currentOS === 'iOS' ? `~${id}` : `android=new UiSelector().resourceId("${id}")`
+    const testID = this.currentOS === 'iOS' ? `~${id}` : `android=new UiSelector().resourceId("${id}")`
     return $(testID)
   }
 
   createContentSelector(id) {
-    const currentOS = driver.capabilities.platformName
-    const testID = currentOS === 'iOS' ? `~${id}` : `android=new UiSelector().descriptionMatches("${id}")`
+    const testID = this.currentOS === 'iOS' ? `~${id}` : `android=new UiSelector().descriptionMatches("${id}")`
     return $(testID)
   }
 
   createTextBasedSelector(text, className) {
-    const currentOS = driver.capabilities.platformName
-    if (currentOS === 'iOS') {
+    if (this.currentOS === 'iOS') {
       const iOSTestID = `~${text}`
       return $(iOSTestID)
     } else {
@@ -27,9 +25,14 @@ class Helpers {
 
   }
 
+  createPredicateSelector(label) {
+    const selector = $(`-ios predicate string:${label}`);
+    return selector
+  }
+
   // export default function checkOS() {
-  //   const currentOS = driver.capabilities.platformName
-  //   return currentOS
+  //   const this.currentOS = driver.capabilities.platformName
+  //   return this.currentOS
   // }
   realDeviceCheckiOS() {
     const simulatorRegex = new RegExp('(.*-.*){2,}');
@@ -49,8 +52,7 @@ class Helpers {
   }
 
   async closeApp() {
-    const currentOS = await driver.capabilities.platformName
-    if (currentOS === 'iOS') {
+    if (this.currentOS === 'iOS') {
       await driver.executeScript('mobile: terminateApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
     } else {
       await driver.terminateApp('nl.amsterdam.app.dev')
