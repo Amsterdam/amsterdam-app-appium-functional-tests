@@ -44,7 +44,7 @@ class Helpers {
   async launchApp() {
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
-      await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
+      await driver.activateApp('nl.amsterdam.app.dev')
     }
     else {
       await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
@@ -52,11 +52,7 @@ class Helpers {
   }
 
   async closeApp() {
-    if (this.currentOS === 'iOS') {
-      await driver.executeScript('mobile: terminateApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
-    } else {
-      await driver.terminateApp('nl.amsterdam.app.dev')
-    }
+    await driver.terminateApp('nl.amsterdam.app.dev')
   }
 
   isEmulator() {
