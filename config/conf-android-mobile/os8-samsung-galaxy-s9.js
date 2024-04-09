@@ -4,8 +4,8 @@ import { config as sharedconfig } from "../shared/wdio.conf.shared.js";
 sharedconfig.capabilities = [
     {
         "platformName": "android",
-        "appium:platformVersion": "8.1",
-        "appium:deviceName": "Samsung Galaxy J7 Prime",
+        "appium:platformVersion": "8.0",
+        "appium:deviceName": "Samsung Galaxy S9",
         "appium:app": bsUrlAndroid,
         'bstack:options': {
             "projectName": projectName,

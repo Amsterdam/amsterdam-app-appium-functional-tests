@@ -23,7 +23,7 @@
     "android-emulator-mobile": "wdio run ./config/emulators-simulators/wdio.conf.android.js",
     "ios-simulator-iphone11": "wdio run ./config/emulators-simulators/wdio.conf.iphone11.js",
     "ios-simulator-ipad": "wdio run ./config/emulators-simulators/wdio.conf.ios-tablet.js",
-    "os8-1-samsung-galaxy-j7-prime": "wdio run ./config/conf-android-mobile/os8-1-samsung-galaxy-j7-prime.js",
+    "os8-samsung-galaxy-s9": "wdio run ./config/conf-android-mobile/os8-samsung-galaxy-s9.js",
     "os8-google-pixel-2": "wdio run ./config/conf-android-mobile/os8-google-pixel-2.js",
     "os9-huawei-p30": "wdio run ./config/conf-android-mobile/os9-huawei-p30.js",
     "os-10-motorola-moto-g9-play": "wdio run ./config/conf-android-mobile/os10-motorola-moto-g9-play.js",
