@@ -1,11 +1,11 @@
-import { ClassicRunner, Eyes } from '@applitools/eyes-webdriverio';
-import percyScreenshot from '@percy/appium-app';
 import { Given, Then, When } from '@wdio/cucumber-framework';
 //import { wasteGuideRequestApp, wasteGuideRequestData } from '../../requests.js';
 import HomeScreen from '../screenobjects/home.screen.js';
 import PermissionsScreen from '../screenobjects/permissions.screen.js';
 import ProfileScreen from '../screenobjects/profile.screen.js';
 import WasteGuideScreen from '../screenobjects/waste-guide.screen.js';
+
+const OS = await driver.capabilities.platformName
 
 Given(/ik ben op het afvalwijzer Startscherm/, async () => {
     await HomeScreen.getHomeScreen()
@@ -34,7 +34,6 @@ Given(/^ik heb een adres ingevoerd, bagnummer: (.*)$/, async (bagnummer) => {
     //await wasteGuideRequestData(bagnummer)
     //await wasteGuideRequestApp(bagnummer)
     await WasteGuideScreen.wasteGuideRequestLocationButton.waitForDisplayed(20000)
-    const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
         const attribute = await WasteGuideScreen.wasteGuideRequestLocationButton.getAttribute("label");
         console.log(await attribute)
@@ -101,7 +100,6 @@ When(/^ik verander het adres naar (.*) met (.*), bagnummer: (.*)$/, async (adres
     await ProfileScreen.headerBackButton.click()
     await expect(WasteGuideScreen.headerTitle).toHaveText('Afvalwijzer')
     await WasteGuideScreen.wasteGuideRequestLocationButton.waitForDisplayed(20000)
-    const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
         const attribute = await WasteGuideScreen.wasteGuideRequestLocationButton.getAttribute("label");
         console.log(await attribute)
@@ -129,7 +127,6 @@ When(/ik voer een adres (.*) in dat geen woonadres is, bagnummer: (.*)/, async (
     await ProfileScreen.headerBackButton.click()
     await expect(WasteGuideScreen.headerTitle).toHaveText('Afvalwijzer')
     await WasteGuideScreen.wasteGuideRequestLocationButton.waitForDisplayed(20000)
-    const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
         const attribute = await WasteGuideScreen.wasteGuideRequestLocationButton.getAttribute("label");
         console.log(await attribute)
@@ -150,48 +147,46 @@ When(/ik selecteer of ik wel of niet een contract (.*) heb/, async contract => {
 })
 
 Then(/ik zie het juiste adres in het afvalwijzerscherm/, async () => {
-    await expect(WasteGuideScreen.wasteGuideRequestLocationButtonText).toHaveText('In de buurt van Weesperstraat 113')
+    await WasteGuideScreen.wasteGuideRequestLocationButton.waitForDisplayed(5000)
+    if (OS === 'iOS') {
+        const label = await WasteGuideScreen.wasteGuideRequestLocationButton.getAttribute("label")
+        await expect(label).toEqual('Geef uw locatie door')
+    }
+    else {
+        await expect(WasteGuideScreen.wasteGuideRequestLocationButtonTitle).toHaveText('Geef uw locatie door')
+    }
 })
 
-//Then - eyes
-Then(/ik zie het Afvalwijzer scherm - eyes/, async () => {
-    const runner = new ClassicRunner()
-    const eyes = new Eyes(runner)
-    await eyes.open(driver, "Amsterdam App", "ik zie het Afvalwijze startscherm")
-    await eyes.check()
-    await eyes.close()
-    await eyes.abortIfNotClosed()
+Then(/ik zie het Afvalwijzer start scherm/, async () => {
+    await WasteGuideScreen.wasteGuideRequestLocationButton.waitForDisplayed(5000)
+    if (OS === 'iOS') {
+        const label = await WasteGuideScreen.wasteGuideRequestLocationButton.getAttribute("label")
+        await expect(label).toEqual('Geef uw locatie door')
+    }
+    else {
+        await expect(WasteGuideScreen.wasteGuideRequestLocationButtonTitle).toHaveText('Geef uw locatie door')
+    }
 })
 
-Then(/ik zie de juiste informatie in de afvalwijzer voor (.*) - eyes/, async omschrijving => {
-    const runner = new ClassicRunner()
-    const eyes = new Eyes(runner)
-    await eyes.open(driver, "Amsterdam App", "ik zie de juiste informatie in de afvalwijzer voor adressen " + omschrijving)
-    await eyes.check()
-    await eyes.close()
-    await eyes.abortIfNotClosed()
+Then(/ik zie het Afvalwijzer scherm voor woonadressen/, async () => {
+    await WasteGuideScreen.wasteGuideRequestLocationButton.waitForDisplayed(5000)
+    if (OS === 'iOS') {
+        const label = await WasteGuideScreen.wasteGuideRequestLocationButton.getAttribute("label")
+        await expect(label).toEqual('Mijn adres, Balistraat 1-1')
+    }
+    else {
+        await expect(WasteGuideScreen.wasteGuideRequestLocationButtonTitle).toHaveText('Mijn adres')
+        await expect(WasteGuideScreen.wasteGuideRequestLocationButtonText).toHaveText('Balistraat 1-1')
+    }
 })
 
-// Then(/ik zie de juiste informatie in de afvalwijzer/, async contract => {
-//     const runner = new ClassicRunner()
-//     const eyes = new Eyes(runner)
-//     await eyes.open(driver, "Amsterdam App", "ik zie de juiste informatie in de afvalwijzer met contract: " + contract)
-//     await eyes.check()
-//     await eyes.close()
-//     await eyes.abortIfNotClosed()
-// })
-
-//Then - percy
-Then(/ik zie het Afvalwijzer scherm - percy/, async () => {
-    await percyScreenshot('Afvalwijzer')
-})
-
-Then(/ik zie het Afvalwijzer scherm/, async () => {
+Then(/ik zie het Afvalwijzer scherm voor adressen die geen woonadres zijn/, async () => {
     await expect(WasteGuideScreen.wasteGuideRequestLocationButton).toBeDisplayed()
-    await expect(WasteGuideScreen.wasteGuideScreenTitle).toBeDisplayed()
-})
-
-Then(/^ik zie de juiste informatie in de afvalwijzer (.*) - percy$/, async (adres) => {
-    await percyScreenshot(adres, { fullPage: true, screenLengths: 8 })
+    await WasteGuideScreen.wasteGuideReportWrongBuildingTypeIntroPhrase.waitForDisplayed(5000)
+    await WasteGuideScreen.wasteGuideSelectContractRadioGroupfalseRadioButton.click()
+    await expect(WasteGuideScreen.wasteGuideScreenRestafvalTitle).toBeDisplayed()
+    await WasteGuideScreen.wasteGuideSelectContractRadioGrouptrueRadioButton.click()
+    await expect(WasteGuideScreen.wasteGuideBusinessesInfoTitle).toBeDisplayed()
+    await expect(WasteGuideScreen.wasteGuideBusinessesInfoPhrase).toBeDisplayed()
 
 })

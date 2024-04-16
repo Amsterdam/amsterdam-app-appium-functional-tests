@@ -19,11 +19,6 @@ class WasteGuideScreen extends Screen {
         }
     }
 
-
-    get wasteGuideRequestLocationButton() {
-        return helpers.createSelector("WasteGuideChangeLocationButton");
-    }
-
     get wasteGuideRequestLocationButtonText() {
         return helpers.createSelector("WasteGuideRequestLocationButtonText");
     }
@@ -32,16 +27,16 @@ class WasteGuideScreen extends Screen {
         return helpers.createSelector("WasteGuideRequestLocationButton");
     }
 
+    get wasteGuideRequestLocationButtonTitle() {
+        return helpers.createSelector("WasteGuideRequestLocationButtonTitle");
+    }
+
     get wasteGuideSelectContractRadioGroupfalseRadioButton() {
         return helpers.createSelector("WasteGuideSelectContractRadioGroupfalseRadioButton")
     }
 
     get wasteGuideSelectContractRadioGrouptrueRadioButton() {
         return helpers.createSelector("WasteGuideSelectContractRadioGrouptrueRadioButton")
-    }
-
-    get wasteGuideScreenTitle() {
-        return helpers.createTextBasedSelector("Voor welke locatie wilt u informatie over afval?", "android.view.View")
     }
 
     get wasteGuideScreenRestafvalTitle() {
@@ -197,6 +192,17 @@ class WasteGuideScreen extends Screen {
         return helpers.createContentSelector("Hoe: In de container voor textiel Waar: Kaart met containers in de buurt")
     }
 
+    get wasteGuideReportWrongBuildingTypeIntroPhrase() {
+        return helpers.createSelector("WasteGuideReportWrongBuildingTypeIntroPhrase")
+    }
+
+    get wasteGuideBusinessesInfoTitle() {
+        return helpers.createTextBasedSelector("Neem contact op met uw afvalinzamelaar", "android.view.View")
+    }
+
+    get wasteGuideBusinessesInfoPhrase() {
+        return helpers.createSelector("WasteGuideBusinessesInfoPhrase")
+    }
 
 }
 
