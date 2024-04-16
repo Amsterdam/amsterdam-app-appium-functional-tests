@@ -147,6 +147,15 @@ class ConstructionWorkScreen extends Screen {
   get constructionWorkRequestLocationButton() {
     return helpers.createSelector("ConstructionWorkRequestLocationButton");
   }
+
+  get constructionWorkRequestLocationButtonText() {
+    return helpers.createSelector("ConstructionWorkRequestLocationButtonText");
+  }
+
+  get constructionWorkRequestLocationButtonTitle() {
+    return helpers.createSelector("ConstructionWorkRequestLocationButtonTitle");
+  }
+
   get constructionWorkChangeLocationButtonTitle() {
     return helpers.createSelector("ConstructionWorkChangeLocationButtonTitle");
   }

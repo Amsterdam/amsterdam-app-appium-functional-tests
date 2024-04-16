@@ -50,6 +50,14 @@ class WasteGuideScreen extends Screen {
         return helpers.createSelector("WasteGuideBusinessesInfoPhrase")
     }
 
+    get wasteGuideNotFoundMessage() {
+        return helpers.createSelector("WasteGuideNotFoundMessage")
+    }
+
+    get wasteGuideNotFoundMistakeButton() {
+        return helpers.createSelector("WasteGuideNotFoundMistakeButton")
+    }
+
 }
 
 export default new WasteGuideScreen();

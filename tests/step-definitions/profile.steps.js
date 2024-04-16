@@ -1,7 +1,10 @@
 import { Given, Then, When } from "@wdio/cucumber-framework";
 import helpers from "../Shared/helpers/helpers.js";
 import HomeScreen from "../screenobjects/home.screen.js";
+import permissionsScreen from "../screenobjects/permissions.screen.js";
 import ProfileScreen from "../screenobjects/profile.screen.js";
+
+const OS = await driver.capabilities.platformName
 
 //Given
 Given(/ik ben op het mijn profiel scherm/, async () => {
@@ -79,6 +82,18 @@ When(/ik sluit het scherm middels de (.*) button/, async button => {
     }
 })
 
+When(/ik voeg mijn huidige locatie toe/, async () => {
+    await ProfileScreen.addressAddButton.waitForDisplayed(5000)
+    await ProfileScreen.addressAddButton.click()
+    await ProfileScreen.addressUseLocationButton.waitForDisplayed(150000)
+    await ProfileScreen.addressUseLocationButton.click()
+    if (OS === 'iOS') {
+        await permissionsScreen.iosAllowWhileUsingAppButton.click()
+    } else {
+        await permissionsScreen.androidAllowWhileUsingAppButton.click()
+    }
+})
+
 //Then
 Then(/ik zie mijn profiel met de mogelijkheid om een adres toe te voegen/, async () => {
     await expect(ProfileScreen.addressTitle).toBeDisplayed()
@@ -115,7 +130,6 @@ Then(/het label over het adres verwijderen is verdwenen/, async () => {
 
 Then(/ik zie de privacy en locatie informatie/, async () => {
     await expect(ProfileScreen.addressPrivacyInfoModalCloseButton).toBeDisplayed()
-    const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
         const attribute = await ProfileScreen.addressPrivacyInfoModalCloseButton.getAttribute("label");
         console.log(await attribute)
@@ -132,5 +146,9 @@ Then(/ik zie de privacy en locatie informatie/, async () => {
 
 Then(/ik ben terug op het mijn profiel scherm/, async () => {
     await expect(ProfileScreen.addressTitle).toBeDisplayed()
+})
+
+Then(/er wordt een melding getoond dat er geen suggesties zijn/, async () => {
+    await expect(ProfileScreen.addressNoSuggestionsMessage).toBeDisplayed()
 })
 

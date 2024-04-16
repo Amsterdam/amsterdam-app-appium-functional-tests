@@ -124,6 +124,14 @@ class ProfileScreen extends Screen {
         return helpers.createSelector("AddressPrivacyInfoModalCloseButtonLabel")
     }
 
+    get addressUseLocationButton() {
+        return helpers.createSelector("AddressUseLocationButton")
+    }
+
+    get addressNoSuggestionsMessage() {
+        return helpers.createSelector("AddressNoSuggestionsMessage")
+    }
+
     async addressSelector(adres) {
         const OS = await driver.capabilities.platformName
         if (OS === 'iOS') {

@@ -33,6 +33,12 @@ Feature: Mijn profiel
             | verwijderd |
 
     @BeforeClean @AfterClean
+    Scenario Outline: Adres toevoegen met huidige locatie buiten Amsterdam
+        Given ik ben op het mijn profiel scherm
+        When ik voeg mijn huidige locatie toe
+        Then er wordt een melding getoond dat er geen suggesties zijn
+
+    @BeforeClean @AfterClean
     Scenario Outline: Privacy en locatie informatie bekijken
         Given ik ben op het mijn profiel scherm
         When ik klik op 'Zo gebruiken wij uw locatie en adres'
