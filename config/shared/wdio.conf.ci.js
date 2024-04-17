@@ -3,14 +3,6 @@ import { config as sharedconfig } from "./wdio.conf.shared.js";
 
 const devices = {
     android: {
-        'os8-0-samsung-galaxy-s9': {
-            "appium:platformVersion": "8.0",
-            "appium:deviceName": "Samsung Galaxy S9",
-        },
-        'os9-google-pixel-3': {
-            "appium:platformVersion": "9.0",
-            "appium:deviceName": "Google Pixel 3",
-        },
         'os-10-motorola-moto-g9-play': {
             "appium:platformVersion": "10.0",
             "appium:deviceName": "Motorola Moto G9 Play",
@@ -40,6 +32,10 @@ const devices = {
         'os15-iphoneXS': {
             "appium:platformVersion": "15",
             "appium:deviceName": "iPhone XS",
+        },
+        'os16-iphone12-pro': {
+            "appium:platformVersion": "16",
+            "appium:deviceName": "iPhone 12 Pro",
         },
         'os17-iphone13': {
             "appium:platformVersion": "17",
