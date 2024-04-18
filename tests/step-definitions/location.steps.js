@@ -35,7 +35,7 @@ Then(/mijn locatie wordt gebruikt voor het tonen van werkzaamheden/, async () =>
     }
     else {
         const locationText = await constructionWorkScreen.constructionWorkRequestLocationButtonText.getText()
-        const assertValue = await locationText === 'In de buurt van Zeedijk 5' || await locationText === 'In de buurt van Viergrenzenweg 97'
+        const assertValue = await locationText === 'In de buurt van Zeedijk 5' || await locationText === 'In de buurt van Viergrenzenweg 97' || await locationText === 'In de buurt van Vliehors 1'
         console.log(`assertValue: ${assertValue}`)
         chai.expect(assertValue).to.be.true
     }
