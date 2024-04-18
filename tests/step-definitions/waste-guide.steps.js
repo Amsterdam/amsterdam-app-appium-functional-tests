@@ -9,10 +9,6 @@ const OS = await driver.capabilities.platformName
 
 Given(/ik ben op het afvalwijzer Startscherm/, async () => {
     await HomeScreen.getHomeScreen()
-    await HomeScreen.headerEnvironmentButton.click()
-    await HomeScreen.environmentProduction.click()
-    await HomeScreen.headerBackButton.click()
-    await driver.pause(6000)
     await HomeScreen.homeWasteGuideModuleButton.waitForDisplayed(2000)
     await HomeScreen.homeWasteGuideModuleButton.click()
     await expect(HomeScreen.headerTitle).toHaveText('Afvalwijzer')
