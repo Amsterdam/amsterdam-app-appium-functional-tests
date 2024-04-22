@@ -8,6 +8,9 @@ import wasteGuideScreen from "../screenobjects/waste-guide.screen.js";
 
 const OS = driver.capabilities.platformName
 
+const locationsIOS = ['Mijn huidige locatie, In de buurt van Zeedijk 5', 'Mijn huidige locatie, In de buurt van Viergrenzenweg 97', 'Mijn huidige locatie, In de buurt van Vliehors 1', 'Mijn huidige locatie, In de buurt van "n Tip 1']
+const locationsAndroid = ['In de buurt van Zeedijk 5', 'In de buurt van Viergrenzenweg 97', 'In de buurt van Vliehors 1', 'In de buurt van "n Tip 1']
+
 //When
 When(/ik geef mijn locatie door/, async () => {
     await constructionWorkScreen.constructionWorkRequestLocationButton.click()
@@ -31,7 +34,7 @@ Then(/mijn locatie wordt gebruikt voor het tonen van werkzaamheden/, async () =>
         console.log(await locationButtonLabel)
         await driver.pause(10000)
         console.log(await locationButtonLabel)
-        await expect(await constructionWorkScreen.constructionWorkRequestLocationButton).toHaveAttribute('label', 'Mijn huidige locatie, In de buurt van Zeedijk 5' || 'Mijn huidige locatie, In de buurt van Viergrenzenweg 97' || 'Mijn huidige locatie, In de buurt van Vliehors 1' || 'Mijn huidige locatie, In de buurt van "n Tip 1')
+        await expect(await constructionWorkScreen.constructionWorkRequestLocationButton).toHaveAttribute('label', 'Mijn huidige locatie, In de buurt van Zeedijk 5' || 'label', 'Mijn huidige locatie, In de buurt van Viergrenzenweg 97' || 'label', 'Mijn huidige locatie, In de buurt van Vliehors 1' || 'label', 'Mijn huidige locatie, In de buurt van "n Tip 1')
     }
     else {
         const locationText = await constructionWorkScreen.constructionWorkRequestLocationButtonText.getText()
@@ -48,7 +51,7 @@ Then(/mijn locatie wordt gebruikt voor het tonen van werkzaamheden/, async () =>
         console.log(await locationButtonLabel)
         await driver.pause(10000)
         console.log(await locationButtonLabel)
-        await expect(await wasteGuideScreen.wasteGuideRequestLocationButton).toHaveAttribute('label', 'Mijn huidige locatie, In de buurt van Zeedijk 5' || 'Mijn huidige locatie, In de buurt van Viergrenzenweg 97' || 'Mijn huidige locatie, In de buurt van Vliehors 1' || 'Mijn huidige locatie, In de buurt van "n Tip 1')
+        await expect(await wasteGuideScreen.wasteGuideRequestLocationButton).toHaveAttribute('label', 'Mijn huidige locatie, In de buurt van Zeedijk 5' || 'label', 'Mijn huidige locatie, In de buurt van Viergrenzenweg 97' || 'label', 'Mijn huidige locatie, In de buurt van Vliehors 1' || 'label', 'Mijn huidige locatie, In de buurt van "n Tip 1')
     }
     else {
         const locationText = await wasteGuideScreen.wasteGuideRequestLocationButtonText.getText()

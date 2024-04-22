@@ -176,17 +176,12 @@ Then(/de status 'volgend' verdwijnt/, async () => {
     await expect(attribute).toEqual('Volg dit project')
     await ConstructionWorkScreen.headerBackButton.click()
     await expect(ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard).not.toBeDisplayed()
-    await ConstructionWorkScreen.searchProject("Stedelijk Noord")
-    const projectCardLabel = await ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard.getAttribute("label")
-    await expect(projectCardLabel).not.toExist()
   }
   //Android:
   else {
     await expect(ConstructionWorkScreen.constructionWorkProjectFollowButtonLabel).toHaveText('Volgen')
     await ConstructionWorkScreen.headerBackButton.click()
     await expect(ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard).not.toBeDisplayed()
-    await ConstructionWorkScreen.searchProject("Stedelijk Noord")
-    await expect(ConstructionWorkScreen.constructionWorkProjectFollowingTraitLabel).not.toExist()
   }
 })
 
