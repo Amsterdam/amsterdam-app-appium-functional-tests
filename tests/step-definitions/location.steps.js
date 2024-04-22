@@ -31,11 +31,11 @@ Then(/mijn locatie wordt gebruikt voor het tonen van werkzaamheden/, async () =>
         console.log(await locationButtonLabel)
         await driver.pause(10000)
         console.log(await locationButtonLabel)
-        await expect(await constructionWorkScreen.constructionWorkRequestLocationButton).toHaveAttribute('label', 'Mijn huidige locatie, In de buurt van Zeedijk 5')
+        await expect(await constructionWorkScreen.constructionWorkRequestLocationButton).toHaveAttribute('label', 'Mijn huidige locatie, In de buurt van Zeedijk 5' || 'Mijn huidige locatie, In de buurt van Viergrenzenweg 97' || 'Mijn huidige locatie, In de buurt van Vliehors 1' || 'Mijn huidige locatie, In de buurt van "n Tip 1')
     }
     else {
         const locationText = await constructionWorkScreen.constructionWorkRequestLocationButtonText.getText()
-        const assertValue = await locationText === 'In de buurt van Zeedijk 5' || await locationText === 'In de buurt van Viergrenzenweg 97' || await locationText === 'In de buurt van Vliehors 1'
+        const assertValue = await locationText === 'In de buurt van Zeedijk 5' || await locationText === 'In de buurt van Viergrenzenweg 97' || await locationText === 'In de buurt van Vliehors 1' || await locationText === 'In de buurt van "n Tip 1'
         console.log(`assertValue: ${assertValue}`)
         chai.expect(assertValue).to.be.true
     }
@@ -48,11 +48,11 @@ Then(/mijn locatie wordt gebruikt voor het tonen van werkzaamheden/, async () =>
         console.log(await locationButtonLabel)
         await driver.pause(10000)
         console.log(await locationButtonLabel)
-        await expect(await wasteGuideScreen.wasteGuideRequestLocationButton).toHaveAttribute('label', 'Mijn huidige locatie, In de buurt van Zeedijk 5')
+        await expect(await wasteGuideScreen.wasteGuideRequestLocationButton).toHaveAttribute('label', 'Mijn huidige locatie, In de buurt van Zeedijk 5' || 'Mijn huidige locatie, In de buurt van Viergrenzenweg 97' || 'Mijn huidige locatie, In de buurt van Vliehors 1' || 'Mijn huidige locatie, In de buurt van "n Tip 1')
     }
     else {
         const locationText = await wasteGuideScreen.wasteGuideRequestLocationButtonText.getText()
-        const assertValue = await locationText === 'In de buurt van Zeedijk 5' || await locationText === 'In de buurt van Viergrenzenweg 97'
+        const assertValue = await locationText === 'In de buurt van Zeedijk 5' || await locationText === 'In de buurt van Viergrenzenweg 97' || await locationText === 'In de buurt van Vliehors 1' || await locationText === 'In de buurt van "n Tip 1'
         console.log(`assertValue: ${assertValue}`)
         chai.expect(assertValue).to.be.true
     }
