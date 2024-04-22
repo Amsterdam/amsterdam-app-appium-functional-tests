@@ -50,6 +50,7 @@
     "os16-iphoneSE2020": "wdio run ./conf-ios-mobile/os16-iphoneSE2020.js",
     "os17-iphone13": "wdio run ./config/conf-ios-mobile/os17-iphone13.js",
     "os17-iphone15promax": "wdio run ./config/conf-ios-mobile/os17-iphone15promax.js",
+    "os17-iphone14-real": "wdio run ./config/conf-ios-mobile/os17-iphone14-real.js",
     "os-13-ipad-air-2019": "wdio run ./conf-ios-tablets/os13-ipad-air-2019.js",
     "os14-ipad-pro-2021": "wdio run ./config/conf-ios-tablets/os14-ipad-pro-2021.js",
     "os15-ipad-mini-2021": "wdio run ./config/conf-ios-tablets/os15-ipad-mini-2021.js",
