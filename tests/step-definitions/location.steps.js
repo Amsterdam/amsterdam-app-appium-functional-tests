@@ -8,7 +8,7 @@ import wasteGuideScreen from "../screenobjects/waste-guide.screen.js";
 
 const OS = driver.capabilities.platformName
 
-const locationsArray = ['Mijn huidige locatie, In de buurt van Zeedijk 5', 'Mijn huidige locatie, In de buurt van Viergrenzenweg 97', 'Mijn huidige locatie, In de buurt van Vliehors 1', 'Mijn huidige locatie, In de buurt van "n Tip 1', 'Mijn huidige locatie, In de buurt van Ruhenbergerweg 35', 'Mijn huidige locatie, In de buurt van Nieuwe Statenzijl 23']
+const locationsArray = ['Mijn huidige locatie, In de buurt van Zeedijk 5', 'Mijn huidige locatie, In de buurt van Viergrenzenweg 97', 'Mijn huidige locatie, In de buurt van Vliehors 1', 'Mijn huidige locatie, In de buurt van \'n Tip 1', 'Mijn huidige locatie, In de buurt van Ruhenbergerweg 35', 'Mijn huidige locatie, In de buurt van Nieuwe Statenzijl 23']
 const locationsAndroid = ['In de buurt van Zeedijk 5', 'In de buurt van Viergrenzenweg 97', 'In de buurt van Vliehors 1', 'In de buurt van "n Tip 1', 'In de buurt van Ruhenbergerweg 35', 'In de buurt van Nieuwe Statenzijl 23']
 //chai.expect(attr).to.be.oneOf(locationsArray)
 
