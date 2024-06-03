@@ -25,10 +25,10 @@ const devices = {
         }
     },
     ios: {
-        'os14-iphone12': {
-            "appium:platformVersion": "14",
-            "appium:deviceName": "iPhone 12",
-        },
+        // 'os14-iphone12': {
+        //     "appium:platformVersion": "14",
+        //     "appium:deviceName": "iPhone 12",
+        // },
         'os15-iphoneXS': {
             "appium:platformVersion": "15",
             "appium:deviceName": "iPhone XS",

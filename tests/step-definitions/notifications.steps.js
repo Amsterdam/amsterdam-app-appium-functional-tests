@@ -52,6 +52,7 @@ Given(/ik ben OM\/CA en heb een plaats berichten module in de app/, async () => 
         await driver.executeScript('mobile: backgroundApp', [{ seconds: 3 }])
         await openDeepLinkUrl(url)
         await driver.pause(5000)
+        await notificationsScreen.adwUsernameInput.waitForDisplayed(20000)
         await notificationsScreen.adwUsernameInput.click()
         await notificationsScreen.adwUsernameInput.addValue(adwUsername)
         await notificationsScreen.ssoNextButton.click()
