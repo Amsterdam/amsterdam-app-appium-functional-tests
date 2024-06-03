@@ -51,6 +51,12 @@ export async function openDeepLinkUrl(url) {
         } else {
             await addressBar.setValue(`${url}\uE007`);
         }
+
+        // click on the open button
+        const openSelector = 'label == "Open" AND name == "Open" AND type == "XCUIElementTypeButton"'
+        const open = $(`-ios predicate string:${openSelector}`);
+        await open.waitForDisplayed()
+        await open.click()
         //await addressBar.setValue(`${url}\uE007`);
         //Bij ipad mini 2021 OS 15 werkt onderstaande niet, bovenstaande wel
         //await urlField.setValue(`${url}\uE007`);
