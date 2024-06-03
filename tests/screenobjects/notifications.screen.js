@@ -305,7 +305,7 @@ class NotificationsScreen extends Screen {
   }
 
   //sso login
-  get ssoUsernameInput() {
+  get adwUsernameInput() {
     if (this.OS === 'iOS') {
       return helpers.createContentSelector("Enter your email address, phone number or Skype.")
     } else {
@@ -326,7 +326,7 @@ class NotificationsScreen extends Screen {
     }
   }
 
-  get ssoPasswordInput() {
+  get adwPasswordInput() {
     if (this.OS === 'iOS') {
       return helpers.createContentSelector("Enter the password for m.van.benthem@amsterdam.nl")
     } else {
