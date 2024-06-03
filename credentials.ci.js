@@ -13,3 +13,6 @@ export const buildNameIosTablet = `Build ${buildNumber} - iOS - run ${runNumber}
 export const buildNameIosMobile = `Build ${buildNumber} - iOS - run ${runNumber} on ${startTime}`
 export const buildNameAndroidTablet = `Build ${buildNumber} - Android - run ${runNumber} on ${startTime}`
 export const buildNameAndroidMobile = `Build ${buildNumber} - Android - run ${runNumber} on ${startTime}`
+export const adwUsername = process.env.ADW_USERNAME
+export const adwPassword = process.env.ADW_PASSWORD
+export const adwSecret = process.env.ADW_SECRET

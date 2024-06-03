@@ -9,14 +9,14 @@ class NotificationsScreen extends Screen {
   /**
    * define selectors using getter methods
    */
+  OS = driver.capabilities.platformName
 
   get projectCardPlaatsBerichtenBullebakBullesluis() {
     return helpers.createContentSelector("Bullebak en Bullebakssluis, Vervangen bruggen")
   }
 
   get projectCardPlaatsBerichtenAmstelIII() {
-    const OS = driver.capabilities.platformName
-    if (OS === 'iOS') {
+    if (this.OS === 'iOS') {
       const selector = '**/XCUIElementTypeButton[`label == "Amstel III, Ontwikkeling woongebied gemixt met werken"`]'
       return $(`-ios class chain:${selector}`)
     } else {
@@ -25,12 +25,20 @@ class NotificationsScreen extends Screen {
   }
 
   get projectCardPlaatsBerichtenSluisbuurt() {
-    const OS = driver.capabilities.platformName
-    if (OS === 'iOS') {
-      const selector = '**/XCUIElementTypeButton[`label == "Sluisbuurt op Zeeburgereiland, 5.500 nieuwe woningen"`]'
-      return $(`-ios class chain:${selector}`)
+    if (this.OS === 'iOS') {
+      const selector = 'name == "ConstructionWorkEditorAuthorizedProjects" AND label == "Sluisbuurt op Zeeburgereiland, 5.500 nieuwe woningen"'
+      return $(`-ios predicate string:${selector}`);
     } else {
       return helpers.createContentSelector("Sluisbuurt op Zeeburgereiland, 5.500 nieuwe woningen")
+    }
+  }
+
+  get projectCardPlaatsBerichtenA2Entree() {
+    if (this.OS === 'iOS') {
+      const selector = 'name == "ConstructionWorkEditorAuthorizedProjects" AND label == "A2 Entree, Nieuwe woonwijk met Amstelscheg als achtertuin"'
+      return $(`-ios predicate string:${selector}`);
+    } else {
+      return helpers.createContentSelector("A2 Entree, Nieuwe woonwijk met Amstelscheg als achtertuin")
     }
   }
 
@@ -55,7 +63,7 @@ class NotificationsScreen extends Screen {
   }
 
   get successMessage() {
-    return helpers.createContentSelector("Gelukt! De app herkent je nu als omgevingsmanager voor onderstaande projecten. Tik op het project waarvoor je een bericht wilt plaatsen.")
+    return helpers.createContentSelector("ConstructionWorkEditorSuccessAlert")
   }
 
   get constructionWorkEditorCreateMessageAddImageButton() {
@@ -182,7 +190,7 @@ class NotificationsScreen extends Screen {
 
   get constructionWorkEditorCreateMessageTitleTitle() {
     const OS = driver.capabilities.platformName
-    if (OS === 'iOS') {
+    if (this.OS === 'iOS') {
       const selector = ''
       return $(`-ios class chain:${selector}`)
     } else {
@@ -194,7 +202,7 @@ class NotificationsScreen extends Screen {
 
   get constructionWorkEditorCreateMessageBodyTitle() {
     const OS = driver.capabilities.platformName
-    if (OS === 'iOS') {
+    if (this.OS === 'iOS') {
       const selector = ''
       return $(`-ios class chain:${selector}`)
     } else {
@@ -295,8 +303,91 @@ class NotificationsScreen extends Screen {
     await this.photo.click()
     await this.constructionWorkEditorAddImageToMessageNextButton.click()
   }
-}
 
+  //sso login
+  get ssoUsernameInput() {
+    if (this.OS === 'iOS') {
+      return helpers.createContentSelector("Enter your email address, phone number or Skype.")
+    } else {
+      const testID = 'new UiSelector().className("android.widget.EditText")'
+      const selector = $(`android=${testID}`)
+      return selector
+    }
+  }
+
+  get ssoNextButton() {
+    if (this.OS === 'iOS') {
+      return helpers.createContentSelector("Next")
+    }
+    else {
+      const testID = 'new UiSelector().text("Next").className("android.widget.Button")'
+      const selector = $(`android=${testID}`)
+      return selector
+    }
+  }
+
+  get ssoPasswordInput() {
+    if (this.OS === 'iOS') {
+      return helpers.createContentSelector("Enter the password for m.van.benthem@amsterdam.nl")
+    } else {
+      const testID = 'new UiSelector().className("android.widget.EditText")'
+      const selector = $(`android=${testID}`)
+      return selector
+    }
+  }
+
+  get ssoSignInButton() {
+    if (this.OS === 'iOS') {
+      return helpers.createContentSelector("Sign in")
+    } else {
+      const testID = 'new UiSelector().text("Sign in").className("android.widget.Button")'
+      const selector = $(`android=${testID}`)
+      return selector
+    }
+  }
+
+  get ssoUseOtherMFA() {
+    //return helpers.createContentSelector("I can't use my Microsoft Authenticator app right now")
+    if (this.OS === 'iOS') {
+      const selector = '**/XCUIElementTypeStaticText[`label == "I can\'t use my Microsoft Authenticator app right now"`]'
+      return $(`-ios class chain:${selector}`)
+    } else {
+      const testID = 'new UiSelector().text("I can\'t use my Microsoft Authenticator app right now").className("android.widget.Button")'
+      const selector = $(`android=${testID}`)
+      return selector
+    }
+  }
+
+  get useVerificationCodeButton() {
+    if (this.OS === 'iOS') {
+      return helpers.createContentSelector("Use a verification code")
+    } else {
+      const testID = 'new UiSelector().text("Use a verification code").className("android.widget.Button")'
+      const selector = $(`android=${testID}`)
+      return selector
+    }
+  }
+
+  get totpInput() {
+    if (this.OS === 'iOS') {
+      return helpers.createContentSelector("Enter the code displayed in the authenticator app on your mobile device")
+    } else {
+      const testID = 'new UiSelector().className("android.widget.EditText")'
+      const selector = $(`android=${testID}`)
+      return selector
+    }
+  }
+
+  get verifyButton() {
+    if (this.OS === 'iOS') {
+      return helpers.createContentSelector("Verify")
+    } else {
+      const testID = 'new UiSelector().text("Verify").className("android.widget.Button")'
+      const selector = $(`android=${testID}`)
+      return selector
+    }
+  }
+}
 
 
 export default new NotificationsScreen();
