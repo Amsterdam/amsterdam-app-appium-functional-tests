@@ -307,7 +307,8 @@ class NotificationsScreen extends Screen {
   //sso login
   get adwUsernameInput() {
     if (this.OS === 'iOS') {
-      return helpers.createContentSelector("Enter your email address, phone number or Skype.")
+      const selector = '**/XCUIElementTypeTextField[`label == "Enter your email address, phone number or Skype."`]'
+      return $(`-ios class chain:${selector}`)
     } else {
       const testID = 'new UiSelector().className("android.widget.EditText")'
       const selector = $(`android=${testID}`)
@@ -328,7 +329,8 @@ class NotificationsScreen extends Screen {
 
   get adwPasswordInput() {
     if (this.OS === 'iOS') {
-      return helpers.createContentSelector("Enter the password for m.van.benthem@amsterdam.nl")
+      const selector = '**/XCUIElementTypeSecureTextField[`label == "Enter the password for m.van.benthem@amsterdam.nl"`]'
+      return $(`-ios class chain:${selector}`)
     } else {
       const testID = 'new UiSelector().className("android.widget.EditText")'
       const selector = $(`android=${testID}`)
@@ -360,7 +362,8 @@ class NotificationsScreen extends Screen {
 
   get useVerificationCodeButton() {
     if (this.OS === 'iOS') {
-      return helpers.createContentSelector("Use a verification code")
+      const selector = '**/XCUIElementTypeButton[`label == "Use a verification code"`]'
+      return $(`-ios class chain:${selector}`)
     } else {
       const testID = 'new UiSelector().text("Use a verification code").className("android.widget.Button")'
       const selector = $(`android=${testID}`)
