@@ -30,7 +30,7 @@ const devices = {
         //     "appium:deviceName": "iPhone 12",
         // },
         'os15-iphoneXS': {
-            "appium:platformVersion": "15",
+            "appium:platformVersion": "15.6",
             "appium:deviceName": "iPhone XS",
         },
         'os16-iphone12-pro': {
