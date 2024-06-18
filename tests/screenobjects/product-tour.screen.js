@@ -9,16 +9,6 @@ class ProductTourScreen extends Screen {
      */
     OS = driver.capabilities.platformName
 
-    get productTourSettings() {
-
-        // if (this.OS === 'iOS') {
-        //     const selector = '**/XCUIElementTypeOther[`label == "Voeg onderwerpen toe of haal weg wat u niet wilt zien"`][2]'
-        //     return $(`-ios class chain:${selector}`)
-        // } else {
-        return helpers.createSelector("HomeModuleSettingsButtonTooltip")
-        //return helpers.createSelector("HomeModuleSettingsButtonTooltipParagraph")
-        //}
-    }
 
     get productConstructionWorkFollow() {
 
@@ -35,9 +25,6 @@ class ProductTourScreen extends Screen {
             case 'project detailscherm':
                 await expect(await this.productConstructionWorkFollow).toBeDisplayed()
                 break
-            case 'home':
-                await expect(await this.productTourSettings).toBeDisplayed()
-                break
             default:
                 await assert.fail(`Check for ‘${screen}’ doesn't exist`)
         }
@@ -49,10 +36,6 @@ class ProductTourScreen extends Screen {
                 await this.productConstructionWorkFollow.waitForDisplayed(5000)
                 await this.productConstructionWorkFollow.click()
                 break
-            case 'home':
-                await this.productTourSettings.waitForDisplayed(5000)
-                await this.productTourSettings.click()
-                break
             default:
                 await assert.fail(`Check for ‘${screen}’ doesn't exist`)
         }
@@ -62,9 +45,6 @@ class ProductTourScreen extends Screen {
         switch (screen) {
             case 'project detailscherm':
                 await expect(await this.productConstructionWorkFollow).not.toBeDisplayed()
-                break
-            case 'home':
-                await expect(await this.productTourSettings).not.toBeDisplayed()
                 break
             default:
                 await assert.fail(`Check for ‘${screen}’ doesn't exist`)
