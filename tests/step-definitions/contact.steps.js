@@ -9,6 +9,8 @@ Given(/ik ben op het contactscherm/, async () => {
     await HomeScreen.getHomeScreen()
     await HomeScreen.homeContactModuleButton.click()
     await expect(HomeScreen.headerTitle).toHaveText('Contact')
+    const bearerToken = process.env.BEARER_TOKEN
+    console.log(`Bearer token: ${bearerToken}`)
 })
 
 When(/ik open de contact module/, async () => {
