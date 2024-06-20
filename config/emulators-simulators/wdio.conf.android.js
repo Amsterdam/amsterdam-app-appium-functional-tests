@@ -5,8 +5,8 @@ import { config as sharedconfig } from "../shared/wdio.conf.shared.js";
 
 sharedconfig.capabilities = [{
     'appium:platformName': 'Android',
-    'appium:platformVersion': '13.0',
-    'appium:deviceName': 'Pixel_5',
+    'appium:platformVersion': '11',
+    'appium:deviceName': 'sdk_gphone_x86_64',
     'appium:noReset': 'false',
     //This should be the exact same name from the device you use in the Android Emulator
     'appium:automationName': 'UiAutomator2',

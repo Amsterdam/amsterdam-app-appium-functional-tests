@@ -6,3 +6,4 @@ allure-results/
 credentials.js
 iosCaps.js
 logs/
+venv/
