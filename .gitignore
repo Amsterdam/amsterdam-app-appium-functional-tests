@@ -14,3 +14,4 @@ data/__pycache__/
 venv/
 libraries/__pycache__/
 resources/__pycache__/
+.env
