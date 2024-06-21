@@ -6,4 +6,16 @@ allure-results/
 credentials.js
 iosCaps.js
 logs/
+<<<<<<< HEAD
 venv/
+=======
+resources/credentials.resource
+Results/
+data/secrets.py
+data/__pycache__/
+.idea/
+venv/
+libraries/__pycache__/
+resources/__pycache__/
+.env
+>>>>>>> add-robot-script

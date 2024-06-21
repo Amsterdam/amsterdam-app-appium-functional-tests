@@ -1,7 +1,7 @@
 import { Given, Then, When } from "@wdio/cucumber-framework";
 import chai from "chai";
 import { TOTP } from "totp-generator";
-import { adwPassword, adwSecret, adwUsername } from "../../credentials.js";
+import { adwSecret } from "../../credentials.js";
 import gestures from "../Shared/helpers/gestures.js";
 import { openDeepLinkUrl } from "../Shared/helpers/openDeeplink.js";
 import { image } from "../features/functional/testdata/img.js";
@@ -10,7 +10,10 @@ import constructionWorkScreen from "../screenobjects/construction-work.screen.js
 import homeScreen from "../screenobjects/home.screen.js";
 import notificationsScreen from "../screenobjects/notifications.screen.js";
 
-const url = 'amsterdam://construction-work-editor'
+const bearerToken = process.env.BEARER_TOKEN
+console.log(`Bearer token: ${bearerToken}`)
+const url = `amsterdam://construction-work-editor/${bearerToken}`
+// const url = 'amsterdam://construction-work-editor'
 let titleMessage
 const generateOTP = () => {
     const { otp } = TOTP.generate(adwSecret, { digits: 6 })
@@ -25,11 +28,6 @@ Given(/ik launch de app met plaats berichten/, async () => {
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
         await openDeepLinkUrl(url)
-        await notificationsScreen.adwUsernameInput.addValue(adwUsername)
-        await notificationsScreen.ssoNextButton.click()
-        await notificationsScreen.adwPasswordInput.addValue(adwPassword)
-        await notificationsScreen.ssoSignInButton.click()
-        await notificationsScreen.ssoUseOtherMFA.click()
 
     }
     else {
@@ -38,7 +36,7 @@ Given(/ik launch de app met plaats berichten/, async () => {
             package: "com.android.chrome "
         });
     }
-    await driver.pause(5000)
+    await driver.pause(10000)
 })
 
 Given(/ik ben OM\/CA en heb een plaats berichten module in de app/, async () => {
@@ -54,22 +52,22 @@ Given(/ik ben OM\/CA en heb een plaats berichten module in de app/, async () => 
         await driver.pause(5000)
         const contexts = await driver.getContexts()
         console.log(contexts)
-        await notificationsScreen.adwUsernameInput.waitForDisplayed(20000)
-        await notificationsScreen.adwUsernameInput.click()
-        await notificationsScreen.adwUsernameInput.addValue(adwUsername)
-        await notificationsScreen.ssoNextButton.click()
-        await notificationsScreen.adwPasswordInput.click()
-        await notificationsScreen.adwPasswordInput.addValue(adwPassword)
-        await notificationsScreen.ssoSignInButton.click()
-        await notificationsScreen.ssoUseOtherMFA.click()
-        await notificationsScreen.useVerificationCodeButton.click()
-        await notificationsScreen.totpInput.waitForDisplayed()
-        await notificationsScreen.totpInput.click()
-        await driver.pause(1000)
-        const otp = generateOTP()
-        await notificationsScreen.totpInput.setValue(otp)
-        await driver.pause(1000)
-        await notificationsScreen.verifyButton.click()
+        // await notificationsScreen.adwUsernameInput.waitForDisplayed(20000)
+        // await notificationsScreen.adwUsernameInput.click()
+        // await notificationsScreen.adwUsernameInput.addValue(adwUsername)
+        // await notificationsScreen.ssoNextButton.click()
+        // await notificationsScreen.adwPasswordInput.click()
+        // await notificationsScreen.adwPasswordInput.addValue(adwPassword)
+        // await notificationsScreen.ssoSignInButton.click()
+        // await notificationsScreen.ssoUseOtherMFA.click()
+        // await notificationsScreen.useVerificationCodeButton.click()
+        // await notificationsScreen.totpInput.waitForDisplayed()
+        // await notificationsScreen.totpInput.click()
+        // await driver.pause(1000)
+        // const otp = generateOTP()
+        // await notificationsScreen.totpInput.setValue(otp)
+        // await driver.pause(1000)
+        // await notificationsScreen.verifyButton.click()
         await notificationsScreen.allowSelector.waitForDisplayed()
         await notificationsScreen.allowSelector.click()
         await notificationsScreen.headerTitle.waitForDisplayed(10000)
