@@ -69,10 +69,6 @@ class HomeScreen extends Screen {
         return helpers.createSelector('HomeEnvironmentSelectorAcceptanceButton  ')
     }
 
-    get homeModuleSettingsButtonTooltip() {
-        return helpers.createSelector('HomeModuleSettingsButtonTooltip') //iOS+Android
-    }
-
     async getHomeScreen() {
         //await driver.launchApp()
         //await this.welcomeImageAndQuoteButton.click()

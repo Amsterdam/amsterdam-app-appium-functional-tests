@@ -9,4 +9,3 @@ Feature: Product Tour
         Examples:
             | scherm               |
             | project detailscherm |
-            | home                 |

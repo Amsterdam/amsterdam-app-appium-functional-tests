@@ -1,6 +1,5 @@
 import GesturesScreen from '../Shared/helpers/gesturesv2.js';
 import helpers from '../Shared/helpers/helpers.js';
-import homeScreen from './home.screen.js';
 import Screen from './screen.js';
 
 class OnboardingScreen extends Screen {
@@ -243,8 +242,6 @@ class OnboardingScreen extends Screen {
     async closeOnboarding() {
         //await this.onboardingCloseButton.waitForDisplayed(15000)
         await this.onboardingCloseButton.click()
-        await homeScreen.homeModuleSettingsButtonTooltip.waitForDisplayed(5000)
-        await homeScreen.homeModuleSettingsButtonTooltip.click()
     }
 
     async nextPageMethod(method) {
