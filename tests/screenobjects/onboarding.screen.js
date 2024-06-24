@@ -240,7 +240,7 @@ class OnboardingScreen extends Screen {
     }
 
     async closeOnboarding() {
-        //await this.onboardingCloseButton.waitForDisplayed(15000)
+        await this.onboardingCloseButton.waitForDisplayed(15000)
         await this.onboardingCloseButton.click()
     }
 

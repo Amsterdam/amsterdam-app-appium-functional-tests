@@ -15,7 +15,7 @@ ${key}      $KEY
 *** Keywords ***
 Get Bearer Token with login
     [Documentation]    Get the bearer token from the local storage
-    SSO login    url=https://ontw.app.amsterdam.nl/beheer/werkzaamheden/publishers
+    SSO login    url=https://acc.app.amsterdam.nl/beheer/werkzaamheden
     Wait For Elements State    ${H1_TITLE}    visible    timeout=10s
     Set Log Level    NONE
     ${item}=    SessionStorage Get Item    ${key}
@@ -27,8 +27,6 @@ Get Bearer Token with login
     SaveEnv.Save Env    ${token}
     Set Log Level    INFO
 
-    # RETURN    ${secret}
-
 Get Bearer Token without login
     [Documentation]    Get the bearer token from the local storage
     Wait For Elements State    ${H1_TITLE}    visible    timeout=10s
@@ -39,4 +37,3 @@ Get Bearer Token without login
     ${secret}=    Get From Dictionary    ${dict}    secret
     Set Environment Variable    BEARER_TOKEN    ${secret}
     Set Log Level    INFO
-    # RETURN    ${secret}

@@ -2,6 +2,7 @@ import { After, Before } from "@wdio/cucumber-framework";
 import { bsUrliOS } from "../../credentials.js";
 import helpers from "../Shared/helpers/helpers.js";
 import HomeScreen from "../screenobjects/home.screen.js";
+import notificationsScreen from "../screenobjects/notifications.screen.js";
 import onboardingScreen from "../screenobjects/onboarding.screen.js";
 
 
@@ -99,6 +100,10 @@ Before({ tags: '@BeforeClean' }, async () => {
         await driver.installApp('/Users/moniquevanbenthem/testing/amsterdam-app-functional/app/iOS/Amsterdam test.app')
         // await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
         await driver.activateApp('nl.amsterdam.app.dev')
+        const isDisplayed = await notificationsScreen.allowSelector.isDisplayed()
+        if (isDisplayed) {
+            await notificationsScreen.allowSelector.click()
+        }
         await onboardingScreen.closeOnboarding()
     }
     else if (currentOS === 'iOS') {

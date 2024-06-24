@@ -1,7 +1,5 @@
 import { Given, Then, When } from "@wdio/cucumber-framework";
 import chai from "chai";
-import { TOTP } from "totp-generator";
-import { adwSecret } from "../../credentials.js";
 import gestures from "../Shared/helpers/gestures.js";
 import { openDeepLinkUrl } from "../Shared/helpers/openDeeplink.js";
 import { image } from "../features/functional/testdata/img.js";
@@ -11,19 +9,14 @@ import homeScreen from "../screenobjects/home.screen.js";
 import notificationsScreen from "../screenobjects/notifications.screen.js";
 
 const bearerToken = process.env.BEARER_TOKEN
-console.log(`Bearer token: ${bearerToken}`)
 const url = `amsterdam://construction-work-editor/${bearerToken}`
 // const url = 'amsterdam://construction-work-editor'
 let titleMessage
-const generateOTP = () => {
-    const { otp } = TOTP.generate(adwSecret, { digits: 6 })
-    return otp
-}
 
 Given(/ik launch de app met plaats berichten/, async () => {
-    await homeScreen.headerEnvironmentButton.click()
-    await homeScreen.environmentDev.click()
-    await homeScreen.headerBackButton.click()
+    // await homeScreen.headerEnvironmentButton.click()
+    // await homeScreen.environmentDev.click()
+    // await homeScreen.headerBackButton.click()
     await driver.pause(6000)
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
@@ -40,11 +33,7 @@ Given(/ik launch de app met plaats berichten/, async () => {
 })
 
 Given(/ik ben OM\/CA en heb een plaats berichten module in de app/, async () => {
-    await homeScreen.headerEnvironmentButton.click()
-    await homeScreen.environmentDev.click()
-    await homeScreen.headerBackButton.click()
     await homeScreen.homeAboutModuleButton.waitForDisplayed()
-    //await driver.switchContext('NATIVE_APP')
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
         await driver.executeScript('mobile: backgroundApp', [{ seconds: 3 }])
@@ -52,24 +41,10 @@ Given(/ik ben OM\/CA en heb een plaats berichten module in de app/, async () => 
         await driver.pause(5000)
         const contexts = await driver.getContexts()
         console.log(contexts)
-        // await notificationsScreen.adwUsernameInput.waitForDisplayed(20000)
-        // await notificationsScreen.adwUsernameInput.click()
-        // await notificationsScreen.adwUsernameInput.addValue(adwUsername)
-        // await notificationsScreen.ssoNextButton.click()
-        // await notificationsScreen.adwPasswordInput.click()
-        // await notificationsScreen.adwPasswordInput.addValue(adwPassword)
-        // await notificationsScreen.ssoSignInButton.click()
-        // await notificationsScreen.ssoUseOtherMFA.click()
-        // await notificationsScreen.useVerificationCodeButton.click()
-        // await notificationsScreen.totpInput.waitForDisplayed()
-        // await notificationsScreen.totpInput.click()
-        // await driver.pause(1000)
-        // const otp = generateOTP()
-        // await notificationsScreen.totpInput.setValue(otp)
-        // await driver.pause(1000)
-        // await notificationsScreen.verifyButton.click()
-        await notificationsScreen.allowSelector.waitForDisplayed()
-        await notificationsScreen.allowSelector.click()
+        const isDisplayed = await notificationsScreen.allowSelector.isDisplayed()
+        if (isDisplayed) {
+            await notificationsScreen.allowSelector.click()
+        }
         await notificationsScreen.headerTitle.waitForDisplayed(10000)
         await expect(notificationsScreen.headerTitle).toHaveText('Plaats berichten')
         await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.waitForExist(3000)
@@ -86,22 +61,6 @@ Given(/ik ben OM\/CA en heb een plaats berichten module in de app/, async () => 
             url: url,
             package: "nl.amsterdam.app.dev"
         });
-        // await notificationsScreen.adwUsernameInput.waitForDisplayed()
-        // await notificationsScreen.adwUsernameInput.click()
-        // await notificationsScreen.adwUsernameInput.addValue(adwUsername)
-        // await notificationsScreen.ssoNextButton.click()
-        // await notificationsScreen.adwPasswordInput.click()
-        // await notificationsScreen.adwPasswordInput.addValue(adwPassword)
-        // await notificationsScreen.ssoSignInButton.click()
-        // await notificationsScreen.ssoUseOtherMFA.click()
-        // //await notificationsScreen.useVerificationCodeButton.click()
-        // await notificationsScreen.totpInput.waitForDisplayed()
-        // await notificationsScreen.totpInput.click()
-        // await driver.pause(2000)
-        // await notificationsScreen.totpInput.addValue(otp)
-        // await driver.pause(2000)
-        // await notificationsScreen.verifyButton.click()
-        // await driver.pause(5000)
     }
 
 })
@@ -210,7 +169,6 @@ Then(/^mijn bericht wordt getoond in het nieuwsoverzicht van project Sluisbuurt 
     const expectedLabel = await constructionWorkScreen.ConstructionWorkProjectArticlePreviewTitle(titleMessage)
     const actualLabel = await constructionWorkScreen.constructionWorkProjectArticlePreviewButton.getAttribute("label")
     chai.expect(actualLabel).to.equal(expectedLabel)
-    await driver.pause(30000)
 })
 
 
