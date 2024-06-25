@@ -100,28 +100,19 @@ Before({ tags: '@BeforeClean' }, async () => {
         await driver.installApp('/Users/moniquevanbenthem/testing/amsterdam-app-functional/app/iOS/Amsterdam test.app')
         // await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
         await driver.activateApp('nl.amsterdam.app.dev')
-        const isDisplayed = await notificationsScreen.allowSelector.isDisplayed()
-        if (isDisplayed) {
-            await notificationsScreen.allowSelector.click()
-        }
+        await notificationsScreen.allowNotifications()
         await onboardingScreen.closeOnboarding()
     }
     else if (currentOS === 'iOS') {
         await driver.installApp(bsUrliOS)
         //await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
         await driver.activateApp('nl.amsterdam.app.dev')
-        const isDisplayed = await notificationsScreen.allowSelector.isDisplayed()
-        if (isDisplayed) {
-            await notificationsScreen.allowSelector.click()
-        }
+        await notificationsScreen.allowNotifications()
         await onboardingScreen.closeOnboarding()
     } else {
         //await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
         await driver.activateApp('nl.amsterdam.app.dev')
-        const isDisplayed = await notificationsScreen.allowSelector.isDisplayed()
-        if (isDisplayed) {
-            await notificationsScreen.allowSelector.click()
-        }
+        await notificationsScreen.allowNotifications()
         await onboardingScreen.closeOnboarding()
     }
     //await switchEnv(environment)

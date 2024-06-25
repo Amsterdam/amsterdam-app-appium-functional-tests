@@ -304,6 +304,14 @@ class NotificationsScreen extends Screen {
     await this.constructionWorkEditorAddImageToMessageNextButton.click()
   }
 
+  async allowNotifications() {
+    const isDisplayed = await this.allowSelector.isDisplayed()
+    while (isDisplayed) {
+      await this.allowSelector.click()
+      await driver.pause(500)
+    }
+  }
+
   //sso login
   get adwUsernameInput() {
     if (this.OS === 'iOS') {
