@@ -305,10 +305,11 @@ class NotificationsScreen extends Screen {
   }
 
   async allowNotifications() {
-    const isDisplayed = await this.allowSelector.isDisplayed()
+    let isDisplayed = await this.allowSelector.isDisplayed()
     while (isDisplayed) {
       await this.allowSelector.click()
       await driver.pause(500)
+      isDisplayed = await this.allowSelector.isDisplayed()
     }
   }
 
