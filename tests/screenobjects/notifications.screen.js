@@ -306,7 +306,7 @@ class NotificationsScreen extends Screen {
 
   async allowNotifications() {
     let isDisplayed = await this.allowSelector.isDisplayed()
-    while (isDisplayed && OS === 'iOS') {
+    while (isDisplayed && this.OS === 'iOS') {
       await this.allowSelector.click()
       await driver.pause(500)
       isDisplayed = await this.allowSelector.isDisplayed()
