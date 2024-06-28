@@ -171,12 +171,22 @@ class ConstructionWorkScreen extends Screen {
   }
 
   async ConstructionWorkProjectArticlePreviewTitle(title) {
-    const date = new Date();
-    const day = date.getDate();
-    const months = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
-    const month = months[date.getMonth()]
-    const label = `Nieuw ${day} ${month} ${title}`
-    return label
+    if (this.OS === 'iOS') {
+      const date = new Date();
+      const day = date.getDate();
+      const months = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
+      const month = months[date.getMonth()]
+      const label = `Nieuw ${day} ${month} ${title}`
+      return label
+    }
+    else {
+      const date = new Date();
+      const day = date.getDate();
+      const months = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
+      const month = months[date.getMonth()]
+      const label = `Nieuw, ${day} ${month}, ${title}`
+      return label
+    }
   }
 
   async searchProject(project) {

@@ -29,7 +29,9 @@ class NotificationsScreen extends Screen {
       const selector = 'name == "ConstructionWorkEditorAuthorizedProjects" AND label == "Sluisbuurt op Zeeburgereiland, 5.500 nieuwe woningen"'
       return $(`-ios predicate string:${selector}`);
     } else {
-      return helpers.createContentSelector("Sluisbuurt op Zeeburgereiland, 5.500 nieuwe woningen")
+      const selector = 'new UiSelector().className("android.widget.ImageView")'
+      const button = $(`android=${selector}`)
+      return button
     }
   }
 
@@ -124,7 +126,11 @@ class NotificationsScreen extends Screen {
   }
 
   get allowSelector() {
-    return $(`-ios predicate string:type == "XCUIElementTypeButton" AND name == "Allow"`)
+    if (this.OS === 'iOS') {
+      return $(`-ios predicate string:type == "XCUIElementTypeButton" AND name == "Allow"`)
+    } else {
+      return helpers.createSelector("com.android.permissioncontroller:id/permission_allow_button")
+    }
   }
 
   get pickImage() {
@@ -260,6 +266,10 @@ class NotificationsScreen extends Screen {
     await expect(this.addPhotoTitle).toBeDisplayed()
     await expect(this.constructionWorkEditorCreateMessageImageDescriptionInput).toBeDisplayed()
     await this.constructionWorkEditorCreateMessageImageDescriptionInput.addValue("Aan de Amstel")
+    const isKeyboardShown = await driver.isKeyboardShown()
+    if (isKeyboardShown) {
+      await driver.hideKeyboard()
+    }
     await this.constructionWorkEditorAddImageToMessageNextButton.click()
   }
 
@@ -304,15 +314,24 @@ class NotificationsScreen extends Screen {
     await this.constructionWorkEditorAddImageToMessageNextButton.click()
   }
 
+  // async allowNotifications() {
+  //   let isDisplayed = await this.allowSelector.isDisplayed()
+  //   while (isDisplayed) {
+  //     console.log(isDisplayed)
+  //     await this.allowSelector.click()
+  //     await driver.pause(500)
+  //     isDisplayed = await this.allowSelector.isDisplayed()
+  //   }
+  // }
+
   async allowNotifications() {
-    let isDisplayed = await this.allowSelector.isDisplayed()
-    while (isDisplayed && this.OS === 'iOS') {
+    try {
+      await this.allowSelector.waitForDisplayed(5000)
       await this.allowSelector.click()
-      await driver.pause(500)
-      isDisplayed = await this.allowSelector.isDisplayed()
+    } catch (error) {
+      console.log(error)
     }
   }
-
   //sso login
   get adwUsernameInput() {
     if (this.OS === 'iOS') {

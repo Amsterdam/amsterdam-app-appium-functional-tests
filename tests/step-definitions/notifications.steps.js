@@ -12,13 +12,12 @@ const bearerToken = process.env.BEARER_TOKEN
 const url = `amsterdam://construction-work-editor/${bearerToken}`
 // const url = 'amsterdam://construction-work-editor'
 let titleMessage
-
+const OS = driver.capabilities.platformName
 Given(/ik launch de app met plaats berichten/, async () => {
     // await homeScreen.headerEnvironmentButton.click()
     // await homeScreen.environmentDev.click()
     // await homeScreen.headerBackButton.click()
     await driver.pause(6000)
-    const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
         await openDeepLinkUrl(url)
 
@@ -34,34 +33,32 @@ Given(/ik launch de app met plaats berichten/, async () => {
 
 Given(/ik ben OM\/CA en heb een plaats berichten module in de app/, async () => {
     await homeScreen.homeAboutModuleButton.waitForDisplayed()
-    const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
         await driver.executeScript('mobile: backgroundApp', [{ seconds: 3 }])
         await openDeepLinkUrl(url)
         await driver.pause(5000)
         const contexts = await driver.getContexts()
         console.log(contexts)
-        const isDisplayed = await notificationsScreen.allowSelector.isDisplayed()
-        if (isDisplayed) {
-            await notificationsScreen.allowSelector.click()
-        }
-        await notificationsScreen.headerTitle.waitForDisplayed(10000)
-        await expect(notificationsScreen.headerTitle).toHaveText('Plaats berichten')
-        await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.waitForExist(3000)
-        await expect(notificationsScreen.successMessage).toBeDisplayed()
-        await homeScreen.headerBackButton.click()
-        await expect(homeScreen.HomeConstructionWorkEditorModuleButton).toBeDisplayed()
-        await homeScreen.HomeConstructionWorkEditorModuleButton.click()
-        await notificationsScreen.headerTitle.waitForDisplayed(3000)
-        await expect(notificationsScreen.headerTitle).toHaveText('Plaats berichten')
-        await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.waitForExist(3000)
+        await notificationsScreen.allowNotifications()
+
     }
     else {
         await driver.execute('mobile:deepLink', {
             url: url,
             package: "nl.amsterdam.app.dev"
         });
+        await notificationsScreen.allowNotifications()
     }
+    await notificationsScreen.headerTitle.waitForDisplayed(10000)
+    await expect(notificationsScreen.headerTitle).toHaveText('Plaats berichten')
+    await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.waitForExist(3000)
+    //await expect(notificationsScreen.successMessage).toBeDisplayed()
+    await homeScreen.headerBackButton.click()
+    await expect(homeScreen.HomeConstructionWorkEditorModuleButton).toBeDisplayed()
+    await homeScreen.HomeConstructionWorkEditorModuleButton.click()
+    await notificationsScreen.headerTitle.waitForDisplayed(3000)
+    await expect(notificationsScreen.headerTitle).toHaveText('Plaats berichten')
+    await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.waitForExist(3000)
 
 })
 
@@ -94,8 +91,7 @@ When(/^ik plaats een bericht met pushbericht, zonder foto, voor project Sluisbuu
 
 When(/^ik plaats een bericht zonder pushbericht, met foto middels de foto toevoegen knop, voor project Sluisbuurt op Zeeburgereiland$/, async () => {
     //TO DO: find out the correct path for iOS to push the image to. On hold now, as there are already images on the devices that can be selected.
-    const currentOS = driver.capabilities.platformName
-    if (currentOS === 'Android') {
+    if (OS === 'Android') {
         await driver.pushFile('/sdcard/Download/image.jpg', image);
     } else {
         //await driver.pushFile('@com.apple.mobileslideshow/image.jpg', image)
@@ -105,7 +101,7 @@ When(/^ik plaats een bericht zonder pushbericht, met foto middels de foto toevoe
     const { title, text } = titleText(2)
     titleMessage = title
     await notificationsScreen.createMessagePhoto(title, text)
-    if (currentOS === 'Android') {
+    if (OS === 'Android') {
         await notificationsScreen.addPhotoAndroid()
     } else {
         await notificationsScreen.addPhotoiOS()
@@ -119,8 +115,7 @@ When(/^ik plaats een bericht zonder pushbericht, met foto middels de foto toevoe
 
 When(/^ik plaats een bericht met pushbericht, met foto middels de foto toevoegen knop, voor project Sluisbuurt op Zeeburgereiland$/, async () => {
     //TO DO: find out the correct path for iOS to push the image to. On hold now, as there are already images on the devices that can be selected.
-    const currentOS = driver.capabilities.platformName
-    if (currentOS === 'Android') {
+    if (OS === 'Android') {
         await driver.pushFile('/sdcard/Download/image.jpg', image);
     } else {
         //await driver.pushFile('@com.apple.mobileslideshow/image.jpg', image)
@@ -130,7 +125,7 @@ When(/^ik plaats een bericht met pushbericht, met foto middels de foto toevoegen
     const { title, text } = titleText(3)
     titleMessage = title
     await notificationsScreen.createMessagePhoto(title, text)
-    if (currentOS === 'Android') {
+    if (OS === 'Android') {
         await notificationsScreen.addPhotoAndroid()
     } else {
         await notificationsScreen.addPhotoiOS()
@@ -167,8 +162,14 @@ Then(/^mijn bericht wordt getoond in het nieuwsoverzicht van project Sluisbuurt 
     await driver.pause(2000)
     await gestures.swipeUpSlowFraction()
     const expectedLabel = await constructionWorkScreen.ConstructionWorkProjectArticlePreviewTitle(titleMessage)
-    const actualLabel = await constructionWorkScreen.constructionWorkProjectArticlePreviewButton.getAttribute("label")
-    chai.expect(actualLabel).to.equal(expectedLabel)
+    if (OS === 'iOS') {
+        const actualLabel = await constructionWorkScreen.constructionWorkProjectArticlePreviewButton.getAttribute("label")
+        chai.expect(actualLabel).to.equal(expectedLabel)
+    } else {
+        const actualLabel = await constructionWorkScreen.constructionWorkProjectArticlePreviewButton.getAttribute("content-desc")
+        chai.expect(actualLabel).to.equal(expectedLabel)
+    }
+
 })
 
 
