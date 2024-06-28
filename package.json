@@ -23,6 +23,7 @@
     "android-ios": "wdio run ./config/conf-ios-mobile/android+iOS.js",
     "android-emulator-mobile": "wdio run ./config/emulators-simulators/wdio.conf.android.js",
     "ios-simulator-iphone11": "wdio run ./config/emulators-simulators/wdio.conf.iphone11.js",
+    "ios-simulator-iphone14Pro": "wdio run ./config/emulators-simulators/wdio.conf.iphone14Pro.js",
     "ios-simulator-ipad": "wdio run ./config/emulators-simulators/wdio.conf.ios-tablet.js",
     "os8-samsung-galaxy-s9": "wdio run ./config/conf-android-mobile/os8-samsung-galaxy-s9.js",
     "os8-google-pixel-2": "wdio run ./config/conf-android-mobile/os8-google-pixel-2.js",

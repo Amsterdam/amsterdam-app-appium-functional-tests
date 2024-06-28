@@ -118,7 +118,7 @@ class NotificationsScreen extends Screen {
     //label == "Selecteer foto's…"
     //-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow"
     const platformVersion = parseInt(config.capabilities[0]['appium:platformVersion'])
-    if (platformVersion < 17) {
+    if (platformVersion >= 17.0) {
       return $(`-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow Full Access"`);
     } else {
       return $(`-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow Access to All Photos"`);
