@@ -57,7 +57,6 @@ const getCapabilitiesForDevice = (device, platform) => {
                 "projectName": projectName,
                 "buildName": buildNameAndroidMobile,
                 "appiumVersion": appiumVersion,
-                "networkLogs": true
                 // "enableCameraImageInjection": "true",
             },
         }
@@ -74,7 +73,6 @@ const getCapabilitiesForDevice = (device, platform) => {
                 "buildName": buildNameIosMobile,
                 "appiumVersion": appiumVersion,
                 "midSessionInstallApps": [bsUrliOS],
-                "networkLogs": true
                 // "enableCameraImageInjection": "true",
             },
         }
