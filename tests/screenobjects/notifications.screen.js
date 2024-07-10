@@ -124,7 +124,7 @@ class NotificationsScreen extends Screen {
     } else {
       return $(`-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow Access to All Photos"`);
     }
-  }acc
+  }
 
   get allowSelector() {
     if (this.OS === 'iOS') {
@@ -296,6 +296,7 @@ class NotificationsScreen extends Screen {
     await expect(this.constructionWorkEditorCreateMessageImageDescriptionInput).toBeDisplayed()
     await this.constructionWorkEditorCreateMessageImageDescriptionInput.addValue("Aan de Amstel")
     await this.photo.click()
+    await this.constructionWorkEditorAddImageToMessageNextButton.waitForDisplayed()
     await this.constructionWorkEditorAddImageToMessageNextButton.click()
   }
 

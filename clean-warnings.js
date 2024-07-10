@@ -1,42 +1,42 @@
 import axios from 'axios';
-import { DeviceAuthorization, apiUrl, password, username } from "./credentials.js";
+import { DeviceAuthorization, apiUrl, deviceId, xApiKey } from "./credentials.js";
 
-const getToken = `${apiUrl}/get-token/`
-const warnings = `${apiUrl}/project/warnings`
+//const getToken = `${apiUrl}/get-token/`
+const warnings = `${apiUrl}/project/details`
+const deleteWarning = `${apiUrl}/manage/warnings`
+const bearerToken = process.env.BEARER_TOKEN
 
-const token = axios.post(getToken, {
-    username,
-    password
-})
-    .then(response => {
-        //console.log(response.data)
-        const result = response.data.access
-        //console.log(`This is the token: ${result}`)
-        return result
-    })
-    .catch(error => {
-        console.log(`Token error: ${error}`);
-    });
+// const token = axios.post(getToken, {
+//     username,
+//     password
+// })
+//     .then(response => {
+//         //console.log(response.data)
+//         const result = response.data.access
+//         //console.log(`This is the token: ${result}`)
+//         return result
+//     })
+//     .catch(error => {
+//         console.log(`Token error: ${error}`);
+//     });
 
 await axios.get(warnings, {
     params: {
-        'project_id': 49
+        'id': 47
     },
     headers: {
         'DeviceAuthorization': DeviceAuthorization,
+        'deviceId': deviceId,
+        'x-api-key': xApiKey
     }
 })
     .then(response => {
-        const result = response.data
+        const result = response.data.recent_articles
         result.forEach(async element => {
             //for each identifier make another request to delete the notification
-            const deleteWarning = `${apiUrl}/project/warning`
-            axios.delete(deleteWarning, {
-                params: {
-                    'id': element.id,
-                },
+            axios.delete(`${deleteWarning}/${element.id}`, {
                 headers: {
-                    'AUTHORIZATION': await token,
+                    'AUTHORIZATION': `Bearer ${bearerToken}`,
                 }
             }).then(response => {
                 console.log(`status code: ${response.status}`)
