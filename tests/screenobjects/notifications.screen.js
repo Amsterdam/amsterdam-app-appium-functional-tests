@@ -174,7 +174,7 @@ class NotificationsScreen extends Screen {
   }
 
   get imageSelector() {
-    return $('android=new UiSelector().descriptionContains("image.jpg")')
+    return $('android=new UiSelector().resourceId("com.google.android.documentsui:id/icon_thumb").instance(0)')
   }
 
   get downloadButton() {
