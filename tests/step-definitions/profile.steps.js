@@ -149,6 +149,6 @@ Then(/ik ben terug op het mijn profiel scherm/, async () => {
 })
 
 Then(/er wordt een melding getoond dat er geen suggesties zijn/, async () => {
-    await expect(ProfileScreen.addressNoSuggestionsMessage).toBeDisplayed()
+    await ProfileScreen.addressNoSuggestionsMessage.waitForDisplayed(15000)
 })
 

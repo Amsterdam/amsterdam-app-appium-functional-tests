@@ -1,6 +1,6 @@
 Feature: Contact
 
-    @Before @After
+    @BeforeClean @AfterClean
     Scenario Outline: Op de contactpagina vind ik informatie over de stadsloketten die ik kan bezoeken
         Given ik ben op het contactscherm
         When ik klik op het stadsloket
@@ -19,7 +19,7 @@ Feature: Contact
     #| Zuidoost   | Anton de Komplein 150 1102 CW Amsterdam     | Stadsloket Zuidoost   |
     #| Weesp      | Nieuwstraat 70a 1380 BD Weesp               | Stadsloket Weesp      |
 
-    @Before @After
+    @BeforeClean @AfterClean
     Scenario: Als ik Weesp als stadsloket selecteer kan ik een afspraak maken
         Given ik ben op het contactscherm
         When ik selecteer het stadsloket Weesp
