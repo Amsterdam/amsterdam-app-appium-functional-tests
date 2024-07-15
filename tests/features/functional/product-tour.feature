@@ -1,6 +1,6 @@
 Feature: Product Tour
 
-    @skip @BeforeClean @AfterClean
+    @BeforeClean @AfterClean
     Scenario Outline: Ik zie een pop-up met uitleg bij verschillende knoppen
         Given ik ben op het <scherm> scherm
         Then <scherm>: ik zie een pop-up bij de knop
