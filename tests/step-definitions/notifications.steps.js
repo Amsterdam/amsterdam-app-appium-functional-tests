@@ -13,25 +13,11 @@ const url = `amsterdam://construction-work-editor/${bearerToken}`
 // const url = 'amsterdam://construction-work-editor'
 let titleMessage
 const OS = driver.capabilities.platformName
-Given(/ik launch de app met plaats berichten/, async () => {
-    // await homeScreen.headerEnvironmentButton.click()
-    // await homeScreen.environmentDev.click()
-    // await homeScreen.headerBackButton.click()
-    await driver.pause(6000)
-    if (OS === 'iOS') {
-        await openDeepLinkUrl(url)
 
-    }
-    else {
-        await driver.execute('mobile:deepLink', {
-            url: url,
-            package: "com.android.chrome "
-        });
-    }
-    await driver.pause(10000)
-})
 
 Given(/ik ben OM\/CA en heb een plaats berichten module in de app/, async () => {
+    const platformVersion = await driver.execute('mobile:deviceInfo')
+    console.log(platformVersion)
     await homeScreen.homeAboutModuleButton.waitForDisplayed()
     if (OS === 'iOS') {
         await driver.executeScript('mobile: backgroundApp', [{ seconds: 3 }])

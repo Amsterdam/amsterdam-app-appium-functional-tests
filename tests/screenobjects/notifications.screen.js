@@ -113,16 +113,19 @@ class NotificationsScreen extends Screen {
     }
   }
 
-  get accessPhotos() {
-    //const selector = 'label == "Select Photos..."'
-    //label == "Selecteer foto's…"
-    //-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow"
-    const platformVersion = driver.capabilities.platformVersion
-    console.log(platformVersion)
-    if (platformVersion >= 17.0) {
-      return $(`-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow Full Access"`);
-    } else {
-      return $(`-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow Access to All Photos"`);
+  get accessPhotosBelow17() {
+    return $(`-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow Full Access"`);
+  }
+
+  get accessPhotosAbove17() { return $(`-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow Access to All Photos"`); }
+
+  async accessPhotos() {
+    try {
+      await this.accessPhotosBelow17.waitForDisplayed(5000)
+      await this.accessPhotosBelow17.click()
+    } catch (error) {
+      await this.accessPhotosAbove17.waitForDisplayed(5000)
+      await this.accessPhotosAbove17.click()
     }
   }
 
@@ -288,7 +291,7 @@ class NotificationsScreen extends Screen {
 
   async addPhotoiOS() {
     await this.constructionWorkEditorCreateMessageAddImageButton.click()
-    await this.accessPhotos.click()
+    await this.accessPhotos()
     await this.recentPhotos.click()
     await this.pickImage.click()
     await this.kiezenButton.click()
