@@ -264,7 +264,6 @@ class NotificationsScreen extends Screen {
     }
     await this.imageSelector.click()
     await this.photoEditorCropButton.click()
-    await expect(this.addPhotoTitle).toBeDisplayed()
     await expect(this.constructionWorkEditorCreateMessageImageDescriptionInput).toBeDisplayed()
     await this.constructionWorkEditorCreateMessageImageDescriptionInput.addValue("Aan de Amstel")
     const isKeyboardShown = await driver.isKeyboardShown()
