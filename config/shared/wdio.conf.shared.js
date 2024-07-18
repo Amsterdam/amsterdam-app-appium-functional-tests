@@ -39,7 +39,7 @@ export const config = {
     exclude: [
         //"../../tests/features/functional/settings.feature",
         //"../../tests/features/functional/mijnprofiel.feature",
-        //"../../tests/features/functional/notifications.feature",
+        "../../tests/features/functional/notifications.feature",
         //"../../tests/features/functional/onboarding.feature",
         "../../tests/features/functional/launchapp.feature",
         //"../../tests/features/functional/construction-work.feature",
