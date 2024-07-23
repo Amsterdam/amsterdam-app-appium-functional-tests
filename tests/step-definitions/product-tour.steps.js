@@ -5,7 +5,7 @@ const OS = driver.capabilities.platformName
 
 Then(/(.*): ik zie een pop-up bij de knop/, async (scherm) => {
     if (OS === 'iOS') {
-        await productTourScreen.checkPopUpIOS(scherm)
+        await productTourScreen.checkPopUp(scherm)
     }
 })
 
