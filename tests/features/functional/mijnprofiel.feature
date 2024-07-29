@@ -1,11 +1,11 @@
 Feature: Mijn profiel
-    @Before @After
+    @BeforeClean @AfterClean
     Scenario: Mijn profiel bekijken
         Given ik ben op het home scherm
         When ik ga naar mijn profiel
         Then ik zie mijn profiel met de mogelijkheid om een adres toe te voegen
 
-    @Before @AfterClean
+    @BeforeClean @AfterClean
     Scenario Outline: Adres toevoegen
         Given ik ben op het mijn profiel scherm
         When ik zoek op 'Weesperstraat 113'
