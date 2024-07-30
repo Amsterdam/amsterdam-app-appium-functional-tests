@@ -53,6 +53,7 @@ Before({ tags: '@BeforeOnboarding' }, async () => {
         //await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
     } else {
         await driver.activateApp('nl.amsterdam.app.dev')
+        await driver.rotate(ScreenOrientation.PORTRAIT)
         //await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
     }
 
@@ -78,6 +79,7 @@ Before({ tags: '@Before' }, async () => {
     else {
         //await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
         await driver.activateApp('nl.amsterdam.app.dev')
+        await driver.rotate(ScreenOrientation.PORTRAIT)
         if (await onboardingScreen.nextButtonSelector.isDisplayed()) {
             await onboardingScreen.closeOnboarding()
         }
@@ -112,6 +114,7 @@ Before({ tags: '@BeforeClean' }, async () => {
     } else {
         //await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
         await driver.activateApp('nl.amsterdam.app.dev')
+        await driver.rotate(ScreenOrientation.PORTRAIT)
         await notificationsScreen.allowNotifications()
         await onboardingScreen.closeOnboarding()
     }
