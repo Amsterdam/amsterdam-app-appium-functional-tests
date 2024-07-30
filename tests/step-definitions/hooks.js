@@ -114,7 +114,6 @@ Before({ tags: '@BeforeClean' }, async () => {
     } else {
         //await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
         await driver.activateApp('nl.amsterdam.app.dev')
-        await driver.orientation('LANDSCAPE')
         await notificationsScreen.allowNotifications()
         await onboardingScreen.closeOnboarding()
     }
