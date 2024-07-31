@@ -53,7 +53,6 @@ Before({ tags: '@BeforeOnboarding' }, async () => {
         //await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
     } else {
         await driver.activateApp('nl.amsterdam.app.dev')
-        await driver.orientation('LANDSCAPE')
         //await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
     }
 
