@@ -35,7 +35,8 @@ class WasteGuideScreen extends Screen {
     }
 
     get wasteGuideScreenRestafvalTitle() {
-        return helpers.createContentSelector("Restafval")
+        OS == 'iOS' ? selector = helpers.createPredicateSelector("Restafval Hoe: In de container voor restafval Waar: Kaart met containers in de buurt") : selector = helpers.createContentSelector("Restafval")
+        return selector
     }
 
     get wasteGuideReportWrongBuildingTypeIntroPhrase() {
