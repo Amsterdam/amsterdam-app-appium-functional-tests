@@ -22,10 +22,11 @@ Feature: Afvalwijzer module
         And ik heb een adres ingevoerd, bagnummer: <bagnummer>
         When ik voer een adres <adres> in dat geen woonadres is, bagnummer: <bagnummer>
         And ik selecteer of ik wel of niet een contract <contract> heb
-        Then ik zie het Afvalwijzer scherm voor adressen die geen woonadres zijn
+        Then ik zie het Afvalwijzer scherm voor adressen die geen woonadres zijn, contract: <contract>
         Examples:
-            | adres    | omschrijving    | contract | bagnummer        |
-            | Amstel 1 | zonder contract | nee      | 0363200012145295 |
+            | adres       | omschrijving    | contract | bagnummer        |
+            | Amstel 1    | met contract    | ja       | 0363200012145295 |
+            | Javaplein 1 | zonder contract | nee      | 0363200000038242 |
 
 
 

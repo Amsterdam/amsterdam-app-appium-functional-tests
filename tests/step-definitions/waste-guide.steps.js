@@ -176,13 +176,19 @@ Then(/ik zie het Afvalwijzer scherm voor woonadressen/, async () => {
     }
 })
 
-Then(/ik zie het Afvalwijzer scherm voor adressen die geen woonadres zijn/, async () => {
+Then(/ik zie het Afvalwijzer scherm voor adressen die geen woonadres zijn, contract: (.*)/, async contract => {
     await expect(WasteGuideScreen.wasteGuideRequestLocationButton).toBeDisplayed()
     await WasteGuideScreen.wasteGuideReportWrongBuildingTypeIntroPhrase.waitForDisplayed(5000)
-    await WasteGuideScreen.wasteGuideSelectContractRadioGroupfalseRadioButton.click()
-    await expect(WasteGuideScreen.wasteGuideScreenRestafvalTitle).toBeDisplayed()
-    await WasteGuideScreen.wasteGuideSelectContractRadioGrouptrueRadioButton.click()
-    await expect(WasteGuideScreen.wasteGuideBusinessesInfoTitle).toBeDisplayed()
-    await expect(WasteGuideScreen.wasteGuideBusinessesInfoPhrase).toBeDisplayed()
-
+    //Selecteer contract === nee, info over restafval moet wel getoond worden
+    if (contract === 'nee') {
+        await WasteGuideScreen.wasteGuideSelectContractRadioGroupfalseRadioButton.click()
+        await expect(WasteGuideScreen.wasteGuideScreenRestafvalTitle).toBeDisplayed()
+    }
+    //Selecteer contract == ja, info over restafval mag niet getoond worden
+    else {
+        await WasteGuideScreen.wasteGuideSelectContractRadioGrouptrueRadioButton.click()
+        await expect(WasteGuideScreen.wasteGuideScreenRestafvalTitle).not.toBeDisplayed()
+        await expect(WasteGuideScreen.wasteGuideBusinessesInfoTitle).toBeDisplayed()
+        await expect(WasteGuideScreen.wasteGuideBusinessesInfoPhrase).toBeDisplayed()
+    }
 })

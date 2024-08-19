@@ -35,6 +35,19 @@ class WasteGuideScreen extends Screen {
     }
 
     get wasteGuideScreenRestafvalTitle() {
+        if (this.OS == 'iOS') {
+            const selector = '**/XCUIElementTypeOther[`label == "Restafval Hoe: In de container voor restafval Waar: Kaart met containers in de buurt"`]'
+            return $(`-ios class chain:${selector}`)
+        }
+        else { return helpers.createContentSelector("Restafval") }
+    }
+
+    get wasteGuideScreenRestafvalTitle() {
+        if (this.OS == 'iOS') { return helpers.createPredicateSelector("Restafval Hoe: In de container voor restafval Waar: Kaart met containers in de buurt") }
+        else { return helpers.createContentSelector("Restafval") }
+    }
+
+    get wasteGuideScreenRestafvalTitleBusinessAddress() {
         if (this.OS == 'iOS') { return helpers.createPredicateSelector("Restafval Hoe: In de container voor restafval Waar: Kaart met containers in de buurt") }
         else { return helpers.createContentSelector("Restafval") }
     }
