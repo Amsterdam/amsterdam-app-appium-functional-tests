@@ -1,7 +1,7 @@
 Feature: Contact
 
     @BeforeClean @AfterClean
-    Scenario Outline: Op de contactpagina vind ik informatie over de stadsloketten die ik kan bezoeken
+    Scenario Outline: Switchen van stadsloket
         Given ik ben op het contactscherm
         When ik klik op het stadsloket
         Then zie ik een lijst met stadsloketten
