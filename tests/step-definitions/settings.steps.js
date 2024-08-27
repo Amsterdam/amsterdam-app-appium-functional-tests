@@ -1,5 +1,3 @@
-//import { ClassicRunner, Eyes, Target } from '@applitools/eyes-webdriverio';
-//import percyScreenshot from '@percy/appium-app';
 import { Given, Then, When } from '@wdio/cucumber-framework';
 import HomeScreen from '../screenobjects/home.screen.js';
 import settingsScreen from '../screenobjects/settings.screen.js';
