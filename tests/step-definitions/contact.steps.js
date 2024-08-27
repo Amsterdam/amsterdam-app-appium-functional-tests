@@ -1,5 +1,3 @@
-import { ClassicRunner, Eyes, Target } from '@applitools/eyes-webdriverio';
-import percyScreenshot from '@percy/appium-app';
 import { Given, Then, When } from '@wdio/cucumber-framework';
 import gestures from '../Shared/helpers/gestures.js';
 import { default as ContactScreen } from '../screenobjects/contact.screen.js';
@@ -68,21 +66,5 @@ Then(/ik zie een maak een afspraakknop/, async () => {
     await gestures.checkProjectDisplayedWithScrollDown(ContactScreen.contactMakeAppointmentButton, 4)
     await expect(ContactScreen.contactMakeAppointmentButton).toBeDisplayed()
 })
-//Then - eyes
-Then(/ik zie het contact scherm - eyes/, async () => {
-    const runner = new ClassicRunner()
-    const eyes = new Eyes(runner)
-    await eyes.open(driver, "Amsterdam App", "De contact module raadplegen")
-    await eyes.check(Target.window().fully())
-    await eyes.close()
-    await eyes.abortIfNotClosed()
-})
 
-//Then - percy
-Then(/ik zie het contact scherm - percy/, async () => {
-    if (await ContactScreen.contactVisitingHoursTooltipButton.isDisplayed()) {
-        await ContactScreen.contactVisitingHoursTooltipButton.click()
-    }
-    await percyScreenshot('Op de contactpagina vind ik informatie over de stadsloketten die ik kan bezoeken', { fullPage: true, screenLengths: 8 })
-})
 

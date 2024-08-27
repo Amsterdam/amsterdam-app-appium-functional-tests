@@ -2,7 +2,6 @@
   "name": "my-new-project",
   "type": "module",
   "devDependencies": {
-    "@wdio/allure-reporter": "^8.36.1",
     "@wdio/appium-service": "^8.36.1",
     "@wdio/browserstack-service": "^8.36.1",
     "@wdio/cli": "^8.36.1",
@@ -76,10 +75,6 @@
     "run percy": "npx percy app:exec -- npm run visual-tests"
   },
   "dependencies": {
-    "@applitools/eyes-webdriverio": "^5.53.0",
-    "@percy/appium-app": "^1.2.1",
-    "@percy/cli": "^1.28.3",
-    "allure-commandline": "^2.28.0",
     "eslint": "^8.57.0"
   }
 }

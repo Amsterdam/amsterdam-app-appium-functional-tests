@@ -1,5 +1,3 @@
-import { ClassicRunner, Eyes } from '@applitools/eyes-webdriverio';
-import percyScreenshot from '@percy/appium-app';
 import { Given, Then, When } from '@wdio/cucumber-framework';
 import chai from 'chai';
 import gestures from '../Shared/helpers/gestures.js';
@@ -216,34 +214,10 @@ Then(/ik zie het juiste adres in het werkzaamhedenscherm/, async () => {
   await expect(ConstructionWorkScreen.constructionWorkChangeLocationButtonText).toHaveText('In de buurt van Weesperstraat 113')
 })
 
-//Then - eyes
-Then(/ik zie het Werkzaamheden scherm - eyes/, async () => {
-  const runner = new ClassicRunner()
-  const eyes = new Eyes(runner)
-  await eyes.open(driver, "Amsterdam App", "De Werkzaamheden module raadplegen")
-  await eyes.check()
-  await eyes.close()
-  await eyes.abortIfNotClosed()
-})
-
-Then(/ik zie de (.*) van het projectdetailscherm - eyes/, async subpagina => {
-  const runner = new ClassicRunner()
-  const eyes = new Eyes(runner)
-  await eyes.open(driver, "Amsterdam App", `Projectdetails bekijken van project 'Corantijnstraat' met subpagina: ${subpagina}`)
-  await eyes.check()
-  await eyes.close()
-  await eyes.abortIfNotClosed()
-})
 
 
-//Then - percy
-Then(/ik zie het Werkzaamheden scherm - percy/, async () => {
-  await percyScreenshot('Werkzaamheden')
-})
 
-Then(/ik zie de subpagina (.*) van het projectdetailscherm - percy/, async subpagina => {
-  await percyScreenshot(`ik zie de subpagina ${subpagina} van het projectdetailscherm`, { fullPage: true, screenLengths: 8 })
-})
+
 
 
 
