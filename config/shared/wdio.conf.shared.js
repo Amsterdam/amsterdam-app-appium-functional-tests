@@ -41,7 +41,7 @@ export const config = {
         //"../../tests/features/functional/mijnprofiel.feature",
         "../../tests/features/functional/notifications.feature",
         //"../../tests/features/functional/onboarding.feature",
-        //"../../tests/features/functional/launchapp.feature",
+        "../../tests/features/functional/launchapp.feature",
         //"../../tests/features/functional/construction-work.feature",
         //"../../tests/features/functional/product-tour.feature",
         //"../../tests/features/functional/contact.feature",
