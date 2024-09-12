@@ -1,5 +1,5 @@
 import { Given, Then, When } from '@wdio/cucumber-framework';
-import { tokens } from '../../initSession.js';
+import { getTokens } from '../../initSession.js';
 import citypassScreen from '../screenobjects/citypass.screen.js';
 import { default as HomeScreen, default as homeScreen } from '../screenobjects/home.screen.js';
 import helpers from '../Shared/helpers/helpers.js';
@@ -12,7 +12,8 @@ Given(/ik login via deepLink/, async () => {
     // open deeplink
     await HomeScreen.getHomeScreen()
     await citypassScreen.homeCityPassModuleButton.click()
-    const cityPassLoginDeepLink = `amsterdam://stadspas/gelukt/${await tokens.access_token}/${await tokens.refresh_token}`
+    const {accessToken, refreshToken} = await getTokens()
+    const cityPassLoginDeepLink = `amsterdam://stadspas/gelukt/${accessToken}/${refreshToken}`
     await openDeepLinkUrl(cityPassLoginDeepLink)
     await driver.pause(10000)
 })
