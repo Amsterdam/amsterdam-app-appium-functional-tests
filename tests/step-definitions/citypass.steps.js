@@ -8,11 +8,11 @@ import { openDeepLinkUrl } from '../Shared/helpers/openDeeplink.js';
 const OS = driver.capabilities.platformName
 
 Given(/ik login via deepLink/, async () => {
-    console.log(tokens)
+    //console.log(tokens)
     // open deeplink
     await HomeScreen.getHomeScreen()
     await citypassScreen.homeCityPassModuleButton.click()
-    const {accessToken, refreshToken} = await getTokens()
+    const { accessToken, refreshToken } = await getTokens()
     const cityPassLoginDeepLink = `amsterdam://stadspas/gelukt/${accessToken}/${refreshToken}`
     await openDeepLinkUrl(cityPassLoginDeepLink)
     await driver.pause(10000)
