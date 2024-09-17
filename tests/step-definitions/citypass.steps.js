@@ -1,10 +1,9 @@
 import { Given, Then, When } from '@wdio/cucumber-framework';
 import { getTokens } from '../../initSession.js';
+import ssoScreen from '../screenobjects/';
 import citypassScreen from '../screenobjects/citypass.screen.js';
 import HomeScreen from '../screenobjects/home.screen.js';
-import helpers from '../Shared/helpers/helpers.js';
 import { openDeepLinkUrl } from '../Shared/helpers/openDeeplink.js';
-
 const OS = driver.capabilities.platformName
 
 Given(/ik login via deepLink/, async () => {
@@ -22,34 +21,34 @@ Given(/ik login via de browser/, async () => {
     const screensize = await driver.getWindowRect()
     //console.log(screensize)
     await HomeScreen.getHomeScreen()
-    await helpers.switchEnv('TEST')
+    //await helpers.switchEnv('TEST')
     await citypassScreen.homeCityPassModuleButton.click()
     await citypassScreen.cityPassLoginButton.click()
     await driver.pause(5000)
 
     if (OS === 'iOS') {
         //sso login iOS
-        // await ssoScreen.ssoUsernameInput.addValue(adwUsername)
-        // //await gestures.hitEnter()
-        // await ssoScreen.ssoNextButton.click()
-        // await driver.pause(2000)
-        // await ssoScreen.ssoPasswordInput.click()
-        // await ssoScreen.ssoPasswordInput.addValue(adwPassword)
-        // //await gestures.hitEnter()
-        // await ssoScreen.ssoNextButton.click()
-        // await driver.pause(2000)
-        // await ssoScreen.ssoSignInButton.click()
-        // await ssoScreen.ssoUseOtherMFA.click()
-        // await driver.pause(2000)
-        // await ssoScreen.useVerificationCodeButton.click()
-        // await driver.pause(2000)
-        // await ssoScreen.totpInput.click()
-        // await driver.pause(2000)
-        // const { otp } = TOTP.generate(adwSecret)
-        // console.log(otp)
-        // await ssoScreen.totpInput.addValue(otp)
-        // await ssoScreen.verifyButton.click()
-        // await driver.pause(2000)
+        await ssoScreen.ssoUsernameInput.addValue(adwUsername)
+        //await gestures.hitEnter()
+        await ssoScreen.ssoNextButton.click()
+        await driver.pause(2000)
+        await ssoScreen.ssoPasswordInput.click()
+        await ssoScreen.ssoPasswordInput.addValue(adwPassword)
+        //await gestures.hitEnter()
+        await ssoScreen.ssoNextButton.click()
+        await driver.pause(2000)
+        await ssoScreen.ssoSignInButton.click()
+        await ssoScreen.ssoUseOtherMFA.click()
+        await driver.pause(2000)
+        await ssoScreen.useVerificationCodeButton.click()
+        await driver.pause(2000)
+        await ssoScreen.totpInput.click()
+        await driver.pause(2000)
+        const { otp } = TOTP.generate(adwSecret)
+        console.log(otp)
+        await ssoScreen.totpInput.addValue(otp)
+        await ssoScreen.verifyButton.click()
+        await driver.pause(2000)
         await citypassScreen.testaccountMarga02.click()
         await HomeScreen.openDeepLinkSafari.click()
         await citypassScreen.cityPassLoggedInAlertPositive.waitForDisplayed(10000)
