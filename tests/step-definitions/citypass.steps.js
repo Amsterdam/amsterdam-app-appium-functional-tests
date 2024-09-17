@@ -1,7 +1,7 @@
 import { Given, Then, When } from '@wdio/cucumber-framework';
 import { getTokens } from '../../initSession.js';
 import citypassScreen from '../screenobjects/citypass.screen.js';
-import { default as HomeScreen, default as homeScreen } from '../screenobjects/home.screen.js';
+import HomeScreen from '../screenobjects/home.screen.js';
 import helpers from '../Shared/helpers/helpers.js';
 import { openDeepLinkUrl } from '../Shared/helpers/openDeeplink.js';
 
@@ -51,7 +51,7 @@ Given(/ik login via de browser/, async () => {
         // await ssoScreen.verifyButton.click()
         // await driver.pause(2000)
         await citypassScreen.testaccountMarga02.click()
-        await homeScreen.openDeepLinkSafari.click()
+        await HomeScreen.openDeepLinkSafari.click()
         await citypassScreen.cityPassLoggedInAlertPositive.waitForDisplayed(10000)
     } else {
         //sso login Android 

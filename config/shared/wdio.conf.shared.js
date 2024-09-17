@@ -37,16 +37,16 @@ export const config = {
     ],
     // Patterns to exclude.
     exclude: [
-        //"../../tests/features/functional/settings.feature",
-        //"../../tests/features/functional/mijnprofiel.feature",
+        "../../tests/features/functional/settings.feature",
+        "../../tests/features/functional/mijnprofiel.feature",
         "../../tests/features/functional/notifications.feature",
-        //"../../tests/features/functional/onboarding.feature",
+        "../../tests/features/functional/onboarding.feature",
         "../../tests/features/functional/launchapp.feature",
-        //"../../tests/features/functional/construction-work.feature",
-        //"../../tests/features/functional/product-tour.feature",
-        //"../../tests/features/functional/contact.feature",
-        //"../../tests/features/functional/waste-guide.feature",
-        //"../../tests/features/functional/location.feature",
+        "../../tests/features/functional/construction-work.feature",
+        "../../tests/features/functional/product-tour.feature",
+        "../../tests/features/functional/contact.feature",
+        "../../tests/features/functional/waste-guide.feature",
+        "../../tests/features/functional/location.feature",
     ],
     //
     // ============
