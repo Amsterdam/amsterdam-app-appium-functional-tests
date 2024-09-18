@@ -1,4 +1,5 @@
 import { execSync } from 'child_process'
+import HomeScreen from '../../screenobjects/home.screen.js'
 
 class Helpers {
   currentOS = driver.capabilities.platformName
@@ -64,6 +65,38 @@ class Helpers {
       return false; // Assume it's not an emulator in case of an error
     }
   }
+
+  async switchEnv(environment) {
+    switch (environment) {
+      case 'DEV':
+        await HomeScreen.headerEnvironmentButton.click()
+        await HomeScreen.environmentDev.click()
+        await HomeScreen.headerBackButton.click()
+        await driver.pause(6000)
+        break
+      case 'TEST':
+        await HomeScreen.headerEnvironmentButton.click()
+        await HomeScreen.environmentTest.click()
+        await HomeScreen.headerBackButton.click()
+        await driver.pause(6000)
+        break
+      case 'ACC':
+        await HomeScreen.headerEnvironmentButton.click()
+        await HomeScreen.environmentAcc.click()
+        await HomeScreen.headerBackButton.click()
+        await driver.pause(6000)
+        break
+      case 'PROD':
+        await HomeScreen.headerEnvironmentButton.click()
+        await HomeScreen.environmentProduction.click()
+        await HomeScreen.headerBackButton.click()
+        await driver.pause(6000)
+        break
+      default:
+        await assert.fail(`${environment} doesn't exist`)
+    }
+  }
+
 }
 
 export default new Helpers;

@@ -61,12 +61,18 @@ class HomeScreen extends Screen {
 
     get environmentTest() {
         //return helpers.createContentSelector('HomeEnvironmentSelectorTestAzureButton')
-        return helpers.createSelector('HomeEnvironmentSelectorAcceptanceButton')
+        return helpers.createSelector('HomeEnvironmentSelectorTestButton')
     }
 
     get environmentAcc() {
         //return helpers.createContentSelector('HomeEnvironmentSelectorAcceptanceAzureButton')
         return helpers.createSelector('HomeEnvironmentSelectorAcceptanceButton  ')
+    }
+
+    get openDeepLinkSafari() {
+        const openSelector = 'label == "Open" AND name == "Open" AND type == "XCUIElementTypeButton"'
+        const open = $(`-ios predicate string:${openSelector}`);
+        return open
     }
 
     async getHomeScreen() {
@@ -143,6 +149,7 @@ class HomeScreen extends Screen {
         await expect(this.homeContactModuleButton).not.toBeDisplayed()
         await expect(this.homeRedirectsModuleButton).not.toBeDisplayed()
     }
+
 
 }
 

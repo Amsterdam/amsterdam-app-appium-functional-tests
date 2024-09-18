@@ -2,18 +2,18 @@ Feature: Stadspas
 
     @skip @BeforeClean @AfterClean
     Scenario: Stadspas overzicht
-        Given ik login via de browser
+        Given ik login via deepLink
         Then ik zie het overzicht met mijn stadspassen
 
     @skip @BeforeClean @AfterClean
     Scenario: Stadspas volwassene
-        Given ik login via de browser
+        Given ik login via deepLink
         When ik open de stadspas details van een volwassene
         Then ik zie de stadspas details van een volwassene
 
     @skip @BeforeClean @AfterClean
-    Scenario Outline: Stadspas kind
-        Given ik login via de browser
+    Scenario Outline: Stadspas kind <naam>
+        Given ik login via deepLink
         When ik open de stadspas details van kind <naam>
         Then ik zie de stadspas details van kind <naam>
         When ik open het kindtegoed overzicht <kindtegoed>
@@ -27,4 +27,4 @@ Feature: Stadspas
 
     @BeforeClean @AfterClean
     Scenario: Inloggen
-        Given ik login via deepLink
+        Given ik login via de browser
