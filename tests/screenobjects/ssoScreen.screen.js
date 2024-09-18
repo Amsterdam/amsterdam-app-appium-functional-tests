@@ -8,43 +8,74 @@ class SsoScreen extends Screen {
 
     get ssoUsernameInput() {
         if (OS === 'iOS') {
-            return $('//XCUIElementTypeTextField[@name="Emailadres"]')
+            return $('//XCUIElementTypeTextField[@value="Emailadres"]')
         }
     }
 
     get ssoNextButton() {
         if (OS === 'iOS') {
-            return $('//XCUIElementTypeButton[@name="Volgende"]')
+            return $('//XCUIElementTypeButton[@name="Next"]')
         }
     }
 
     get ssoPasswordInput() {
         if (OS === 'iOS') {
-            return $('//XCUIElementTypeSecureTextField[@name="Wachtwoord"]')
+            return $('//XCUIElementTypeSecureTextField[@value="Password"]')
         }
     }
 
     get ssoSignInButton() {
         if (OS === 'iOS') {
-            return $('//XCUIElementTypeButton[@name="Inloggen"]')
+            return $('//XCUIElementTypeButton[@name="Sign in"]')
         }
     }
 
     get ssoUseOtherMFA() {
         if (OS === 'iOS') {
-            return $('//XCUIElementTypeButton[@name="Gebruik een andere methode"]')
+            return $('//XCUIElementTypeLink[@name="I can\'t use my Microsoft Authenticator app right now"]')
         }
     }
 
     get useVerificationCodeButton() {
         if (OS === 'iOS') {
-            return $('//XCUIElementTypeButton[@name="Gebruik een verificatiecode"]')
+            return $('//XCUIElementTypeButton[@name="Use a verification code"]')
         }
     }
 
     get totpInput() {
         if (OS === 'iOS') {
-            return $('//XCUIElementTypeTextField[@name="Voer de verificatiecode in"]')
+            return $('//XCUIElementTypeTextField[@name="Enter code"]')
+        }
+    }
+
+    get verifyButton() {
+        if (OS === 'iOS') {
+            return $('//XCUIElementTypeButton[@name="Verify"]')
+        }
+    }
+
+    get digidLoginUsernameButton() {
+        if (OS === 'iOS') {
+            const selector = 'type == "XCUIElementTypeLink" && name CONTAINS "wachtwoord"';
+            return $(`-ios predicate string:${selector}`);
+        }
+    }
+
+    get digidLoginUsernameField() {
+        if (OS === 'iOS') {
+            return $('//XCUIElementTypeTextField')
+        }
+    }
+
+    get digidLoginPasswordField() {
+        if (OS === 'iOS') {
+            return $('//XCUIElementTypeSecureTextField')
+        }
+    }
+
+    get digidLoginButton() {
+        if (OS === 'iOS') {
+            return $('//XCUIElementTypeButton[@name="Inloggen "]')
         }
     }
 }
