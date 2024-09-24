@@ -16,3 +16,7 @@ export const buildNameAndroidMobile = `Build ${buildNumber} - Android - run ${ru
 export const adwUsername = process.env.ADW_USERNAME
 export const adwPassword = process.env.ADW_PASSWORD
 export const adwSecret = process.env.ADW_SECRET
+export const cityPassApiUrl = process.env.CITYPASS_API_URL
+export const encryptedAdministrationNo = process.env.ENCRYPTED_ADMINISTRATION_NO
+export const xApiKey = process.env.X_API_KEY
+export const xSessionCredentials = process.env.X_SESSION_CREDENTIALS
