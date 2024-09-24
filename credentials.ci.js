@@ -20,3 +20,5 @@ export const cityPassApiUrl = process.env.CITYPASS_API_URL
 export const encryptedAdministrationNo = process.env.ENCRYPTED_ADMINISTRATION_NO
 export const xApiKey = process.env.X_API_KEY
 export const xSessionCredentials = process.env.X_SESSION_CREDENTIALS
+export const usernameMA = process.env.MA_USERNAME
+export const passwordMA = process.env.MA_PASSWORD
