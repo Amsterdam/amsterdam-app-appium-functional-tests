@@ -8,7 +8,7 @@ class SsoScreen extends Screen {
 
     get ssoUsernameInput() {
         if (OS === 'iOS') {
-            return $('//XCUIElementTypeTextField[@value="Emailadres"]')
+            return $('//XCUIElementTypeTextField[@value="Email address, phone number or Skype"]')
         }
     }
 
