@@ -160,6 +160,17 @@ class OnboardingScreen extends Screen {
         }
     }
 
+    get onboardingScreenSlide6Title() {
+        if (this.OS === 'iOS') {
+            return helpers.createContentSelector("Stadspas")
+        }
+        else {
+            const testID = 'new UiSelector().text("Stadspas").className("android.view.View")'
+            const selector = $(`android=${testID}`)
+            return selector
+        }
+    }
+
     get onboardingScreenSlide5Text() {
         if (this.OS === 'iOS') {
             const label = 'label == "Overlast? Iets kapot? Vertel het ons via de app."'
@@ -168,6 +179,19 @@ class OnboardingScreen extends Screen {
         }
         else {
             const testID = 'new UiSelector().text("Overlast? Iets kapot? Vertel het ons via de app.").className("android.widget.TextView")'
+            const selector = $(`android=${testID}`)
+            return selector
+        }
+    }
+
+    get onboardingScreenSlide6Text() {
+        if (this.OS === 'iOS') {
+            const label = 'label == "Uw Stadspas altijd mee en inzicht in uw saldo."'
+            const selector = $(`-ios predicate string:${label}`);
+            return selector
+        }
+        else {
+            const testID = 'new UiSelector().text("Uw Stadspas altijd mee en inzicht in uw saldo.").className("android.widget.TextView")'
             const selector = $(`android=${testID}`)
             return selector
         }
@@ -197,6 +221,10 @@ class OnboardingScreen extends Screen {
         return helpers.createSelector('OnboardingPagination5')
     }
 
+    get onboardingScreenPagineationSix() {
+        return helpers.createSelector('OnboardingPagination6')
+    }
+
     get onboardingScreenImageSlideZero() {
         return helpers.createSelector('OnboardingSide0')
     }
@@ -219,6 +247,10 @@ class OnboardingScreen extends Screen {
 
     get onboardingScreenImageSlideFive() {
         return helpers.createSelector('OnboardingSide5')
+    }
+
+    get onboardingScreenImageSlideSix() {
+        return helpers.createSelector('OnboardingSide6')
     }
 
     get onboardingCloseButton() {
@@ -278,6 +310,11 @@ class OnboardingScreen extends Screen {
         await expect(this.onboardingScreenSlide5Text).toBeDisplayed()
         await expect(this.onboardingScreenImageSlideFive).toBeDisplayed()
         await expect(this.onboardingScreenPagineationFive).toBeDisplayed()
+        await this.nextPageMethod(method)
+        await expect(this.onboardingScreenSlide6Title).toBeDisplayed()
+        await expect(this.onboardingScreenSlide6Text).toBeDisplayed()
+        await expect(this.onboardingScreenImageSlideSix).toBeDisplayed()
+        await expect(this.onboardingScreenPagineationSix).toBeDisplayed()
     }
 
     async checkOnboardingSlideZero() {

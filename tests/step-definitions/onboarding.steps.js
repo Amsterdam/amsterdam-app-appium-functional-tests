@@ -51,6 +51,7 @@ Then(/ik kan door de onboarding navigeren middels het bolletjesmenu/, async () =
     await onboardingScreen.onboardingScreenPagineationOne.click()
     await onboardingScreen.onboardingScreenPagineationZero.click()
     await onboardingScreen.onboardingScreenPagineationFive.click()
+    await onboardingScreen.onboardingScreenPagineationSix.click()
 })
 
 Then(/ik zie het homescherm/, async () => {
