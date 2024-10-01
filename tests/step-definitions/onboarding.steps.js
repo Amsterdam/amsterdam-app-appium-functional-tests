@@ -29,6 +29,8 @@ Then(/ik kan door de onboarding swipen/, async () => {
     await driver.pause(2000)
     await onboardingScreen.checkOnboardingSlides('swipeLeft')
     await GesturesScreen.swipeRightSelector(onboardingScreen.onboardingScreenScrollView)
+    await expect(onboardingScreen.onboardingScreenSlide5Title).toBeDisplayed()
+    await GesturesScreen.swipeRightSelector(onboardingScreen.onboardingScreenScrollView)
     await expect(onboardingScreen.onboardingScreenSlide4Title).toBeDisplayed()
     await GesturesScreen.swipeRightSelector(onboardingScreen.onboardingScreenScrollView)
     await expect(onboardingScreen.onboardingScreenSlide3Title).toBeDisplayed()
