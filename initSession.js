@@ -5,6 +5,12 @@ const sessionInitUrl = `${cityPassApiUrl}/session/init`
 const loginUrl = `${cityPassApiUrl}/session/credentials`
 
 export const getTokens = async () => {
+    console.log(`sessionInitUrl: ${sessionInitUrl}`)
+    console.log(`cityPassApiUrl: ${cityPassApiUrl}`)
+    console.log(`loginUrl: ${loginUrl}`)
+    console.log(`encryptedAdministrationNo: ${encryptedAdministrationNo}`)
+    console.log(`xApiKey: ${xApiKey}`)
+    console.log(`xSessionCredentials: ${xSessionCredentials}`)
     const tokens = await axios.post(sessionInitUrl, {
         // Your authentication data (e.g., username, password)
     }, {
@@ -49,5 +55,7 @@ export const getTokens = async () => {
         .catch((error) => {
             console.error(error);
         });
-    return {accessToken, refreshToken}
+    return { accessToken, refreshToken }
 }
+
+getTokens()
