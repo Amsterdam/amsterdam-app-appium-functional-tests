@@ -9,7 +9,7 @@ Before({ tags: '@BeforeOnboarding' }, async () => {
     const simulatorRegex = new RegExp('(.*-.*){2,}');
     // Check if we are a simulator
     if ('udid' in driver.capabilities && simulatorRegex.test(driver.capabilities.udid) && currentOS === 'iOS') {
-        await driver.installApp('/Users/moniquevanbenthem/testing/amsterdam-app-functional/app/iOS/Amsterdam test.app')
+        await driver.installApp('./app/iOS/Amsterdam test.app')
         await driver.activateApp('nl.amsterdam.app.dev')
         //await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
     }
@@ -64,7 +64,7 @@ Before({ tags: '@BeforeClean' }, async () => {
     const simulatorRegex = new RegExp('(.*-.*){2,}');
     // Check if we are a simulator
     if ('udid' in driver.capabilities && simulatorRegex.test(driver.capabilities.udid) && currentOS === 'iOS') {
-        await driver.installApp('/Users/moniquevanbenthem/testing/amsterdam-app-functional/app/iOS/Amsterdam test.app')
+        await driver.installApp('./app/iOS/Amsterdam test.app')
         // await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
         await driver.activateApp('nl.amsterdam.app.dev')
         await notificationsScreen.allowNotifications()
