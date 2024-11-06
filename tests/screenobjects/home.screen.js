@@ -41,10 +41,6 @@ class HomeScreen extends Screen {
         return helpers.createSelector("HeaderUserButton")
     }
 
-    get headerModuleSettingsButton() {
-        return helpers.createSelector("HeaderModuleSettingsButton")
-    }
-
     get headerEnvironmentButton() {
         return helpers.createSelector("HeaderEnvironmentButton")
     }

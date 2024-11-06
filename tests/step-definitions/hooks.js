@@ -61,10 +61,11 @@ Before({ tags: '@Before' }, async () => {
 
 Before({ tags: '@BeforeClean' }, async () => {
     const currentOS = driver.capabilities.platformName
-    const simulatorRegex = new RegExp('(.*-.*){2,}');
+    const simulatorRegex = /(.*-.*){2,}/;
     // Check if we are a simulator
     if ('udid' in driver.capabilities && simulatorRegex.test(driver.capabilities.udid) && currentOS === 'iOS') {
         await driver.installApp('./app/iOS/Amsterdam test.app')
+        await driver.pause(1000)
         // await driver.executeScript('mobile: launchApp', [{ bundleId: 'nl.amsterdam.app.dev' }])
         await driver.activateApp('nl.amsterdam.app.dev')
         await notificationsScreen.allowNotifications()
