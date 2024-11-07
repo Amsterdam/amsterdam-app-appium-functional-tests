@@ -59,8 +59,19 @@
         //         "tests/*"
         //     ],
         // },
+        "types": [
+            "node",
+            "@wdio/globals/types",
+            "@wdio/cucumber-framework",
+            "@wdio/browserstack-service",
+            "@wdio/appium-service",
+        ]
     },
     "exclude": [
         "node_modules",
+    ],
+    "include": [
+        "./tests/**/*.ts",
+        "./tests/**/*.js"
     ]
 }

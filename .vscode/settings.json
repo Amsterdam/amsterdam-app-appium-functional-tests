@@ -1,3 +1,10 @@
 {
-    "eslint.format.enable": true
+    "eslint.format.enable": true,
+    "cucumber.glue": [
+        "tests/step-definitions/*.js",
+        "tests/step-definitions/*.ts",
+    ],
+    "cucumber.features": [
+        "tests/**/*.feature"
+    ]
 }
