@@ -1,5 +1,5 @@
 import {Given, Then, When} from '@wdio/cucumber-framework'
-import chai from 'chai'
+import * as chai from 'chai'
 import gestures from '../Shared/helpers/gestures.ts'
 import helpers from '../Shared/helpers/helpers.ts'
 import ConstructionWorkScreen from '../screenobjects/construction-work.screen.ts'
@@ -126,6 +126,7 @@ When(/ik volg het project 'Stedelijk Noord'/, async () => {
   )
   await expect(ConstructionWorkScreen.headerTitle).toHaveText('Stedelijk Noord')
   await ConstructionWorkScreen.constructionWorkProjectFollowButton.click()
+  // @ts-ignore
   const OS = await driver.capabilities.platformName
   if (OS === 'iOS') {
     await notificationsScreen.allowSelector.click()
@@ -174,6 +175,7 @@ When(/ik klik op de subpagina (.*)$/, async subpagina => {
 })
 
 Then(/het project krijgt de status 'volgend'/, async () => {
+  // @ts-ignore
   const OS = await driver.capabilities.platformName
   //iOS
   if (OS === 'iOS') {
@@ -236,6 +238,7 @@ Then(/het project krijgt de status 'volgend'/, async () => {
 })
 
 Then(/de status 'volgend' verdwijnt/, async () => {
+  // @ts-ignore
   const OS = await driver.capabilities.platformName
   //iOS
   if (OS === 'iOS') {

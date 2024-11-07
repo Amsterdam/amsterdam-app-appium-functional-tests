@@ -1,11 +1,12 @@
 import {Then, When} from '@wdio/cucumber-framework'
-import chai from 'chai'
+import * as chai from 'chai'
 import constructionWorkScreen from '../screenobjects/construction-work.screen.ts'
 import homeScreen from '../screenobjects/home.screen.ts'
 import permissionsScreen from '../screenobjects/permissions.screen.ts'
 import profileScreen from '../screenobjects/profile.screen.ts'
 import wasteGuideScreen from '../screenobjects/waste-guide.screen.ts'
 
+// @ts-ignore
 const OS = driver.capabilities.platformName
 
 const locationsArray = [

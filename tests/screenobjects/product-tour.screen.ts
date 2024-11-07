@@ -1,3 +1,4 @@
+import assert from 'assert'
 import helpers from '../Shared/helpers/helpers.ts'
 import Screen from './screen.ts'
 /**
@@ -7,6 +8,7 @@ class ProductTourScreen extends Screen {
   /**
    * define selectors using getter methods
    */
+  // @ts-ignore
   OS = driver.capabilities.platformName
 
   get productConstructionWorkFollow() {
@@ -18,7 +20,7 @@ class ProductTourScreen extends Screen {
     //}
   }
 
-  async checkPopUp(screen) {
+  async checkPopUp(screen: 'project detailscherm') {
     switch (screen) {
       case 'project detailscherm':
         await expect(await this.productConstructionWorkFollow).toBeDisplayed()
@@ -28,7 +30,7 @@ class ProductTourScreen extends Screen {
     }
   }
 
-  async clickPopUp(screen) {
+  async clickPopUp(screen: 'project detailscherm') {
     switch (screen) {
       case 'project detailscherm':
         await this.productConstructionWorkFollow.waitForDisplayed({
@@ -41,7 +43,7 @@ class ProductTourScreen extends Screen {
     }
   }
 
-  async checkPopUpDissapear(screen) {
+  async checkPopUpDissapear(screen: 'project detailscherm') {
     switch (screen) {
       case 'project detailscherm':
         await expect(

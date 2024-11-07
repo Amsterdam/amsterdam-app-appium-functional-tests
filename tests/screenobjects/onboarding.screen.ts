@@ -3,6 +3,7 @@ import helpers from '../Shared/helpers/helpers.ts'
 import Screen from './screen.ts'
 
 class OnboardingScreen extends Screen {
+  // @ts-ignore
   OS = driver.capabilities.platformName
 
   get nextButtonSelector() {
@@ -273,7 +274,7 @@ class OnboardingScreen extends Screen {
     await this.onboardingCloseButton.click()
   }
 
-  async nextPageMethod(method) {
+  async nextPageMethod(method: 'swipeLeft' | 'nextButton') {
     if (method === 'swipeLeft') {
       GesturesScreen.swipeLeftSelector(this.onboardingScreenScrollView)
     } else if (method === 'nextButton') {
@@ -281,7 +282,7 @@ class OnboardingScreen extends Screen {
     }
   }
 
-  async checkOnboardingSlides(method) {
+  async checkOnboardingSlides(method: 'swipeLeft' | 'nextButton') {
     await this.nextPageMethod(method)
     await expect(this.onboardingScreenSlide1Title).toBeDisplayed()
     await expect(this.onboardingScreenSlide1Text).toBeDisplayed()

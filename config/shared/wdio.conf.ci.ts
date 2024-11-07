@@ -86,7 +86,7 @@ const getCapabilitiesForDevice = (device, platform) => {
   }
 }
 
-const platform = process.env.PLATFORM
+const platform = process.env.PLATFORM as unknown as keyof typeof devices
 let device = process.env.CONFIG
 
 console.log(

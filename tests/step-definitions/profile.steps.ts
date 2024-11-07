@@ -4,6 +4,7 @@ import HomeScreen from '../screenobjects/home.screen.ts'
 import permissionsScreen from '../screenobjects/permissions.screen.ts'
 import ProfileScreen from '../screenobjects/profile.screen.ts'
 
+// @ts-ignore
 const OS = await driver.capabilities.platformName
 
 //Given

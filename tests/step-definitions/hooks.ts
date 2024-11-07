@@ -5,11 +5,13 @@ import notificationsScreen from '../screenobjects/notifications.screen.ts'
 import onboardingScreen from '../screenobjects/onboarding.screen.ts'
 
 Before({tags: '@BeforeOnboarding'}, async () => {
+  // @ts-ignore
   const currentOS = driver.capabilities.platformName
   const simulatorRegex = new RegExp('(.*-.*){2,}')
   // Check if we are a simulator
   if (
     'udid' in driver.capabilities &&
+    // @ts-ignore
     simulatorRegex.test(driver.capabilities.udid) &&
     currentOS === 'iOS'
   ) {
@@ -35,6 +37,7 @@ Before({tags: '@BeforeOnboarding'}, async () => {
 
 Before({tags: '@Before'}, async () => {
   //launch app
+  // @ts-ignore
   const OS = await driver.capabilities.platformName
   if (OS === 'iOS') {
     await driver.activateApp('nl.amsterdam.app.dev')
@@ -45,6 +48,7 @@ Before({tags: '@Before'}, async () => {
   } else {
     //await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
     await driver.activateApp('nl.amsterdam.app.dev')
+    // @ts-ignore
     await driver.orientation('LANDSCAPE')
     if (await onboardingScreen.nextButtonSelector.isDisplayed()) {
       await onboardingScreen.closeOnboarding()
@@ -61,11 +65,13 @@ Before({tags: '@Before'}, async () => {
 })
 
 Before({tags: '@BeforeClean'}, async () => {
+  // @ts-ignore
   const currentOS = driver.capabilities.platformName
   const simulatorRegex = /(.*-.*){2,}/
   // Check if we are a simulator
   if (
     'udid' in driver.capabilities &&
+    // @ts-ignore
     simulatorRegex.test(driver.capabilities.udid) &&
     currentOS === 'iOS'
   ) {
@@ -107,6 +113,7 @@ After({tags: '@After'}, async function () {
 })
 
 After({tags: '@AfterClean'}, async function () {
+  // @ts-ignore
   const currentOS = driver.capabilities.platformName
   if (currentOS === 'iOS') {
     // await driver.executeScript('mobile: terminateApp', [{ bundleId: 'nl.amsterdam.app.dev' }])

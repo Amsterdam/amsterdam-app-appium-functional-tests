@@ -1,15 +1,8 @@
 import assert from 'assert'
 import helpers from '../Shared/helpers/helpers.ts'
 import Screen from './screen.ts'
+import {Modules} from 'tests/types/modules.ts'
 
-enum Modules {
-  constructionWork = 'Werkzaamheden',
-  wasteGuide = 'Afvalwijzer',
-  reportProblem = 'Melding doen',
-  contact = 'Contact',
-  redirects = 'Direct regelen',
-  about = 'Over deze app',
-}
 /**
  * sub page containing specific selectors and methods for a specific page
  */

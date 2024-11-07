@@ -2,6 +2,7 @@ import Screen from './screen.ts'
 /**
  * sub page containing specific selectors and methods for a specific page
  */
+// @ts-ignore
 const OS = driver.capabilities.platformName
 
 class SsoScreen extends Screen {

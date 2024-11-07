@@ -8,7 +8,7 @@ export default class Screen {
    * Opens a sub page of the page
    * @param path path of the sub page (e.g. /path/to/page.html)
    */
-
+  // @ts-ignore
   OS = driver.capabilities.platformName
 
   get welcomeImageAndQuoteButton() {
@@ -26,7 +26,7 @@ export default class Screen {
   }
 
   get allowLocationButton() {
-    this.allowLocationSelector()
+    return this.allowLocationSelector()
   }
 
   get verticalScrollView() {
@@ -42,6 +42,7 @@ export default class Screen {
   }
 
   async allowLocationSelector() {
+    // @ts-ignore
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
       return $(`-ios predicate string: label == "Allow While Using App"`)

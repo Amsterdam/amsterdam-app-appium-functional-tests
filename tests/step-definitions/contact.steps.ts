@@ -2,6 +2,7 @@ import {Then, When} from '@wdio/cucumber-framework'
 import gestures from '../Shared/helpers/gestures.ts'
 import {default as ContactScreen} from '../screenobjects/contact.screen.ts'
 import HomeScreen from '../screenobjects/home.screen.ts'
+import {CityOffices} from 'tests/types/CityOffices.ts'
 
 When(/ik open de contact module/, async () => {
   //await createSelector("HomeContactModuleButton").click()
@@ -27,7 +28,7 @@ When(/ik selecteer het stadsloket Weesp/, async () => {
     4,
   )
   await ContactScreen.ContactCurrentCityOfficeButton.click()
-  await ContactScreen.tapCityOfficeButton('Weesp')
+  await ContactScreen.tapCityOfficeButton(CityOffices.Weesp)
 })
 
 Then(/zie ik een lijst met stadsloketten/, async () => {
@@ -42,6 +43,7 @@ Then(/zie ik een lijst met stadsloketten/, async () => {
 })
 
 Then(/^het juiste stadsloket wordt getoond: (.*)$/, async title => {
+  // @ts-ignore
   const OS = await driver.capabilities.platformName
   if (OS === 'iOS') {
     await driver.pause(2000)

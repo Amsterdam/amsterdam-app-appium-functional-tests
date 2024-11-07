@@ -1,18 +1,12 @@
 import helpers from '../Shared/helpers/helpers.ts'
 import Screen from './screen.ts'
-import {wasteGuideBalistraat} from './wasteGuideTestdataBalistraat.js'
 /**
  * sub page containing specific selectors and methods for a specific page
  */
+// @ts-ignore
 const OS = driver.capabilities.platformName
 
 class WasteGuideScreen extends Screen {
-  async getselector(address, selector) {
-    if (address == 'Balistraat' && OS == 'iOS') {
-      wasteGuideBalistraat.iOS
-    }
-  }
-
   get wasteGuideRequestLocationButtonText() {
     return helpers.createSelector('WasteGuideRequestLocationButtonText')
   }

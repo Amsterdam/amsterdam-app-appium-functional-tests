@@ -1,6 +1,7 @@
 import {execSync} from 'child_process'
 import HomeScreen from '../../screenobjects/home.screen.ts'
 import assert from 'assert'
+import {Environments} from 'tests/types/environments.ts'
 
 class Helpers {
   // @ts-ignore
@@ -74,32 +75,32 @@ class Helpers {
       const adbDevicesOutput = execSync('adb devices -l').toString()
       return /(?:emulator)/i.test(adbDevicesOutput)
     } catch (error) {
-      console.error('Error:', error.message)
+      console.error('Error:', (error as {message: string}).message)
       return false // Assume it's not an emulator in case of an error
     }
   }
 
-  async switchEnv(environment) {
+  async switchEnv(environment: Environments) {
     switch (environment) {
-      case 'DEV':
+      case Environments.dev:
         await HomeScreen.headerEnvironmentButton.click()
         await HomeScreen.environmentDev.click()
         await HomeScreen.headerBackButton.click()
         await driver.pause(6000)
         break
-      case 'TEST':
+      case Environments.test:
         await HomeScreen.headerEnvironmentButton.click()
         await HomeScreen.environmentTest.click()
         await HomeScreen.headerBackButton.click()
         await driver.pause(6000)
         break
-      case 'ACC':
+      case Environments.acc:
         await HomeScreen.headerEnvironmentButton.click()
         await HomeScreen.environmentAcc.click()
         await HomeScreen.headerBackButton.click()
         await driver.pause(6000)
         break
-      case 'PROD':
+      case Environments.prod:
         await HomeScreen.headerEnvironmentButton.click()
         await HomeScreen.environmentProduction.click()
         await HomeScreen.headerBackButton.click()

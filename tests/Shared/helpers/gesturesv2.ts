@@ -6,7 +6,7 @@
  * multiple times.
  */
 
-let SCREEN_SIZE
+let SCREEN_SIZE: ScreenSize
 
 /**
  * The values in the below object are percentages of the screen
@@ -30,12 +30,19 @@ const SWIPE_DIRECTION = {
   },
 }
 
+type Coordinate = {x: number; y: number}
+type ScreenSize = {width: number; height: number}
+
 class GesturesScreen {
   /**
    * Check if an element is visible and if not swipe up a portion of the screen to
    * check if it is visible after x amount of scrolls
    */
-  static async checkIfDisplayedWithSwipeUp(element, maxScrolls, amount = 0) {
+  static async checkIfDisplayedWithSwipeUp(
+    element: ChainablePromiseElement,
+    maxScrolls: number,
+    amount = 0,
+  ) {
     // If the element is not displayed and we haven't scrolled the max amount of scrolls
     // then scroll and execute the method again
     for (let i = amount; i < maxScrolls; i++) {
@@ -56,19 +63,22 @@ class GesturesScreen {
    * Check if an element is visible and if not swipe down a portion of the screen to
    * check if it is visible after x amount of scrolls
    */
-  static async checkIfDisplayedWithSwipeDown(element, maxScrolls, amount = 0) {
+  static async checkIfDisplayedWithSwipeDown(
+    element: ChainablePromiseElement,
+    maxScrolls: number,
+    amount = 0,
+  ) {
     // If the element is not displayed and we haven't scrolled the max amount of scrolls
     // then scroll and execute the method again
     for (let i = amount; i < maxScrolls; i++) {
       if (!(await element.isDisplayed())) {
         await this.swipeDown(0.85)
-        amount + 1
       }
     }
     if (amount > maxScrolls) {
       // If the element is still not visible after the max amount of scroll let it fail
       throw new Error(
-        `The element '${await element}' could not be found or is not visible.`,
+        `The element '${element}' could not be found or is not visible.`,
       )
     }
   }
@@ -116,7 +126,7 @@ class GesturesScreen {
   /**
    * Swipe right based on a selector
    */
-  static async swipeRightSelector(selector) {
+  static async swipeRightSelector(selector: ChainablePromiseElement) {
     const elementId = await selector.elementId
     const swipeItem = await driver.getElementRect(elementId)
     const y = Math.round((swipeItem.y + swipeItem.height) / 2)
@@ -129,7 +139,7 @@ class GesturesScreen {
   /**
    * Swipe left based on a selector
    */
-  static async swipeLeftSelector(selector) {
+  static async swipeLeftSelector(selector: ChainablePromiseElement) {
     const elementId = await selector.elementId
     const swipeItem = await driver.getElementRect(elementId)
     const y = Math.round((swipeItem.y + swipeItem.height) / 2)
@@ -143,7 +153,7 @@ class GesturesScreen {
    * Swipe from coordinates (from) to the new coordinates (to). The given coordinates are
    * percentages of the screen.
    */
-  static async swipeOnPercentage(from, to) {
+  static async swipeOnPercentage(from: Coordinate, to: Coordinate) {
     // Get the screen size and store it so it can be re-used.
     // This will save a lot of webdriver calls if this method is used multiple times.
     SCREEN_SIZE = SCREEN_SIZE || (await driver.getWindowRect())
@@ -158,17 +168,23 @@ class GesturesScreen {
     await this.swipe(pressOptions, moveToScreenCoordinates)
   }
 
-  static async swipeOnPercentageScrollView(selector, from, to) {
+  static async swipeOnPercentageScrollView(
+    selector: ChainablePromiseElement,
+    from: Coordinate,
+    to: Coordinate,
+  ) {
     // Get the screen size and store it so it can be re-used.
     // This will save a lot of webdriver calls if this method is used multiple times.
-    const elementId = selector.elementId
+    const elementId = await selector.elementId
     SCREEN_SIZE =
       (await driver.getElementRect(elementId)) ||
       SCREEN_SIZE ||
       (await driver.getWindowRect())
     // Get the start position on the screen for the swipe
+    // @ts-ignore dit klopt niet
     const pressOptions = this.getElementCoordinates(SCREEN_SIZE, from)
     // Get the move to position on the screen for the swipe
+    // @ts-ignore dit klopt niet
     const moveToScreenCoordinates = this.getElementCoordinates(SCREEN_SIZE, to)
     await this.swipe(pressOptions, moveToScreenCoordinates)
   }
@@ -176,7 +192,7 @@ class GesturesScreen {
   /**
    * Swipe from coordinates (from) to the new coordinates (to). The given coordinates are in pixels.
    */
-  static async swipe(from, to) {
+  static async swipe(from: Coordinate, to: Coordinate) {
     await driver.performActions([
       {
         // a. Create the event
@@ -207,13 +223,16 @@ class GesturesScreen {
   /**
    * Get the screen coordinates based on a device's screen size
    */
-  static getElementCoordinates(screenSize, percentage) {
+  static getElementCoordinates(screenSize: ScreenSize, percentage: number) {
     return {
       x: Math.round(screenSize.width * 0.5),
       y: Math.round(screenSize.height * percentage),
     }
   }
-  static getDeviceScreenCoordinates(screenSize, coordinates) {
+  static getDeviceScreenCoordinates(
+    screenSize: ScreenSize,
+    coordinates: Coordinate,
+  ) {
     return {
       x: Math.round((screenSize.width * coordinates.x) / 100),
       y: Math.round((screenSize.height * coordinates.y) / 100),
@@ -223,7 +242,7 @@ class GesturesScreen {
   /**
    * Calculate the x y coordinates based on a percentage
    */
-  static calculateXY({x, y}, percentage) {
+  static calculateXY({x, y}: Coordinate, percentage: number) {
     return {
       x: x * percentage,
       y: y * percentage,

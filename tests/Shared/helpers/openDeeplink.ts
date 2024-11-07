@@ -1,7 +1,7 @@
 /**
  * Create a cross-platform solution for opening a deep link. https://github.com/webdriverio/appium-boilerplate/blob/main/tests/helpers/Utils.ts
  */
-export async function openDeepLinkUrl(url) {
+export async function openDeepLinkUrl(url: string) {
   const prefix = 'wdio://'
 
   if (driver.isAndroid) {
@@ -19,11 +19,12 @@ export async function openDeepLinkUrl(url) {
   // - https://blog.diawi.com/2018/10/15/2018-apple-devices-and-their-new-udid-format/
   // - https://www.theiphonewiki.com/wiki/UDID
   // iOS sims have more than 1 `-` in the UDID and the UDID is being
-  const simulatorRegex = new RegExp('(.*-.*){2,}')
+  const simulatorRegex = /(.*-.*){2,}/
 
   // Check if we are a simulator
   if (
     'udid' in driver.capabilities &&
+    // @ts-ignore
     simulatorRegex.test(driver.capabilities.udid)
   ) {
     await driver.url(`${url}`)

@@ -1,3 +1,4 @@
+import assert from 'assert'
 import gestures from '../Shared/helpers/gestures.ts'
 import helpers from '../Shared/helpers/helpers.ts'
 import Screen from './screen.ts'
@@ -94,6 +95,7 @@ class ConstructionWorkScreen extends Screen {
   get constructionWorkProjectCardSubtitleAmsterdamSciencePark() {
     return $$(
       `android=new UiSelector().resourceId("ConstructionWork1046740ProjectCard")`,
+      // @ts-ignore werkt mogelijk niet :S
     ).$$(
       `android=new UiSelector().resourceId("ConstructionWorkProjectCardSubtitle")`,
     )
@@ -111,7 +113,7 @@ class ConstructionWorkScreen extends Screen {
     return helpers.createSelector('ConstructionWorkProjectSubtitle')
   }
 
-  async tapSubPage(subpagina) {
+  async tapSubPage(subpagina: 'Over dit project' | 'Planning' | 'Contact') {
     switch (subpagina) {
       case 'Over dit project':
         await this.constructionWorkProjectAboutButton.click()
@@ -174,7 +176,7 @@ class ConstructionWorkScreen extends Screen {
     return helpers.createSelector('ConstructionWorkProjectArticlePreviewButton')
   }
 
-  async ConstructionWorkProjectArticlePreviewTitle(title) {
+  async ConstructionWorkProjectArticlePreviewTitle(title: string) {
     if (this.OS === 'iOS') {
       const date = new Date()
       const day = date.getDate()
@@ -218,7 +220,7 @@ class ConstructionWorkScreen extends Screen {
     }
   }
 
-  async searchProject(project) {
+  async searchProject(project: string) {
     await this.constructionWorkSearchFieldButton.click()
     await expect(this.headerTitle).toHaveText('Zoek in werkzaamheden')
     await this.constructionWorkProjectsTextSearchField.addValue(project)

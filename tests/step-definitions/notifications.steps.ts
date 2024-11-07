@@ -1,5 +1,5 @@
 import {Given, Then, When} from '@wdio/cucumber-framework'
-import chai from 'chai'
+import * as chai from 'chai'
 import gestures from '../Shared/helpers/gestures.ts'
 import {openDeepLinkUrl} from '../Shared/helpers/openDeeplink.ts'
 import {image} from '../features/functional/testdata/img.ts'
@@ -11,7 +11,8 @@ import notificationsScreen from '../screenobjects/notifications.screen.ts'
 const bearerToken = process.env.BEARER_TOKEN
 const url = `amsterdam://construction-work-editor/${bearerToken}`
 // const url = 'amsterdam://construction-work-editor'
-let titleMessage
+let titleMessage: string
+// @ts-ignore
 const OS = driver.capabilities.platformName
 
 Given(
@@ -37,7 +38,7 @@ Given(
     await notificationsScreen.headerTitle.waitForDisplayed({timeout: 10000})
     await expect(notificationsScreen.headerTitle).toHaveText('Plaats berichten')
     await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.waitForExist(
-      3000,
+      {timeout: 3000},
     )
     //await expect(notificationsScreen.successMessage).toBeDisplayed()
     await homeScreen.headerBackButton.click()
@@ -48,7 +49,7 @@ Given(
     await notificationsScreen.headerTitle.waitForDisplayed({timeout: 3000})
     await expect(notificationsScreen.headerTitle).toHaveText('Plaats berichten')
     await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.waitForExist(
-      3000,
+      {timeout: 3000},
     )
   },
 )
@@ -166,9 +167,9 @@ Then(/de plaats berichten module is geactiveerd/, async () => {
   // await driver.switchContext('NATIVE_APP')
   await notificationsScreen.headerTitle.waitForDisplayed({timeout: 3000})
   await expect(notificationsScreen.headerTitle).toHaveText('Plaats berichten')
-  await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.waitForExist(
-    3000,
-  )
+  await notificationsScreen.projectCardPlaatsBerichtenSluisbuurt.waitForExist({
+    timeout: 3000,
+  })
   await expect(notificationsScreen.successMessage).toBeDisplayed()
   await homeScreen.headerBackButton.click()
   await expect(

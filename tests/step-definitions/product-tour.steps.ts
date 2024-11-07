@@ -1,6 +1,7 @@
 import {Then, When} from '@wdio/cucumber-framework'
 import productTourScreen from '../screenobjects/product-tour.screen.ts'
 
+// @ts-ignore
 const OS = driver.capabilities.platformName
 
 Then(/(.*): ik zie een pop-up bij de knop/, async scherm => {

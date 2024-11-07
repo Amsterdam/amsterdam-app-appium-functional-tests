@@ -19,7 +19,10 @@ class Gestures {
    * @param {number} amount
    */
 
-  async checkProjectDisplayedWithScrollDown(element, maxScrolls) {
+  async checkProjectDisplayedWithScrollDown(
+    element: ChainablePromiseElement,
+    maxScrolls: number,
+  ) {
     for (let i = 0; i < maxScrolls; i++) {
       if (!(await element.isDisplayed()) && i < maxScrolls) {
         await this.swipeUpSlow()
@@ -31,7 +34,10 @@ class Gestures {
     }
   }
 
-  async checkProjectDisplayedWithScrollDownSlow(element, maxScrolls) {
+  async checkProjectDisplayedWithScrollDownSlow(
+    element: ChainablePromiseElement,
+    maxScrolls: number,
+  ) {
     for (let i = 0; i < maxScrolls; i++) {
       if (!(await element.isDisplayed()) && i < maxScrolls) {
         await this.swipeUpSlow()
@@ -42,7 +48,10 @@ class Gestures {
     }
   }
 
-  async checkProjectDisplayedWithScrollDownShortScreen(element, maxScrolls) {
+  async checkProjectDisplayedWithScrollDownShortScreen(
+    element: ChainablePromiseElement,
+    maxScrolls: number,
+  ) {
     for (let i = 0; i < maxScrolls; i++) {
       if (!(await element.isDisplayed()) && i < maxScrolls) {
         await this.swipeUpSlowShortScreen()
@@ -53,7 +62,10 @@ class Gestures {
     }
   }
 
-  async checkProjectDisplayedWithScrollUp(element, maxScrolls) {
+  async checkProjectDisplayedWithScrollUp(
+    element: ChainablePromiseElement,
+    maxScrolls: number,
+  ) {
     for (let i = 0; i < maxScrolls; i++) {
       if (!(await element.isDisplayed()) && i < maxScrolls) {
         await this.swipeDownSlow()
@@ -64,7 +76,10 @@ class Gestures {
     }
   }
 
-  async checkProjectDisplayedWithScrollDownAndClick(element, maxScrolls) {
+  async checkProjectDisplayedWithScrollDownAndClick(
+    element: ChainablePromiseElement,
+    maxScrolls: number,
+  ) {
     for (let i = 0; i < maxScrolls; i++) {
       if (!(await element.isDisplayed())) {
         await this.swipeUpSlow()
@@ -199,6 +214,7 @@ class Gestures {
   }
 
   async launchApp() {
+    // @ts-ignore
     const OS = driver.capabilities.platformName
     if (OS === 'iOS') {
       await driver.executeScript('mobile: launchApp', [
@@ -210,6 +226,7 @@ class Gestures {
   }
 
   async closeApp() {
+    // @ts-ignore
     const currentOS = driver.capabilities.platformName
     if (currentOS === 'iOS') {
       await driver.executeScript('mobile: terminateApp', [

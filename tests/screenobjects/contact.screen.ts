@@ -1,5 +1,8 @@
+import assert from 'assert'
 import helpers from '../Shared/helpers/helpers.ts'
 import Screen from './screen.ts'
+import {CityOffices} from 'tests/types/CityOffices.ts'
+
 /**
  * sub page containing specific selectors and methods for a specific page
  */
@@ -150,30 +153,30 @@ class ContactScreen extends Screen {
     )
   }
 
-  async tapCityOfficeButton(stadsloket) {
+  async tapCityOfficeButton(stadsloket: CityOffices) {
     switch (stadsloket) {
-      case 'Centrum':
+      case CityOffices.Centrum:
         await this.cityOfficeCentrumButton.click()
         break
-      case 'Nieuw-West':
+      case CityOffices.NieuwWest:
         await this.cityOfficeNieuwWestButton.click()
         break
-      case 'Noord':
+      case CityOffices.Noord:
         await this.cityOfficeNoordButton.click()
         break
-      case 'Oost':
+      case CityOffices.Oost:
         await this.cityOfficeOostButton.click()
         break
-      case 'West':
+      case CityOffices.West:
         await this.cityOfficeWestButton.click()
         break
-      case 'Zuid':
+      case CityOffices.Zuid:
         await this.cityOfficeZuidButton.click()
         break
-      case 'Zuidoost':
+      case CityOffices.Zuidoost:
         await this.cityOfficeZuidoostButton.click()
         break
-      case 'Weesp':
+      case CityOffices.Weesp:
         await this.cityOfficeWeespButton.click()
         break
       default:

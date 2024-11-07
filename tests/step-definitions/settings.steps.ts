@@ -1,6 +1,7 @@
 import {Given, Then, When} from '@wdio/cucumber-framework'
 import HomeScreen from '../screenobjects/home.screen.ts'
 import settingsScreen from '../screenobjects/settings.screen.ts'
+import {Modules} from 'tests/types/modules.ts'
 
 Given(/de module (.*) staat aan/, async module => {
   await HomeScreen.getHomeScreen()
@@ -58,5 +59,5 @@ Then(
 
 Then(/^de over deze app module blijft op het homescherm staan$/, async () => {
   await HomeScreen.checkAllModulesNotExist()
-  await HomeScreen.checkModulesExist('Over deze app')
+  await HomeScreen.checkModulesExist(Modules.about)
 })

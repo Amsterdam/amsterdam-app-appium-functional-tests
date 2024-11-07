@@ -133,6 +133,7 @@ class NotificationsScreen extends Screen {
     // Check if we are a simulator
     if (
       'udid' in driver.capabilities &&
+      // @ts-ignore
       simulatorRegex.test(driver.capabilities.udid)
     ) {
       const selector = 'label == "Recents"'
@@ -256,6 +257,7 @@ class NotificationsScreen extends Screen {
   }
 
   get constructionWorkEditorCreateMessageTitleTitle() {
+    // @ts-ignore
     const OS = driver.capabilities.platformName
     if (this.OS === 'iOS') {
       const selector = ''
@@ -269,6 +271,7 @@ class NotificationsScreen extends Screen {
   }
 
   get constructionWorkEditorCreateMessageBodyTitle() {
+    // @ts-ignore
     const OS = driver.capabilities.platformName
     if (this.OS === 'iOS') {
       const selector = ''
@@ -281,7 +284,8 @@ class NotificationsScreen extends Screen {
     }
   }
 
-  async createMessageNoPhoto(title, text) {
+  async createMessageNoPhoto(title: string, text: string) {
+    // @ts-ignore
     const OS = driver.capabilities.platformName
     await this.constructionWorkEditorCreateMessageTitleInput.waitForDisplayed({
       timeout: 2000,
@@ -305,7 +309,8 @@ class NotificationsScreen extends Screen {
     await this.constructionWorkEditorCreateMessageNextButton.click()
   }
 
-  async createMessagePhoto(title, text) {
+  async createMessagePhoto(title: string, text: string) {
+    // @ts-ignore
     const OS = driver.capabilities.platformName
     await this.constructionWorkEditorCreateMessageTitleInput.waitForDisplayed({
       timeout: 2000,
@@ -330,10 +335,10 @@ class NotificationsScreen extends Screen {
     const allowButton = helpers.createSelector(
       'com.android.permissioncontroller:id/permission_allow_button',
     )
-    if ((await allowButton.isDisplayed()) == true) {
+    if (await allowButton.isDisplayed()) {
       await allowButton.click()
     }
-    if (this.downloadButton.isDisplayed() == true) {
+    if (await this.downloadButton.isDisplayed()) {
       await this.downloadButton.click()
     }
     await this.imageSelector.click()

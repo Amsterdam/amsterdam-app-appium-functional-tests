@@ -66,8 +66,9 @@
       "@wdio/browserstack-service",
       "@wdio/appium-service"
     ],
-    "typeRoots": ["./node_modules", "./node_modules/@types", "./steps/types"]
+    "typeRoots": ["./node_modules", "./node_modules/@types", "./steps/types"],
+    "allowImportingTsExtensions": true
   },
   "exclude": ["node_modules"],
-  "include": ["./tests/**/*.ts", "./tests/**/*.js"]
+  "include": ["./tests/**/*.ts"]
 }

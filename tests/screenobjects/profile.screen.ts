@@ -99,6 +99,7 @@ class ProfileScreen extends Screen {
   }
 
   get addressLocationPrivacyInfoButton() {
+    // @ts-ignore
     const OS = driver.capabilities.platformName
     if (OS === 'iOS') {
       return $(
@@ -138,7 +139,8 @@ class ProfileScreen extends Screen {
     return helpers.createSelector('AddressNoSuggestionsMessage')
   }
 
-  async addressSelector(adres) {
+  async addressSelector(adres: string) {
+    // @ts-ignore
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
       return $(`-ios predicate string: label == "${adres}"`)
@@ -149,13 +151,13 @@ class ProfileScreen extends Screen {
     }
   }
 
-  async addAddress(adres) {
+  async addAddress(adres: string) {
     await expect(this.headerTitle).toHaveText('Adres')
     await this.addressStreetInputSearchField.waitForDisplayed({timeout: 3000})
     await this.addressStreetInputSearchField.setValue(adres)
   }
 
-  async checkAddressAdded() {
+  async checkAddressAdded(_adres: string) {
     await this.addressAddButton.waitForDisplayed({timeout: 5000})
     await expect(this.addressAddedAlert).toBeDisplayed()
 
@@ -166,7 +168,7 @@ class ProfileScreen extends Screen {
     //await expect(this.addressAddButtonText).toHaveText(adres)
   }
 
-  async checkAddressAddedAfterRefresh() {
+  async checkAddressAddedAfterRefresh(_adres: string) {
     await expect(this.addressAddedAlert).not.toBeDisplayed()
     await expect(this.addressAddButton).toBeDisplayed()
     //Dit weer aanzetten als iOS testIDs gefixt zijn

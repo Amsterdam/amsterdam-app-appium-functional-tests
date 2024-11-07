@@ -1,6 +1,8 @@
+import {Modules} from 'tests/types/modules.ts'
 import gestures from '../Shared/helpers/gestures.ts'
 import helpers from '../Shared/helpers/helpers.ts'
 import Screen from './screen.ts'
+import assert from 'assert'
 /**
  * sub page containing specific selectors and methods for a specific page
  */
@@ -25,36 +27,37 @@ class SettingsScreen extends Screen {
     return helpers.createSelector('HomeModuleSettingRedirectsSwitch')
   }
 
-  async tapSettingsSwitchButton(module) {
+  async tapSettingsSwitchButton(module: Modules) {
     switch (module) {
-      case 'Afvalwijzer':
+      case Modules.wasteGuide:
         await gestures.checkProjectDisplayedWithScrollDownSlow(
           this.homeModuleSettingWasteGuideSwitch,
           4,
         )
         await this.homeModuleSettingWasteGuideSwitch.click()
         break
-      case 'Werkzaamheden':
+      case Modules.constructionWork:
         await gestures.checkProjectDisplayedWithScrollDown(
           this.HomeModuleSettingConstructionWorkSwitch,
+          1000,
         )
         await this.HomeModuleSettingConstructionWorkSwitch.click()
         break
-      case 'Melding doen':
+      case Modules.reportProblem:
         await gestures.checkProjectDisplayedWithScrollDown(
           this.HomeModuleSettingReportProblemSwitch,
           4,
         )
         await this.HomeModuleSettingReportProblemSwitch.click()
         break
-      case 'Contact':
+      case Modules.contact:
         await gestures.checkProjectDisplayedWithScrollDown(
           this.HomeModuleSettingContactSwitch,
           4,
         )
         await this.HomeModuleSettingContactSwitch.click()
         break
-      case 'Direct regelen':
+      case Modules.redirects:
         await gestures.checkProjectDisplayedWithScrollDown(
           this.HomeModuleSettingRedirectsSwitch,
           4,

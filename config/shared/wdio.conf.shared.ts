@@ -1,7 +1,12 @@
 import {bsUrlAndroid, bsUrliOS, key, user} from '../../credentials.js'
+import type {Options} from '@wdio/types'
 //const { allure } = pkg;
 
-export const config = {
+export const config: Options.WebdriverIO &
+  WebdriverIO.Config & {
+    bsUrliOS: string
+    bsUrlAndroid: string
+  } = {
   user,
   key,
   bsUrliOS,
@@ -277,6 +282,7 @@ export const config = {
    * @param {number}             result.duration  duration of scenario in milliseconds
    * @param {Object}             context          Cucumber World object
    */
+  // @ts-ignore
   afterStep: async function (
     step,
     scenario,
@@ -284,6 +290,7 @@ export const config = {
     context,
   ) {
     if (error) {
+      // @ts-ignore
       await browser.takeScreenshot()
     }
   },
