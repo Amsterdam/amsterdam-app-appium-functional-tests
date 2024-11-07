@@ -43,16 +43,16 @@ export const config: Options.WebdriverIO &
   exclude: [
     // "../../tests/features/functional/chat.feature",
     '../../tests/features/functional/citypass.feature',
-    '../../tests/features/functional/settings.feature',
-    '../../tests/features/functional/mijnprofiel.feature',
+    // '../../tests/features/functional/settings.feature',
+    // '../../tests/features/functional/mijnprofiel.feature',
     '../../tests/features/functional/notifications.feature',
-    '../../tests/features/functional/onboarding.feature',
-    '../../tests/features/functional/launchapp.feature',
-    '../../tests/features/functional/construction-work.feature',
-    '../../tests/features/functional/product-tour.feature',
-    '../../tests/features/functional/contact.feature',
-    '../../tests/features/functional/waste-guide.feature',
-    '../../tests/features/functional/location.feature',
+    // '../../tests/features/functional/onboarding.feature',
+    // '../../tests/features/functional/launchapp.feature',
+    // '../../tests/features/functional/construction-work.feature',
+    // '../../tests/features/functional/product-tour.feature',
+    // '../../tests/features/functional/contact.feature',
+    // '../../tests/features/functional/waste-guide.feature',
+    // '../../tests/features/functional/location.feature',
   ],
   //
   // ============
@@ -153,11 +153,7 @@ export const config: Options.WebdriverIO &
   // If you are using Cucumber you need to specify the location of your step definitions.
   cucumberOpts: {
     // <string[]> (file/dir) require files before executing features
-    require: [
-      './tests/step-definitions/**/*.js',
-      './tests/step-definitions/**/*.ts',
-    ],
-    // require: ['./../tests/step-definitions/**/*.js'],
+    require: ['./tests/step-definitions/**/*.ts'],
 
     // <boolean> show full backtrace for errors
     backtrace: false,
