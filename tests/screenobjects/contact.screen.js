@@ -19,6 +19,9 @@ class ContactScreen extends Screen {
   get ContactButtonContactform() {
     return helpers.createSelector("ContactButtonContactform")
   }
+  get ContactButtonChat() {
+    return helpers.createSelector("ContactChatButton")
+  }
 
   get ContactButtonContactformTitle() {
     return helpers.createSelector("ContactButtonContactformTitle")

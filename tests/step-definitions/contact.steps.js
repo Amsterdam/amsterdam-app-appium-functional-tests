@@ -1,13 +1,7 @@
-import { Given, Then, When } from '@wdio/cucumber-framework';
+import { Then, When } from '@wdio/cucumber-framework';
 import gestures from '../Shared/helpers/gestures.js';
 import { default as ContactScreen } from '../screenobjects/contact.screen.js';
 import HomeScreen from '../screenobjects/home.screen.js';
-
-Given(/ik ben op het contactscherm/, async () => {
-    await HomeScreen.getHomeScreen()
-    await HomeScreen.homeContactModuleButton.click()
-    await expect(HomeScreen.headerTitle).toHaveText('Contact')
-})
 
 When(/ik open de contact module/, async () => {
     //await createSelector("HomeContactModuleButton").click()
@@ -29,8 +23,6 @@ When(/ik selecteer het stadsloket Weesp/, async () => {
     await ContactScreen.ContactCurrentCityOfficeButton.click()
     await ContactScreen.tapCityOfficeButton('Weesp')
 })
-
-
 
 Then(/zie ik een lijst met stadsloketten/, async () => {
     await expect(ContactScreen.cityOfficeCentrumButton).toBeDisplayed()

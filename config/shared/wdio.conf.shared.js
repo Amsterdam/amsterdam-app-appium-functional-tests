@@ -37,6 +37,7 @@ export const config = {
     ],
     // Patterns to exclude.
     exclude: [
+        // "../../tests/features/functional/chat.feature",
         "../../tests/features/functional/citypass.feature",
         //"../../tests/features/functional/settings.feature",
         //"../../tests/features/functional/mijnprofiel.feature",
