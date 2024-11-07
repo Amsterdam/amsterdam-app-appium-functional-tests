@@ -33,13 +33,9 @@
 //     });
 //})
 
-  //voor elk item kijk hoeveel recent articles er zijn
-  //result.i.recent_articles.length
-  //result.i.recent_articles.i.publication_date
-
-
-
-
+//voor elk item kijk hoeveel recent articles er zijn
+//result.i.recent_articles.length
+//result.i.recent_articles.i.publication_date
 
 // Given ik ben op het werkzaamheden scherm
 // And ik volg een aantal projecten

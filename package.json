@@ -2,6 +2,7 @@
   "name": "aapp_testing_functional",
   "type": "module",
   "devDependencies": {
+    "@types/node": "^22.9.0",
     "@wdio/appium-service": "^8.40.6",
     "@wdio/browserstack-service": "^8.40.6",
     "@wdio/cli": "^8.40.6",
@@ -74,7 +75,8 @@
     "run percy android": "npx percy app:exec -- npm run android-tablet",
     "visual-tests": "wdio run ./config/conf-ios-mobile/all-visual.js",
     "functional-tests": "wdio run ./config/conf-ios-mobile/android+iOS.js",
-    "run percy": "npx percy app:exec -- npm run visual-tests"
-  },
-  "dependencies": {}
+    "run percy": "npx percy app:exec -- npm run visual-tests",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write ."
+  }
 }

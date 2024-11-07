@@ -1,7 +1,5 @@
-import { join } from "path";
-import { config as sharedconfig } from "../shared/wdio.conf.shared.js";
-
-
+import {join} from 'path'
+import {config as sharedconfig} from '../shared/wdio.conf.shared.js'
 
 // sharedconfig.capabilities = [{
 //     'appium:platformName': 'Android',
@@ -13,17 +11,18 @@ import { config as sharedconfig } from "../shared/wdio.conf.shared.js";
 //     'appium:app': join(process.cwd(), 'app/Android/amsterdam-app.apk')
 // }]
 
-sharedconfig.capabilities = [{
+sharedconfig.capabilities = [
+  {
     'appium:platformName': 'Android',
-    'appium:platformVersion': '13',
-    'appium:deviceName': 'sdk_gphone_x86_64',
+    'appium:platformVersion': '14',
+    'appium:deviceName': 'Pixel_3a_API_34',
     'appium:noReset': 'false',
     //This should be the exact same name from the device you use in the Android Emulator
     'appium:automationName': 'UiAutomator2',
-    'appium:app': join(process.cwd(), 'app/Android/amsterdam-app.apk')
-}]
+    'appium:app': join(process.cwd(), 'app/Android/amsterdam-app.apk'),
+  },
+]
 
 sharedconfig.services = ['appium']
 
-export const config = sharedconfig;
-
+export const config = sharedconfig

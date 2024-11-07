@@ -1,7 +1,6 @@
-
-import gestures from "../Shared/helpers/gestures.js";
-import helpers from '../Shared/helpers/helpers.js';
-import Screen from './screen.js';
+import gestures from '../Shared/helpers/gestures.ts'
+import helpers from '../Shared/helpers/helpers.ts'
+import Screen from './screen.ts'
 /**
  * sub screen containing specific selectors and methods for a specific screen
  */
@@ -9,25 +8,32 @@ class NotificationsScreen extends Screen {
   /**
    * define selectors using getter methods
    */
+  // @ts-ignore
   OS = driver.capabilities.platformName
 
   get projectCardPlaatsBerichtenBullebakBullesluis() {
-    return helpers.createContentSelector("Bullebak en Bullebakssluis, Vervangen bruggen")
+    return helpers.createContentSelector(
+      'Bullebak en Bullebakssluis, Vervangen bruggen',
+    )
   }
 
   get projectCardPlaatsBerichtenAmstelIII() {
     if (this.OS === 'iOS') {
-      const selector = '**/XCUIElementTypeButton[`label == "Amstel III, Ontwikkeling woongebied gemixt met werken"`]'
+      const selector =
+        '**/XCUIElementTypeButton[`label == "Amstel III, Ontwikkeling woongebied gemixt met werken"`]'
       return $(`-ios class chain:${selector}`)
     } else {
-      return helpers.createContentSelector("Amstel III, Ontwikkeling woongebied gemixt met werken")
+      return helpers.createContentSelector(
+        'Amstel III, Ontwikkeling woongebied gemixt met werken',
+      )
     }
   }
 
   get projectCardPlaatsBerichtenSluisbuurt() {
     if (this.OS === 'iOS') {
-      const selector = 'name == "ConstructionWorkEditorAuthorizedProjects" AND label == "Sluisbuurt op Zeeburgereiland, 5.500 nieuwe woningen"'
-      return $(`-ios predicate string:${selector}`);
+      const selector =
+        'name == "ConstructionWorkEditorAuthorizedProjects" AND label == "Sluisbuurt op Zeeburgereiland, 5.500 nieuwe woningen"'
+      return $(`-ios predicate string:${selector}`)
     } else {
       const selector = 'new UiSelector().className("android.widget.ImageView")'
       const button = $(`android=${selector}`)
@@ -37,63 +43,84 @@ class NotificationsScreen extends Screen {
 
   get projectCardPlaatsBerichtenA2Entree() {
     if (this.OS === 'iOS') {
-      const selector = 'name == "ConstructionWorkEditorAuthorizedProjects" AND label == "A2 Entree, Nieuwe woonwijk met Amstelscheg als achtertuin"'
-      return $(`-ios predicate string:${selector}`);
+      const selector =
+        'name == "ConstructionWorkEditorAuthorizedProjects" AND label == "A2 Entree, Nieuwe woonwijk met Amstelscheg als achtertuin"'
+      return $(`-ios predicate string:${selector}`)
     } else {
-      return helpers.createContentSelector("A2 Entree, Nieuwe woonwijk met Amstelscheg als achtertuin")
+      return helpers.createContentSelector(
+        'A2 Entree, Nieuwe woonwijk met Amstelscheg als achtertuin',
+      )
     }
   }
 
   get constructionWorkEditorCreateMessageTitleInput() {
-    return helpers.createSelector("ConstructionWorkEditorCreateMessageTitleInput")
+    return helpers.createSelector(
+      'ConstructionWorkEditorCreateMessageTitleInput',
+    )
   }
 
   get constructionWorkEditorCreateMessageBodyInput() {
-    return helpers.createSelector("ConstructionWorkEditorCreateMessageBodyInput")
+    return helpers.createSelector(
+      'ConstructionWorkEditorCreateMessageBodyInput',
+    )
   }
 
   get constructionWorkEditorCreateMessageNextButton() {
-    return helpers.createSelector("ConstructionWorkEditorCreateMessageNextButton")
+    return helpers.createSelector(
+      'ConstructionWorkEditorCreateMessageNextButton',
+    )
   }
 
   get constructionWorkEditorCreateMessageSendPushNotificationCheckbox() {
-    return helpers.createSelector("ConstructionWorkEditorCreateMessageSendPushNotificationCheckbox")
+    return helpers.createSelector(
+      'ConstructionWorkEditorCreateMessageSendPushNotificationCheckbox',
+    )
   }
 
   get constructionWorkEditorCreateMessageSubmitButton() {
-    return helpers.createSelector("ConstructionWorkEditorCreateMessageSubmitButton")
+    return helpers.createSelector(
+      'ConstructionWorkEditorCreateMessageSubmitButton',
+    )
   }
 
   get successMessage() {
-    return helpers.createContentSelector("ConstructionWorkEditorSuccessAlert")
+    return helpers.createContentSelector('ConstructionWorkEditorSuccessAlert')
   }
 
   get constructionWorkEditorCreateMessageAddImageButton() {
-    return helpers.createSelector("ConstructionWorkEditorCreateMessageAddImageButton")
+    return helpers.createSelector(
+      'ConstructionWorkEditorCreateMessageAddImageButton',
+    )
   }
 
   get constructionWorkEditorCreateMessageTakeImageButton() {
-    return helpers.createSelector("ConstructionWorkEditorCreateMessageTakeImageButton")
+    return helpers.createSelector(
+      'ConstructionWorkEditorCreateMessageTakeImageButton',
+    )
   }
 
   get hamburgerMenuIcon() {
-    return helpers.createContentSelector("Show roots")
+    return helpers.createContentSelector('Show roots')
   }
 
   get photoEditorCropButton() {
-    return helpers.createContentSelector("Crop")
+    return helpers.createContentSelector('Crop')
   }
 
   get photoEditorNavigateUpButton() {
-    return helpers.createContentSelector("Navigate Up")
+    return helpers.createContentSelector('Navigate Up')
   }
 
   get constructionWorkEditorCreateMessageImageDescriptionInput() {
-    return helpers.createSelector("ConstructionWorkEditorCreateMessageImageDescriptionInput")
+    return helpers.createSelector(
+      'ConstructionWorkEditorCreateMessageImageDescriptionInput',
+    )
   }
 
   get constructionWorkEditorAddImageToMessageNextButton() {
-    return helpers.createSelector("ConstructionWorkEditorAddImageToMessageNextButton")
+    return helpers.createSelector(
+      'ConstructionWorkEditorAddImageToMessageNextButton',
+    )
   }
 
   get successMessageAlert() {
@@ -102,48 +129,64 @@ class NotificationsScreen extends Screen {
 
   //specific ios selectors
   get recentPhotos() {
-    const simulatorRegex = new RegExp('(.*-.*){2,}');
+    const simulatorRegex = new RegExp('(.*-.*){2,}')
     // Check if we are a simulator
-    if ('udid' in driver.capabilities && simulatorRegex.test(driver.capabilities.udid)) {
+    if (
+      'udid' in driver.capabilities &&
+      simulatorRegex.test(driver.capabilities.udid)
+    ) {
       const selector = 'label == "Recents"'
-      return $(`-ios predicate string:${selector}`);
+      return $(`-ios predicate string:${selector}`)
     } else {
       const selector = 'label == "Recent"'
-      return $(`-ios predicate string:${selector}`);
+      return $(`-ios predicate string:${selector}`)
     }
   }
 
   get accessPhotosBelow17() {
-    return $(`-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow Full Access"`);
+    return $(
+      `-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow Full Access"`,
+    )
   }
 
-  get accessPhotosAbove17() { return $(`-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow Access to All Photos"`); }
+  get accessPhotosAbove17() {
+    return $(
+      `-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow Access to All Photos"`,
+    )
+  }
 
   async accessPhotos() {
     try {
-      await this.accessPhotosBelow17.waitForDisplayed(5000)
+      await this.accessPhotosBelow17.waitForDisplayed({timeout: 5000})
       await this.accessPhotosBelow17.click()
     } catch (error) {
-      await this.accessPhotosAbove17.waitForDisplayed(5000)
+      await this.accessPhotosAbove17.waitForDisplayed({timeout: 5000})
       await this.accessPhotosAbove17.click()
     }
   }
 
   get allowSelector() {
     if (this.OS === 'iOS') {
-      return $(`-ios predicate string:type == "XCUIElementTypeButton" AND name == "Allow"`)
+      return $(
+        `-ios predicate string:type == "XCUIElementTypeButton" AND name == "Allow"`,
+      )
     } else {
-      return helpers.createSelector("com.android.permissioncontroller:id/permission_allow_button")
+      return helpers.createSelector(
+        'com.android.permissioncontroller:id/permission_allow_button',
+      )
     }
   }
 
   get pickImage() {
-    const selector = '**/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeImage'
+    const selector =
+      '**/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeImage'
     return $(`-ios class chain:${selector}`)
   }
 
   get kiezenButton() {
-    return $('-ios predicate string:label == "Kiezen" AND name == "Kiezen" AND type == "XCUIElementTypeButton"');
+    return $(
+      '-ios predicate string:label == "Kiezen" AND name == "Kiezen" AND type == "XCUIElementTypeButton"',
+    )
   }
 
   get photo() {
@@ -154,34 +197,46 @@ class NotificationsScreen extends Screen {
     //const selector = 'label == "Select Photos..."'
     //label == "Selecteer foto's…"
     //-ios predicate string:type == "XCUIElementTypeButton" AND label == "Allow"
-    return $(`-ios predicate string:type == "XCUIElementTypeButton" AND label == "OK"`);
+    return $(
+      `-ios predicate string:type == "XCUIElementTypeButton" AND label == "OK"`,
+    )
   }
 
   get photoCaptureButton() {
-    return $(`-ios predicate string:type == "XCUIElementTypeButton" AND name == "PhotoCapture"`);
+    return $(
+      `-ios predicate string:type == "XCUIElementTypeButton" AND name == "PhotoCapture"`,
+    )
   }
 
   get usePhotoButton() {
-    return $(`-ios predicate string:type == "	XCUIElementTypeButton" AND name == "Done" AND label == "Gebruik foto"`);
+    return $(
+      `-ios predicate string:type == "	XCUIElementTypeButton" AND name == "Done" AND label == "Gebruik foto"`,
+    )
   }
 
   //specific android selectors
   get emulatorAllowAccessPhotos() {
-    return helpers.createSelector("com.android.permissioncontroller:id/permission_allow_button")
+    return helpers.createSelector(
+      'com.android.permissioncontroller:id/permission_allow_button',
+    )
   }
 
   get addPhotoTitle() {
-    const selector = 'new UiSelector().text("Foto toevoegen").className("android.view.View")'
+    const selector =
+      'new UiSelector().text("Foto toevoegen").className("android.view.View")'
     const title = $(`android=${selector}`)
     return title
   }
 
   get imageSelector() {
-    return $('android=new UiSelector().resourceId("com.google.android.documentsui:id/icon_thumb").instance(0)')
+    return $(
+      'android=new UiSelector().resourceId("com.google.android.documentsui:id/icon_thumb").instance(0)',
+    )
   }
 
   get downloadButton() {
-    const selector = 'new UiSelector().text("Downloads").className("android.widget.Textview")'
+    const selector =
+      'new UiSelector().text("Downloads").className("android.widget.Textview")'
     const button = $(`android=${selector}`)
     return button
   }
@@ -195,7 +250,9 @@ class NotificationsScreen extends Screen {
   }
 
   get cameraPermissionButton() {
-    return helpers.createSelector("com.android.permissioncontroller:id/permission_allow_foreground_only_button")
+    return helpers.createSelector(
+      'com.android.permissioncontroller:id/permission_allow_foreground_only_button',
+    )
   }
 
   get constructionWorkEditorCreateMessageTitleTitle() {
@@ -204,7 +261,8 @@ class NotificationsScreen extends Screen {
       const selector = ''
       return $(`-ios class chain:${selector}`)
     } else {
-      const selector = 'new UiSelector().text("Wat is de titel van je bericht?").className("android.view.View")'
+      const selector =
+        'new UiSelector().text("Wat is de titel van je bericht?").className("android.view.View")'
       const button = $(`android=${selector}`)
       return button
     }
@@ -216,7 +274,8 @@ class NotificationsScreen extends Screen {
       const selector = ''
       return $(`-ios class chain:${selector}`)
     } else {
-      const selector = 'new UiSelector().text("Wat is de tekst van je bericht?").className("android.view.View")'
+      const selector =
+        'new UiSelector().text("Wat is de tekst van je bericht?").className("android.view.View")'
       const button = $(`android=${selector}`)
       return button
     }
@@ -224,7 +283,9 @@ class NotificationsScreen extends Screen {
 
   async createMessageNoPhoto(title, text) {
     const OS = driver.capabilities.platformName
-    await this.constructionWorkEditorCreateMessageTitleInput.waitForDisplayed(2000)
+    await this.constructionWorkEditorCreateMessageTitleInput.waitForDisplayed({
+      timeout: 2000,
+    })
     await this.constructionWorkEditorCreateMessageTitleInput.addValue(title)
     if (OS === 'Android') {
       await this.constructionWorkEditorCreateMessageTitleTitle.click()
@@ -237,13 +298,18 @@ class NotificationsScreen extends Screen {
     if (OS === 'Android') {
       await this.constructionWorkEditorCreateMessageBodyTitle.click()
     }
-    await gestures.checkProjectDisplayedWithScrollDownShortScreen(this.constructionWorkEditorCreateMessageNextButton, 4)
+    await gestures.checkProjectDisplayedWithScrollDownShortScreen(
+      this.constructionWorkEditorCreateMessageNextButton,
+      4,
+    )
     await this.constructionWorkEditorCreateMessageNextButton.click()
   }
 
   async createMessagePhoto(title, text) {
     const OS = driver.capabilities.platformName
-    await this.constructionWorkEditorCreateMessageTitleInput.waitForDisplayed(2000)
+    await this.constructionWorkEditorCreateMessageTitleInput.waitForDisplayed({
+      timeout: 2000,
+    })
     await this.constructionWorkEditorCreateMessageTitleInput.addValue(title)
     if (OS === 'Android') {
       await this.constructionWorkEditorCreateMessageTitleTitle.click()
@@ -252,14 +318,19 @@ class NotificationsScreen extends Screen {
     if (OS === 'Android') {
       await this.constructionWorkEditorCreateMessageBodyTitle.click()
     }
-    await gestures.checkProjectDisplayedWithScrollDownShortScreen(this.constructionWorkEditorCreateMessageNextButton, 4)
+    await gestures.checkProjectDisplayedWithScrollDownShortScreen(
+      this.constructionWorkEditorCreateMessageNextButton,
+      4,
+    )
   }
 
   async addPhotoAndroid() {
     await this.constructionWorkEditorCreateMessageAddImageButton.click()
     await driver.pause(2000)
-    const allowButton = helpers.createSelector('com.android.permissioncontroller:id/permission_allow_button')
-    if (await allowButton.isDisplayed() == true) {
+    const allowButton = helpers.createSelector(
+      'com.android.permissioncontroller:id/permission_allow_button',
+    )
+    if ((await allowButton.isDisplayed()) == true) {
       await allowButton.click()
     }
     if (this.downloadButton.isDisplayed() == true) {
@@ -267,8 +338,12 @@ class NotificationsScreen extends Screen {
     }
     await this.imageSelector.click()
     await this.photoEditorCropButton.click()
-    await expect(this.constructionWorkEditorCreateMessageImageDescriptionInput).toBeDisplayed()
-    await this.constructionWorkEditorCreateMessageImageDescriptionInput.addValue("Aan de Amstel")
+    await expect(
+      this.constructionWorkEditorCreateMessageImageDescriptionInput,
+    ).toBeDisplayed()
+    await this.constructionWorkEditorCreateMessageImageDescriptionInput.addValue(
+      'Aan de Amstel',
+    )
     const isKeyboardShown = await driver.isKeyboardShown()
     if (isKeyboardShown) {
       await driver.hideKeyboard()
@@ -284,8 +359,12 @@ class NotificationsScreen extends Screen {
     await this.photoEditorCropButton.click()
     await this.photoEditorCropButton.click()
     await expect(this.addPhotoTitle).toBeDisplayed()
-    await expect(this.constructionWorkEditorCreateMessageImageDescriptionInput).toBeDisplayed()
-    await this.constructionWorkEditorCreateMessageImageDescriptionInput.addValue("Aan de Amstel")
+    await expect(
+      this.constructionWorkEditorCreateMessageImageDescriptionInput,
+    ).toBeDisplayed()
+    await this.constructionWorkEditorCreateMessageImageDescriptionInput.addValue(
+      'Aan de Amstel',
+    )
     await this.constructionWorkEditorAddImageToMessageNextButton.click()
   }
 
@@ -295,8 +374,12 @@ class NotificationsScreen extends Screen {
     await this.recentPhotos.click()
     await this.pickImage.click()
     await this.kiezenButton.click()
-    await expect(this.constructionWorkEditorCreateMessageImageDescriptionInput).toBeDisplayed()
-    await this.constructionWorkEditorCreateMessageImageDescriptionInput.addValue("Aan de Amstel")
+    await expect(
+      this.constructionWorkEditorCreateMessageImageDescriptionInput,
+    ).toBeDisplayed()
+    await this.constructionWorkEditorCreateMessageImageDescriptionInput.addValue(
+      'Aan de Amstel',
+    )
     await this.photo.click()
     await this.constructionWorkEditorAddImageToMessageNextButton.waitForDisplayed()
     await this.constructionWorkEditorAddImageToMessageNextButton.click()
@@ -312,8 +395,12 @@ class NotificationsScreen extends Screen {
     await this.usePhotoButton.click()
     await this.kiezenButton.waitForDisplayed()
     await this.kiezenButton.click()
-    await expect(this.constructionWorkEditorCreateMessageImageDescriptionInput).toBeDisplayed()
-    await this.constructionWorkEditorCreateMessageImageDescriptionInput.addValue("Aan de Amstel")
+    await expect(
+      this.constructionWorkEditorCreateMessageImageDescriptionInput,
+    ).toBeDisplayed()
+    await this.constructionWorkEditorCreateMessageImageDescriptionInput.addValue(
+      'Aan de Amstel',
+    )
     await this.photo.click()
     await this.constructionWorkEditorAddImageToMessageNextButton.click()
   }
@@ -330,7 +417,7 @@ class NotificationsScreen extends Screen {
 
   async allowNotifications() {
     try {
-      await this.allowSelector.waitForDisplayed(5000)
+      await this.allowSelector.waitForDisplayed({timeout: 5000})
       await this.allowSelector.click()
     } catch (error) {
       console.log(error)
@@ -339,7 +426,8 @@ class NotificationsScreen extends Screen {
   //sso login
   get adwUsernameInput() {
     if (this.OS === 'iOS') {
-      const selector = '**/XCUIElementTypeTextField[`label == "Enter your email address, phone number or Skype."`]'
+      const selector =
+        '**/XCUIElementTypeTextField[`label == "Enter your email address, phone number or Skype."`]'
       return $(`-ios class chain:${selector}`)
     } else {
       const testID = 'new UiSelector().className("android.widget.EditText")'
@@ -350,10 +438,10 @@ class NotificationsScreen extends Screen {
 
   get ssoNextButton() {
     if (this.OS === 'iOS') {
-      return helpers.createContentSelector("Next")
-    }
-    else {
-      const testID = 'new UiSelector().text("Next").className("android.widget.Button")'
+      return helpers.createContentSelector('Next')
+    } else {
+      const testID =
+        'new UiSelector().text("Next").className("android.widget.Button")'
       const selector = $(`android=${testID}`)
       return selector
     }
@@ -361,7 +449,8 @@ class NotificationsScreen extends Screen {
 
   get adwPasswordInput() {
     if (this.OS === 'iOS') {
-      const selector = '**/XCUIElementTypeSecureTextField[`label == "Enter the password for m.van.benthem@amsterdam.nl"`]'
+      const selector =
+        '**/XCUIElementTypeSecureTextField[`label == "Enter the password for m.van.benthem@amsterdam.nl"`]'
       return $(`-ios class chain:${selector}`)
     } else {
       const testID = 'new UiSelector().className("android.widget.EditText")'
@@ -372,9 +461,10 @@ class NotificationsScreen extends Screen {
 
   get ssoSignInButton() {
     if (this.OS === 'iOS') {
-      return helpers.createContentSelector("Sign in")
+      return helpers.createContentSelector('Sign in')
     } else {
-      const testID = 'new UiSelector().text("Sign in").className("android.widget.Button")'
+      const testID =
+        'new UiSelector().text("Sign in").className("android.widget.Button")'
       const selector = $(`android=${testID}`)
       return selector
     }
@@ -383,10 +473,12 @@ class NotificationsScreen extends Screen {
   get ssoUseOtherMFA() {
     //return helpers.createContentSelector("I can't use my Microsoft Authenticator app right now")
     if (this.OS === 'iOS') {
-      const selector = '**/XCUIElementTypeStaticText[`label == "I can\'t use my Microsoft Authenticator app right now"`]'
+      const selector =
+        '**/XCUIElementTypeStaticText[`label == "I can\'t use my Microsoft Authenticator app right now"`]'
       return $(`-ios class chain:${selector}`)
     } else {
-      const testID = 'new UiSelector().text("I can\'t use my Microsoft Authenticator app right now").className("android.widget.Button")'
+      const testID =
+        'new UiSelector().text("I can\'t use my Microsoft Authenticator app right now").className("android.widget.Button")'
       const selector = $(`android=${testID}`)
       return selector
     }
@@ -394,10 +486,12 @@ class NotificationsScreen extends Screen {
 
   get useVerificationCodeButton() {
     if (this.OS === 'iOS') {
-      const selector = '**/XCUIElementTypeButton[`label == "Use a verification code"`]'
+      const selector =
+        '**/XCUIElementTypeButton[`label == "Use a verification code"`]'
       return $(`-ios class chain:${selector}`)
     } else {
-      const testID = 'new UiSelector().text("Use a verification code").className("android.widget.Button")'
+      const testID =
+        'new UiSelector().text("Use a verification code").className("android.widget.Button")'
       const selector = $(`android=${testID}`)
       return selector
     }
@@ -405,7 +499,9 @@ class NotificationsScreen extends Screen {
 
   get totpInput() {
     if (this.OS === 'iOS') {
-      return helpers.createContentSelector("Enter the code displayed in the authenticator app on your mobile device")
+      return helpers.createContentSelector(
+        'Enter the code displayed in the authenticator app on your mobile device',
+      )
     } else {
       const testID = 'new UiSelector().className("android.widget.EditText")'
       const selector = $(`android=${testID}`)
@@ -415,14 +511,14 @@ class NotificationsScreen extends Screen {
 
   get verifyButton() {
     if (this.OS === 'iOS') {
-      return helpers.createContentSelector("Verify")
+      return helpers.createContentSelector('Verify')
     } else {
-      const testID = 'new UiSelector().text("Verify").className("android.widget.Button")'
+      const testID =
+        'new UiSelector().text("Verify").className("android.widget.Button")'
       const selector = $(`android=${testID}`)
       return selector
     }
   }
 }
 
-
-export default new NotificationsScreen();
+export default new NotificationsScreen()

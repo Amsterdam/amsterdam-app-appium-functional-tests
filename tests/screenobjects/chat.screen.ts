@@ -1,5 +1,5 @@
-import helpers from '../Shared/helpers/helpers.js'
-import Screen from './screen.js'
+import helpers from '../Shared/helpers/helpers.ts'
+import Screen from './screen.ts'
 /**
  * sub page containing specific selectors and methods for a specific page
  */
@@ -9,40 +9,40 @@ class ChatScreen extends Screen {
    */
 
   get ChatHeader() {
-    return helpers.createSelector("ChatHeader")
+    return helpers.createSelector('ChatHeader')
   }
   get ChatWaitToStartTitle() {
-    return helpers.createSelector("ChatWaitToStartTitle")
+    return helpers.createSelector('ChatWaitToStartTitle')
   }
   get ChatHistoryScrollView() {
-    return helpers.createSelector("ChatHistoryScrollView")
+    return helpers.createSelector('ChatHistoryScrollView')
   }
   get ChatMessageWithE2ETestText() {
-    return helpers.createTextBasedSelector("E2E test", "")
+    return helpers.createTextBasedSelector('E2E test', '')
   }
   get ChatTextInput() {
-    return helpers.createSelector("ChatTextInput")
+    return helpers.createSelector('ChatTextInput')
   }
   get ChatTextInputSendButton() {
-    return helpers.createSelector("ChatTextInputSendButton")
+    return helpers.createSelector('ChatTextInputSendButton')
   }
   get ChatMessageTextText() {
-    return helpers.createSelector("ChatMessageTextText")
+    return helpers.createSelector('ChatMessageTextText')
   }
   get ChatHeaderToggleVisibilityButton() {
-    return helpers.createSelector("ChatHeaderToggleVisibilityButton")
+    return helpers.createSelector('ChatHeaderToggleVisibilityButton')
   }
   get ChatHeaderMeatballsMenuButton() {
-    return helpers.createSelector("ChatHeaderMeatballsMenuButton")
+    return helpers.createSelector('ChatHeaderMeatballsMenuButton')
   }
   get ChatMenuPressableDownloadChat() {
-    return helpers.createSelector("ChatMenuPressableDownloadChat")
+    return helpers.createSelector('ChatMenuPressableDownloadChat')
   }
   get ChatDownloadedInlineMessage() {
-    return helpers.createSelector("ChatDownloadedInlineMessage")
+    return helpers.createSelector('ChatDownloadedInlineMessage')
   }
   get ChatNewMessageIndicatorBadge() {
-    return helpers.createSelector("ChatNewMessageIndicatorBadge")
+    return helpers.createSelector('ChatNewMessageIndicatorBadge')
   }
 }
 

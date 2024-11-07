@@ -1,20 +1,28 @@
-import { execSync } from 'child_process'
-import HomeScreen from '../../screenobjects/home.screen.js'
+import {execSync} from 'child_process'
+import HomeScreen from '../../screenobjects/home.screen.ts'
+import assert from 'assert'
 
 class Helpers {
+  // @ts-ignore
   currentOS = driver.capabilities.platformName
 
-  createSelector(id) {
-    const testID = this.currentOS === 'iOS' ? `~${id}` : `android=new UiSelector().resourceId("${id}")`
+  createSelector(id: string) {
+    const testID =
+      this.currentOS === 'iOS'
+        ? `~${id}`
+        : `android=new UiSelector().resourceId("${id}")`
     return $(testID)
   }
 
-  createContentSelector(id) {
-    const testID = this.currentOS === 'iOS' ? `~${id}` : `android=new UiSelector().descriptionMatches("${id}")`
+  createContentSelector(id: string) {
+    const testID =
+      this.currentOS === 'iOS'
+        ? `~${id}`
+        : `android=new UiSelector().descriptionMatches("${id}")`
     return $(testID)
   }
 
-  createTextBasedSelector(text, className) {
+  createTextBasedSelector(text: string, className: string) {
     if (this.currentOS === 'iOS') {
       const iOSTestID = `~${text}`
       return $(iOSTestID)
@@ -23,11 +31,10 @@ class Helpers {
       const androidTestID = $(`android=${selector}`)
       return androidTestID
     }
-
   }
 
-  createPredicateSelector(label) {
-    const selector = $(`-ios predicate string:${label}`);
+  createPredicateSelector(label: string) {
+    const selector = $(`-ios predicate string:${label}`)
     return selector
   }
 
@@ -36,19 +43,25 @@ class Helpers {
   //   return this.currentOS
   // }
   realDeviceCheckiOS() {
-    const simulatorRegex = new RegExp('(.*-.*){2,}');
+    const simulatorRegex = /(.*-.*){2,}/
 
     // Check if we are a simulator
-    return ('udid' in driver.capabilities && simulatorRegex.test(driver.capabilities.udid) ? true : false);
+    return (
+      'udid' in driver.capabilities &&
+      simulatorRegex.test(driver.capabilities.udid as unknown as string)
+    )
   }
 
   async launchApp() {
+    // @ts-ignore
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
       await driver.activateApp('nl.amsterdam.app.dev')
-    }
-    else {
-      await driver.startActivity('nl.amsterdam.app.dev', 'nl.amsterdam.app.MainActivity')
+    } else {
+      await driver.startActivity(
+        'nl.amsterdam.app.dev',
+        'nl.amsterdam.app.MainActivity',
+      )
     }
   }
 
@@ -58,11 +71,11 @@ class Helpers {
 
   isEmulator() {
     try {
-      const adbDevicesOutput = execSync('adb devices -l').toString();
-      return /(?:emulator)/i.test(adbDevicesOutput);
+      const adbDevicesOutput = execSync('adb devices -l').toString()
+      return /(?:emulator)/i.test(adbDevicesOutput)
     } catch (error) {
-      console.error('Error:', error.message);
-      return false; // Assume it's not an emulator in case of an error
+      console.error('Error:', error.message)
+      return false // Assume it's not an emulator in case of an error
     }
   }
 
@@ -93,10 +106,9 @@ class Helpers {
         await driver.pause(6000)
         break
       default:
-        await assert.fail(`${environment} doesn't exist`)
+        assert.fail(`${environment} doesn't exist`)
     }
   }
-
 }
 
-export default new Helpers;
+export default new Helpers()
