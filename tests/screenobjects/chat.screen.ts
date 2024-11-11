@@ -18,7 +18,10 @@ class ChatScreen extends Screen {
     return helpers.createSelector('ChatHistoryScrollView')
   }
   get ChatMessageWithE2ETestText() {
-    return helpers.createTextBasedSelector('E2E test', '')
+    return helpers.createTextBasedSelector(
+      'E2E test',
+      'android.widget.TextView',
+    )
   }
   get ChatTextInput() {
     return helpers.createSelector('ChatTextInput')
