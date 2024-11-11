@@ -1,7 +1,7 @@
 import {execSync} from 'child_process'
 import HomeScreen from '../../screenobjects/home.screen.ts'
 import assert from 'assert'
-import {Environments} from 'tests/types/environments.ts'
+import {Environments} from '../../types/environments.ts'
 
 class Helpers {
   // @ts-ignore

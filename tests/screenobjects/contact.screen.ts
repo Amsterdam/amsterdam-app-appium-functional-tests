@@ -1,7 +1,7 @@
 import assert from 'assert'
 import helpers from '../Shared/helpers/helpers.ts'
 import Screen from './screen.ts'
-import {CityOffices} from 'tests/types/CityOffices.ts'
+import {CityOffices} from '../types/CityOffices.ts'
 
 /**
  * sub page containing specific selectors and methods for a specific page

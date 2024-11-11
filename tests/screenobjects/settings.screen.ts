@@ -1,4 +1,4 @@
-import {Modules} from 'tests/types/modules.ts'
+import {Modules} from '../types/modules.ts'
 import gestures from '../Shared/helpers/gestures.ts'
 import helpers from '../Shared/helpers/helpers.ts'
 import Screen from './screen.ts'
