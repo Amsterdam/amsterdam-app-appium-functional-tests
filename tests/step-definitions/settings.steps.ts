@@ -1,7 +1,7 @@
 import {Given, Then, When} from '@wdio/cucumber-framework'
 import HomeScreen from '../screenobjects/home.screen.ts'
 import settingsScreen from '../screenobjects/settings.screen.ts'
-import {Modules} from 'tests/types/modules.ts'
+import {Modules} from '../types/modules.ts'
 
 Given(/de module (.*) staat aan/, async module => {
   await HomeScreen.getHomeScreen()

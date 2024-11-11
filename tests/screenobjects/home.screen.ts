@@ -1,7 +1,7 @@
 import assert from 'assert'
 import helpers from '../Shared/helpers/helpers.ts'
 import Screen from './screen.ts'
-import {Modules} from 'tests/types/modules.ts'
+import {Modules} from '../types/modules.ts'
 
 /**
  * sub page containing specific selectors and methods for a specific page

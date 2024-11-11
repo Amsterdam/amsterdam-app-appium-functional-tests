@@ -2,7 +2,7 @@ import {Then, When} from '@wdio/cucumber-framework'
 import gestures from '../Shared/helpers/gestures.ts'
 import {default as ContactScreen} from '../screenobjects/contact.screen.ts'
 import HomeScreen from '../screenobjects/home.screen.ts'
-import {CityOffices} from 'tests/types/CityOffices.ts'
+import {CityOffices} from '../types/CityOffices.ts'
 
 When(/ik open de contact module/, async () => {
   //await createSelector("HomeContactModuleButton").click()

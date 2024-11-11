@@ -1,7 +1,7 @@
 import {Given, When} from '@wdio/cucumber-framework'
 import HomeScreen from '../screenobjects/home.screen.ts'
 import helpers from '../Shared/helpers/helpers.ts'
-import {type Environments} from 'tests/types/environments.ts'
+import {type Environments} from '../types/environments.ts'
 
 Given(/ik ben op het home scherm/, async () => {
   await HomeScreen.getHomeScreen()
