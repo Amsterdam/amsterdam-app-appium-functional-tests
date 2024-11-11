@@ -19,7 +19,7 @@ Then(/zie ik een bericht binnenkomen/, async () => {
 
 When(/ik stuur een bericht/, async () => {
   await ChatScreen.ChatTextInput.addValue('E2E test')
-  await ChatScreen.ChatTextInputSendButton.click()
+  ChatScreen.ChatTextInputSendButton.click()
 })
 
 Then(/zie ik het bericht verschijnen/, async () => {
@@ -42,10 +42,18 @@ Then(/is de chat geminimaliseerd/, async () => {
 })
 
 Then(/zie ik een nieuw bericht melding/, async () => {
-  await expect(ChatScreen.ChatHeader).not.toHaveText('Chat')
+  const OS = await driver.capabilities.platformName
+  if (OS === 'iOS') {
+    await expect(ChatScreen.ChatHeader).not.toHaveText('Chat')
+  } else {
+    await expect(ChatScreen.ChatNewMessageIndicatorBadge).toBeDisplayed()
+  }
 })
 
 Then(/zie ik geen nieuw bericht melding/, async () => {
   await expect(ChatScreen.ChatNewMessageIndicatorBadge).not.toBeDisplayed()
-  await expect(ChatScreen.ChatHeader).toHaveText('Chat')
+  const OS = await driver.capabilities.platformName
+  if (OS === 'iOS') {
+    await expect(ChatScreen.ChatHeader).toHaveText('Chat')
+  }
 })

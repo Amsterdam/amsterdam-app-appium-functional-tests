@@ -2,7 +2,7 @@ Feature: Chat
 
   @BeforeClean @AfterClean
   Scenario Outline: Chat
-    Given ik ben op de "DEV" omgeving
+    Given ik ben op de "TEST" omgeving
     When ik wacht 1 seconde
     Given ik ben op het contactscherm
     When ik klik op chat
