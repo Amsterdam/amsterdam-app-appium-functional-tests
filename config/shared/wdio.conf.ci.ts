@@ -30,6 +30,10 @@ const devices = {
       'appium:platformVersion': '14.0',
       'appium:deviceName': 'Google Pixel 8 Pro',
     },
+    'os14-samsung-galaxy-tab-s10+': {
+      'appium:platformVersion': '14.0',
+      'appium:deviceName': 'Samsung Galaxy Tab S10+',
+    },
   },
   ios: {
     // 'os14-iphone12': {
@@ -47,6 +51,10 @@ const devices = {
     'os17-iphone13': {
       'appium:platformVersion': '17',
       'appium:deviceName': 'iPhone 13',
+    },
+    'os18-ipad2022': {
+      'appium:platformVersion': '18',
+      'appium:deviceName': 'iPad 9th',
     },
   },
 }
