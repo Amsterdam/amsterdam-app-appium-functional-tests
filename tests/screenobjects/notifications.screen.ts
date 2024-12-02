@@ -169,7 +169,7 @@ class NotificationsScreen extends Screen {
   get allowSelector() {
     if (this.OS === 'iOS') {
       return $(
-        `-ios predicate string:type == "XCUIElementTypeButton" AND name == "Allow"`,
+        `-ios predicate string:type == "XCUIElementTypeButton" AND name == "Allow" OR name == "Sta toe"`,
       )
     } else {
       return helpers.createSelector(

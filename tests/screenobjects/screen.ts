@@ -45,7 +45,9 @@ export default class Screen {
     // @ts-ignore
     const OS = await driver.capabilities.platformName
     if (OS === 'iOS') {
-      return $(`-ios predicate string: label == "Allow While Using App"`)
+      return $(
+        `-ios predicate string: label == "Allow While Using App" OR label == "Bij gebruik van app"`,
+      )
     }
     //Android:
     else {

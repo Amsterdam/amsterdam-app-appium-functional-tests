@@ -68,6 +68,9 @@ class ConstructionWorkScreen extends Screen {
   get constructionWorkAmstelIIIProjectCard() {
     return helpers.createSelector('ConstructionWork33ProjectCard')
   }
+  constructionWorkIdProjectCard(id: string) {
+    return helpers.createSelector(`ConstructionWork${id}ProjectCard`)
+  }
 
   get constructionWorkProjectFollowButton() {
     return helpers.createSelector('ConstructionWorkProjectFollowButton')

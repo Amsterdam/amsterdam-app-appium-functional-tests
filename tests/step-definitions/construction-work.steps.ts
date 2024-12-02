@@ -120,11 +120,14 @@ When(/ik open de Werkzaamheden module/, async () => {
 })
 
 When(/ik volg het project 'Stedelijk Noord'/, async () => {
-  await gestures.checkProjectDisplayedWithScrollDownAndClick(
+  await gestures.checkProjectDisplayedWithScrollDownSlow(
     ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard,
     40,
   )
-  await expect(ConstructionWorkScreen.headerTitle).toHaveText('Stedelijk Noord')
+  ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard.click()
+  await expect(ConstructionWorkScreen.constructionWorkProjectTitle).toHaveText(
+    'Stedelijk Noord',
+  )
   await ConstructionWorkScreen.constructionWorkProjectFollowButton.click()
   // @ts-ignore
   const OS = await driver.capabilities.platformName
@@ -149,17 +152,15 @@ When(/ik volg het project 'Stedelijk Noord'/, async () => {
 
 When(/ik ontvolg het project 'Stedelijk Noord'/, async () => {
   await ConstructionWorkScreen.constructionWorkStedelijkNoordProjectCard.click()
-  await expect(ConstructionWorkScreen.headerTitle).toHaveText('Stedelijk Noord')
+  await expect(ConstructionWorkScreen.constructionWorkProjectTitle).toHaveText(
+    'Stedelijk Noord',
+  )
   await ConstructionWorkScreen.constructionWorkProjectFollowButton.click()
   await driver.pause(5000)
 })
 
-When(/ik zoek op 'Amsterdam'/, async () => {
-  await ConstructionWorkScreen.searchProject('Amsterdam')
-})
-
-When(/ik zoek op 'jfklds'/, async () => {
-  await ConstructionWorkScreen.searchProject('jfklds')
+When('ik zoek op {string}', async (text: string) => {
+  await ConstructionWorkScreen.searchProject(text)
 })
 
 When(/ik bekijk het project 'Corantijnstraat'/, async () => {
@@ -266,41 +267,16 @@ Then(/de status 'volgend' verdwijnt/, async () => {
 })
 
 Then(
-  /krijg ik de juiste zoekresultaten in het 'Zoek in werkzaamheden' scherm/,
-  async () => {
+  'staat {string} met id {string} in de zoekresultaten',
+  async (_projectName: string, projectId: string) => {
     await gestures.checkProjectDisplayedWithScrollDownSlow(
-      ConstructionWorkScreen.constructionWorkCardProjectAmsterdamSciencePark,
-      4,
-    )
-    await gestures.swipeDown()
-    await gestures.checkProjectDisplayedWithScrollDownSlow(
-      ConstructionWorkScreen.constructionWorkFoodCenterAmsterdamProjectCard,
-      4,
-    )
-    await gestures.swipeDown()
-    await gestures.checkProjectDisplayedWithScrollDownSlow(
-      ConstructionWorkScreen.constructionWorkCentrumgebiedAmsterdamNoordProjectCard,
-      4,
-    )
-    await gestures.swipeDown()
-    await gestures.checkProjectDisplayedWithScrollDownSlow(
-      ConstructionWorkScreen.constructionWorkAmsterdamseBosProjectCard,
-      4,
-    )
-    await gestures.swipeDown()
-    await gestures.checkProjectDisplayedWithScrollDownSlow(
-      ConstructionWorkScreen.constructionWorkCardProjectCentrumeiland,
-      4,
-    )
-    await gestures.swipeDown()
-    await gestures.checkProjectDisplayedWithScrollDown(
-      ConstructionWorkScreen.constructionWorkHaarlemmermeerProjectCard,
-      4,
+      ConstructionWorkScreen.constructionWorkIdProjectCard(projectId),
+      5,
     )
   },
 )
 
-Then(/ik zie een melding dat er geen zoekresulaten zijn/, async () => {
+Then(/ik zie een melding dat er geen zoekresultaten zijn/, async () => {
   await expect(
     ConstructionWorkScreen.constructionWorkListEmptyMessage,
   ).toBeDisplayed()
@@ -309,12 +285,9 @@ Then(/ik zie een melding dat er geen zoekresulaten zijn/, async () => {
 Then(
   /ik zie de projectdetailpagina van project 'Corantijnstraat'/,
   async () => {
-    await expect(ConstructionWorkScreen.headerTitle).toHaveText(
-      'Corantijnstraat',
-    )
     await expect(
       ConstructionWorkScreen.constructionWorkProjectTitle,
-    ).toBeDisplayed()
+    ).toHaveText('Corantijnstraat')
     await expect(
       ConstructionWorkScreen.constructionWorkProjectFollowButton,
     ).toBeDisplayed()
