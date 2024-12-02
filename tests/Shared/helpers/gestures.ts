@@ -39,13 +39,13 @@ class Gestures {
     maxScrolls: number,
   ) {
     for (let i = 0; i < maxScrolls; i++) {
-      if (!(await element.isDisplayed()) && i < maxScrolls) {
+      if (!(await element.isDisplayed())) {
         await this.swipeUpSlow()
       } else {
         break
       }
-      expect(await element).toBeDisplayed()
     }
+    expect(await element).toBeDisplayed()
   }
 
   async checkProjectDisplayedWithScrollDownShortScreen(
@@ -74,6 +74,7 @@ class Gestures {
       }
       //expect(await element).toBeDisplayed()
     }
+    expect(await element).toBeDisplayed()
   }
 
   async checkProjectDisplayedWithScrollDownAndClick(
@@ -96,77 +97,55 @@ class Gestures {
     }
   }
 
-  //swipe down
-  async swipeDown() {
-    await driver.performActions([
-      {
-        type: 'pointer',
-        id: 'finger',
-        parameters: {pointerType: 'touch'},
-        actions: [
-          {type: 'pointerMove', duration: 0, x: centerX, y: topY},
-          {type: 'pointerDown', button: 0},
-          {type: 'pause', duration: 100},
-          {type: 'pointerMove', duration: 200, x: centerX, y: startY},
-          {type: 'pointerUp', button: 0},
-          {type: 'pause', duration: 500},
-        ],
-      },
-    ])
-  }
-
   async swipeDownSlow() {
-    await driver.performActions([
-      {
-        type: 'pointer',
-        id: 'finger',
-        parameters: {pointerType: 'touch'},
-        actions: [
-          {type: 'pointerMove', duration: 0, x: centerX, y: topY},
-          {type: 'pointerDown', button: 0},
-          {type: 'pause', duration: 100},
-          {type: 'pointerMove', duration: 1000, x: centerX, y: startY},
-          {type: 'pointerUp', button: 0},
-          {type: 'pause', duration: 500},
-        ],
-      },
-    ])
-  }
-  //swipeUp
-  async swipeUp() {
-    await driver.performActions([
-      {
-        type: 'pointer',
-        id: 'finger',
-        parameters: {pointerType: 'touch'},
-        actions: [
-          {type: 'pointerMove', duration: 0, x: centerX, y: startY},
-          {type: 'pointerDown', button: 0},
-          {type: 'pause', duration: 100},
-          {type: 'pointerMove', duration: 700, x: centerX, y: endY},
-          {type: 'pointerUp', button: 0},
-          {type: 'pause', duration: 500},
-        ],
-      },
-    ])
+    await driver
+      .performActions([
+        {
+          type: 'pointer',
+          id: 'finger',
+          parameters: {pointerType: 'touch'},
+          actions: [
+            {type: 'pointerMove', duration: 0, x: centerX, y: topY},
+            {type: 'pointerDown', button: 0},
+            {type: 'pause', duration: 100},
+            {type: 'pointerMove', duration: 500, x: centerX, y: startY},
+            {type: 'pointerUp', button: 0},
+            {type: 'pause', duration: 100},
+          ],
+        },
+      ])
+      .then(
+        () => null,
+        () => null,
+      )
+    await driver.releaseActions()
+    return null
   }
 
   async swipeUpSlow() {
-    await driver.performActions([
-      {
-        type: 'pointer',
-        id: 'finger',
-        parameters: {pointerType: 'touch'},
-        actions: [
-          {type: 'pointerMove', duration: 0, x: centerX, y: startY},
-          {type: 'pointerDown', button: 0},
-          {type: 'pause', duration: 100},
-          {type: 'pointerMove', duration: 1000, x: centerX, y: endY},
-          {type: 'pointerUp', button: 0},
-          {type: 'pause', duration: 500},
-        ],
-      },
-    ])
+    await driver
+      .performActions([
+        {
+          type: 'pointer',
+          id: 'finger',
+          parameters: {pointerType: 'touch'},
+
+          actions: [
+            {type: 'pointerMove', duration: 0, x: centerX, y: topY},
+            {type: 'pointerDown', button: 0},
+            {type: 'pause', duration: 100},
+            {type: 'pointerMove', duration: 500, x: centerX, y: endY},
+            {type: 'pointerUp', button: 0},
+            {type: 'pause', duration: 100},
+          ],
+        },
+      ])
+      .then(
+        () => null,
+        () => null,
+      )
+    await driver.releaseActions()
+    return null
   }
 
   async swipeUpSlowShortScreen() {

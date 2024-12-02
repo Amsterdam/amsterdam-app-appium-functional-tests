@@ -34,11 +34,7 @@ When(/ik geef mijn locatie door/, async () => {
     timeout: 5000,
   })
   await profileScreen.bottomSheetSelectLocationButton.click()
-  if (OS === 'iOS') {
-    await permissionsScreen.iosAllowWhileUsingAppButton.click()
-  } else {
-    await permissionsScreen.androidAllowWhileUsingAppButton.click()
-  }
+  await (await permissionsScreen.allowLocationSelector()).click()
 })
 
 //Then
