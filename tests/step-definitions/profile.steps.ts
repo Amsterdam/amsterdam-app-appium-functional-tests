@@ -31,11 +31,11 @@ When(/ik ga naar mijn profiel/, async () => {
   await expect(HomeScreen.headerTitle).toHaveText('Mijn profiel')
 })
 
-When(/ik zoek op 'Weesperstraat 113'/, async () => {
+When(/ik zoek op {string} in de adreszoeker/, async (address: string) => {
   await ProfileScreen.addressAddButton.waitForDisplayed({timeout: 5000})
   await ProfileScreen.addressAddButton.click()
   await driver.pause(2000)
-  await ProfileScreen.addAddress('Weesperstraat 113')
+  await ProfileScreen.addAddress(address)
 })
 
 When(/ik selecteer het adres/, async () => {

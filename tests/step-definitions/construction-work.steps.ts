@@ -28,7 +28,9 @@ Given(/ik ben op het project detailscherm/, async () => {
   )
   await gestures.hitEnter()
   await ConstructionWorkScreen.constructionWorkAmstelIIIProjectCard.click()
-  await expect(HomeScreen.headerTitle).toHaveText('Amstel III')
+  await expect(ConstructionWorkScreen.constructionWorkProjectTitle).toHaveText(
+    'Amstel III',
+  )
 })
 
 Given(
