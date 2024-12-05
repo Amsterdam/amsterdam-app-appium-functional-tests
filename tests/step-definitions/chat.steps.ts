@@ -14,7 +14,7 @@ Then(/zie ik de chat/, async () => {
 })
 
 Then(/zie ik een bericht binnenkomen/, async () => {
-  await expect(ChatScreen.ChatMessageTextText).toBeDisplayed()
+  await expect(ChatScreen.ChatEntryText).toBeDisplayed()
 })
 
 When(/ik stuur een bericht/, async () => {
