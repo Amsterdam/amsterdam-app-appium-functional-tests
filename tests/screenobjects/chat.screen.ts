@@ -29,8 +29,8 @@ class ChatScreen extends Screen {
   get ChatTextInputSendButton() {
     return helpers.createSelector('ChatTextInputSendButton')
   }
-  get ChatMessageTextText() {
-    return helpers.createSelector('ChatMessageTextText')
+  get ChatEntryText() {
+    return helpers.createSelector('ChatEntryText')
   }
   get ChatHeaderToggleVisibilityButton() {
     return helpers.createSelector('ChatHeaderToggleVisibilityButton')
