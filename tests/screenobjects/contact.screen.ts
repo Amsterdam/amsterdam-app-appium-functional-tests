@@ -102,9 +102,6 @@ class ContactScreen extends Screen {
     return helpers.createSelector('ContactButtonRouteLabel')
   }
 
-  get contactVisitingHoursTooltipButton() {
-    return helpers.createSelector('ContactVisitingHoursTooltipButton')
-  }
   get cityOfficeCentrumButton() {
     return helpers.createSelector(
       'ContactCityOfficee9871a7716da02a4c20cfb06f9547005Button',
